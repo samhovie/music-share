@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from .db import db
 
 class Song(db.Model):
     __tablename__ = "songs"

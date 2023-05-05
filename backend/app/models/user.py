@@ -14,9 +14,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    songs = db.Relationship('Songs', back_populates = 'user', cascade='all, delete-orphan')
-    comments = db.Relationship('Comments', back_populates = 'user', cascade='all, delete-orphan')
-    playlists = db.Relationship('Playlists', back_populates = 'user', cascade='all, delete-orphan')
+    songs = db.relationship('Songs', back_populates = 'user', cascade='all, delete-orphan')
+    comments = db.relationship('Comments', back_populates = 'user', cascade='all, delete-orphan')
+    playlists = db.relationship('Playlists', back_populates = 'user', cascade='all, delete-orphan')
 
 
     @property

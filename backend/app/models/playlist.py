@@ -14,4 +14,4 @@ class Playlist(db.Model):
     created_at =db.Column(db.DateTime, nullable = False)
     updated_at = db.Column(db.DateTime, nullable = False)
 
-    user = db.relationship('Users', back_populates = 'playlists')
+    user = db.relationship('User', back_populates = 'playlists')

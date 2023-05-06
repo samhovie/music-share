@@ -11,5 +11,5 @@ class Comment(db.Model):
     created_at =db.Column(db.DateTime, nullable = False)
     updated_at = db.Column(db.DateTime, nullable = False)
 
-    user = db.relationship('Users', back_populates = 'comments')
-    song = db.relationship('Songs', back_populates = 'comments')
+    user = db.relationship('User', back_populates = 'comments')
+    song = db.relationship('Song', back_populates = 'comments')

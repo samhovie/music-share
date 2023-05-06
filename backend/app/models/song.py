@@ -16,5 +16,6 @@ class Song(db.Model):
     created_at =db.Column(db.DateTime, nullable = False)
     updated_at = db.Column(db.DateTime, nullable = False)
 
-    user = db.relationship('Users', back_populates = 'songs', cascade='all, delete-orphan')
-    comments = db.relationship('Comments', back_populates = 'song')
+    # user = db.relationship('Users', back_populates = 'songs', cascade='all, delete-orphan')
+    user = db.relationship('User', back_populates = 'songs')
+    comments = db.relationship('Comment', back_populates = 'song')

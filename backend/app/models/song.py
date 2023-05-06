@@ -1,9 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 
-from .db import db
+
+from .db import db, environment, SCHEMA
 
 class Song(db.Model):
     __tablename__ = "songs"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255), nullable = False)
     # artist_name = db.Column(db.String(255), nullable = False)
@@ -16,6 +21,5 @@ class Song(db.Model):
     created_at =db.Column(db.DateTime, nullable = False)
     updated_at = db.Column(db.DateTime, nullable = False)
 
-    # user = db.relationship('Users', back_populates = 'songs', cascade='all, delete-orphan')
-    user = db.relationship('User', back_populates = 'songs')
+    user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')

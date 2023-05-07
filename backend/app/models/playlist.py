@@ -1,14 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Playlist(db.Model):
 
     __tablename__ = 'playlists'
-
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
@@ -19,3 +16,7 @@ class Playlist(db.Model):
     updated_at = db.Column(db.DateTime, nullable = False)
 
     user = db.relationship('User', back_populates = 'playlists')
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+        add_prefix_for_prod(user_id)

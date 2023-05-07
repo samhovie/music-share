@@ -18,8 +18,8 @@ class Song(db.Model):
     mp3_file = db.Column(db.String(255), nullable = False)
     genre = db.Column(db.String(255), nullable = False)
     # song_position = db.Column(db.String(100), nullable = False)
-    created_at =db.Column(db.DateTime, nullable = False)
-    updated_at = db.Column(db.DateTime, nullable = False)
+    # created_at =db.Column(db.DateTime, nullable = False)
+    # updated_at = db.Column(db.DateTime, nullable = False)
 
     user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')

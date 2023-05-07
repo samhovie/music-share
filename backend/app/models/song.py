@@ -20,8 +20,6 @@ class Song(db.Model):
     # song_position = db.Column(db.String(100), nullable = False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
-    # created_at =db.Column(db.DateTime, nullable = False)
-    # updated_at = db.Column(db.DateTime, nullable = False)
 
     user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')

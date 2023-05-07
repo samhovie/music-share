@@ -17,7 +17,5 @@ class Playlist(db.Model):
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
-    # created_at =db.Column(db.DateTime, nullable = False)
-    # updated_at = db.Column(db.DateTime, nullable = False)
 
     user = db.relationship('User', back_populates = 'playlists')

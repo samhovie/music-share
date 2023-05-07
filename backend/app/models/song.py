@@ -24,6 +24,14 @@ class Song(db.Model):
     user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "artist_id": self.artist_id,
+            "mp3_file": self.mp3_file,
+            "genre": self.genre
+        }
     # if environment == "production":
     #     __table_args__ = {'schema': SCHEMA}
         # add_prefix_for_prod(artist_id)

@@ -15,7 +15,7 @@ def get_all_songs():
     songs = Song.query.all()
     return {"songs": [song.to_dict() for song in songs]}
 
-@songs_routes.route('/', methods=['PUT', 'POST'])
+@songs_routes.route('/new', methods=['POST'])
 def post_songs():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -23,6 +23,7 @@ def post_songs():
     #     return form
     if form.validate_on_submit():
         # print(form.data['songs'])
+        print(current_user.id)
         new_song = Song(
             name=form.data['name'],
             artist_name=form.data['artist_name'],
@@ -42,3 +43,13 @@ def post_songs():
 def get_song(id):
     song = Song.query.get(id)
     return song.to_dict()
+
+@songs_routes.route('/<int:id>', methods=['DELETE'])
+def delete_song(id):
+    song = Song.query.get(id)
+    if song.artist_id != current_user.id:
+        return {"errors": 'nacho song'}
+    else:
+        db.session.delete(song)
+        db.session.commit()
+        return {'success': 'good job'}

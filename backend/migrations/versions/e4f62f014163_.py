@@ -38,8 +38,6 @@ def upgrade():
     sa.Column('public', sa.Boolean(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
-    sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -49,8 +47,6 @@ def upgrade():
     sa.Column('artist_id', sa.Integer(), nullable=False),
     sa.Column('mp3_file', sa.String(length=255), nullable=False),
     sa.Column('genre', sa.String(length=255), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['artist_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -59,8 +55,6 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.Column('text', sa.String(length=255), nullable=True),
-    sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -87,6 +81,9 @@ def upgrade():
         op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE song_likes comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlist_songs comments SET SCHEMA {SCHEMA};")
+
 
 
 

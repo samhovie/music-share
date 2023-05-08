@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Song
 from app.forms import SongForm
 from datetime import date
@@ -15,14 +15,7 @@ def get_all_songs():
     songs = Song.query.all()
     return {"songs": [song.to_dict() for song in songs]}
 
-
-# @songs_routes.route('/new')
-# def get_song_form():
-#     form = SongForm()
-#     return form
-
-
-@songs_routes.route('/new', methods=['POST'])
+@songs_routes.route('/', methods=['PUT', 'POST'])
 def post_songs():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -35,7 +28,7 @@ def post_songs():
             artist_name=form.data['artist_name'],
             mp3_file=form.data['mp3_file'],
             genre=form.data['genre'],
-            artist_id=form.data['user_id'],
+            artist_id=current_user.id,
             created_at=date.today(),
             updated_at=date.today()
         )
@@ -44,3 +37,8 @@ def post_songs():
         db.session.commit()
         return new_song.to_dict()
     return {"errors": form.errors}
+
+@songs_routes.route('/<int:id>')
+def get_song(id):
+    song = Song.query.get(id)
+    return song.to_dict()

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function CreateSongForm() {
-  console.log('hello')
   const [name, setName] = useState('')
   const [artist_name, setArtist] = useState('')
   const [mp3_file, setMp3] = useState('')

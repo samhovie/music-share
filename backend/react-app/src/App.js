@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import DiscoverPage from "./components/DiscoverPage";
+import CreateSongForm from "./components/CreateSongForm"
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <Homepage />
+            <CreateSongForm />
           </Route>
           <Route exact path="/discover">
             <DiscoverPage />

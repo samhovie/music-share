@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import DiscoverPage from "./components/DiscoverPage";
+import FeedPage from "./components/FeedPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/discover">
             <DiscoverPage />
+          </Route>
+          <Route exact path="/feed">
+            <FeedPage />
           </Route>
           <Route exact path="/login" >
             <LoginFormPage />

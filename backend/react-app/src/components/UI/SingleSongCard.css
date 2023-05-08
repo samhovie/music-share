@@ -1,0 +1,62 @@
+.single-song-card-wrapper {
+    display: flex;
+    width: 60rem;
+    height: 12rem;
+    border: 1px solid black;
+}
+
+.single-song-card-image > img {
+    /* max-width: 150px; */
+    height: 12rem;
+}
+
+.single-song-card-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 12rem;
+}
+
+.single-song-card-info-top {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.single-song-card-info-comment-input {
+    width: 99%;
+}
+
+.single-song-card-info-comment > input {
+    width: 100%;
+    border: 1px solid red;
+}
+
+.single-song-card-info-top-left-column {
+    display: flex;
+}
+
+.single-song-card-next-to-play {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-song-card-info-soundwave {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.single-song-card-info-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    border: 1px solid black;
+}
+
+.single-song-card-info-bottom-left-column {
+    display: flex;
+}
+
+.single-song-card-info-bottom-right-column {
+    display: flex;
+}

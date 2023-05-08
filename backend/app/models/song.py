@@ -11,15 +11,13 @@ class Song(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255), nullable = False)
-    # artist_name = db.Column(db.String(255), nullable = False)
+    artist_name = db.Column(db.String(255), nullable = False)
     artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
-    # album_id = db.Column(db.Integer, nullable = False)
-    # album_name = db.Column(db.String(100), nullable = False)
     mp3_file = db.Column(db.String(255), nullable = False)
     genre = db.Column(db.String(255), nullable = False)
     # song_position = db.Column(db.String(100), nullable = False)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    created_at = db.Column(db.Date, nullable=False)
+    updated_at = db.Column(db.Date, nullable=False)
 
     user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')

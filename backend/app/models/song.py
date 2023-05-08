@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
-
+import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Song(db.Model):
@@ -18,8 +16,8 @@ class Song(db.Model):
     mp3_file = db.Column(db.String(255), nullable = False)
     genre = db.Column(db.String(255), nullable = False)
     # song_position = db.Column(db.String(100), nullable = False)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=datetime.datetime.utcnow)
 
     user = db.relationship('User', back_populates = 'songs', cascade='all')
     comments = db.relationship('Comment', back_populates = 'song')

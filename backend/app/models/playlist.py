@@ -1,5 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
+import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
@@ -15,7 +14,7 @@ class Playlist(db.Model):
     public = db.Column(db.Boolean, nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
     description = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=datetime.datetime.utcnow)
 
     user = db.relationship('User', back_populates = 'playlists')

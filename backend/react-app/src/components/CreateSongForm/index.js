@@ -5,6 +5,7 @@ export default function CreateSongForm() {
   const [artist_name, setArtist] = useState('')
   const [mp3_file, setMp3] = useState('')
   const [genre, setGenre] = useState('')
+  const [id, setId] = useState(1)
 
 
   const csrf = localStorage.getItem("csrf_token")
@@ -17,46 +18,40 @@ export default function CreateSongForm() {
       genre
     }
 
-    const response = await fetch(`/api/songs/new`, {
-      method: 'post',
+    const response = await fetch(`/api/songs/${id}`, {
+      method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
-      },
-      body: JSON.stringify(data)
+      }
     });
 
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.includes("application/json")) {
-      if (response.ok) {
-        const item = await response.json();
-        // dispatch(add(item));
-        console.log(item)
-        return item;
-      }
-    } else {
-      console.error(`Error: Expected a JSON response, but received ${contentType}`);
+    if (response.ok) {
+      const item = await response.json();
+      // dispatch(add(item));
+      console.log(item)
+      return item;
     }
+
   }
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='POST' onSubmit={handleSubmit}>
+      <form method='DELETE' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
         <label>
-          Name
+          id
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             required
           />
         </label>
-        <label>
+        {/* <label>
           Artist
           <input
             type="text"
@@ -82,8 +77,8 @@ export default function CreateSongForm() {
             onChange={(e) => setGenre(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Upload</button>
+        </label> */}
+        <button type="submit">Delete</button>
       </form>
     </>
   );

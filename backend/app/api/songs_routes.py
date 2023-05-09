@@ -39,17 +39,22 @@ def post_songs():
         return new_song.to_dict()
     return {"errors": form.errors}
 
-@songs_routes.route('/<int:id>')
-def get_song(id):
-    song = Song.query.get(id)
-    return song.to_dict()
+
 
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
+    # print('HELLLLLOOOOOO')
     song = Song.query.get(id)
+    print (song)
     if song.artist_id != current_user.id:
         return {"errors": 'nacho song'}
     else:
         db.session.delete(song)
         db.session.commit()
         return {'success': 'good job'}
+
+
+@songs_routes.route('/<int:id>')
+def get_song(id):
+    song = Song.query.get(id)
+    return song.to_dict()

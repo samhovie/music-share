@@ -15,6 +15,7 @@ def get_all_songs():
     songs = Song.query.all()
     return {"songs": [song.to_dict() for song in songs]}
 
+
 @songs_routes.route('/new', methods=['POST'])
 def post_songs():
     form = SongForm()
@@ -40,12 +41,11 @@ def post_songs():
     return {"errors": form.errors}
 
 
-
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
     # print('HELLLLLOOOOOO')
     song = Song.query.get(id)
-    print (song)
+    print(song)
     if song.artist_id != current_user.id:
         return {"errors": 'nacho song'}
     else:

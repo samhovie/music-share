@@ -80,7 +80,9 @@ def delete_playlist(id):
         return {'success': 'good job'}
 
 
-# @playlist_routes.route('/<int:id>')
-# def get_playlist(id):
-#     playlist = Playlist.query.get(id)
-#     return playlist.to_dict()
+@playlist_routes.route('/<int:id>')
+def get_playlist(id):
+    playlist = Playlist.query.get(id)
+    if not playlist:
+        return {"errors": "not found"}
+    return playlist.to_dict()

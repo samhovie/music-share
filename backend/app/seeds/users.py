@@ -33,13 +33,13 @@ def seed_songs():
 
 def seed_playlists():
     playlist1 = Playlist(
-        name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL"
+        name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today()
     )
     playlist2 = Playlist(
-        name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER"
+        name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
     )
     playlist3 = Playlist(
-        name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER"
+        name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
     )
     db.session.add(playlist1)
     db.session.add(playlist2)

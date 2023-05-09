@@ -15,6 +15,11 @@ def get_all_songs():
     songs = Song.query.all()
     return {"songs": [song.to_dict() for song in songs]}
 
+@songs_routes.route('/<int:id>')
+def get_song(id):
+    song = Song.query.get(id)
+    return song.to_dict()
+
 @songs_routes.route('/new', methods=['POST'])
 def post_songs():
     form = SongForm()
@@ -52,9 +57,3 @@ def delete_song(id):
         db.session.delete(song)
         db.session.commit()
         return {'success': 'good job'}
-
-
-@songs_routes.route('/<int:id>')
-def get_song(id):
-    song = Song.query.get(id)
-    return song.to_dict()

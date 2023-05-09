@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './SongDetailsCard.css'
 
-const SongDetailsCard = () => {
+const SongDetailsCard = ({song}) => {
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
-
+    // console.log("SONGGGGG ", song)
 
     return (
         <>
@@ -18,31 +18,31 @@ const SongDetailsCard = () => {
                                 onClick={isPlayingClickHandler}
                                 >
                                 {!isPlaying ?
-                                <i class="fa-solid fa-circle-play"
+                                <i className="fa-solid fa-circle-play"
                                 style={{color: '#932db9', fontSize: '60px'}}
                                 ></i>
                                 :
-                                <i class="fa-solid fa-pause"
+                                <i className="fa-solid fa-pause"
                                 style={{color: '#932db9', fontSize: '60px'}}
                                 ></i>
                                 }
                                 </div>
                                 <div className='song-details-card-next-to-play'>
                                     <div className='song-details-card-artist'>
-                                        Artist
+                                        {`${song.artist_name}`}
                                     </div>
                                     <div className='song-details-card-song'>
-                                        Song
+                                    {`${song.name}`}
                                     </div>
                                 </div>
                             </div>
                             <div className='song-details-card-top-right'>
                                 <div className='song-details-card-createdAt'>
-                                    CreatedAt
+                                {`${song.created_at}`}
                                     {/* on SoundCloud it's 1month ago for example */}
                                 </div>
                                 <div className='song-details-card-genre'>
-                                    Genre
+                                {`${song.genre}`}
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ const SongDetailsCard = () => {
                         ></img>
                     </div>
                 </div>
-            
+
         </>
     )
 }

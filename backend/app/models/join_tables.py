@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from .db import add_prefix_for_prod
 
 # from sqlalchemy.orm import DeclarativeBase
 from .db import db
@@ -13,12 +14,18 @@ from .db import db
 #     song_id = db.Column(db.Integer, db.ForeignKey('songs.id'), nullable = False)
 
     # f = db.relationship('', secondary='', back_populates='')
-playlist_song = db.Table(
-    'playlist_songs',
-    # Base.metadata,
-    db.Column("playlist_id", db.ForeignKey("playlists.id"), primary_key=True),
-    db.Column("song_id", db.ForeignKey("songs.id"), primary_key=True),
+# playlist_song = db.Table(
+#     'playlist_songs',
+#     # Base.metadata,
+#     db.Column("playlist_id", db.ForeignKey("playlists.id"), primary_key=True),
+#     db.Column("song_id", db.ForeignKey("songs.id"), primary_key=True),
+# )
+
+playlist_songs = db.Table('playlist_songs',
+    db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id')), primary_key=True),
+    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), primary_key=True)
 )
+
 
 
 # class SongLike(db.Model):

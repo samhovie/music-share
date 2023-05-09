@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllPlaylistsThunk } from '../../store/playlists';
 import PlaylistCard from '../UI/PlaylistCard';
 import PlaylistWrapper from '../UI/PlaylistWrapper';
+import SongInPlaylist from '../UI/SongInPlaylist';
 
 const DiscoverPage = () => {
     const dispatch = useDispatch()
@@ -15,6 +16,7 @@ const DiscoverPage = () => {
 
     return (
         <>
+        <SongInPlaylist />
             <PlaylistWrapper />
             {/* <PlaylistCard /> */}
 

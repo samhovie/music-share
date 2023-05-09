@@ -1,0 +1,25 @@
+.song-in-playlist-wrapper {
+    display: flex;
+    border: 1px solid black;
+}
+
+.song-in-playlist-inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.song-in-playlist-left {
+    display: flex;
+    align-items: center;
+}
+
+.song-in-playlist-image > img{
+    height: 1.7rem;
+    width: 1.7rem;
+
+}
+
+.song-in-playlist-right {
+    display: flex;
+    align-items: center;
+}

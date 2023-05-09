@@ -7,7 +7,7 @@ export default function CreateSongForm() {
 
   // const [mp3_file, setMp3] = useState('')
   // const [genre, setGenre] = useState('')
-  const [id, setId] = useState('')
+  // const [id, setId] = useState('')
 
 
 
@@ -22,8 +22,8 @@ export default function CreateSongForm() {
     }
     // console.log(data)
 
-    const response = await fetch(`/api/comments/${id}`, {
-      method: 'DELETE',
+    const response = await fetch(`/api/comments/new`, {
+      method: 'POST',
       headers: {
         // 'Content-Type': 'application/json',
         'X-CSRFToken': csrf

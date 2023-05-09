@@ -27,12 +27,6 @@ function App() {
           <Route exact path="/">
             <CreateSongForm />
           </Route>
-          <Route exact path="/songs/:songId">
-            <SongDetailsPage />
-          </Route>
-          <Route exact path="/profile">
-            <ProfilePage />
-          </Route>
           <Route exact path="/discover">
             <DiscoverPage />
           </Route>

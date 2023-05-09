@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
+from .join_tables import playlist_songs
 
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
@@ -21,8 +22,11 @@ class Song(db.Model):
     created_at = db.Column(db.Date, nullable=False)
     updated_at = db.Column(db.Date, nullable=False)
 
-    user = db.relationship('User', back_populates='songs', cascade='all')
-    comments = db.relationship('Comment', back_populates='song')
+    user = db.relationship('User', back_populates='songs')
+    comments = db.relationship(
+        'Comment', back_populates='song', cascade='all, delete-orphan')
+    playlists = db.relationship(
+        'Playlist', secondary=playlist_songs, back_populates='song', cascade='all, delete')
 
     def to_dict(self):
         return {

@@ -5,7 +5,7 @@ export default function CreateSongForm() {
   const [artist_name, setArtist] = useState('')
   const [mp3_file, setMp3] = useState('')
   const [genre, setGenre] = useState('')
-  const [id, setId] = useState(1)
+  const [id, setId] = useState('')
 
 
   const csrf = localStorage.getItem("csrf_token")
@@ -19,10 +19,12 @@ export default function CreateSongForm() {
     }
 
     const response = await fetch(`/api/songs/${id}`, {
-      method: 'DELETE',
+      method: 'PUT',
       headers: {
+        'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
-      }
+      },
+      body: JSON.stringify(data)
     });
 
     if (response.ok) {
@@ -32,11 +34,12 @@ export default function CreateSongForm() {
       return item;
     }
 
+
   }
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='DELETE' onSubmit={handleSubmit}>
+      <form method='PUT' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -51,7 +54,16 @@ export default function CreateSongForm() {
             required
           />
         </label>
-        {/* <label>
+        <label>
+          Name
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
           Artist
           <input
             type="text"
@@ -77,8 +89,8 @@ export default function CreateSongForm() {
             onChange={(e) => setGenre(e.target.value)}
             required
           />
-        </label> */}
-        <button type="submit">Delete</button>
+        </label>
+        <button type="submit">Update</button>
       </form>
     </>
   );

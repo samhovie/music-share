@@ -55,11 +55,11 @@ def update_song(id):
         elif song.artist_id != current_user.id:
             return {"errors": "nacho song"}
 
-        song.name = form.data['name'],
-        song.artist_name = form.data['artist_name'],
-        song.mp3_file = form.data['mp3_file'],
-        song.genre = form.data['genre'],
-        song.artist_id = current_user.id,
+        song.name = form.data['name']
+        song.artist_name = form.data['artist_name']
+        song.mp3_file = form.data['mp3_file']
+        song.genre = form.data['genre']
+        song.artist_id = current_user.id
         song.updated_at = date.today()
 
         db.session.commit()

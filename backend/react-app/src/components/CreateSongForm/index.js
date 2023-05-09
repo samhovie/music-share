@@ -22,8 +22,8 @@ export default function CreateSongForm() {
     }
     console.log(data)
 
-    const response = await fetch(`/api/playlists/new`, {
-      method: 'POST',
+    const response = await fetch(`/api/playlists/1`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
@@ -43,7 +43,7 @@ export default function CreateSongForm() {
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='POST' onSubmit={handleSubmit}>
+      <form method='PUT' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>

@@ -146,3 +146,9 @@ your site just below the name of the Web Service at the top of the page.
 
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/
+
+Home = all playlists
+Feed = all single songs
+Songs/songId = single song details
+Songs in dropdown profile = delete playlists
+Library = all your songs, playlists, likes (could be feature coming soon)

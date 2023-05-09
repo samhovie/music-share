@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import DiscoverPage from "./components/DiscoverPage";
 import FeedPage from "./components/FeedPage";
+import CreateSongForm from "./components/CreateSongForm"
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <Homepage />
+            <CreateSongForm />
           </Route>
           <Route exact path="/discover">
             <DiscoverPage />

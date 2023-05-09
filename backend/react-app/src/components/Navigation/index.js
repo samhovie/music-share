@@ -21,17 +21,28 @@ function Navigation({ isLoaded }) {
 				<div className='navbar-site-button'>
 					<NavLink exact to="/"
 					style={{textDecoration: 'none', color: 'white'}}
-					>Music Share</NavLink>
+					>
+						Music Share
+					</NavLink>
 				</div>
 				<div className='navbar-home-feed-library'>
 					<div className='navbar-home-feed-library-home navbar-all-three'>
-						Home
+
+						<NavLink exact to='/discover'
+						style={{textDecoration: 'none', color: 'white'}}
+						>
+							Home
+						</NavLink>
 					</div>
 					<div className='navbar-home-feed-library-feed navbar-all-three'
 					>
 						{sessionUser ?
-						<NavLink exact to='/feed'>Feed</NavLink> :
-						<NavLink exact to='/login'>Feed</NavLink>
+						<NavLink exact to='/feed'
+						style={{textDecoration: 'none', color: 'white'}}
+						>Feed</NavLink> :
+						<NavLink exact to='/login'
+						style={{textDecoration: 'none', color: 'white'}}
+						>Feed</NavLink>
 						}
 					</div>
 					<div className='navbar-home-feed-library-library navbar-all-three'>

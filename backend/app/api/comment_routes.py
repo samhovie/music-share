@@ -16,3 +16,13 @@ def get_song_comments(id):
     comments = Comment.query.filter_by(song_id = id).all()
     return json.dumps(comments, default=lambda c : c.to_dict())
 
+@comment_routes.route('/api/comments/<int:id>', methods=['DELETE'])
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    print(comment)
+    if comment.user_id != current_user.id:
+        return {"errors": 'nacho comment'}
+    else:
+        db.session.delete(comment)
+        db.session.commit()
+        return {'success': 'good job'}

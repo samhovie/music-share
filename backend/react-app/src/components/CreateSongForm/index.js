@@ -20,15 +20,15 @@ export default function CreateSongForm() {
       description
 
     }
-    console.log(data)
+    // console.log(data)
 
-    const response = await fetch(`/api/playlists/1`, {
+    const response = await fetch(`/api/comments/${id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrf,
-      },
-      body: JSON.stringify(data)
+        // 'Content-Type': 'application/json',
+        'X-CSRFToken': csrf
+      }
+      // body: JSON.stringify(data)
     });
 
     if (response.ok) {

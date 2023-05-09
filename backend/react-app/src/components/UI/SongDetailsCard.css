@@ -1,0 +1,96 @@
+.song-details-card-wrapper {
+    display: flex;
+    height: 25rem;
+    width: 70rem;
+    border: 1px solid black;
+}
+
+.song-details-card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 41.5rem;
+    padding: 2rem;
+}
+
+.song-details-card-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.song-details-card-top-left {
+    display: flex;
+}
+
+.song-details-card-play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+}
+
+.song-details-card-next-to-play {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-details-card-artist {
+    background-color: black;
+    color: white;
+    font-size: 34px;
+    font-weight: 100;
+    border-radius: 5px;
+    padding: 2px 8px;
+    width: fit-content
+}
+
+
+.song-details-card-song {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    border-radius: 5px;
+    padding: 2px 8px;
+    margin-top: 3px;
+    width: fit-content
+}
+
+.song-details-card-top-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.song-details-card-createdAt {
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    border-radius: 3px;
+    padding: 2px 8px;
+    width: fit-content
+}
+
+.song-details-card-genre {
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    border-radius: 10px;
+    padding: 2px 8px;
+    margin-top: 10px;
+    width: fit-content
+}
+
+.song-details-card-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.song-details-card-image {
+    height: 23rem;
+    width: 23rem;
+
+}

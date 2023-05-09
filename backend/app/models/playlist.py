@@ -13,6 +13,7 @@ class Playlist(db.Model):
     name = db.Column(db.String(100), nullable = False)
     public = db.Column(db.Boolean, nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
+    song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable = False)
     description = db.Column(db.String(255))
     # created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     # updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())

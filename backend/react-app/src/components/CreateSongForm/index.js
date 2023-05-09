@@ -18,6 +18,7 @@ export default function CreateSongForm() {
       name,
       is_public,
       description
+
     }
     console.log(data)
 
@@ -70,9 +71,9 @@ export default function CreateSongForm() {
           public
           <input
             type="checkbox"
-            value={is_public}
-            onChange={(e) => setPublic(Boolean(e.target.value))}
-            required
+            onChange={(e) => setPublic(!is_public)}
+            checked={is_public}
+            // required
           />
         </label>
         <label>

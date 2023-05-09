@@ -19,18 +19,21 @@ def get_all_playlists():
 
 @playlist_routes.route('/new', methods=['POST'])
 def create_playlist():
-    print('HELLLLOOOO')
+    # print('HELLLLOOOO')
     form = PlaylistForm()
     # print(request.cookies['csrf_token'])
-    print('YOOO', request)
+    # print('YOOO', request)
 
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
-        print(current_user.id)
         new_playlist = Playlist(
             name=form.data['name'],
-            public=form.data['public'],
-            description=form.data['description']
+            public=form.data['is_public'],
+            description=form.data['description'],
+            user_id=current_user.id,
+            created_at=date.today(),
+            updated_at=date.today()
         )
         db.session.add(new_playlist)
         db.session.commit()

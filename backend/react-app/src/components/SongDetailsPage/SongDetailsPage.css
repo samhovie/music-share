@@ -61,7 +61,10 @@
 }
 
 .song-details-page-artist-name {
-    font-size: 20px;
-    text-overflow: ellipsis;
-    height: 30px;
+    font-size: 15px;
+    /* text-overflow: ellipsis; */
+    overflow: hidden; /* hides overflow */
+  text-overflow: ellipsis; /* creates ellipses for overflow */
+  white-space: nowrap;
+  height: 30px;
 }

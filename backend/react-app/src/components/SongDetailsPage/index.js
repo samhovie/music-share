@@ -45,11 +45,11 @@ const SongDetailsPage = () => {
                                     src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
                                 ></img>
                             </div>
-                            <div
+                            <p
                                 className='song-details-page-artist-name'
                             >
                                 Nobuo Uematsu dlfjas;ldkfal;sdjfl;ajs;dfjlk;asdflk;ajlk;smdf
-                            </div>
+                            </p>
 
                         </div>
                         <div className='song-details-page-display-comments'></div>

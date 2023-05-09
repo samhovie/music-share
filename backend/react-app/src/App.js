@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import DiscoverPage from "./components/DiscoverPage";
 import CreateSongForm from "./components/CreateSongForm"
+import FeedPage from "./components/FeedPage"
 
 function App() {
   const dispatch = useDispatch();

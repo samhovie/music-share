@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 export default function CreateSongForm() {
   const [name, setName] = useState('')
-  const [artist_name, setArtist] = useState('')
-  const [mp3_file, setMp3] = useState('')
-  const [genre, setGenre] = useState('')
-  const [id, setId] = useState('')
+  const [is_public, setPublic] = useState(false)
+  const [description, setDescription] = useState('')
+
+  // const [mp3_file, setMp3] = useState('')
+  // const [genre, setGenre] = useState('')
+  // const [id, setId] = useState('')
 
 
 
@@ -14,13 +16,13 @@ export default function CreateSongForm() {
     e.preventDefault();
     const data = {
       name,
-      artist_name,
-      mp3_file,
-      genre
+      is_public,
+      description
     }
+    console.log(data)
 
-    const response = await fetch(`/api/songs/${id}`, {
-      method: 'PUT',
+    const response = await fetch(`/api/playlists/new`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
@@ -40,13 +42,13 @@ export default function CreateSongForm() {
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='PUT' onSubmit={handleSubmit}>
+      <form method='POST' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
-        <label>
+        {/* <label>
           id
           <input
             type="text"
@@ -54,7 +56,7 @@ export default function CreateSongForm() {
             onChange={(e) => setId(e.target.value)}
             required
           />
-        </label>
+        </label> */}
         <label>
           Name
           <input
@@ -65,11 +67,11 @@ export default function CreateSongForm() {
           />
         </label>
         <label>
-          Artist
+          public
           <input
-            type="text"
-            value={artist_name}
-            onChange={(e) => setArtist(e.target.value)}
+            type="checkbox"
+            value={is_public}
+            onChange={(e) => setPublic(Boolean(e.target.value))}
             required
           />
         </label>
@@ -77,12 +79,12 @@ export default function CreateSongForm() {
           File
           <input
             type="text"
-            value={mp3_file}
-            onChange={(e) => setMp3(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             required
           />
         </label>
-        <label>
+        {/* <label>
           Genre
           <input
             type="text"
@@ -90,8 +92,8 @@ export default function CreateSongForm() {
             onChange={(e) => setGenre(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Update</button>
+        </label> */}
+        <button type="submit">Create</button>
       </form>
     </>
   );

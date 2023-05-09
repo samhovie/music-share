@@ -147,8 +147,16 @@ your site just below the name of the Web Service at the top of the page.
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/
 
-Home = all playlists
+
+CSS:
+Home = playlists wrapper, playlists card
 Feed = all single songs
-Songs/songId = single song details
-Songs in dropdown profile = delete playlists
+Songs/songId = single song Card details
+Songs in dropdown profile = playlists,
 Library = all your songs, playlists, likes (could be feature coming soon)
+Profile page = halfway done
+
+
+Routes:
+Song Routes = Create, Read, Update, Delete, still need Update
+FULL CRUD playlists goal

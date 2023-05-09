@@ -10,7 +10,7 @@ import DiscoverPage from "./components/DiscoverPage";
 import FeedPage from "./components/FeedPage";
 import CreateSongForm from "./components/CreateSongForm"
 import ProfilePage from "./components/ProfilePage";
-import SongDetailsCard from "./components/UI/SongDetailsCard";
+import SongDetailsPage from "./components/SongDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function App() {
             <CreateSongForm />
           </Route>
           <Route exact path="/songs/:songId">
-            <SongDetailsCard />
+            <SongDetailsPage />
           </Route>
           <Route exact path="/profile">
             <ProfilePage />

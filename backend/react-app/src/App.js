@@ -9,6 +9,7 @@ import Homepage from "./components/Homepage";
 import DiscoverPage from "./components/DiscoverPage";
 import FeedPage from "./components/FeedPage";
 import CreateSongForm from "./components/CreateSongForm"
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <CreateSongForm />
+          </Route>
+          <Route exact path="/profile">
+            <ProfilePage />
           </Route>
           <Route exact path="/discover">
             <DiscoverPage />

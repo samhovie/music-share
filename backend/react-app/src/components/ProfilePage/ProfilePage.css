@@ -1,0 +1,100 @@
+.profile-page-outer {
+    display: flex;
+    justify-content: center;
+    background-color: #E5F9DB;
+    height: 60rem;
+}
+
+.profile-page-content-wrapper {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    background-color: #A0D8B3;
+    border-radius: 5px;
+    width: 70rem;
+}
+
+.profile-page-top {
+    display: flex;
+}
+
+
+.profile-page-top-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18rem;
+    width: 18rem;
+}
+
+.profile-page-pic {
+    border-radius: 130px;
+    height: 15rem;
+    width: 15rem;
+}
+
+.profile-page-top-right {
+    display: flex;
+    justify-content: space-between;
+    width: 67%;
+    padding: 3rem;
+}
+
+.profile-page-top-right-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-page-top-display-name {
+    width: fit-content;
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    border-radius: 5px;
+    padding: .7rem;
+}
+
+.profile-page-top-full-name {
+    width: fit-content;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: .7rem;
+    margin-top: 1rem;
+}
+
+/* START OF PROFILE-PAGE-BOTTOM */
+
+.profile-page-bottom {
+    height: 100%;
+}
+
+.profile-page-bottom-selections {
+    display: flex;
+    justify-content: space-between;
+    height: 3.5rem;
+    margin: 0 1rem;
+    border-bottom: 1px solid gray
+}
+
+.profile-page-bottom-selections-left {
+    display: flex;
+}
+
+.profile-page-bottom-selections-left > h2 {
+    font-weight: 200;
+    padding: 0 3rem;
+}
+
+.profile-page-bottom-selections-right {
+    display: flex;
+    width: 40px;
+    /* height: fit-content; */
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.a > button{
+    padding: 5px 11px;
+    font-size: 16px;
+}

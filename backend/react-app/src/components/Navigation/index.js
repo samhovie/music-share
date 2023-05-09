@@ -18,9 +18,14 @@ function Navigation({ isLoaded }) {
 		<>
 			<div className='navbar-wrapper'>
 			<div className='navbar-wrapper-content'>
-				<div className='navbar-site-button'>
+				<div className='navbar-site-button'
+					// style={{height: '40px'}}
+				>
 					<NavLink exact to="/"
-					style={{textDecoration: 'none', color: 'white'}}
+					style={{textDecoration: 'none',
+							color: 'white',
+							borderRadius: '5px'
+							}}
 					>
 						Music Share
 					</NavLink>

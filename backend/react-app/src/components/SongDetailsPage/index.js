@@ -9,7 +9,7 @@ const SongDetailsPage = () => {
     const dispatch = useDispatch()
     const { songId } = useParams();
     const theSong = useSelector((state) => state.songs.singleSong)
-    console.log("theSONGGGGGG ", theSong)
+    // console.log("theSONGGGGGG ", theSong)
 
 
     useEffect(() => {

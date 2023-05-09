@@ -1,6 +1,19 @@
 import { useState } from 'react'
 import './SongDetailsCard.css'
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${month} ${day}, ${year}`;
+};
+
 const SongDetailsCard = ({song}) => {
     const [isPlaying, setIsPlaying] = useState(false)
 
@@ -38,7 +51,7 @@ const SongDetailsCard = ({song}) => {
                             </div>
                             <div className='song-details-card-top-right'>
                                 <div className='song-details-card-createdAt'>
-                                {`${song.created_at}`}
+                                {`${formatDate(song.created_at)}`}
                                     {/* on SoundCloud it's 1month ago for example */}
                                 </div>
                                 <div className='song-details-card-genre'>

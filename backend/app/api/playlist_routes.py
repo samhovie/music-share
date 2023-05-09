@@ -67,20 +67,20 @@ def update_playlist(id):
 
     return {"errors": form.errors}
 
-# @songs_routes.route('/<int:id>', methods=['DELETE'])
-# def delete_song(id):
-#     # print('HELLLLLOOOOOO')
-#     song = Song.query.get(id)
-#     print(song)
-#     if song.artist_id != current_user.id:
-#         return {"errors": 'nacho song'}
-#     else:
-#         db.session.delete(song)
-#         db.session.commit()
-#         return {'success': 'good job'}
+@playlist_routes.route('/<int:id>', methods=['DELETE'])
+def delete_playlist(id):
+    # print('HELLLLLOOOOOO')
+    playlist = Playlist.query.get(id)
+    print(playlist)
+    if playlist.user_id != current_user.id:
+        return {"errors": 'nacho playlist'}
+    else:
+        db.session.delete(playlist)
+        db.session.commit()
+        return {'success': 'good job'}
 
 
-# @songs_routes.route('/<int:id>')
-# def get_song(id):
-#     song = Song.query.get(id)
-#     return song.to_dict()
+# @playlist_routes.route('/<int:id>')
+# def get_playlist(id):
+#     playlist = Playlist.query.get(id)
+#     return playlist.to_dict()

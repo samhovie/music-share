@@ -7,7 +7,7 @@ export default function CreateSongForm() {
 
   // const [mp3_file, setMp3] = useState('')
   // const [genre, setGenre] = useState('')
-  // const [id, setId] = useState('')
+  const [id, setId] = useState('')
 
 
 
@@ -23,7 +23,7 @@ export default function CreateSongForm() {
     console.log(data)
 
     const response = await fetch(`/api/playlists/1`, {
-      method: 'PUT',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
@@ -43,13 +43,13 @@ export default function CreateSongForm() {
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='PUT' onSubmit={handleSubmit}>
+      <form method='DELETE' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
-        {/* <label>
+        <label>
           id
           <input
             type="text"
@@ -57,8 +57,8 @@ export default function CreateSongForm() {
             onChange={(e) => setId(e.target.value)}
             required
           />
-        </label> */}
-        <label>
+        </label>
+        {/* <label>
           Name
           <input
             type="text"
@@ -84,7 +84,7 @@ export default function CreateSongForm() {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-        </label>
+        </label> */}
         {/* <label>
           Genre
           <input

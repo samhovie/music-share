@@ -14,6 +14,9 @@ export default function CreateSongForm() {
   console.log(name, genre, artist_name)
 
   const csrf = localStorage.getItem("csrf_token")
+
+  let audio = ''
+
   let handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData()
@@ -22,6 +25,7 @@ export default function CreateSongForm() {
     formData.append('artist_name', artist_name)
     formData.append('genre', genre)
     console.log(formData)
+
 
     // const data = {
     //   name,
@@ -33,7 +37,7 @@ export default function CreateSongForm() {
     // console.log(formData)
 
     const response = await fetch(`/api/songs/new`, {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         // 'Content-Type': 'application/json',
         'X-CSRFToken': csrf
@@ -45,9 +49,11 @@ export default function CreateSongForm() {
     if (response.ok) {
       const item = await response.json();
       // dispatch(add(item));
-      console.log(item)
+      console.log(item['mp3_file'])
+      audio = new Audio(item['mp3_file'])
       return item;
     }
+
 
   }
 
@@ -56,8 +62,20 @@ export default function CreateSongForm() {
 //     setImage(file);
 // }
 
+
+
+  const start = () => {
+    audio.play()
+  }
+
+
   return (
     <>
+    {/* {audio !== '' && */}
+    < div >
+      <button onClick={start}>Play</button>
+    </div >
+    {/* } */}
     <form
           action="/api/songs/new"
           method="POST"
@@ -121,7 +139,7 @@ export default function CreateSongForm() {
         <label>
           <input
            type="file"
-           accept="image/*"
+           accept="audio/*"
           onChange={(e) => setMp3(e.target.files[0])}
           >
           </input>

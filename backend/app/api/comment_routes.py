@@ -27,19 +27,19 @@ def delete_comment(id):
         db.session.commit()
         return {'success': 'good job'}
 
-# @comment_routes.route('/api/songs/<int:id>/comments', methods=['POST'])
-# def post_comment(id):
-#     form = CommentForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+@comment_routes.route('/api/songs/<int:id>/comments', methods=['POST'])
+def post_comment(id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     if form.validate_on_submit():
-#         new_comment = Comment(
-#             user_id=current_user.id,
-#             song_id=id,
-#             text=form.data['text']
-#         )
-#         print(new_comment)
-#         db.session.add(new_comment)
-#         db.session.commit()
-#         return new_comment.to_dict()
-#     return {"errors": form.errors}
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id=current_user.id,
+            song_id=id,
+            text=form.data['text']
+        )
+        print(new_comment)
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict()
+    return {"errors": form.errors}

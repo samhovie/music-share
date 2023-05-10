@@ -4,10 +4,10 @@ export default function CreateSongForm() {
   const [name, setName] = useState('')
   const [is_public, setPublic] = useState(false)
   const [description, setDescription] = useState('')
-
+  const [text, setText] = useState('')
   // const [mp3_file, setMp3] = useState('')
   // const [genre, setGenre] = useState('')
-  // const [id, setId] = useState('')
+  const [id, setId] = useState('')
 
 
 
@@ -15,20 +15,18 @@ export default function CreateSongForm() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      name,
-      is_public,
-      description
+      text
 
     }
     // console.log(data)
 
-    const response = await fetch(`/api/comments/new`, {
+    const response = await fetch(`/api/songs/2/comments`, {
       method: 'POST',
       headers: {
-        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         'X-CSRFToken': csrf
-      }
-      // body: JSON.stringify(data)
+      },
+      body: JSON.stringify(data)
     });
 
     if (response.ok) {
@@ -43,13 +41,13 @@ export default function CreateSongForm() {
   return (
     <>
       <h1>Create a Song</h1>
-      <form method='DELETE' onSubmit={handleSubmit}>
+      <form method='POST' onSubmit={handleSubmit}>
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
-        <label>
+        {/* <label>
           id
           <input
             type="text"
@@ -57,7 +55,7 @@ export default function CreateSongForm() {
             onChange={(e) => setId(e.target.value)}
             required
           />
-        </label>
+        </label> */}
         {/* <label>
           Name
           <input
@@ -94,6 +92,14 @@ export default function CreateSongForm() {
             required
           />
         </label> */}
+        <label>
+          <input
+          type='text'
+          // value={text}
+          onChange={(e) => setText(e.target.value)}
+          >
+          </input>
+        </label>
         <button type="submit">Create</button>
       </form>
     </>

@@ -39,8 +39,11 @@ export default function CreateSongForm() {
   }
   return (
     <>
-      <h1>Create a Song</h1>
-      <form method='POST' onSubmit={handleSubmit}>
+    <form action="/posts/new" method="POST" enctype="multipart/form-data">
+      
+    </form>
+      {/* <h1>Create a Song</h1>
+      <form method='POST' onSubmit={handleSubmit}> */}
         {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -91,7 +94,7 @@ export default function CreateSongForm() {
             required
           />
         </label> */}
-        <label>
+        {/* <label>
           <input
           type='text'
           // value={text}
@@ -100,7 +103,7 @@ export default function CreateSongForm() {
           </input>
         </label>
         <button type="submit">Create</button>
-      </form>
+      </form> */}
     </>
   );
 }

@@ -21,7 +21,7 @@
     height: 70%;
     width: 67rem;
     /* width: 1122.22px; */
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
 }
 
 .song-details-page-post-comment {
@@ -29,7 +29,7 @@
 
 }
 
-.song-details-page-profile-pic > img {
+.song-details-page-profile-pic>img {
     height: 30px;
     width: 30px;
 }
@@ -47,6 +47,7 @@
 
 .song-details-page-profile-comments {
     margin-top: 1rem;
+    margin-right: 1rem;
 }
 
 .song-details-page-artist {
@@ -54,17 +55,18 @@
     margin-right: 2rem;
 }
 
-.song-details-page-artist-image > img {
-    height: 130px;
-    width: 130px;
+.song-details-page-artist-image>img {
+    height: 8.2rem;
+    width: 8.2rem;
     border-radius: 100px;
 }
 
 .song-details-page-artist-name {
+    /* display: flex;
+    justify-content: center; */
     font-size: 15px;
-    /* text-overflow: ellipsis; */
     overflow: hidden; /* hides overflow */
-  text-overflow: ellipsis; /* creates ellipses for overflow */
-  white-space: nowrap;
-  height: 30px;
+    text-overflow: ellipsis; /* creates ellipses for overflow */
+    white-space: nowrap;
+    height: 1.5rem;
 }

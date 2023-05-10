@@ -65,7 +65,9 @@ const SongDetailsPage = () => {
                             </p>
 
                         </div>
-                        <div className='song-details-page-display-comments'></div>
+                        <div className='song-details-page-display-comments-each'>
+                            {/* for each comment that belongs to song, render < /> passing in the comment/commentId*/}
+                        </div>
                     </div>
                 </div>
             </div>

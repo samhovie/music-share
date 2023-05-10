@@ -1,25 +1,54 @@
-.song-in-playlist-wrapper {
+.song-in-playlist-wrapper-test {
     display: flex;
-    border: 1px solid black;
+    width: 80rem;
+    /* border: 1px solid red */
 }
 
-.song-in-playlist-inner-wrapper {
+.song-in-playlist-wrapper {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    justify-content: space-between;
+    width: 100%;
+    padding: .3rem 0;
+
+}
+
+/* .song-in-playlist-inner-wrapper {
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .song-in-playlist-left {
     display: flex;
     align-items: center;
 }
 
-.song-in-playlist-image > img{
-    height: 1.7rem;
-    width: 1.7rem;
+.song-in-playlist-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+}
 
+.song-in-playlist-image > img{
+    height: 2rem;
+    width: 2rem;
+}
+
+.song-in-playlist-arist {
+    color: gray;
 }
 
 .song-in-playlist-right {
     display: flex;
     align-items: center;
+}
+
+.song-in-playlist-song-id {
+    padding: 0 1rem;
+}
+
+.song-in-playlist-likes {
+    color: gray;
 }

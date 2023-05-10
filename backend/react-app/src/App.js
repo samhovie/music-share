@@ -11,6 +11,7 @@ import FeedPage from "./components/FeedPage";
 import CreateSongForm from "./components/CreateSongForm"
 import ProfilePage from "./components/ProfilePage";
 import SongDetailsPage from "./components/SongDetailsPage";
+import PlaylistDetailPage from "./components/PlaylistDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path='/profile'>
             <ProfilePage />
+          </Route>
+          <Route exact path='/playlists/:playlistId'>
+            <PlaylistDetailPage />
           </Route>
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />

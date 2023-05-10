@@ -34,7 +34,7 @@ function App() {
             <ProfilePage />
           </Route>
           <Route exact path='/playlists/:playlistId'>
-            <PlaylistDetailPage />
+            <PlaylistDetailsPage />
           </Route>
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />
@@ -52,9 +52,6 @@ function App() {
             <SignupFormPage />
           </Route>
           {/* added?? */}
-          <Route exact path="/playlists/:playlistId">
-            <PlaylistDetailsPage />
-          </Route>
           <Route exact path="/playlists/:playlistId/songs/:songId">
             <AddSongToPlaylist />
           </Route>

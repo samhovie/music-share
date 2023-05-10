@@ -52,9 +52,6 @@ function App() {
             <SignupFormPage />
           </Route>
           {/* added?? */}
-          <Route exact path="/playlists/:playlistId">
-            <PlaylistDetailsPage />
-          </Route>
           <Route exact path="/playlists/:playlistId/songs/:songId">
             <AddSongToPlaylist />
           </Route>

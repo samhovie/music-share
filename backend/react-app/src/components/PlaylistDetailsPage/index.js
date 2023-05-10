@@ -1,20 +1,38 @@
-import './PlaylistDetailsPage.css'
-import { formatDate } from '../../helperfunctions/formatDate'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+// import './PlaylistDetailsPage.css'
+// import { formatDate } from '../../helperfunctions/formatDate'
+// import { useState } from 'react'
+// import SongDetailsCard from '../UI/SongDetailsCard'
+
+
+// added?!
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addSongToPlaylistThunk } from "../../store/playlists";
-import SongDetailsCard from '../UI/SongDetailsCard'
+import { addSongToPlaylistThunk, getPlaylistThunk } from "../../store/playlists";
+import PlaylistCard from "../UI/PlaylistCard";
+import GetPlaylistUsername from "./GetPlaylistUsername.js"
 
 
-const PlaylistDetailsPage = ({ playlist }) => {
-    // const [playlist, setPlaylist] = useState([]);
+function PlaylistDetailsPage() {
+
     const dispatch = useDispatch();
-    const { playlistId, songId } = useParams();
+    const { playlistId } = useParams();
+    const playlist = useSelector(state => state.playlists.singlePlaylist);
 
-    const handleAddSongToPlaylist = () => {
-        dispatch(addSongToPlaylistThunk(playlistId, songId));
-    };
+
+    // console.log(playlist)
+    // console.log("user", playlist.user.username)
+
+    // const { playlistId, songId } = useParams();
+    // const handleAddSongToPlaylist = () => {
+    //     dispatch(addSongToPlaylistThunk(playlistId, songId));
+    // };
+
+
+    useEffect(() => {
+        dispatch(getPlaylistThunk(playlistId));
+    }, [dispatch, playlistId]);
+
 
     return (
         <>
@@ -32,26 +50,30 @@ const PlaylistDetailsPage = ({ playlist }) => {
                                 </div>
                                 <div>
                                     <button>
-                                        Add To Playlist
+                                        Add To Playlist (owner)
                                     </button>
                                 </div>
+                                {/* <button onClick={() => handleAddSongToPlaylist()}>
+                                    Add Song to Playlist (in modal)
+                                </button> */}
                             </div>
-                            <div className='song-details-page-display-likes'>
+                            <div className='playlist-details-page-display-likes'>
                                 Like Count
                             </div>
                         </div>
                         {/* <div> */}
                         <div className='playlist-details-page-profile-songs'>
-                            <div className='song-details-page-artist'>
-                                <div className='song-details-page-artist-image'>
+                            <div className='playlist-details-page-user'>
+                                <div className='playlist-details-page-user-image'>
                                     <img
                                         src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
                                     ></img>
                                 </div>
                                 <p
-                                    className='song-details-page-artist-name'
+                                    className='playlist-details-page-user-name'
                                 >
-                                    Nobuo Uematsu
+                                    <GetPlaylistUsername></GetPlaylistUsername>
+                                    {/* {`${playlist.playlist.user}`} */}
                                 </p>
 
                             </div>
@@ -67,6 +89,8 @@ const PlaylistDetailsPage = ({ playlist }) => {
         </>
     )
 }
+
+
 
 export default PlaylistDetailsPage
 // added?!

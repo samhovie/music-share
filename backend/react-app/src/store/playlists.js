@@ -75,14 +75,14 @@ export default function playlistsReducer(state = initialState, action) {
         case GET_ALLPLAYLISTS:
             newState = { ...state, allPlaylists: { ...action.allPlaylists } }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
-            console.log("NEW STATEEEE ", newState)
+            // console.log("NEW STATEEEE ", newState)
             // console.log("newState", newState)
             return newState
         case GET_PLAYLIST:
             newState = { ...state, singlePlaylist: { ...action.playlist } }
-
+            // console.log("stateeeeee", newState)
             return newState
-            // addedd???
+        // addedd???
         case ADD_SONG_TO_PLAYLIST:
             newState = { ...state }
             newState.singlePlaylist = { ...action.playlist }

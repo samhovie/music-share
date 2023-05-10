@@ -8,20 +8,48 @@
 
 .navbar-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkslategray;
+  height: 4rem;
+}
+
+.navbar-wrapper-content {
+  display: flex;
+  justify-content: center;
   padding: 2rem;
+}
+
+.navbar-site-button {
+
+}
+
+.fa-bell {
+  /* font-size: 200px; */
 }
 
 .navbar-home-feed-library {
   display: flex;
   padding: 0 1rem;
+  color: white;
 }
 
 .navbar-all-three {
   display: flex;
-  padding: 0 1rem;
+  padding: 0 2.5rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  text-decoration: none;
+}
+
+.navbar-search-bar-input {
+  border-radius: 5px;
+  width: 20rem;
+  margin-left: 2.5rem;
 }
 
 .navbar-upload-button {
+  color: white;
   padding: 0 1rem;
 }
 

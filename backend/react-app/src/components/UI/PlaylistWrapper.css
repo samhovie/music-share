@@ -1,0 +1,15 @@
+.playlist-wrapper-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+}
+
+.playlist-wrapper-description {
+    color: gray;
+    font-size: 20px;
+}
+
+.playlist-wrapper-title {
+    font-size: 30px;
+    font-weight: 400;
+}

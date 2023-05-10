@@ -6,6 +6,10 @@ from datetime import date
 from app.models import db
 import os
 from flask import redirect, request
+# added in thunk branch
+from sqlalchemy import insert
+from app.models import Song, playlist_songs
+# end
 
 playlist_routes = Blueprint('playlists', __name__, url_prefix="/api/playlists")
 
@@ -86,3 +90,22 @@ def get_playlist(id):
     if not playlist:
         return {"errors": "not found"}
     return playlist.to_dict()
+# added in thunk branch:
+
+
+@playlist_routes.route('/<int:playlist_id>/songs/<int:song_id>', methods=['POST'])
+def add_song_to_playlist(playlist_id, song_id):
+    # Ensure the playlist and song exists
+    playlist = Playlist.query.get(playlist_id)
+    song = Song.query.get(song_id)
+
+    if not playlist or not song:
+        return {"error": "Playlist or Song not found"}, 404
+
+    # Add the song to the playlist
+    insert = insert(playlist_songs).values(
+        playlist_id=playlist_id, song_id=song_id)
+    db.session.execute(insert)
+    db.session.commit()
+
+    return {"success": "Song added to the playlist"}

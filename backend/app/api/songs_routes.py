@@ -26,16 +26,19 @@ def post_songs():
     form['csrf_token'].data = request.cookies['csrf_token']
     # if request.method == "GET":
     #     return form
-    print(request.files)
+    # print(form.data)
+    # print('request', request.files)
     if form.validate_on_submit():
         # print(form.data['songs'])
-        if "image" not in request.files:
+        if "mp3_file" not in request.files:
             return {"errors": "image required"}, 400
-        image = request.files["image"]
+        image = request.files["mp3_file"]
+        print(image)
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-
+        # print(request.files['name'])
         if "url" not in upload:
+            print(upload['errors'])
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
@@ -56,6 +59,7 @@ def post_songs():
         db.session.add(new_song)
         db.session.commit()
         return new_song.to_dict()
+        # return {"url":url}
     return {"errors": form.errors}
 
 

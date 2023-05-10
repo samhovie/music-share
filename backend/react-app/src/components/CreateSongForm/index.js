@@ -11,7 +11,7 @@ export default function CreateSongForm() {
   const [id, setId] = useState('')
 
   // console.log('hello')
-
+  console.log(name, genre, artist_name)
 
   const csrf = localStorage.getItem("csrf_token")
   let handleSubmit = async (e) => {
@@ -21,11 +21,13 @@ export default function CreateSongForm() {
     formData.append('name', name)
     formData.append('artist_name', artist_name)
     formData.append('genre', genre)
+    console.log(formData)
+
     // const data = {
     //   name,
     //   artist_name,
     //   genre,
-    //   'mp3_file': mp3_file
+    //   'mp3_file': formData
     // }
     // console.log(data)
     // console.log(formData)
@@ -56,7 +58,8 @@ export default function CreateSongForm() {
 
   return (
     <>
-    <form action="/api/songs/new"
+    <form
+          action="/api/songs/new"
           method="POST"
           enctype="multipart/form-data"
           onSubmit={handleSubmit}

@@ -33,9 +33,6 @@ function App() {
           <Route exact path='/profile'>
             <ProfilePage />
           </Route>
-          <Route exact path='/playlists/:playlistId'>
-            <PlaylistDetailPage />
-          </Route>
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />
           </Route>

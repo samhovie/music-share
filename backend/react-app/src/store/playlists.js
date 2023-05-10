@@ -69,14 +69,14 @@ const initialState = { allPlaylists: {}, singlePlaylist: {} }
 
 export default function playlistsReducer(state = initialState, action) {
     let newState;
-    console.log("ACTIONN ", action)
+    // console.log("ACTIONN ", action)
     // console.log("NEW STATEEEE ", newState)
     switch (action.type) {
         case GET_ALLPLAYLISTS:
             newState = { ...state, allPlaylists: { ...action.allPlaylists } }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
-            // console.log("NEW STATEEEE ", newState)
-            console.log("newState", newState)
+            console.log("NEW STATEEEE ", newState)
+            // console.log("newState", newState)
             return newState
         case GET_PLAYLIST:
             newState = { ...state, singlePlaylist: { ...action.playlist } }

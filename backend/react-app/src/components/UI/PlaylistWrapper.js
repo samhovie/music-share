@@ -1,9 +1,11 @@
 import './PlaylistWrapper.css'
+import PlaylistCard from './PlaylistCard'
 
 
-const PlaylistWrapper = () => {
+const PlaylistWrapper = ({ playlists }) => {
     // let description = false
     // let description = true
+    console.log("PLAYLISTS", playlists)
 
     return (
         <>
@@ -12,9 +14,11 @@ const PlaylistWrapper = () => {
                 <h2 className='playlist-wrapper-title'>
                     Latest Playlists
                 </h2>
-                {/* {description && <div className='playlist-wrapper-description'>
-                    Hip-hop
-                </div>} */}
+                <div className='playlist-wrapper-inner-wrapper'>
+                {playlists.map((playlist) => (
+                <PlaylistCard playlist={playlist} key={playlist.id} />
+            ))}
+                </div>
 
                 {/* <div className='playlist-wrapper-scroll'> */}
 

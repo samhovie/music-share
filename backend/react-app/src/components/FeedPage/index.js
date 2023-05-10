@@ -8,7 +8,7 @@ const FeedPage = () => {
     const dispatch = useDispatch()
     const allSongs = useSelector((state) => state.songs.allSongs)
     const songs = Object.values(allSongs)
-    console.log(allSongs)
+    // console.log(allSongs)
 
 
 
@@ -18,9 +18,19 @@ const FeedPage = () => {
 
     return (
         <>
-        {songs.map((song) => (
-            <SingleSongCard song={song} key={song.id}/>
-        ))}
+            <div className='discover-page-outer'>
+                <div className='discover-page-wrapper feed-page-wrapper'>
+                    <div className='feed-page-wrapper'>
+                        <h3>
+                            Hear the latest songs
+                        </h3>
+                    </div>
+                    {songs.map((song) => (
+                        <SingleSongCard song={song} key={song.id} />
+                    ))}
+                </div>
+            </div>
+
         </>
     )
 }

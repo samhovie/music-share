@@ -63,3 +63,12 @@ def add_song_to_playlist(playlist_id, song_id):
     db.session.commit()
 
     return {"success": "Song added to the playlist"}
+
+
+@playlist_routes.route('/<int:id>', methods=['GET'])
+def get_playlist(id):
+    playlist = Playlist.query.get(id)
+    if playlist:
+        return playlist.to_dict()
+    else:
+        return {"errors": "playlist not found"}

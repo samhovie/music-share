@@ -13,7 +13,13 @@ class Comment(db.Model):
     text = db.Column(db.String(255))
     # created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     # updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
-
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "song_id": self.song_id,
+            "text": self.text,
+        }
 
     user = db.relationship('User', back_populates = 'comments')
     song = db.relationship('Song', back_populates = 'comments')

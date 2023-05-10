@@ -1,12 +1,25 @@
 import SongDetailsCard from '../UI/SongDetailsCard'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import './SongDetailsPage.css'
+import { getSongThunk } from '../../store/songs'
 
 const SongDetailsPage = () => {
+    const dispatch = useDispatch()
+    const { songId } = useParams();
+    const theSong = useSelector((state) => state.songs.singleSong)
+    // console.log("theSONGGGGGG ", theSong)
+
+
+    useEffect(() => {
+        dispatch(getSongThunk(songId))
+    }, [dispatch, songId])
 
     return (
         <div className='song-details-page-outer'>
             <div className='song-details-page-top'>
-                <SongDetailsCard />
+                <SongDetailsCard song={theSong} />
             </div>
             <div className='song-details-page-bottom-wrapper'>
                 <div className='song-details-page-bottom'>
@@ -48,11 +61,13 @@ const SongDetailsPage = () => {
                             <p
                                 className='song-details-page-artist-name'
                             >
-                                Nobuo Uematsu dlfjas;ldkfal;sdjfl;ajs;dfjlk;asdflk;ajlk;smdf
+                                Nobuo Uematsu
                             </p>
 
                         </div>
-                        <div className='song-details-page-display-comments'></div>
+                        <div className='song-details-page-display-comments-each'>
+                            {/* for each comment that belongs to song, render < /> passing in the comment/commentId*/}
+                        </div>
                     </div>
                 </div>
             </div>

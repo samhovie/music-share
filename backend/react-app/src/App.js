@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -11,6 +11,9 @@ import FeedPage from "./components/FeedPage";
 import CreateSongForm from "./components/CreateSongForm"
 import ProfilePage from "./components/ProfilePage";
 import SongDetailsPage from "./components/SongDetailsPage";
+// added???
+import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
+import AddSongToPlaylist from "./components/AddSongToPlaylist"
 
 function App() {
   const dispatch = useDispatch();
@@ -27,11 +30,14 @@ function App() {
           <Route exact path="/">
             <CreateSongForm />
           </Route>
-          <Route exact path="/songs/:songId">
-            <SongDetailsPage />
-          </Route>
-          <Route exact path="/profile">
+          <Route exact path='/profile'>
             <ProfilePage />
+          </Route>
+          <Route exact path='/playlists/:playlistId'>
+            <PlaylistDetailPage />
+          </Route>
+          <Route exact path='/songs/:songId'>
+            <SongDetailsPage />
           </Route>
           <Route exact path="/discover">
             <DiscoverPage />
@@ -44,6 +50,13 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          {/* added?? */}
+          <Route exact path="/playlists/:playlistId">
+            <PlaylistDetailsPage />
+          </Route>
+          <Route exact path="/playlists/:playlistId/songs/:songId">
+            <AddSongToPlaylist />
           </Route>
         </Switch>
       )}

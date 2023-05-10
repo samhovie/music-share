@@ -1,0 +1,14 @@
+.playlist-details-page-profile-songs {
+    display: flex;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    /* width: 8.5rem; */
+}
+
+.playlist-details-page-display-songs-each {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    width: 100%;
+
+}

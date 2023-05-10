@@ -1,12 +1,17 @@
+import { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import './SingleSongCard.css'
 
-const SingleSongCard = () => {
+const SingleSongCard = ({ song }) => {
 
     return (
         <>
             <div className='single-song-card-wrapper'>
                 <div className='single-song-card-image'>
-                    <img src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
+                    <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
+                        <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
+                    {/* <img src={`${}`}></img> */}
+                    </NavLink>
                 </div>
                 <div className='single-song-card-info'>
                     <div className='single-song-card-info-top'>
@@ -16,16 +21,16 @@ const SingleSongCard = () => {
                             </div>
                             <div className='single-song-card-next-to-play'>
                                 <div className='single-song-card-artist'>
-                                    Artist
+                                    {`${song.artist_name}`}
                                 </div>
                                 <div className='single-song-card-song'>
-                                    Song
+                                    {`${song.name}`}
                                 </div>
                             </div>
                         </div>
                         {/* <div > */}
                         <div className='single-song-card-info-top-right-column'>
-                            Genre
+                            {`${song.genre}`}
                         </div>
                         {/* </div> */}
                     </div>
@@ -37,8 +42,8 @@ const SingleSongCard = () => {
                     <div className='single-song-card-info-comment'>
                         <form>
                             <input
-                            className='single-song-card-info-comment-input'
-                            placeholder='Write a comment'></input>
+                                className='single-song-card-info-comment-input'
+                                placeholder='Write a comment'></input>
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>
@@ -47,7 +52,7 @@ const SingleSongCard = () => {
                                 <i>heart</i>
                                 Heart
                             </div>
-                            <div className='single-song-card-info-bottom-left-column-repost'>
+                            {/* <div className='single-song-card-info-bottom-left-column-repost'>
                                 <i>repost</i>
                                 Repost
                             </div>
@@ -62,10 +67,10 @@ const SingleSongCard = () => {
                             <div className='single-song-card-info-bottom-left-column-ellipsis'>
                                 <i>ellipsis</i>
                                 Ellipsis
-                            </div>
+                            </div> */}
                         </div>
                         <div className='single-song-card-info-bottom-right-column'>
-                            <div className='single-song-card-info-bottom-right-column-plays'>Plays</div>
+                            {/* <div className='single-song-card-info-bottom-right-column-plays'>Plays</div> */}
                             <div className='single-song-card-info-bottom-right-column-comments'>Comments</div>
                         </div>
                     </div>

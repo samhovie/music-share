@@ -11,6 +11,9 @@ import FeedPage from "./components/FeedPage";
 import CreateSongForm from "./components/CreateSongForm"
 import ProfilePage from "./components/ProfilePage";
 import SongDetailsPage from "./components/SongDetailsPage";
+// added???
+import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
+import AddSongToPlaylist from "./components/AddSongToPlaylist"
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +47,13 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          {/* added?? */}
+          <Route exact path="/playlists/:playlistId">
+            <PlaylistDetailsPage />
+          </Route>
+          <Route exact path="/playlists/:playlistId/songs/:songId">
+            <AddSongToPlaylist />
           </Route>
         </Switch>
       )}

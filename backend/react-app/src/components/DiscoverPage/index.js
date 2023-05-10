@@ -7,8 +7,11 @@ import SongInPlaylist from '../UI/SongInPlaylist';
 
 const DiscoverPage = () => {
     const dispatch = useDispatch()
-    const allPlaylists = useSelector(state => console.log(state))
-    // console.log("allPlaylistSSSSSSS", allPlaylists)
+    const allPlaylists = useSelector((state) => state.playlists.allPlaylists)
+    console.log("state", allPlaylists)
+    const playlists = Object.values(allPlaylists)
+    // console.log("PLAYSSSSS", allPlaylists)
+    console.log(allPlaylists)
 
     useEffect(() => {
         dispatch(getAllPlaylistsThunk())
@@ -16,8 +19,11 @@ const DiscoverPage = () => {
 
     return (
         <>
-        <SongInPlaylist />
-            <PlaylistWrapper />
+            {/* <SongInPlaylist />
+            <PlaylistWrapper /> */}
+            {playlists.map((playlist) => (
+                <PlaylistCard playlist={playlist} key={playlist.id} />
+            ))}
             {/* <PlaylistCard /> */}
 
 

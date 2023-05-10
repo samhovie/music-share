@@ -6,7 +6,7 @@
     border: 1px solid black;
 }
 
-.playlist-card-image > img {
+.playlist-card-image>img {
     width: 12rem;
     height: 12rem;
 }
@@ -14,4 +14,9 @@
 .playlist-card-display-name {
     color: gray;
     font-size: 12px;
+}
+
+.single-playlist-card-image-nav>img {
+    height: 12rem;
+    width: 12rem;
 }

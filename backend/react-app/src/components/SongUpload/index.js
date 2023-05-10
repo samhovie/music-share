@@ -19,10 +19,13 @@ const SongUpload = () => {
                                         <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
+                                            <div>
+                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                                <label style={{ paddingBottom: '.5rem' }}>
+                                                    &nbsp;Title
+                                                </label>
 
-                                            <label style={{ display: 'block', paddingBottom: '.5rem' }}>
-                                                Title
-                                            </label>
+                                            </div>
                                             <input
                                                 className='upload-song-form-all-input upload-song-form-title'
                                             >
@@ -34,9 +37,13 @@ const SongUpload = () => {
                                             style={{ paddingBottom: '1rem' }}
                                         >
 
-                                            <label style={{ display: 'block', paddingBottom: '.8rem' }}>
-                                                Genre
-                                            </label>
+<div>
+                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                                <label style={{ paddingBottom: '.5rem' }}>
+                                                    &nbsp;Genre
+                                                </label>
+
+                                            </div>
                                             <input
                                                 className='upload-song-form-all-input upload-song-form-genre'>
 
@@ -46,9 +53,13 @@ const SongUpload = () => {
                                         <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
-                                            <label style={{ display: 'block', paddingBottom: '.8rem' }}>
-                                                Description
-                                            </label>
+                                            <div>
+                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                                <label style={{ paddingBottom: '.5rem' }}>
+                                                    &nbsp;Description
+                                                </label>
+
+                                            </div>
                                             <textarea id="story" name="story"
                                                 rows="5" cols="40">
 
@@ -59,9 +70,13 @@ const SongUpload = () => {
                                         <div
                                             style={{ paddingBottom: '4rem' }}
                                         >
-                                            <label style={{ display: 'block', paddingBottom: '.8rem' }}>
-                                                Privacy:
-                                            </label>
+                                            <div>
+                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                                <label style={{ paddingBottom: '.8rem' }}>
+                                                    &nbsp;Privacy:
+                                                </label>
+
+                                            </div>
                                             <div style={{ paddingBottom: '1rem' }}>
                                                 <input type='radio' id='public' value='public'></input>
                                                 <label for='public'>Public</label>
@@ -78,8 +93,17 @@ const SongUpload = () => {
 
 
                                         <button>Choose a file to upload</button>
-                                        <div className='upload-song-form-save'>
-                                            <button>Save</button>
+                                        <div className='upload-song-form-bottom'>
+                                            {/* <div className='upload-song-form-bottom-bar'> */}
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
+                                                <h5>&nbsp;Required fields</h5>
+                                            </div>
+                                            <div className='upload-song-form-bottom-bar-button-div'>
+
+                                                <button>Save</button>
+                                            </div>
+                                            {/* </div> */}
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+// import OpenModalMenuItem from './'
 import './SingleSongCard.css'
+import OpenModalButton from '../OpenModalButton'
 
 const SingleSongCard = ({ song }) => {
 
@@ -10,7 +12,7 @@ const SingleSongCard = ({ song }) => {
                 <div className='single-song-card-image'>
                     <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
                         <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
-                    {/* <img src={`${}`}></img> */}
+                        {/* <img src={`${}`}></img> */}
                     </NavLink>
                 </div>
                 <div className='single-song-card-info'>
@@ -51,6 +53,14 @@ const SingleSongCard = ({ song }) => {
                             <div className='single-song-card-info-bottom-left-column-heart'>
                                 <i>heart</i>
                                 Heart
+                            </div>
+                            <div className='single-song-card-info-bottom-left-column-delete'>
+                                <i>delete</i>
+                                Delete
+                                <OpenModalButton
+                                    itemText="Delete"
+                                    modalComponent={<ConfirmDeleteEvent />} />
+
                             </div>
                             {/* <div className='single-song-card-info-bottom-left-column-repost'>
                                 <i>repost</i>

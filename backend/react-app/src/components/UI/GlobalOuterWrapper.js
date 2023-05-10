@@ -1,11 +1,13 @@
-import './OuterWrapper.css'
+import './GlobalOuterWrapper.css'
 
 const GlobalOuterWrapper = () => {
-    <div className='discover-page-outer'>
-        <div className='discover-page-wrapper feed-page-wrapper'>
-
+    return (
+        <div className='global-outerwrapper-outer'>
+            <div className='global-outerwrapper-wrapper'>
+            </div>
         </div>
-    </div>
+
+    )
 }
 
-export default OuterWrapper
+export default GlobalOuterWrapper

@@ -18,8 +18,8 @@ const FeedPage = () => {
 
     return (
         <>
-            <div className='discover-page-outer'>
-                <div className='discover-page-wrapper feed-page-wrapper'>
+            <div className='global-outerwrapper-outer'>
+                <div className='global-outerwrapper-wrapper discover-page-wrapper'>
                     <div className='feed-page-wrapper'>
                         <h3>
                             Hear the latest songs

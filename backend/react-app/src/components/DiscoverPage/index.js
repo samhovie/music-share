@@ -21,8 +21,8 @@ const DiscoverPage = () => {
     return (
         <>
             {/* <SongInPlaylist /> */}
-            <div className='discover-page-outer'>
-                <div className='discover-page-wrapper'>
+            <div className='global-outerwrapper-outer'>
+                <div className='global-outerwrapper-wrapper discover-page-wrapper'>
                     {/* <div className='discover-page-inner-wrapper'> */}
                     <PlaylistWrapper playlists={playlists} />
                     <PlaylistWrapper playlists={playlists} />

@@ -5,8 +5,8 @@ const ProfilePage = () => {
 
     return (
         <>
-            <div className='profile-page-outer'>
-                <div className='profile-page-content-wrapper'>
+            <div className='global-outerwrapper-outer'>
+                <div className='global-outerwrapper-wrapper'>
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
                             <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'
@@ -34,7 +34,7 @@ const ProfilePage = () => {
                             </div>
                             <div className='profile-page-bottom-selections-right'>
                                 <div className='a'>
-                                <button>Edit</button>
+                                    <button>Edit</button>
                                 </div>
                             </div>
                         </div>

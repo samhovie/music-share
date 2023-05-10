@@ -34,7 +34,7 @@ function App() {
             <ProfilePage />
           </Route>
           <Route exact path='/playlists/:playlistId'>
-            <PlaylistDetailPage />
+            <PlaylistDetailsPage />
           </Route>
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />

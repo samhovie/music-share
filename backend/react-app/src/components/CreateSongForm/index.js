@@ -5,28 +5,39 @@ export default function CreateSongForm() {
   const [is_public, setPublic] = useState(false)
   const [description, setDescription] = useState('')
   const [text, setText] = useState('')
-  // const [mp3_file, setMp3] = useState('')
-  // const [genre, setGenre] = useState('')
+  const [mp3_file, setMp3] = useState('')
+  const [genre, setGenre] = useState('')
+  const [artist_name, setArtist_name] = useState('')
   const [id, setId] = useState('')
 
+  // console.log('hello')
 
 
   const csrf = localStorage.getItem("csrf_token")
   let handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      text
-
-    }
+    const formData = new FormData()
+    formData.append('mp3_file', mp3_file)
+    formData.append('name', name)
+    formData.append('artist_name', artist_name)
+    formData.append('genre', genre)
+    // const data = {
+    //   name,
+    //   artist_name,
+    //   genre,
+    //   'mp3_file': mp3_file
+    // }
     // console.log(data)
+    // console.log(formData)
 
-    const response = await fetch(`/api/songs/2/comments`, {
+    const response = await fetch(`/api/songs/new`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
         'X-CSRFToken': csrf
       },
-      body: JSON.stringify(data)
+      body: formData
+      // body: data
     });
 
     if (response.ok) {
@@ -37,11 +48,21 @@ export default function CreateSongForm() {
     }
 
   }
+
+//   const updateImage = (e) => {
+//     const file = e.target.files[0];
+//     setImage(file);
+// }
+
   return (
     <>
-    <form action="/posts/new" method="POST" enctype="multipart/form-data">
-      
-    </form>
+    <form action="/api/songs/new"
+          method="POST"
+          enctype="multipart/form-data"
+          onSubmit={handleSubmit}
+          >
+
+
       {/* <h1>Create a Song</h1>
       <form method='POST' onSubmit={handleSubmit}> */}
         {/* <ul>
@@ -58,7 +79,7 @@ export default function CreateSongForm() {
             required
           />
         </label> */}
-        {/* <label>
+        <label>
           Name
           <input
             type="text"
@@ -68,6 +89,15 @@ export default function CreateSongForm() {
           />
         </label>
         <label>
+          Artist Name
+          <input
+            type="text"
+            value={artist_name}
+            onChange={(e) => setArtist_name(e.target.value)}
+            required
+          />
+        </label>
+        {/* <label>
           public
           <input
             type="checkbox"
@@ -75,8 +105,8 @@ export default function CreateSongForm() {
             checked={is_public}
             // required
           />
-        </label>
-        <label>
+        </label> */}
+        {/* <label>
           File
           <input
             type="text"
@@ -85,7 +115,15 @@ export default function CreateSongForm() {
             required
           />
         </label> */}
-        {/* <label>
+        <label>
+          <input
+           type="file"
+           accept="image/*"
+          onChange={(e) => setMp3(e.target.files[0])}
+          >
+          </input>
+        </label>
+        <label>
           Genre
           <input
             type="text"
@@ -93,7 +131,7 @@ export default function CreateSongForm() {
             onChange={(e) => setGenre(e.target.value)}
             required
           />
-        </label> */}
+        </label>
         {/* <label>
           <input
           type='text'
@@ -101,9 +139,9 @@ export default function CreateSongForm() {
           onChange={(e) => setText(e.target.value)}
           >
           </input>
-        </label>
+        </label> */}
         <button type="submit">Create</button>
-      </form> */}
+      </form>
     </>
   );
 }

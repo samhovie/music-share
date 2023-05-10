@@ -5,6 +5,10 @@ from app.forms import SongForm
 from datetime import date
 from app.models import db
 from flask import redirect, request
+from app.aws import (
+    upload_file_to_s3, get_unique_filename
+    )
+
 songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
 
 # querying for all songs in the database
@@ -22,19 +26,33 @@ def post_songs():
     form['csrf_token'].data = request.cookies['csrf_token']
     # if request.method == "GET":
     #     return form
+    print(request.files)
     if form.validate_on_submit():
         # print(form.data['songs'])
-        print(current_user.id)
+        if "image" not in request.files:
+            return {"errors": "image required"}, 400
+        image = request.files["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+            # return render_template("post_form.html", form=form, errors=[upload])
+            return upload, 400
+        url = upload["url"]
+
         new_song = Song(
             name=form.data['name'],
             artist_name=form.data['artist_name'],
-            mp3_file=form.data['mp3_file'],
+            mp3_file=url,
             genre=form.data['genre'],
             artist_id=current_user.id,
             created_at=date.today(),
             updated_at=date.today()
         )
-        print(new_song)
+
         db.session.add(new_song)
         db.session.commit()
         return new_song.to_dict()

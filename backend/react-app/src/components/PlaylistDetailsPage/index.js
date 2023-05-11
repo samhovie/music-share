@@ -2,16 +2,13 @@ import './PlaylistDetailsPage.css'
 // import { formatDate } from '../../helperfunctions/formatDate'
 // import { useState } from 'react'
 // import SongDetailsCard from '../UI/SongDetailsCard'
-
-
-// added?!
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addSongToPlaylistThunk, getPlaylistThunk } from "../../store/playlists";
 import PlaylistCard from "../UI/PlaylistCard";
 import SingleSongCard from "../UI/SingleSongCard";
-import GetPlaylistUsername from "./GetPlaylistUsername.js"
+// import GetPlaylistUsername from "./GetPlaylistUsername.js"
 
 
 function PlaylistDetailsPage() {
@@ -20,8 +17,6 @@ function PlaylistDetailsPage() {
     const { playlistId } = useParams();
     const playlist = useSelector(state => state.playlists.singlePlaylist);
     const sessionUser = useSelector((state) => state.session.user);
-    console.log('session', sessionUser.id);
-    // console.log('user', playlist.user.id);
     const owner = playlist.user && playlist.user.id;
     const current_user = sessionUser.id;
     const owner_username = playlist.user && playlist.user.username;
@@ -36,6 +31,7 @@ function PlaylistDetailsPage() {
     //     dispatch(addSongToPlaylistThunk(playlistId, songId));
     // };
 
+    console.log(playlist)
 
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId));
@@ -100,33 +96,4 @@ function PlaylistDetailsPage() {
     )
 }
 
-
-
 export default PlaylistDetailsPage
-// added?!
-// import { useState } from "react";
-// import { useDispatch } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-// import { addSongToPlaylistThunk } from "../../store/playlists";
-
-// function PlaylistDetailsPage() {
-//     const [playlist, setPlaylist] = useState([]);
-//     const dispatch = useDispatch();
-//     const { playlistId, songId } = useParams();
-
-//     const handleAddSongToPlaylist = () => {
-//         dispatch(addSongToPlaylistThunk(playlistId, songId));
-//     };
-
-//     return (
-//         <div>
-//             {/* playlist */}
-//             {/* ... */}
-//             <button onClick={() => addSongToPlaylistThunk(playlistId, songId)}>
-//                 Add Song to Playlist
-//             </button>
-//         </div>
-//     );
-// }
-
-// export default PlaylistDetailsPage

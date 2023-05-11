@@ -39,5 +39,6 @@ class Playlist(db.Model):
             "user": {
                 "username": self.user.username,
                 "id": self.user.id
-            }
+            },
+            "songs": self.song
         }

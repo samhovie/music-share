@@ -17,6 +17,7 @@ import AddSongToPlaylistModal from "./components/AddSongToPlaylistModal"
 import SongUpload from "./components/SongUpload";
 import CreatePlaylistForm from "./components/CreateNewPlaylist";
 import CurrentUserPlaylist from "./components/MyPlaylists";
+import CurrentUserSongs from "./components/MySongs";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path="/playlists/current">
             <CurrentUserPlaylist />
+          </Route>
+          <Route exact path="/songs/current">
+            <CurrentUserSongs />
           </Route>
           <Route exact path='/playlists/:playlistId'>
             <PlaylistDetailsPage />

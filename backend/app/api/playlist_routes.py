@@ -84,14 +84,21 @@ def delete_playlist(id):
         return {'success': 'good job'}
 
 
-@playlist_routes.route('/<int:id>')
-def get_playlist(id):
-    playlist = Playlist.query.get(id)
-    if not playlist:
-        return {"errors": "not found"}
-    return playlist.to_dict()
+# @playlist_routes.route('/<int:id>')
+# def get_playlist(id):
+#     playlist = Playlist.query.get(id)
+#     if not playlist:
+#         return {"errors": "not found"}
+#     return playlist.to_dict()
 # added in thunk branch:
 
+@playlist_routes.route('/<int:id>', methods=['GET'])
+def get_playlist(id):
+    playlist = Playlist.query.get(id)
+    if playlist:
+        return playlist.to_dict()
+    else:
+        return {"errors": "playlist not found"}
 
 @playlist_routes.route('/<int:playlist_id>/songs/<int:song_id>', methods=['POST'])
 def add_song_to_playlist(playlist_id, song_id):
@@ -109,12 +116,3 @@ def add_song_to_playlist(playlist_id, song_id):
     db.session.commit()
 
     return {"success": "Song added to the playlist"}
-
-
-@playlist_routes.route('/<int:id>', methods=['GET'])
-def get_playlist(id):
-    playlist = Playlist.query.get(id)
-    if playlist:
-        return playlist.to_dict()
-    else:
-        return {"errors": "playlist not found"}

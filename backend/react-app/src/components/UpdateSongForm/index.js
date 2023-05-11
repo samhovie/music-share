@@ -1,12 +1,15 @@
-import { useDispatch } from 'react-redux'
-import './SongUpload.css'
+import './UpdateSongForm.css'
 import { useState } from 'react'
-import { createSongThunk } from '../../store/songs'
+import { useDispatch } from 'react-redux'
+import { updateSongThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useModal } from '../../context/Modal'
 
-const SongUpload = () => {
+
+const UpdateSongForm = ({ songId }) => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const {closeModal} = useModal()
     const [name, setName] = useState('')
     const [is_public, setPublic] = useState(false)
     const [description, setDescription] = useState('')
@@ -16,19 +19,8 @@ const SongUpload = () => {
     const [artist_name, setArtist_name] = useState('')
     const [id, setId] = useState('')
 
-
-    // const fileUploadClickHandler = (e) => {
-    //     e.preventDefault()
-
-
-
-    // }
-
-    // const csrf = localStorage.getItem("csrf_token")
-
-    // let audio = ''
-
     let handleSubmit = async (e) => {
+        // console.log("--------------------TEST 1----------------------")
         e.preventDefault();
         const formData = new FormData()
         formData.append('mp3_file', mp3_file)
@@ -36,9 +28,9 @@ const SongUpload = () => {
         formData.append('artist_name', artist_name)
         formData.append('genre', genre)
         // formData.append('description', description)
-
-        dispatch(createSongThunk(formData))
-        history.push('/feed')
+        dispatch(updateSongThunk(formData, songId))
+        closeModal()
+        history.push('/profile')
     }
 
     return (
@@ -49,8 +41,8 @@ const SongUpload = () => {
                         <div className='upload-song-inner-wrapper'>
                             <form
                                 className='upload-song-form'
-                                action="/api/songs/new"
-                                method="POST"
+                                action={`/api/songs/${songId}`}
+                                method="PUT"
                                 encType="multipart/form-data"
                                 onSubmit={handleSubmit}
                             >
@@ -77,6 +69,7 @@ const SongUpload = () => {
                                                 type='text'
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
+                                                // placeholder={name}
                                                 required
                                             >
 
@@ -98,6 +91,7 @@ const SongUpload = () => {
                                                 type='text'
                                                 value={artist_name}
                                                 onChange={(e) => setArtist_name(e.target.value)}
+                                                // placeholder={name}
                                                 required
                                             >
 
@@ -120,6 +114,7 @@ const SongUpload = () => {
                                                 type="text"
                                                 value={genre}
                                                 onChange={(e) => setGenre(e.target.value)}
+                                                // placeholder={genre}
                                                 required
                                             >
                                             </input>
@@ -140,6 +135,7 @@ const SongUpload = () => {
                                                 type="text"
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
+                                                // placeholder={description}
                                                 required
                                             >
                                             </textarea>
@@ -203,9 +199,7 @@ const SongUpload = () => {
                 </div>
             </div>
         </>
-
-    )
+    );
 }
 
-
-export default SongUpload
+export default UpdateSongForm

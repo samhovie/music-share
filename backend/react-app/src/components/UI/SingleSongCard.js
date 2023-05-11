@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './SingleSongCard.css'
 import OpenModalButton from '../OpenModalButton'
 import ConfirmDelete from './ConfirmDelete'
+import UpdateSongForm from '../UpdateSongForm'
 
 
 
@@ -11,6 +12,8 @@ const SingleSongCard = ({ song }) => {
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
+    // console.log(song)
+    const songId = song.id
 
 
     return (
@@ -81,8 +84,14 @@ const SingleSongCard = ({ song }) => {
                                 <i>delete</i>
                                 <OpenModalButton
                                     buttonText="Delete"
-                                    modalComponent={<ConfirmDelete />} />
-
+                                    modalComponent={<ConfirmDelete songId={songId}/>} />
+                                    {/* modalComponent={<ConfirmDelete />} /> */}
+                            </div>
+                            <div>
+                                <i></i>
+                                <OpenModalButton
+                                    buttonText="Update"
+                                    modalComponent={<UpdateSongForm songId={songId}/>} />
                             </div>
 
                         </div>

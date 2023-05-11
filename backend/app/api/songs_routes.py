@@ -22,6 +22,7 @@ def get_all_songs():
 
 @songs_routes.route('/new', methods=['POST'])
 def post_songs():
+    print("TEST 3333333333333")
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # if request.method == "GET":
@@ -29,22 +30,30 @@ def post_songs():
     # print(form.data)
     # print('request', request.files)
     if form.validate_on_submit():
-        # print(form.data['songs'])
+        # print("TEST 1", form.data['songs'])
         if "mp3_file" not in request.files:
             return {"errors": "song file required"}, 400
         image = request.files["mp3_file"]
-        print(image)
+        # print("TEST 2", image)
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
+        # upload = ''
+
+        # with open(image) as file:
+        #     upload = upload_file_to_s3(file)
+
+        print("REQUEST.FILES", request.files)
         # print(request.files['name'])
         if "url" not in upload:
-            print(upload['errors'])
+            print("UPLOAD[ERRORS]", upload['errors'])
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
             # return render_template("post_form.html", form=form, errors=[upload])
             return upload, 400
         url = upload["url"]
+
+
 
         new_song = Song(
             name=form.data['name'],

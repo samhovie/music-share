@@ -1,4 +1,4 @@
-from app.models import db, User, Song, Playlist, Comment, playlist_songs, song_like, environment, SCHEMA
+from app.models import db, User, Song, Playlist, Comment, playlist_songs, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import date
 
@@ -66,6 +66,10 @@ def seed_playlist_songs_users_likes():
 
     db.session.commit()
 
+def seed_playlist_songs():
+    db.session.add(playlist_songs(2,1))
+    db.session.add(playlist_songs(2,2))
+    db.session.commit()
 
 # def seed_songs():
 #     song1 = Song(
@@ -130,6 +134,16 @@ def undo_songs():
             f"TRUNCATE table {SCHEMA}.songs RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM songs"))
+
+    db.session.commit()
+
+
+def undo_playlist_songs():
+    if environment == "production":
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.playlists RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM playlist_songs"))
 
     db.session.commit()
 

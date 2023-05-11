@@ -40,4 +40,8 @@ class Playlist(db.Model):
                 "username": self.user.username,
                 "id": self.user.id
             },
+<<<<<<< HEAD
+=======
+            "songs": self.song
+>>>>>>> 77b730f (cleanup)
         }

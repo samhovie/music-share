@@ -5,36 +5,34 @@ from app.models import song_like
 # from datetime import date
 from app.models import db, User, Song
 from flask import redirect, request
-from sqlalchemy.orm import sessionmaker
 import os
 
-Session = sessionmaker()
-session = Session()
 
 likes_routes = Blueprint('likes', __name__, url_prefix="/api/likes")
 
 # get all likes for a specific song
 @likes_routes.route('/<int:songId>')
 def get_all_song_likes(songId):
-    # num_of_song_likes = song_like.query.get('song_id' == songId).all()
-    attempt = session.query(song_like).filter(song_like.c.song_id == songId).all()
-    dic = [a.to_dict() for a in attempt]
-    print("ATTEMPTTTTTTTTTTTT", dic)
-
-    return attempt
+    attempt = db.session.query(song_like).filter(song_like.c.song_id == songId).all()
+    userIds = [a[0] for a in attempt]
+    num_of_song_likes = len(userIds)
+    return {'likes': num_of_song_likes}
 
 # get all of a user's liked songs
 # def get_all_user_liked_songs():
 
 # add a like to a song
 @likes_routes.route('/<int:songId>', methods = ['POST'])
-def add_like_to_song():
-    # currentUser's id -> user instance
+def add_like_to_song(songId):
+    print("CURRENT USER", current_user.id)
+    # # currentUser's id -> user instance
     current_user_id = current_user.id
-    user = User.query.get(id)
+    user = User.query.get(current_user_id)
     # songId -> song instance
-    song = Song.query.get(id)
+    song = Song.query.get(current_user_id)
     # userinstance.append(songinstance)
+    print("userrrrrrrrrr", user)
+    print("songggggggggg", song)
     user.user_like.append(song)
     db.session.commit()
     return 'liked'

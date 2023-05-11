@@ -1,8 +1,12 @@
+import OpenModalButton from '../OpenModalButton'
+import UpdateProfile from '../UpdateProfile'
 import './ProfilePage.css'
 
 const ProfilePage = () => {
 
-
+    const alertClickHandler = () => {
+        return alert('Feature Coming Soon!')
+    }
     return (
         <>
             <div className='global-outerwrapper-outer'>
@@ -19,7 +23,7 @@ const ProfilePage = () => {
                                 <div className='profile-page-top-full-name'>Moon Hyeon-joon</div>
                             </div>
                             <div>
-                                <button className='upload-header-image-button'>Upload Header Image</button>
+                                <button onClick={()=> alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>
                             </div>
                         </div>
                     </div>
@@ -34,7 +38,9 @@ const ProfilePage = () => {
                             </div>
                             <div className='profile-page-bottom-selections-right'>
                                 <div className='a'>
-                                    <button>Edit</button>
+                                <OpenModalButton
+                                    buttonText="Edit"
+                                    modalComponent={<UpdateProfile />} />
                                 </div>
                             </div>
                         </div>

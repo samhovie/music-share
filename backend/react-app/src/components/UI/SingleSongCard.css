@@ -2,15 +2,17 @@
     display: flex;
     width: 65rem;
     height: 12rem;
-    border: 1px solid black;
+    /* border-bottom: 1px solid black; */
+    margin-bottom: 3rem;
 }
+
 /*
 .single-song-card-image > img {
     max-width: 150px;
     height: 12rem;
 } */
 
-.single-song-card-image-nav > img{
+.single-song-card-image-nav>img {
     height: 12rem;
     width: 12rem;
 }
@@ -33,13 +35,17 @@
     margin-top: 2.5rem;
 }
 
-.single-song-card-info-comment > input {
+.single-song-card-info-comment>input {
     width: 100%;
     border: 1px solid red;
 }
 
 .single-song-card-info-top-left-column {
     display: flex;
+}
+
+.song-details-card-play-button {
+
 }
 
 .single-song-card-next-to-play {
@@ -61,6 +67,36 @@
 
 .single-song-card-info-bottom-left-column {
     display: flex;
+}
+
+.single-song-card-info-bottom-left-column-heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-song-card-info-bottom-left-column-heart > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    width: 5rem;
+}
+.single-song-card-info-bottom-left-column-delete {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    height: 1rem;
+    width: 5rem;
+}
+
+.single-song-card-info-bottom-left-column-delete > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    width: 5rem;
+    all: unset;
 }
 
 .single-song-card-info-bottom-right-column {

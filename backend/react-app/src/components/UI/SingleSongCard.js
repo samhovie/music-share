@@ -1,15 +1,24 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 // import OpenModalMenuItem from './'
 import './SingleSongCard.css'
 import OpenModalButton from '../OpenModalButton'
+import ConfirmDelete from './ConfirmDelete'
+
+
 
 const SingleSongCard = ({ song }) => {
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
+
 
     return (
         <>
             <div className='single-song-card-wrapper'>
-                <div className='single-song-card-image'>
+                <div className='single-song-card-image'
+                style={{marginRight: '1rem'}}
+                >
                     <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
                         <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
                         {/* <img src={`${}`}></img> */}
@@ -17,9 +26,23 @@ const SingleSongCard = ({ song }) => {
                 </div>
                 <div className='single-song-card-info'>
                     <div className='single-song-card-info-top'>
-                        <div className='single-song-card-info-top-left-column'>
-                            <div className='single-song-card-play-button'>
-                                Play Button
+                        <div
+                        className='single-song-card-info-top-left-column'
+                        style={{}}
+                        >
+                        <div className='single-song-details-card-play-button'
+                        style={{marginRight: '1rem'}}
+                                onClick={isPlayingClickHandler}
+                            >
+                                {!isPlaying ?
+                                    <i className="fa-solid fa-circle-play"
+                                        style={{ color: '#932db9', fontSize: '40px' }}
+                                    ></i>
+                                    :
+                                    <i className="fa-solid fa-pause"
+                                        style={{ color: '#932db9', fontSize: '40px' }}
+                                    ></i>
+                                }
                             </div>
                             <div className='single-song-card-next-to-play'>
                                 <div className='single-song-card-artist'>
@@ -52,32 +75,16 @@ const SingleSongCard = ({ song }) => {
                         <div className='single-song-card-info-bottom-left-column'>
                             <div className='single-song-card-info-bottom-left-column-heart'>
                                 <i>heart</i>
-                                Heart
+                                Like
                             </div>
                             <div className='single-song-card-info-bottom-left-column-delete'>
                                 <i>delete</i>
-                                Delete
                                 <OpenModalButton
-                                    itemText="Delete"
-                                    modalComponent={<ConfirmDeleteEvent />} />
+                                    buttonText="Delete"
+                                    modalComponent={<ConfirmDelete />} />
 
                             </div>
-                            {/* <div className='single-song-card-info-bottom-left-column-repost'>
-                                <i>repost</i>
-                                Repost
-                            </div>
-                            <div className='single-song-card-info-bottom-left-column-share'>
-                                <i>repost</i>
-                                Share Link
-                            </div>
-                            <div className='single-song-card-info-bottom-left-column-copy-link'>
-                                <i>copy link</i>
-                                Copy Link
-                            </div>
-                            <div className='single-song-card-info-bottom-left-column-ellipsis'>
-                                <i>ellipsis</i>
-                                Ellipsis
-                            </div> */}
+
                         </div>
                         <div className='single-song-card-info-bottom-right-column'>
                             {/* <div className='single-song-card-info-bottom-right-column-plays'>Plays</div> */}

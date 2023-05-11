@@ -14,6 +14,10 @@ function Navigation({ isLoaded }) {
 		}
 	}
 
+	const alertClickHandler = () => {
+        return alert('Feature Coming Soon!')
+    }
+
 	return (
 		<>
 			<div className='navbar-wrapper'>
@@ -51,7 +55,7 @@ function Navigation({ isLoaded }) {
 								>Feed</NavLink>
 							}
 						</div>
-						<div className='navbar-home-feed-library-library navbar-all-three'>
+						<div onClick={()=> alertClickHandler()} className='navbar-home-feed-library-library navbar-all-three'>
 							Library
 						</div>
 
@@ -78,13 +82,13 @@ function Navigation({ isLoaded }) {
 								<ProfileButton user={sessionUser} />
 							</div>
 							<div className='navbar-three-icons'>
-								<div className='navbar-bell navbar-three-icons-all-three'>
+								<div onClick={()=> alertClickHandler()} className='navbar-bell navbar-three-icons-all-three'>
 									<i className="fa-sharp fa-solid fa-bell" style={{ color: '#f2f6fd' }}></i>
 								</div>
-								<div className='navbar-mail navbar-three-icons-all-three'>
+								<div onClick={()=> alertClickHandler()} className='navbar-mail navbar-three-icons-all-three'>
 									<i className="fa-solid fa-envelope" style={{ color: '#f2f6fd' }}></i>
 								</div>
-								<div className='navbar-ellipsis navbar-three-icons-all-three'>
+								<div onClick={()=> alertClickHandler()} className='navbar-ellipsis navbar-three-icons-all-three'>
 									<i className="fa-solid fa-ellipsis" style={{ color: '#f2f6fd' }}></i>
 								</div>
 							</div>

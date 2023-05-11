@@ -1,6 +1,13 @@
 import './SongUpload.css'
 
 const SongUpload = () => {
+
+
+    const fileUploadClickHandler = (e) => {
+        e.preventDefault()
+
+    }
+
     return (
         <>
             <div className='global-outerwrapper-outer'>
@@ -37,7 +44,7 @@ const SongUpload = () => {
                                             style={{ paddingBottom: '1rem' }}
                                         >
 
-<div>
+                                            <div>
                                                 <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Genre
@@ -92,7 +99,7 @@ const SongUpload = () => {
 
 
 
-                                        <button>Choose a file to upload</button>
+                                        <button onClick={(e) => fileUploadClickHandler(e)}>Choose a file to upload</button>
                                         <div className='upload-song-form-bottom'>
                                             {/* <div className='upload-song-form-bottom-bar'> */}
                                             <div style={{ display: 'flex', alignItems: 'center' }}>

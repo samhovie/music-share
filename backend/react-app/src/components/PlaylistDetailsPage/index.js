@@ -35,85 +35,60 @@ function PlaylistDetailsPage() {
     }, [dispatch, playlistId]);
 
 
-    return ('')
-    // (
-    //     <>
-    //         <div className='global-outerwrapper-outer'>
-    //             <div className='global-outerwrapper-wrapper discover-page-wrapper'>
-    //                 <div className='song-details-page-top'>
-    //                     {/* V whichever song is playing, send that song to V */}
-    //                     {/* <SongDetailsCard /> */}
-    //                 </div>
-    //                 <div className='song-details-page-bottom-wrapper'>
-    //                     <div className='song-details-page-bottom'>
-    //                         <div className='song-details-page-bottom-bar'>
-    //                             <div className='song-details-page-interactive-buttons'>
-    //                                 <div>
-    //                                     <button>Like</button>
-    //                                 </div>
-    //                                 <div>
-    //                                     <button>
-    //                                         Add To Playlist (owner)
-    //                                     </button>
-    //                                 </div>
-    //                                 {/* <button onClick={() => handleAddSongToPlaylist()}>
-    //                                 Add Song to Playlist (in modal)
-    //                             </button> */}
-    //                         </div>
-    //                         <div className='song-details-page-display-likes'>
-    //                             Like Count
-    //                         </div>
-    //                     </div>
-    //                     <div>
-    //                     <div className='song-details-page-profile-songs'>
-    //                         <div className='song-details-page-artist'>
-    //                             <div className='song-details-page-artist-image'>
-    //                                 <img
-    //                                     src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
-    //                                 ></img>
-    //                             </div>
-    //                             <p
-    //                                 className='song-details-page-user-name'
-    //                             >
-    //                                 <GetPlaylistUsername></GetPlaylistUsername>
-    //                                 {`${playlist.playlist.user}`}
-    //                             </p>
-    //                             </div>
-    //                             <div className='playlist-details-page-display-likes'>
-    //                                 Like Count
-    //                             </div>
-    //                         </div>
-    //                         <div>
-    //                         <div className='playlist-details-page-profile-songs'>
-    //                             <div className='song-details-page-artist'>
-    //                                 <div className='song-details-page-artist-image'>
-    //                                     <img
-    //                                         src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
-    //                                     ></img>
-    //                                 </div>
-    //                                 <p
-    //                                     className='playlist-details-page-user-name'
-    //                                 >
-    //                                     <GetPlaylistUsername></GetPlaylistUsername>
-    //                                     {/* {`${playlist.playlist.user}`} */}
-    //                                 </p>
+    return (
+<>
+            <div className='song-details-page-outer'>
+                <div className='song-details-page-top'>
+                    {/* V whichever song is playing, send that song to V */}
+                    {/* <SongDetailsCard /> */}
+                </div>
+                <div className='song-details-page-bottom-wrapper'>
+                    <div className='song-details-page-bottom'>
+                        <div className='song-details-page-bottom-bar'>
+                            <div className='song-details-page-interactive-buttons'>
+                                <div>
+                                    <button>Like</button>
+                                </div>
+                                <div>
+                                    <button>
+                                        Add To Playlist (owner)
+                                    </button>
+                                </div>
+                                {/* <button onClick={() => handleAddSongToPlaylist()}>
+                                    Add Song to Playlist (in modal)
+                                </button> */}
+                            </div>
+                            <div className='playlist-details-page-display-likes'>
+                                Like Count
+                            </div>
+                        </div>
+                        {/* <div> */}
+                        <div className='playlist-details-page-profile-songs'>
+                            <div className='playlist-details-page-user'>
+                                <div className='playlist-details-page-user-image'>
+                                    <img
+                                        src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
+                                    ></img>
+                                </div>
+                                <p
+                                    className='playlist-details-page-user-name'
+                                >
+                                    <GetPlaylistUsername></GetPlaylistUsername>
+                                    {/* {`${playlist.playlist.user}`} */}
+                                </p>
 
-    //                             </div>
-    //                             <div className='playlist-details-page-display-songs-each'>
-    //                                 {/* for each song in playlist, render <SongInPlaylist /> passing in a song prop */}
-    //                             </div>
-    //                         </div>
-    //                         {/* <div className='song-details-page-display-songs-each'>
-    //                             {/* for each song in playlist, render <SongInPlaylist /> passing in a song prop */}
-    //                         </div> */}
+                            </div>
+                            <div className='playlist-details-page-display-songs-each'>
+                                {/* for each song in playlist, render <SongInPlaylist /> passing in a song prop */}
+                            </div>
+                        </div>
 
-    //                         {/* </div> */}
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </>
-    // )
+                        {/* </div> */}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 

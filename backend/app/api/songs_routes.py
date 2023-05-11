@@ -7,9 +7,6 @@ from app.models import db
 from flask import redirect, request
 songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
 
-# querying for all songs in the database
-
-
 @songs_routes.route('/')
 def get_all_songs():
     songs = Song.query.all()
@@ -20,10 +17,8 @@ def get_all_songs():
 def post_songs():
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # if request.method == "GET":
-    #     return form
+
     if form.validate_on_submit():
-        # print(form.data['songs'])
         print(current_user.id)
         new_song = Song(
             name=form.data['name'],
@@ -71,7 +66,6 @@ def update_song(id):
 
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
-    # print('HELLLLLOOOOOO')
     song = Song.query.get(id)
     print(song)
     if song.artist_id != current_user.id:

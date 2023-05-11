@@ -14,6 +14,7 @@ import SongDetailsPage from "./components/SongDetailsPage";
 // added???
 import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
 import AddSongToPlaylist from "./components/AddSongToPlaylist"
+import SongUpload from "./components/SongUpload";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <CreateSongForm />
+          </Route>
+          <Route exact path='/upload'>
+            <SongUpload />
           </Route>
           <Route exact path='/profile'>
             <ProfilePage />

@@ -18,9 +18,9 @@ const FeedPage = () => {
 
     return (
         <>
-        {songs.map((song) => (
-            <SingleSongCard song={song} key={song.id}/>
-        ))}
+            {songs.map((song) => (
+                <SingleSongCard song={song} key={song.id} />
+            ))}
         </>
     )
 }

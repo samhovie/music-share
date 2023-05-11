@@ -44,6 +44,7 @@ def create_playlist():
         return new_playlist.to_dict()
     return {"errors": form.errors}
 
+
 @playlist_routes.route('/<int:id>', methods=["PUT"])
 def update_playlist(id):
     form = PlaylistForm()
@@ -70,6 +71,7 @@ def update_playlist(id):
         return playlist.to_dict()
 
     return {"errors": form.errors}
+
 
 @playlist_routes.route('/<int:id>', methods=['DELETE'])
 def delete_playlist(id):
@@ -100,6 +102,7 @@ def get_playlist(id):
     else:
         return {"errors": "playlist not found"}
 
+
 @playlist_routes.route('/<int:playlist_id>/songs/<int:song_id>', methods=['POST'])
 def add_song_to_playlist(playlist_id, song_id):
     # Ensure the playlist and song exists
@@ -110,9 +113,21 @@ def add_song_to_playlist(playlist_id, song_id):
         return {"error": "Playlist or Song not found"}, 404
 
     # Add the song to the playlist
-    ins  = insert(playlist_songs).values(
+    ins = playlist_songs.insert().values(
         playlist_id=playlist_id, song_id=song_id)
+    # ins = insert(playlist_songs).values(
+    #     playlist_id=playlist_id, song_id=song_id)
     db.session.execute(ins)
     db.session.commit()
 
     return {"success": "Song added to the playlist"}
+
+# added for current user playlists
+
+
+@playlist_routes.route('/current')
+@login_required
+def get_current_user_playlists():
+    playlists = Playlist.query.filter_by(user_id = current_user.id).all()
+    print('user', playlists)
+    return {"playlists": [playlist.to_dict() for playlist in playlists]}

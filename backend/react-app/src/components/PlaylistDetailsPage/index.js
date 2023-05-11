@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import { addSongToPlaylistThunk, getPlaylistThunk } from "../../store/playlists";
 import PlaylistCard from "../UI/PlaylistCard";
 import SingleSongCard from "../UI/SingleSongCard";
-import GetPlaylistUsername from "./GetPlaylistUsername.js"
+// import GetPlaylistUsername from "./GetPlaylistUsername.js"
 
 
 function PlaylistDetailsPage() {
@@ -36,13 +36,12 @@ function PlaylistDetailsPage() {
     //     dispatch(addSongToPlaylistThunk(playlistId, songId));
     // };
 
-
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId));
     }, [dispatch, playlistId]);
 
     return (
-<>
+        <>
             <div className='song-details-page-outer'>
                 <div className='song-details-page-top'>
                     {/* V whichever song is playing, send that song to V */}

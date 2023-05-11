@@ -5,6 +5,8 @@ import PlaylistCard from '../UI/PlaylistCard';
 import PlaylistWrapper from '../UI/PlaylistWrapper';
 import SongInPlaylist from '../UI/SongInPlaylist';
 import './DiscoverPage.css'
+import OpenModalButton from '../OpenModalButton';
+import CreatePlaylistForm from '../CreateNewPlaylist';
 
 const DiscoverPage = () => {
     const dispatch = useDispatch()
@@ -23,6 +25,11 @@ const DiscoverPage = () => {
             {/* <SongInPlaylist /> */}
             <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>
+                    <OpenModalButton
+                        modalComponent={<CreatePlaylistForm />}
+                        buttonText="Create Playlist"
+                    />
+
                     {/* <div className='discover-page-inner-wrapper'> */}
                     <PlaylistWrapper playlists={playlists} />
                     <PlaylistWrapper playlists={playlists} />

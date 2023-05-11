@@ -1,4 +1,4 @@
-from app.models import db, User, Song, Playlist, Comment, environment, SCHEMA
+from app.models import db, User, Song, Playlist, Comment, playlist_songs, song_like, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import date
 
@@ -59,6 +59,36 @@ def seed_comments():
     db.session.add(comment2)
     db.session.commit()
 
+def seed_playlist_songs():
+    playlist1 = Playlist(name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
+    playlist2 = Playlist(name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
+    song1 = Song(name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today())
+    song2 = Song(name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today())
+
+    playlist1.song.append(song1)
+    playlist1.song.append(song2)
+    playlist2.song.append(song2)
+    playlist2.song.append(song1)
+
+    # playlist_song1 = playlist_songs(
+    #     playlist_id = 1, song_id = 1
+    # )
+    # playlist_song2 = playlist_songs(
+    #     playlist_id = 1, song_id = 2
+    # )
+    # playlist_song3 = playlist_songs(
+    #     playlist_id = 2, song_id = 2
+    # )
+    # playlist_song4 = playlist_songs(
+    #     playlist_id = 2, song_id = 1
+    # )
+
+    # playlist_songs.append(playlist_song1)
+    db.session.add(playlist1)
+    db.session.add(playlist2)
+    # db.session.add(playlist_song3)
+    # db.session.add(playlist_song4)
+    db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
@@ -102,5 +132,14 @@ def undo_comments():
             f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM comments"))
+
+    db.session.commit()
+
+def undo_playlist_songs():
+    if environment == "production":
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM playlist_songs"))
 
     db.session.commit()

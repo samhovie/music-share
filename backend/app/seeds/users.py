@@ -43,11 +43,11 @@ def seed_playlist_songs_users_likes():
         name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
     )
 
-    demo.user_like.append(song1)
-    marnie.user_like.append(song1)
-    bobbie.user_like.append(song1)
-    marnie.user_like.append(song2)
-    bobbie.user_like.append(song2)
+    # demo.user_like.append(song1)
+    # marnie.user_like.append(song1)
+    # bobbie.user_like.append(song1)
+    # marnie.user_like.append(song2)
+    # bobbie.user_like.append(song2)
 
     playlist1.song.append(song1)
     playlist1.song.append(song2)

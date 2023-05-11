@@ -4,7 +4,21 @@ from datetime import date
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
+# def seed_users():
+#     demo = User(
+#         username='Demo', email='demo@aa.io', password='password')
+#     marnie = User(
+#         username='marnie', email='marnie@aa.io', password='password')
+#     bobbie = User(
+#         username='bobbie', email='bobbie@aa.io', password='password')
+
+#     db.session.add(demo)
+#     db.session.add(marnie)
+#     db.session.add(bobbie)
+#     db.session.commit()
+
+def seed_playlist_songs_users_likes():
+
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
     marnie = User(
@@ -12,13 +26,6 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.commit()
-
-
-def seed_songs():
     song1 = Song(
         name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
     )
@@ -26,12 +33,6 @@ def seed_songs():
         name="Karma", artist_name="Efren", artist_id=2, mp3_file="song2.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
     )
 
-    db.session.add(song1)
-    db.session.add(song2)
-    db.session.commit()
-
-
-def seed_playlists():
     playlist1 = Playlist(
         name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today()
     )
@@ -41,10 +42,58 @@ def seed_playlists():
     playlist3 = Playlist(
         name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
     )
+
+    demo.user_like.append(song1)
+    marnie.user_like.append(song1)
+    bobbie.user_like.append(song1)
+    marnie.user_like.append(song2)
+    bobbie.user_like.append(song2)
+
+    playlist1.song.append(song1)
+    playlist1.song.append(song2)
+    playlist2.song.append(song2)
+    playlist2.song.append(song1)
+    playlist3.song.append(song1)
+
+
+    db.session.add(demo)
+    db.session.add(marnie)
+    db.session.add(bobbie)
     db.session.add(playlist1)
     db.session.add(playlist2)
     db.session.add(playlist3)
+
+
     db.session.commit()
+
+
+# def seed_songs():
+#     song1 = Song(
+#         name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
+#     )
+#     song2 = Song(
+#         name="Karma", artist_name="Efren", artist_id=2, mp3_file="song2.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+#     )
+
+#     db.session.add(song1)
+#     db.session.add(song2)
+#     db.session.commit()
+
+
+# def seed_playlists():
+#     playlist1 = Playlist(
+#         name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today()
+#     )
+#     playlist2 = Playlist(
+#         name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
+#     )
+#     playlist3 = Playlist(
+#         name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today()
+#     )
+#     db.session.add(playlist1)
+#     db.session.add(playlist2)
+#     db.session.add(playlist3)
+#     db.session.commit()
 
 
 def seed_comments():
@@ -57,37 +106,6 @@ def seed_comments():
 
     db.session.add(comment1)
     db.session.add(comment2)
-    db.session.commit()
-
-def seed_playlist_songs():
-    playlist1 = Playlist(name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
-    playlist2 = Playlist(name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
-    song1 = Song(name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today())
-    song2 = Song(name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today())
-
-    playlist1.song.append(song1)
-    playlist1.song.append(song2)
-    playlist2.song.append(song2)
-    playlist2.song.append(song1)
-
-    # playlist_song1 = playlist_songs(
-    #     playlist_id = 1, song_id = 1
-    # )
-    # playlist_song2 = playlist_songs(
-    #     playlist_id = 1, song_id = 2
-    # )
-    # playlist_song3 = playlist_songs(
-    #     playlist_id = 2, song_id = 2
-    # )
-    # playlist_song4 = playlist_songs(
-    #     playlist_id = 2, song_id = 1
-    # )
-
-    # playlist_songs.append(playlist_song1)
-    db.session.add(playlist1)
-    db.session.add(playlist2)
-    # db.session.add(playlist_song3)
-    # db.session.add(playlist_song4)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -135,7 +153,7 @@ def undo_comments():
 
     db.session.commit()
 
-def undo_playlist_songs():
+def undo_playlist_songs_users_likes():
     if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")

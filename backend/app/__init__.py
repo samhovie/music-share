@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.songs_routes import songs_routes
 from .api.playlist_routes import playlist_routes
 from .api.comment_routes import comment_routes
+from .api.likes_routes import likes_routes
 from .api.aws_test_routes import image_routes
 from .seeds import seed_commands
 from .config import Config
@@ -36,6 +37,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(songs_routes, url_prefix="/api/songs")
 app.register_blueprint(playlist_routes, url_prefix="/api/playlists")
 app.register_blueprint(comment_routes)
+app.register_blueprint(likes_routes, url_prefix='/api/likes')
 db.init_app(app)
 Migrate(app, db)
 

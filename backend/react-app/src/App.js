@@ -13,7 +13,7 @@ import ProfilePage from "./components/ProfilePage";
 import SongDetailsPage from "./components/SongDetailsPage";
 // added???
 import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
-import AddSongToPlaylist from "./components/AddSongToPlaylist"
+import AddSongToPlaylistModal from "./components/AddSongToPlaylistModal"
 import SongUpload from "./components/SongUpload";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
           </Route>
           {/* added?? */}
           <Route exact path="/playlists/:playlistId/songs/:songId">
-            <AddSongToPlaylist />
+            <AddSongToPlaylistModal />
           </Route>
         </Switch>
       )}

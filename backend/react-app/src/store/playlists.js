@@ -2,6 +2,7 @@
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
 const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
+const CREATE_PLAYLIST = 'songs/CREATE_PLAYLIST'
 
 
 const getAllPlaylistsAction = (playlists) => ({
@@ -18,6 +19,11 @@ const getPlaylistAction = (playlist) => ({
 
 const addSongToPlaylistAction = (playlist) => ({
     type: ADD_SONG_TO_PLAYLIST,
+    playlist
+})
+
+const createPlaylistAction = (playlist) => ({
+    type: CREATE_PLAYLIST,
     playlist
 })
 
@@ -45,6 +51,22 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
         }
         // console.log("DATAAAA ", data)
         dispatch(getPlaylistAction(data))
+    }
+}
+
+export const createPlaylistThunk = (playlist) => async (dispatch) => {
+    // console.log("SONG")
+    const response = await fetch('/api/playlists/new', {
+        method: 'POST',
+        body: playlist
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors
+        }
+        dispatch(createPlaylistAction(data))
     }
 }
 
@@ -86,6 +108,11 @@ export default function playlistsReducer(state = initialState, action) {
         case ADD_SONG_TO_PLAYLIST:
             newState = { ...state }
             newState.singlePlaylist = { ...action.playlist }
+            return newState
+        case CREATE_PLAYLIST:
+            // console.log("STATEEEE", state)
+            // console.log("ACTIONNN", action)
+            newState = { ...state, singlePlaylist: { ...action.singlePlaylist } }
             return newState
         default:
             return state;

@@ -78,21 +78,22 @@ const SingleSongCard = ({ song }) => {
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
                             <div className='single-song-card-info-bottom-left-column-heart'>
-                                <i>heart</i>
+                            <i class="fa-solid fa-heart" style={{color: 'yellow'}}></i>
                                 Like
                             </div>
-                            <div className='single-song-card-info-bottom-left-column-delete'>
-                                <i>delete</i>
+                            <div>
+                                <OpenModalButton
+                                    buttonText="Update"
+                                    modalComponent={<UpdateSongForm songId={songId}/>} />
+                            </div>
+                            <div >
+                                {/* <button>Delete</button>
+                                className='single-song-card-info-bottom-left-column-delete'
+                                */}
                                 <OpenModalButton
                                     buttonText="Delete"
                                     modalComponent={<ConfirmDelete songId={songId}/>} />
                                     {/* modalComponent={<ConfirmDelete />} /> */}
-                            </div>
-                            <div>
-                                <i></i>
-                                <OpenModalButton
-                                    buttonText="Update"
-                                    modalComponent={<UpdateSongForm songId={songId}/>} />
                             </div>
 
                         </div>

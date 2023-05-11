@@ -98,6 +98,8 @@ def delete_playlist(id):
 def get_playlist(id):
     playlist = Playlist.query.get(id)
     if playlist:
+        playlist_dict = playlist.to_dict()
+        playlist_dict['songs'] = [song.to_dict() for song in playlist.song]
         return playlist.to_dict()
     else:
         return {"errors": "playlist not found"}
@@ -121,3 +123,13 @@ def add_song_to_playlist(playlist_id, song_id):
     db.session.commit()
 
     return {"success": "Song added to the playlist"}
+
+# added for current user playlists
+
+
+@playlist_routes.route('/current')
+@login_required
+def get_current_user_playlists():
+    playlists = Playlist.query.filter_by(user_id=current_user.id).all()
+    print('user', playlists)
+    return {"playlists": [playlist.to_dict() for playlist in playlists]}

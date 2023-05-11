@@ -36,13 +36,12 @@ function PlaylistDetailsPage() {
     //     dispatch(addSongToPlaylistThunk(playlistId, songId));
     // };
 
-
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId));
     }, [dispatch, playlistId]);
 
     return (
-<>
+        <>
             <div className='song-details-page-outer'>
                 <div className='song-details-page-top'>
                     {/* V whichever song is playing, send that song to V */}

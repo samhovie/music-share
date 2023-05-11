@@ -15,6 +15,9 @@ import SongDetailsPage from "./components/SongDetailsPage";
 import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
 import AddSongToPlaylistModal from "./components/AddSongToPlaylistModal"
 import SongUpload from "./components/SongUpload";
+import CreatePlaylistForm from "./components/CreateNewPlaylist";
+import CurrentUserPlaylist from "./components/MyPlaylists";
+// import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,14 +31,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
-            <CreateSongForm />
-          </Route>
           <Route exact path='/upload'>
             <SongUpload />
           </Route>
           <Route exact path='/profile'>
             <ProfilePage />
+          </Route>
+          <Route exact path="/playlists/current">
+            <CurrentUserPlaylist />
           </Route>
           <Route exact path='/playlists/:playlistId'>
             <PlaylistDetailsPage />
@@ -58,6 +61,12 @@ function App() {
           {/* added?? */}
           <Route exact path="/playlists/:playlistId/songs/:songId">
             <AddSongToPlaylistModal />
+          </Route>
+          <Route exact path="/playlists/new">
+            <CreatePlaylistForm />
+          </Route>
+          <Route exact path="/">
+            <CreateSongForm />
           </Route>
         </Switch>
       )}

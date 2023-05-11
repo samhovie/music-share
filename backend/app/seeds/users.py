@@ -1,6 +1,7 @@
 from app.models import db, User, Song, Playlist, Comment, environment, SCHEMA, playlist_songs
 from sqlalchemy.sql import text
 from datetime import date
+from sqlalchemy import insert
 
 
 # Adds a demo user, you can add other users here if you want
@@ -47,8 +48,11 @@ def seed_playlists():
     db.session.commit()
 
 def seed_playlist_songs():
-    db.session.add(playlist_songs(2,1))
-    db.session.add(playlist_songs(2,2))
+
+    db.session.execute(insert(playlist_songs).values(
+    playlist_id=2, song_id=1))
+    db.session.execute(insert(playlist_songs).values(
+    playlist_id=2, song_id=2))
     db.session.commit()
 
 def seed_comments():

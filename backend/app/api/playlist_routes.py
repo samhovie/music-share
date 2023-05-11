@@ -110,9 +110,9 @@ def add_song_to_playlist(playlist_id, song_id):
         return {"error": "Playlist or Song not found"}, 404
 
     # Add the song to the playlist
-    insert = insert(playlist_songs).values(
+    ins  = insert(playlist_songs).values(
         playlist_id=playlist_id, song_id=song_id)
-    db.session.execute(insert)
+    db.session.execute(ins)
     db.session.commit()
 
     return {"success": "Song added to the playlist"}

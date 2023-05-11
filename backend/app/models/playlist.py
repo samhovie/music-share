@@ -38,5 +38,6 @@ class Playlist(db.Model):
             "updated_at": self.updated_at,
             "user": {
                 "username": self.user.username,
+                "id": self.user.id
             }
         }

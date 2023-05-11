@@ -19,7 +19,14 @@ function PlaylistDetailsPage() {
     const dispatch = useDispatch();
     const { playlistId } = useParams();
     const playlist = useSelector(state => state.playlists.singlePlaylist);
-
+    const sessionUser = useSelector((state) => state.session.user);
+    console.log('session', sessionUser.id);
+    // console.log('user', playlist.user.id);
+    const owner = playlist.user && playlist.user.id;
+    const current_user = sessionUser.id;
+    const owner_username = playlist.user && playlist.user.username;
+    console.log(current_user);
+    console.log(owner)
 
     // console.log(playlist)
     // console.log("user", playlist.user.username)
@@ -33,7 +40,6 @@ function PlaylistDetailsPage() {
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId));
     }, [dispatch, playlistId]);
-
 
     return (
 <>
@@ -50,9 +56,11 @@ function PlaylistDetailsPage() {
                                     <button>Like</button>
                                 </div>
                                 <div>
-                                    <button>
-                                        Add To Playlist (owner)
-                                    </button>
+                                    {current_user == owner && (
+                                        <button>
+                                            Edit Playlist (owner)
+                                        </button>
+                                    )}
                                 </div>
                                 {/* <button onClick={() => handleAddSongToPlaylist()}>
                                     Add Song to Playlist (in modal)
@@ -73,7 +81,8 @@ function PlaylistDetailsPage() {
                                 <p
                                     className='playlist-details-page-user-name'
                                 >
-                                    <GetPlaylistUsername></GetPlaylistUsername>
+                                    {/* <GetPlaylistUsername></GetPlaylistUsername> */}
+                                    {`${owner_username}`}
                                     {/* {`${playlist.playlist.user}`} */}
                                 </p>
 

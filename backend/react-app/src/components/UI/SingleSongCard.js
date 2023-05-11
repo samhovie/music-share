@@ -6,6 +6,7 @@ import OpenModalButton from '../OpenModalButton'
 import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 
+import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
 
 
 const SingleSongCard = ({ song }) => {
@@ -95,6 +96,10 @@ const SingleSongCard = ({ song }) => {
                             </div>
 
                         </div>
+                        <OpenModalButton
+                            modalComponent={<AddSongToPlaylistModal songId={song.id} />}
+                            buttonText="Add to playlist"
+                        />
                         <div className='single-song-card-info-bottom-right-column'>
                             {/* <div className='single-song-card-info-bottom-right-column-plays'>Plays</div> */}
                             <div className='single-song-card-info-bottom-right-column-comments'>Comments</div>

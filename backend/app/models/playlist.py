@@ -2,7 +2,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .join_tables import playlist_songs
-from sqlalchemy import select
 
 
 class Playlist(db.Model):
@@ -30,7 +29,6 @@ class Playlist(db.Model):
     # song = db.relationship('Song', back_populates='playlists')
 
     def to_dict(self):
-        print(self.song)
         return {
             "id": self.id,
             "name": self.name,
@@ -42,12 +40,5 @@ class Playlist(db.Model):
                 "username": self.user.username,
                 "id": self.user.id
             },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             "songs": self.song
->>>>>>> 77b730f (cleanup)
-=======
-            "song": [s.to_dict() for s in self.song]
->>>>>>> a7279e2 (playlist model songs todict)
         }

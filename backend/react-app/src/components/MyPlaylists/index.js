@@ -13,12 +13,19 @@ const CurrentUserPlaylist = () => {
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));
     console.log('PAYLIST', allPlaylists)
-    
-    // Filter the playlists belonging to the current user
-    console.log('userId', userId)
-    console.log('playlist', userId)
-    const userPlaylists = allPlaylists.filter((playlist) => playlist.user_id !== userId);
-    console.log("users!!", userPlaylists)
+    const user_id = allPlaylists.forEach(playlist => {
+        console.log('playlist user', playlist.user);
+    });
+    console.log(user_id)
+
+    let userPlaylists = [];
+    for (let playlist in allPlaylists) {
+        // console.log(allPlaylists[playlist])
+        if (allPlaylists[playlist].user.id == userId) {
+            userPlaylists.push(allPlaylists[playlist])
+        }
+    }
+
 
     useEffect(() => {
         dispatch(getAllPlaylistsThunk());

@@ -44,6 +44,52 @@ def create_playlist():
         return new_playlist.to_dict()
     return {"errors": form.errors}
 
+@playlist_routes.route('/<int:id>', methods=["PUT"])
+def update_playlist(id):
+    form = PlaylistForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        playlist = Playlist.query.get(id)
+
+        if not playlist:
+            return {"errors": "playlist doesn't exist"}
+
+        elif playlist.user_id != current_user.id:
+            return {"errors": "nacho playlist"}
+
+        playlist.name = form.data['name']
+        playlist.is_public = form.data['is_public']
+        playlist.description = form.data['description']
+        playlist.user_id = current_user.id
+        playlist.created_at = date.today()
+        playlist.updated_at = date.today()
+
+        db.session.commit()
+
+        return playlist.to_dict()
+
+    return {"errors": form.errors}
+
+@playlist_routes.route('/<int:id>', methods=['DELETE'])
+def delete_playlist(id):
+    # print('HELLLLLOOOOOO')
+    playlist = Playlist.query.get(id)
+    print(playlist)
+    if playlist.user_id != current_user.id:
+        return {"errors": 'nacho playlist'}
+    else:
+        db.session.delete(playlist)
+        db.session.commit()
+        return {'success': 'good job'}
+
+
+@playlist_routes.route('/<int:id>')
+def get_playlist(id):
+    playlist = Playlist.query.get(id)
+    if not playlist:
+        return {"errors": "not found"}
+    return playlist.to_dict()
 # added in thunk branch:
 
 

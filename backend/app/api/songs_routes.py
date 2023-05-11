@@ -145,8 +145,8 @@ def delete_song(id):
     if song.artist_id != current_user.id:
         return {"errors": 'nacho song'}
 
-
-    remove_file_from_s3(song.mp3_file)
+    if song.mp3_file:
+        remove_file_from_s3(song.mp3_file)
 
     db.session.delete(song)
     db.session.commit()

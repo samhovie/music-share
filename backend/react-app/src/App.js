@@ -38,8 +38,6 @@ function App() {
           <Route exact path='/profile'>
             <ProfilePage />
           </Route>
-<<<<<<< HEAD
-=======
           <Route exact path="/playlists/current">
             <CurrentUserPlaylist />
           </Route>
@@ -52,7 +50,6 @@ function App() {
           <Route exact path='/playlists/:playlistId'>
             <PlaylistDetailsPage />
           </Route>
->>>>>>> dev
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />
           </Route>

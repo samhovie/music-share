@@ -66,14 +66,12 @@ def seed_playlist_songs_users_likes():
 
     db.session.commit()
 
-<<<<<<< HEAD
 # def seed_playlist_songs():
 
 #     db.session.execute(insert(playlist_songs).values(
 #     playlist_id=2, song_id=1))
 #     db.session.execute(insert(playlist_songs).values(
 #     playlist_id=2, song_id=2))
-=======
 
 # def seed_playlist_songs():
 
@@ -81,7 +79,6 @@ def seed_playlist_songs_users_likes():
 #         playlist_id=2, song_id=1))
 #     db.session.execute(insert(playlist_songs).values(
 #         playlist_id=2, song_id=2))
->>>>>>> songDetailsPlaylistDetails
 #     db.session.commit()
 
 # def seed_songs():

@@ -91,17 +91,11 @@ def delete_playlist(id):
 @playlist_routes.route('/<int:id>', methods=['GET'])
 def get_playlist(id):
     playlist = Playlist.query.get(id)
-<<<<<<< HEAD
-    if not playlist:
-        return {"errors": "not found"}
-    return playlist.to_dict()
-=======
     if playlist:
         return playlist.to_dict()
     else:
         return {"errors": "playlist not found"}
 
->>>>>>> dev
 
 @playlist_routes.route('/<int:playlist_id>/songs/<int:song_id>', methods=['POST'])
 def add_song_to_playlist(playlist_id, song_id):
@@ -111,12 +105,8 @@ def add_song_to_playlist(playlist_id, song_id):
     if not playlist or not song:
         return {"error": "Playlist or Song not found"}, 404
 
-<<<<<<< HEAD
-    insert = insert(playlist_songs).values(
-=======
     # Add the song to the playlist
     ins = playlist_songs.insert().values(
->>>>>>> dev
         playlist_id=playlist_id, song_id=song_id)
     # ins = insert(playlist_songs).values(
     #     playlist_id=playlist_id, song_id=song_id)

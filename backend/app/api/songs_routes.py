@@ -22,11 +22,6 @@ def post_songs():
     print("TEST 3333333333333")
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-<<<<<<< HEAD
-
-    if form.validate_on_submit():
-        print(current_user.id)
-=======
     # if request.method == "GET":
     #     return form
     # print(form.data)
@@ -57,7 +52,6 @@ def post_songs():
 
 
 
->>>>>>> dev
         new_song = Song(
             name=form.data['name'],
             artist_name=form.data['artist_name'],

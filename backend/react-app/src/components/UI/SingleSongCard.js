@@ -18,27 +18,30 @@ import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const [comment, setComment] = useState('')
-    const allLikes = useSelector(state => state.likes)
-    // console.log('allLikes', allLikes)
+    // const [isLiked, setIsLiked] = useState()
+    const allLikes = useSelector(state => state.likes.allLikes.likes)
+    const sessionUser = useSelector((state) => state.session.user)
+    // const allLikes = useSelector(state => state.likes)
+    // const userLikes = useSelector(state => console.log('STATE', state))
+    // console.log('allLikes', allLikes.allLikes.likes)
+    // const likesObj = allLikes.allLikes.likes
+    // console.log('likes', likesObj)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
 
-    const submitHandler = (e) => {
-        e.preventDefault()
-        const formData = new FormData()
-        formData.append('text', comment)
-        dispatch(createCommentThunk(formData, songId))
-        history.push(`/songs/${songId}`)
-    }
-
     useEffect(() => {
+        // dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
-    }, [dispatch])
+        // dispatch(getUserLikedSongs())
+    },[dispatch])
+
+    // console.log('SOOOONNGIIIDD', song.id)
+    // const likesHandler = () => {
+    //     dispatch(likeSongThunk(songId))
+    // }
 
     const likesHandler = () => {
 
@@ -117,7 +120,10 @@ const SingleSongCard = ({ song }) => {
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
-                            <GetLikes songId={songId}/>
+                            <GetLikes songId={songId}
+                                      allLikes={allLikes}
+                                      sessionUser={sessionUser}
+                                      />
                             <div>
                                 <OpenModalButton
                                     buttonText="Update"

@@ -18,7 +18,7 @@ const FeedPage = () => {
         dispatch(getAllSongsThunk())
     }, [dispatch])
 
-
+    console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>
@@ -30,7 +30,10 @@ const FeedPage = () => {
                         </h3>
                     </div>
                     {songs.map((song) => (
-                        <SingleSongCard song={song} key={song.id} />
+                        <SingleSongCard
+                        song={song}
+                        key={song.id}
+                        />
                     ))}
                 </div>
             </div>

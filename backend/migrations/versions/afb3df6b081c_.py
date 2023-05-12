@@ -77,14 +77,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table(add_prefix_for_prod2('playlist_songs'),
+    op.create_table('playlist_songs',
     sa.Column('playlist_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlists.id'], ),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('playlist_id', 'song_id')
     )
-    op.create_table(add_prefix_for_prod2('song_likes'),
+    op.create_table('song_likes',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
@@ -94,11 +94,11 @@ def upgrade():
     # ### end Alembic commands ###
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        # op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
-        # op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
 
 
 

@@ -46,6 +46,7 @@
 }
 
 .song-details-page-profile-comments {
+    display: flex;
     margin-top: 1rem;
     margin-right: 1rem;
 }
@@ -69,4 +70,8 @@
     text-overflow: ellipsis; /* creates ellipses for overflow */
     white-space: nowrap;
     height: 1.5rem;
+}
+
+.song-details-page-display-comments-each {
+    /* display: flex; */
 }

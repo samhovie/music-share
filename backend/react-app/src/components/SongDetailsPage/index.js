@@ -5,16 +5,37 @@ import { useParams } from 'react-router-dom'
 import './SongDetailsPage.css'
 import '../UI/GlobalOuterWrapper'
 import { getSongThunk } from '../../store/songs'
+import { createCommentThunk, getAllCommentsThunk } from '../../store/comments'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import Comment from '../UI/Comment'
 
 const SongDetailsPage = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { songId } = useParams();
+
+
+    const [comment, setComment] = useState('')
+
+    const theComments = useSelector((state) => state.comments.allComments)
     const theSong = useSelector((state) => state.songs.singleSong)
+    // console.log("THE COMMENTSSSSS", theComments)
+    const comments = Object.values(theComments)
+    console.log("THE COMMENTSSSSS", comments)
     // console.log("theSONGGGGGG ", theSong)
 
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('text', comment)
+        dispatch(createCommentThunk(formData, songId))
+        history.push(`/songs/${songId}`)
+    }
+
     useEffect(() => {
         dispatch(getSongThunk(songId))
+        dispatch(getAllCommentsThunk(songId))
     }, [dispatch, songId])
 
     return (
@@ -33,8 +54,20 @@ const SongDetailsPage = () => {
                             </div>
                             <div className='song-details-page-comment-input'
                             >
-                                <form>
-                                    <input placeholder='Let the artist know what you think!'></input>
+                                <form
+                                action={`/api/comments/:songId`}
+                                method="POST"
+                                encType="multipart/form-data"
+                                onSubmit={(e) => submitHandler(e)}
+                                >
+                                    <input
+                                    type='text'
+                                    name="comment"
+                                    value={comment}
+                                    onChange={(e) => {
+                                        setComment(e.target.value)}
+                                    }
+                                    placeholder='Let the artist know what you think!'></input>
                                 </form>
                             </div>
                         </div>
@@ -68,7 +101,10 @@ const SongDetailsPage = () => {
 
                             </div>
                             <div className='song-details-page-display-comments-each'>
-                                {/* for each comment that belongs to song, render < /> passing in the comment/commentId*/}
+                                'hiii'
+                                {comments.forEach(comment => {
+                                    <Comment comment = {comment}/>
+                                })}
                             </div>
                         </div>
                     </div>

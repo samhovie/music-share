@@ -35,11 +35,13 @@ const deleteSongAction = (songId) => ({
 
 export const getAllSongsThunk = () => async (dispatch) => {
 	const response = await fetch("/api/songs/")
+	console.log("responseeeeeeeeeeeeeeee", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return;
 		}
+		console.log("dataaaaaaaaaaaaaaaa", data)
 
 		dispatch(getAllSongsAction(data));
 	}

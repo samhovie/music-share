@@ -7,15 +7,28 @@ import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
+import { useDispatch } from 'react-redux'
+import { createCommentThunk } from '../../store/comments'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 const SingleSongCard = ({ song }) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const [comment, setComment] = useState('')
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
     const songId = song.id
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('text', comment)
+        dispatch(createCommentThunk(formData, songId))
+        history.push(`/songs/${songId}`)
+    }
 
     return (
         <>
@@ -69,10 +82,23 @@ const SingleSongCard = ({ song }) => {
                         </p>
                     </div>
                     <div className='single-song-card-info-comment'>
-                        <form>
+                        <form
+                        action={`/api/comments/:songId`}
+                        method="POST"
+                        encType="multipart/form-data"
+                        onSubmit={(e) => submitHandler(e)}
+                        >
                             <input
                                 className='single-song-card-info-comment-input'
-                                placeholder='Write a comment'></input>
+                                type='text'
+                                name="comment"
+                                value={comment}
+                                onChange={(e) => {
+                                    setComment(e.target.value)}
+                                }
+                                placeholder='Write a comment'
+                                // style={{display: 'none'}}
+                                />
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>

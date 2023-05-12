@@ -2,6 +2,7 @@ import './PlaylistCard.css'
 import { NavLink } from 'react-router-dom'
 import OpenModalButton from '../OpenModalButton'
 import DeletePlaylist from '../DeletePlaylist'
+import UpdatePlaylistForm from '../UpdatePlaylist'
 
 const PlaylistCard = ({ playlist }) => {
     console.log("PLAYLIST IN PLAYLIST CARD", playlist)
@@ -30,6 +31,11 @@ const PlaylistCard = ({ playlist }) => {
                     buttonText="Delete"
                     modalComponent={<DeletePlaylist playlistId={playlist.id} />} />
                 {/* modalComponent={<ConfirmDelete />} /> */}
+            </div>
+            <div>
+                <OpenModalButton
+                    buttonText="Update"
+                    modalComponent={<UpdatePlaylistForm playlistId={playlist.id} />} />
             </div>
         </div>
     )

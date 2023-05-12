@@ -5,7 +5,7 @@ from app.forms import SongForm
 from datetime import date
 from app.models import db
 from flask import redirect, request
-from .likes_routes import get_all_song_likes
+from .likes_routes import get_all_specific_song_likes
 from app.aws import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3
     )
@@ -19,7 +19,7 @@ def get_all_songs():
     res = []
     for song in songs:
         song = song.to_dict()
-        song['likes'] = get_all_song_likes(song['id'])['likes']
+        song['likes'] = get_all_specific_song_likes(song['id'])['likes']
         print('SSOOOONG', song)
         res.append(song)
 

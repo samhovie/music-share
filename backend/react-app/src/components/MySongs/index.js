@@ -1,17 +1,51 @@
-import OpenModalButton from '../OpenModalButton'
-import UpdateProfile from '../UpdateProfile'
-import { NavLink } from 'react-router-dom'
-import './ProfilePage.css'
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPlaylistsThunk } from '../../store/playlists';
+import SongDetailsCard from '../UI/SongDetailsCard';
+import SingleSongCard from '../UI/SingleSongCard';
+import OpenModalButton from '../OpenModalButton';
+// import CreatePlaylistForm from '../CreateNewPlaylist';
+import { NavLink } from 'react-router-dom';
+import UpdateProfile from '../UpdateProfile';
+import '../MyPlaylists/MyPlaylists.css'
+import { getAllSongsThunk } from '../../store/songs';
 
-const ProfilePage = () => {
+const alertClickHandler = () => {
+    return alert('Feature Coming Soon!')
+}
 
-    const alertClickHandler = () => {
-        return alert('Feature Coming Soon!')
+const CurrentUserSongs = () => {
+    const dispatch = useDispatch();
+    const userId = useSelector((state) => state.session.user.id);
+
+    const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
+    console.log('PAYLIST', allSongs)
+    const user_id = allSongs.forEach(song => {
+        console.log('song user', song.artist_id);
+    });
+    console.log(user_id)
+
+    let userSongs = [];
+    for (let song in allSongs) {
+        // console.log(allPlaylists[playlist])
+        if (allSongs[song].artist_id == userId) {
+            userSongs.push(allSongs[song])
+        }
     }
+
+
+    useEffect(() => {
+        dispatch(getAllSongsThunk());
+    }, [dispatch]);
+
     return (
         <>
-            <div className='global-outerwrapper-outer'>
-                <div className='global-outerwrapper-wrapper'>
+            <div className="global-outerwrapper-outer">
+                <div className="global-outerwrapper-wrapper discover-page-wrapper">
+                    {/* <OpenModalButton
+                        modalComponent={<CreatePlaylistForm />}
+                        buttonText="Create Playlist"
+                    /> */}
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
                             <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'
@@ -50,6 +84,11 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="user-playlists-container">
+                            {userSongs.map((song) => (
+                                <SingleSongCard key={song.id} song={song} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,4 +96,6 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage
+
+
+export default CurrentUserSongs;

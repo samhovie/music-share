@@ -2,7 +2,8 @@
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
 const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
-const CREATE_PLAYLIST = 'songs/CREATE_PLAYLIST'
+const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
+const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
 
 // const GET_USER_PLAYLISTS = "playlists/GET_USER_PLAYLISTS";
 
@@ -28,6 +29,26 @@ const createPlaylistAction = (playlist) => ({
     type: CREATE_PLAYLIST,
     playlist
 })
+
+const deletePlaylistAction = (playlistId) => ({
+    type: DELETE_PLAYLIST,
+    playlistId
+})
+
+export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
+    const response = await fetch(`/api/playlists/${playlistId}`, {
+        method: 'DELETE',
+        body: playlistId
+    })
+    if (response.ok) {
+        const data = await response.json()
+        if (data.errors) {
+            return data.errors
+        }
+        dispatch(deletePlaylistAction(data))
+    }
+}
+
 
 // const getUserPlaylistsAction = (playlists) => ({
 //     type: GET_USER_PLAYLISTS,
@@ -146,6 +167,10 @@ export default function playlistsReducer(state = initialState, action) {
         // case GET_USER_PLAYLISTS:
         //     newState = { ...state, userPlaylists: { ...action.playlists } }
         //     return newState;
+        case DELETE_PLAYLIST:
+            newState = { ...state, allPlaylists: { ...state.allPlaylists } }
+            delete newState.allPlaylists[action.playlistId]
+            return newState
         default:
             return state;
     }

@@ -18,6 +18,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         public: '',
         user_id: '',
         description: '',
+        // preview_img: ''
     });
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                 public: singlePlaylist.public || '',
                 user_id: singlePlaylist.user_id || '',
                 description: singlePlaylist.description || '',
+                // preview_img: singlePlaylist.preview_img || ''
             });
         }
     }, [singlePlaylist]);
@@ -96,6 +98,26 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                                 required
                                             />
                                         </div>
+                                        {/* <div
+                                            style={{ paddingBottom: '1rem' }}
+                                        > */}
+                                            {/* <div>
+                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                                <label style={{ paddingBottom: '.5rem' }}>
+                                                    &nbsp;Preview Image URL
+                                                </label>
+
+                                            </div>
+                                            <input
+                                                className='upload-song-form-all-input upload-song-form-img-url'
+                                                type='text'
+                                                value={preview_img}
+                                                onChange={(e) => setPreviewImg(e.target.value)}
+                                                required
+                                            >
+
+                                            </input>
+                                        </div> */}
                                         <div className='upload-song-form-bottom'>
                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                 <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>

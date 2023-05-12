@@ -99,7 +99,7 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
         if (data.errors) {
             return data.errors
         }
-        dispatch(createPlaylistAction(data.id))
+        dispatch(createPlaylistAction(data))
         return data
     }
 }

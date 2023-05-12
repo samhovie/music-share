@@ -56,6 +56,7 @@ export const getSongThunk = (id) => async (dispatch) => {
 		}
 		// console.log("DATAAAA ", data)
 		dispatch(getSongAction(data))
+		return data
 	}
 }
 
@@ -66,7 +67,7 @@ export const createSongThunk = (song) => async (dispatch) => {
 		body: song
 	})
 
-	if	(response.ok) {
+	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return data.errors
@@ -82,7 +83,7 @@ export const updateSongThunk = (song, songId) => async (dispatch) => {
 		body: song
 	})
 
-	if	(response.ok) {
+	if (response.ok) {
 		// console.log("TEST 3")
 		const data = await response.json();
 		// console.log("TEST 5", data)
@@ -126,15 +127,15 @@ export default function songsReducer(state = initialState, action) {
 		case CREATE_SONG:
 			// console.log("STATEEEE", state)
 			// console.log("ACTIONNN", action)
-			newState = { ...state, singleSong: {...action.singleSong}}
+			newState = { ...state, singleSong: { ...action.singleSong } }
 			return newState
 		case UPDATE_SONG:
 			// console.log(action)
-			newState = {...state, singleSong: {...state.singleSong}}
+			newState = { ...state, singleSong: { ...state.singleSong } }
 			newState.singleSong[action.song.id] = action.song
 			return newState
 		case DELETE_SONG:
-			newState = {...state, allSongs: {...state.allSongs}}
+			newState = { ...state, allSongs: { ...state.allSongs } }
 			delete newState.allSongs[action.songId]
 			return newState
 

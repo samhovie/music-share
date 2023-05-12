@@ -5,17 +5,19 @@ import './SingleSongCard.css'
 import OpenModalButton from '../OpenModalButton'
 import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
-
+import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
-import { useDispatch } from 'react-redux'
 import { createCommentThunk } from '../../store/comments'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { getAllSongLikesThunk } from '../../store/likes'
 
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [comment, setComment] = useState('')
+    const allLikes = useSelector(state => state.likes)
+    console.log('allLikes', allLikes)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
@@ -30,11 +32,19 @@ const SingleSongCard = ({ song }) => {
         history.push(`/songs/${songId}`)
     }
 
+    useEffect(() => {
+        dispatch(getAllSongLikesThunk(songId))
+    }, [dispatch])
+
+    const likesHandler = () => {
+
+    }
+
     return (
         <>
             <div className='single-song-card-wrapper'>
                 <div className='single-song-card-image'
-                style={{marginRight: '1rem'}}
+                    style={{ marginRight: '1rem' }}
                 >
                     <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
                         <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
@@ -44,11 +54,11 @@ const SingleSongCard = ({ song }) => {
                 <div className='single-song-card-info'>
                     <div className='single-song-card-info-top'>
                         <div
-                        className='single-song-card-info-top-left-column'
-                        style={{}}
+                            className='single-song-card-info-top-left-column'
+                            style={{}}
                         >
-                        <div className='single-song-details-card-play-button'
-                        style={{marginRight: '1rem'}}
+                            <div className='single-song-details-card-play-button'
+                                style={{ marginRight: '1rem' }}
                                 onClick={isPlayingClickHandler}
                             >
                                 {!isPlaying ?
@@ -83,10 +93,10 @@ const SingleSongCard = ({ song }) => {
                     </div>
                     <div className='single-song-card-info-comment'>
                         <form
-                        action={`/api/comments/:songId`}
-                        method="POST"
-                        encType="multipart/form-data"
-                        onSubmit={(e) => submitHandler(e)}
+                            action={`/api/comments/:songId`}
+                            method="POST"
+                            encType="multipart/form-data"
+                            onSubmit={(e) => submitHandler(e)}
                         >
                             <input
                                 className='single-song-card-info-comment-input'
@@ -94,31 +104,35 @@ const SingleSongCard = ({ song }) => {
                                 name="comment"
                                 value={comment}
                                 onChange={(e) => {
-                                    setComment(e.target.value)}
+                                    setComment(e.target.value)
+                                }
                                 }
                                 placeholder='Write a comment'
-                                // style={{display: 'none'}}
-                                />
+                            // style={{display: 'none'}}
+                            />
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
-                            <div className='single-song-card-info-bottom-left-column-heart'>
-                                <i>heart</i>
+                            <div className='single-song-card-info-bottom-left-column-heart'
+
+                            >
+                                <i className="fa-solid fa-heart" style={{ color: 'yellow' }}></i>
                                 Like
                             </div>
-                            <div className='single-song-card-info-bottom-left-column-delete'>
-                                <i>delete</i>
-                                <OpenModalButton
-                                    buttonText="Delete"
-                                    modalComponent={<ConfirmDelete songId={songId}/>} />
-                                    {/* modalComponent={<ConfirmDelete />} /> */}
-                            </div>
                             <div>
-                                <i></i>
                                 <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<UpdateSongForm songId={songId}/>} />
+                                    modalComponent={<UpdateSongForm songId={songId} />} />
+                            </div>
+                            <div >
+                                {/* <button>Delete</button>
+                                className='single-song-card-info-bottom-left-column-delete'
+                                */}
+                                <OpenModalButton
+                                    buttonText="Delete"
+                                    modalComponent={<ConfirmDelete songId={songId} />} />
+                                {/* modalComponent={<ConfirmDelete />} /> */}
                             </div>
 
                         </div>
@@ -137,6 +151,7 @@ const SingleSongCard = ({ song }) => {
 
         </>
     )
+
 }
 
 export default SingleSongCard

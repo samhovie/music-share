@@ -11,7 +11,7 @@ import CreatePlaylistForm from '../CreateNewPlaylist';
 const DiscoverPage = () => {
     const dispatch = useDispatch()
     const allPlaylists = useSelector((state) => state.playlists.allPlaylists)
-    console.log("state", allPlaylists)
+    // console.log("state", allPlaylists)
     const playlists = Object.values(allPlaylists)
     // console.log("PLAYSSSSS", allPlaylists)
     // console.log(allPlaylists)
@@ -32,14 +32,14 @@ const DiscoverPage = () => {
 
                     {/* <div className='discover-page-inner-wrapper'> */}
                     <PlaylistWrapper playlists={playlists} />
-                    <PlaylistWrapper playlists={playlists} />
+                    {/* <PlaylistWrapper playlists={playlists} /> */}
                     {/* <PlaylistWrapper playlists={playlists} /> */}
                     {/* </div> */}
                 </div>
             </div>
-            {/* {playlists.map((playlist) => (
-                <PlaylistCard playlist={playlist} key={playlist.id} />
-            ))} */}
+            {playlists.map((playlist) => (
+                <PlaylistCard playlist={playlist} key={playlist.id} playlistSong = {playlist.song}/>
+            ))}
             {/* <PlaylistCard /> */}
 
 

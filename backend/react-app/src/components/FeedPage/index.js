@@ -1,3 +1,4 @@
+import { getAllSongLikesThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import SingleSongCard from '../UI/SingleSongCard'
 import './FeedPage.css'
@@ -7,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const FeedPage = () => {
     const dispatch = useDispatch()
     const allSongs = useSelector((state) => state.songs.allSongs)
+
     const songs = Object.values(allSongs)
     // console.log(allSongs)
 
@@ -15,6 +17,8 @@ const FeedPage = () => {
     useEffect(() => {
         dispatch(getAllSongsThunk())
     }, [dispatch])
+
+    console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>
@@ -26,7 +30,10 @@ const FeedPage = () => {
                         </h3>
                     </div>
                     {songs.map((song) => (
-                        <SingleSongCard song={song} key={song.id} />
+                        <SingleSongCard
+                        song={song}
+                        key={song.id}
+                        />
                     ))}
                 </div>
             </div>

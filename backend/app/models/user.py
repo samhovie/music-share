@@ -23,10 +23,12 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255))
     bio = db.Column(db.Text)
     profile_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
+    # banner_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
 
     songs = db.relationship('Song', back_populates = 'user', cascade='all, delete-orphan')
     user_like = db.relationship('Song', secondary=song_like, back_populates='liked_song')
     comments = db.relationship('Comment', back_populates = 'user', cascade='all, delete-orphan')
+    # song_likes = db.relationship('Comment', back_populates = 'user', cascade='all, delete-orphan')
     playlists = db.relationship('Playlist', back_populates = 'user', cascade='all, delete-orphan')
 
 

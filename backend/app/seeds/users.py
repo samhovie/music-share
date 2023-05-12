@@ -18,6 +18,7 @@ from sqlalchemy import insert
 #     db.session.add(bobbie)
 #     db.session.commit()
 
+
 def seed_playlist_songs_users_likes():
 
     demo = User(
@@ -56,24 +57,41 @@ def seed_playlist_songs_users_likes():
     # playlist2.song.append(song1)
     # playlist3.song.append(song1)
 
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(song1)
+    db.session.add(song2)
     db.session.add(playlist1)
     db.session.add(playlist2)
     db.session.add(playlist3)
-
-
+    db.session.add(demo)
+    db.session.add(marnie)
+    db.session.add(bobbie)
     db.session.commit()
 
-def seed_playlist_songs():
 
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=2, song_id=1))
+    playlist_id=1, song_id=1))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=2, song_id=2))
+    playlist_id=1, song_id=2))
     db.session.commit()
+
+
+
+
+
+# def seed_playlist_songs():
+
+#     db.session.execute(insert(playlist_songs).values(
+#     playlist_id=2, song_id=1))
+#     db.session.execute(insert(playlist_songs).values(
+#     playlist_id=2, song_id=2))
+
+# def seed_playlist_songs():
+
+#     db.session.execute(insert(playlist_songs).values(
+#         playlist_id=2, song_id=1))
+#     db.session.execute(insert(playlist_songs).values(
+#         playlist_id=2, song_id=2))
+#     db.session.commit()
 
 # def seed_songs():
 #     song1 = Song(
@@ -122,6 +140,8 @@ def seed_comments():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
+
+
 def undo_users():
     if environment == "production":
         db.session.execute(
@@ -170,6 +190,7 @@ def undo_comments():
         db.session.execute(text("DELETE FROM comments"))
 
     db.session.commit()
+
 
 def undo_playlist_songs_users_likes():
     if environment == "production":

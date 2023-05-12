@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from .join_tables import playlist_songs, song_like
 

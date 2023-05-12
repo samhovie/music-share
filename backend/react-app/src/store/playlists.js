@@ -4,6 +4,7 @@ const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
+const UPDATE_PLAYLIST = 'songs/UPDATE_PLAYLIST'
 
 // const GET_USER_PLAYLISTS = "playlists/GET_USER_PLAYLISTS";
 
@@ -35,6 +36,11 @@ const deletePlaylistAction = (playlistId) => ({
     playlistId
 })
 
+const updatePlaylistAction = (playlist) => ({
+    type: UPDATE_PLAYLIST,
+    playlist
+})
+
 export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'DELETE',
@@ -57,11 +63,12 @@ export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
 
 export const getAllPlaylistsThunk = () => async (dispatch) => {
     const response = await fetch("/api/playlists/")
+    console.log("IN getAllPlaylistsThunk", response)
     if (response.ok) {
         const data = await response.json();
         console.log("data", data)
         if (data.errors) {
-            return;
+            return data.errors;
         }
 
         dispatch(getAllPlaylistsAction(data));
@@ -99,8 +106,28 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
         if (data.errors) {
             return data.errors
         }
-        dispatch(createPlaylistAction(data.id))
+        dispatch(createPlaylistAction(data))
         return data
+    }
+}
+
+export const updatePlaylistThunk = (playlist, playlistId) => async (dispatch) => {
+    // console.log("TEST 2", song)
+    const response = await fetch(`/api/playlists/${playlistId}`, {
+        method: 'PUT',
+        body: playlist
+    })
+
+    if (response.ok) {
+        // console.log("TEST 3")
+        const data = await response.json();
+        // console.log("TEST 5", data)
+        if (data.errors) {
+            // console.log("TEST 6")
+            return data.errors
+        }
+        // console.log("TEST 4")
+        dispatch(updatePlaylistAction(data))
     }
 }
 

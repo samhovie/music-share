@@ -1,6 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
 from .join_tables import playlist_songs
 
 
@@ -40,5 +39,5 @@ class Playlist(db.Model):
                 "username": self.user.username,
                 "id": self.user.id
             },
-            "songs": self.song
+            "song": [song.to_dict() for song in self.song]
         }

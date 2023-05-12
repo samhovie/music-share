@@ -5,19 +5,25 @@ from app.forms import SongForm
 from datetime import date
 from app.models import db
 from flask import redirect, request
+from .likes_routes import get_all_specific_song_likes
 from app.aws import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3
     )
 
 songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
 
-# querying for all songs in the database
-
-
 @songs_routes.route('/')
 def get_all_songs():
     songs = Song.query.all()
-    return {"songs": [song.to_dict() for song in songs]}
+    print('SOOONGSPYTHON')
+    res = []
+    for song in songs:
+        song = song.to_dict()
+        song['likes'] = get_all_specific_song_likes(song['id'])['likes']
+        print('SSOOOONG', song)
+        res.append(song)
+
+    return {"songs": [song for song in res]}
 
 
 @songs_routes.route('/new', methods=['POST'])
@@ -148,7 +154,6 @@ def update_song(id):
 
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
-    # print('HELLLLLOOOOOO')
     song = Song.query.get(id)
     print(song)
     if song.artist_id != current_user.id:

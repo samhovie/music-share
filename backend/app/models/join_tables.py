@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from .db import add_prefix_for_prod
+from .db import add_prefix_for_prod, environment, SCHEMA
 
 # from sqlalchemy.orm import DeclarativeBase
 from .db import db
@@ -22,11 +22,13 @@ from .db import db
 # )
 
 playlist_songs = db.Table('playlist_songs',
+                            db.Model.metadata,
     db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id')), primary_key=True),
     db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), primary_key=True)
 )
 
-
+if environment == 'production':
+    playlist_songs.schema = SCHEMA
 
 # class SongLike(db.Model):
 #     __tablename__ = 'song_likes'
@@ -36,10 +38,13 @@ playlist_songs = db.Table('playlist_songs',
 
 song_like = db.Table(
     'song_likes',
-    # Base.metadata,
-    db.Column("user_id", db.ForeignKey("users.id"), primary_key=True),
-    db.Column("song_id", db.ForeignKey("songs.id"), primary_key=True),
+    db.Model.metadata,
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("song_id", db.ForeignKey(add_prefix_for_prod("songs.id")), primary_key=True),
 )
+
+if environment == 'production':
+    song_like.schema = SCHEMA
 
 # class CommentLike(db.Model):
 #     __tablename__ = 'comment_likes'

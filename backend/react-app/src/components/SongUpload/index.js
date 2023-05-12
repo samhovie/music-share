@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './SongUpload.css'
 import { useState } from 'react'
 import { createSongThunk } from '../../store/songs'
@@ -16,6 +16,9 @@ const SongUpload = () => {
     const [artist_name, setArtist_name] = useState('')
     const [id, setId] = useState('')
 
+    const sessionUser = useSelector((state) => state.session.user);
+    const current_user = sessionUser.username;
+    console.log(current_user)
 
     // const fileUploadClickHandler = (e) => {
     //     e.preventDefault()
@@ -33,7 +36,7 @@ const SongUpload = () => {
         const formData = new FormData()
         formData.append('mp3_file', mp3_file)
         formData.append('name', name)
-        formData.append('artist_name', artist_name)
+        formData.append('artist_name', current_user)
         formData.append('genre', genre)
         // formData.append('description', description)
 
@@ -83,7 +86,7 @@ const SongUpload = () => {
                                             </input>
                                         </div>
 
-                                        <div
+                                        {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
@@ -102,7 +105,7 @@ const SongUpload = () => {
                                             >
 
                                             </input>
-                                        </div>
+                                        </div> */}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}

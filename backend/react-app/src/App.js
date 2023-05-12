@@ -41,6 +41,9 @@ function App() {
           <Route exact path="/playlists/current">
             <CurrentUserPlaylist />
           </Route>
+          <Route exact path="/playlists/new">
+            <CreatePlaylistForm />
+          </Route>
           <Route exact path="/songs/current">
             <CurrentUserSongs />
           </Route>

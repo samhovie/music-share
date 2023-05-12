@@ -11,9 +11,6 @@ from app.aws import (
 
 songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
 
-# querying for all songs in the database
-
-
 @songs_routes.route('/')
 def get_all_songs():
     songs = Song.query.all()
@@ -148,7 +145,6 @@ def update_song(id):
 
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
-    # print('HELLLLLOOOOOO')
     song = Song.query.get(id)
     print(song)
     if song.artist_id != current_user.id:

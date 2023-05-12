@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
-
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
 
 class Comment(db.Model):
     __tablename__ ='comments'

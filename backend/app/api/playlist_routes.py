@@ -6,10 +6,8 @@ from datetime import date
 from app.models import db
 import os
 from flask import redirect, request
-# added in thunk branch
 from sqlalchemy import insert
 from app.models import Song, playlist_songs
-# end
 
 playlist_routes = Blueprint('playlists', __name__, url_prefix="/api/playlists")
 
@@ -23,10 +21,7 @@ def get_all_playlists():
 
 @playlist_routes.route('/new', methods=['POST'])
 def create_playlist():
-    # print('HELLLLOOOO')
     form = PlaylistForm()
-    # print(request.cookies['csrf_token'])
-    # print('YOOO', request)
 
     form['csrf_token'].data = request.cookies['csrf_token']
     print(form.data)
@@ -75,7 +70,6 @@ def update_playlist(id):
 
 @playlist_routes.route('/<int:id>', methods=['DELETE'])
 def delete_playlist(id):
-    # print('HELLLLLOOOOOO')
     playlist = Playlist.query.get(id)
     print(playlist)
     if playlist.user_id != current_user.id:
@@ -105,7 +99,6 @@ def get_playlist(id):
 
 @playlist_routes.route('/<int:playlist_id>/songs/<int:song_id>', methods=['POST'])
 def add_song_to_playlist(playlist_id, song_id):
-    # Ensure the playlist and song exists
     playlist = Playlist.query.get(playlist_id)
     song = Song.query.get(song_id)
 

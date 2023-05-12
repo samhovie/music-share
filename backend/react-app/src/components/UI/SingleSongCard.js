@@ -12,21 +12,16 @@ import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom'
-import { createCommentThunk } from '../../store/comments'
+import createCommentThunk from '../../store/songs'
+
 import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
-    // const [isLiked, setIsLiked] = useState()
-    // const allLikes = useSelector(state => state.likes)
-    // const userLikes = useSelector(state => console.log('STATE', state))
-    // console.log('allLikes', allLikes.allLikes.likes)
-    // const likesObj = allLikes.allLikes.likes
-    // console.log('likes', likesObj)
     const history = useHistory()
     const [comment, setComment] = useState('')
     const allLikes = useSelector(state => state.likes)
-    // console.log('allLikes', allLikes)
+    console.log('allLikes', allLikes)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
@@ -48,23 +43,6 @@ const SingleSongCard = ({ song }) => {
     const likesHandler = () => {
 
     }
-    // useEffect(() => {
-    //     // dispatch(getAllSongsThunk())
-    //     dispatch(getAllSongLikesThunk(songId))
-    //     // dispatch(getUserLikedSongs())
-    // },[dispatch])
-
-    // const likesHandler = () => {
-    //     dispatch(likeSongThunk(songId))
-    // }
-
-    // const unlikeHandler = () => {
-
-    //     dispatch(removeLikeThunk(songId))
-    // }
-
-    // if (!likesObj || !likesObj.likes) return null
-
     return (
         <>
             <div className='single-song-card-wrapper'>

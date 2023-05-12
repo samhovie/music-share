@@ -14,6 +14,7 @@ function CreatePlaylistForm() {
     const handleCreatePlaylist = async (e) => {
         e.preventDefault();
         const playlistData = await dispatch(createPlaylistThunk(newPlaylist));
+        console.log(playlistData)
         if (playlistData.id) {
             // You can do something here if you want, like displaying a success message or redirecting the user
         }

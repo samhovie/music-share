@@ -69,19 +69,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useModal } from '../../context/Modal';
 // import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { getAllPlaylistsThunk, addSongToPlaylistThunk, createPlaylistThunk } from '../../store/playlists';
 
 function AddSongToPlaylistModal({ songId }) {
     const dispatch = useDispatch();
-    // const history = useHistory();
-    const playlists = useSelector(state => state.playlists.allPlaylists);
+    const history = useHistory();
+    const playlists =  useSelector(state => state.playlists.allPlaylists);
+    const playlist = useSelector(state => state.playlists.singlePlaylist);
     const [selectedPlaylist, setSelectedPlaylist] = useState("");
-    const [newPlaylist, setNewPlaylist] = useState({
-        name: '',
-        is_public: false,
-        description: '',
-    });
+    const playlistId = playlist.id
+    const { closeModal } = useModal();
 
     useEffect(() => {
         dispatch(getAllPlaylistsThunk());
@@ -89,17 +89,12 @@ function AddSongToPlaylistModal({ songId }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
-    };
-
-    const handleCreatePlaylist = async (e) => {
-        e.preventDefault();
-        const createdPlaylist = await dispatch(createPlaylistThunk(newPlaylist));
-        if (createdPlaylist && createdPlaylist.id) {
-            // history.push(`/playlists/${createdPlaylist.id}/songs/songId`)
-            dispatch(addSongToPlaylistThunk(createdPlaylist.id, songId));
+        const createdPlaylist = dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
+        closeModal();
+        if (createdPlaylist) {
+            history.push(`/playlists/${playlistId}`);
         }
-    }
+    };
 
     return (
         <div>

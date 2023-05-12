@@ -1,3 +1,4 @@
+from flask_wtf.csrf import generate_csrf
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import Playlist
@@ -58,7 +59,6 @@ def update_playlist(id):
         playlist.is_public = form.data['is_public']
         playlist.description = form.data['description']
         playlist.user_id = current_user.id
-        playlist.created_at = date.today()
         playlist.updated_at = date.today()
 
         db.session.commit()
@@ -121,6 +121,6 @@ def add_song_to_playlist(playlist_id, song_id):
 @playlist_routes.route('/current')
 @login_required
 def get_current_user_playlists():
-    playlists = Playlist.query.filter_by(user_id = current_user.id).all()
+    playlists = Playlist.query.filter_by(user_id=current_user.id).all()
     print('user', playlists)
     return {"playlists": [playlist.to_dict() for playlist in playlists]}

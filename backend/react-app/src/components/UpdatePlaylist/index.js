@@ -15,7 +15,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const [formData, setFormData] = useState({
         name: '',
-        public: '',
+        is_public: '',
         user_id: '',
         description: '',
         // preview_img: ''
@@ -29,13 +29,14 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         if (singlePlaylist) {
             setFormData({
                 name: singlePlaylist.name || '',
-                public: singlePlaylist.public || '',
+                is_public: singlePlaylist.public || '',
                 user_id: singlePlaylist.user_id || '',
                 description: singlePlaylist.description || '',
                 // preview_img: singlePlaylist.preview_img || ''
             });
         }
     }, [singlePlaylist]);
+    console.log('helloå=')
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -45,6 +46,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
+        console.log(updatedPlaylist);
         closeModal();
         if (updatedPlaylist) {
             history.push(`/playlists/${playlistId}`);
@@ -101,7 +103,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                         {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         > */}
-                                            {/* <div>
+                                        {/* <div>
                                                 <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Preview Image URL

@@ -57,6 +57,8 @@ def seed_playlist_songs_users_likes():
     # playlist2.song.append(song1)
     # playlist3.song.append(song1)
 
+    db.session.add(song1)
+    db.session.add(song2)
     db.session.add(playlist1)
     db.session.add(playlist2)
     db.session.add(playlist3)

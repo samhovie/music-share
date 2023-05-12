@@ -11,19 +11,17 @@ from flask import redirect, request
 comment_routes = Blueprint('comments', __name__, url_prefix="/api/comments")
 
 
-
-
-@comment_routes.route('/<int:id>/')
-def get_song_comments(id):
+@comment_routes.route('/<int:songId>')
+def get_song_comments(songId):
     print('REQUEST', request)
-    comments = Comment.query.filter_by(song_id = id).all()
+    comments = Comment.query.filter_by(song_id = songId).all()
     return json.dumps(comments, default=lambda c : c.to_dict())
 
 
 
-@comment_routes.route('/<int:id>', methods=['DELETE'])
-def delete_comment(id):
-    comment = Comment.query.get(id)
+@comment_routes.route('/<int:commentId>', methods=['DELETE'])
+def delete_comment(commentId):
+    comment = Comment.query.get(commentId)
     print(comment)
     if comment.user_id != current_user.id:
         return {"errors": 'nacho comment'}
@@ -34,15 +32,15 @@ def delete_comment(id):
 
 
 
-@comment_routes.route('/<int:id>', methods=['POST'])
-def post_comment(id):
+@comment_routes.route('/<int:songId>', methods=['POST'])
+def post_comment(songId):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         new_comment = Comment(
             user_id=current_user.id,
-            song_id=id,
+            song_id=songId,
             text=form.data['text']
         )
         print(new_comment)

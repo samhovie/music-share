@@ -18,7 +18,7 @@ const FeedPage = () => {
         dispatch(getAllSongsThunk())
     }, [dispatch])
 
-    
+
 
     return (
         <>

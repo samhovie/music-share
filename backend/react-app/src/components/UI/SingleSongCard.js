@@ -7,27 +7,42 @@ import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
-import { getAllSongLikesThunk } from '../../store/likes'
-
+import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
+import { likeSongThunk } from '../../store/likes'
+import { removeLikeThunk } from '../../store/likes'
+import { getAllSongsThunk } from '../../store/songs'
+import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
-    const allLikes = useSelector(state => state.likes)
-    console.log('allLikes', allLikes)
+    // const [isLiked, setIsLiked] = useState()
+    // const allLikes = useSelector(state => state.likes)
+    // const userLikes = useSelector(state => console.log('STATE', state))
+    // console.log('allLikes', allLikes.allLikes.likes)
+    // const likesObj = allLikes.allLikes.likes
+    // console.log('likes', likesObj)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
     const songId = song.id
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     // dispatch(getAllSongsThunk())
+    //     dispatch(getAllSongLikesThunk(songId))
+    //     // dispatch(getUserLikedSongs())
+    // },[dispatch])
 
-        dispatch(getAllSongLikesThunk(songId))
-    },[dispatch])
+    // const likesHandler = () => {
+    //     dispatch(likeSongThunk(songId))
+    // }
 
-    const likesHandler = () => {
-        
-    }
+    // const unlikeHandler = () => {
+
+    //     dispatch(removeLikeThunk(songId))
+    // }
+
+    // if (!likesObj || !likesObj.likes) return null
 
     return (
         <>
@@ -89,12 +104,7 @@ const SingleSongCard = ({ song }) => {
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
-                            <div className='single-song-card-info-bottom-left-column-heart'
-
-                            >
-                            <i className="fa-solid fa-heart" style={{color: 'yellow'}}></i>
-                                Like
-                            </div>
+                            <GetLikes songId={songId}/>
                             <div>
                                 <OpenModalButton
                                     buttonText="Update"

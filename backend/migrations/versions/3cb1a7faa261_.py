@@ -12,6 +12,12 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+def add_prefix_for_prod2(attr):
+    if environment == "production":
+        return f"{SCHEMA}.{attr}"
+    else:
+        return attr
+
 
 
 # revision identifiers, used by Alembic.
@@ -70,14 +76,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('playlist_songs',
+    op.create_table(add_prefix_for_prod2('playlist_songs'),
     sa.Column('playlist_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlists.id'], ),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('playlist_id', 'song_id')
     )
-    op.create_table('song_likes',
+    op.create_table(add_prefix_for_prod2('song_likes'),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),

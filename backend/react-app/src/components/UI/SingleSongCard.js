@@ -13,9 +13,10 @@ import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
 
-const SingleSongCard = ({ song }) => {
+const SingleSongCard = ({ song, allLikes, sessionUser }) => {
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
+
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
@@ -104,7 +105,10 @@ const SingleSongCard = ({ song }) => {
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
-                            <GetLikes songId={songId}/>
+                            <GetLikes songId={songId}
+                                      allLikes={allLikes}
+                                      sessionUser={sessionUser}
+                                      />
                             <div>
                                 <OpenModalButton
                                     buttonText="Update"

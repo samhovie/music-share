@@ -5,12 +5,13 @@ import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 
-const GetLikes = ({songId}) => {
+const GetLikes = ({songId, allLikes, sessionUser}) => {
     // console.log('SSOOOOONNG', songId)
     const dispatch = useDispatch()
     const [isLiked, setIsLiked] = useState()
-    const allLikes = useSelector(state => state.likes.allLikes.likes)
-    const sessionUser = useSelector((state) => state.session.user)
+    // const allLikes = useSelector(state => state.likes.allLikes.likes)
+    // const sessionUser = useSelector((state) => state.session.user)
+    
     const likes = allLikes && allLikes.likes
     const userIds = allLikes && allLikes.user_id
     console.log('ALLLLIIIKES', userIds)

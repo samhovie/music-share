@@ -13,10 +13,11 @@ import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
 
-const SingleSongCard = ({ song, allLikes, sessionUser }) => {
+const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
-
+    const allLikes = useSelector(state => state.likes.allLikes.likes)
+    const sessionUser = useSelector((state) => state.session.user)
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
@@ -28,12 +29,13 @@ const SingleSongCard = ({ song, allLikes, sessionUser }) => {
     // console.log(song)
     const songId = song.id
 
-    // useEffect(() => {
-    //     // dispatch(getAllSongsThunk())
-    //     dispatch(getAllSongLikesThunk(songId))
-    //     // dispatch(getUserLikedSongs())
-    // },[dispatch])
+    useEffect(() => {
+        // dispatch(getAllSongsThunk())
+        dispatch(getAllSongLikesThunk(songId))
+        // dispatch(getUserLikedSongs())
+    },[dispatch])
 
+    // console.log('SOOOONNGIIIDD', song.id)
     // const likesHandler = () => {
     //     dispatch(likeSongThunk(songId))
     // }

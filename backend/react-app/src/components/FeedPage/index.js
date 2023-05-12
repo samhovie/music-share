@@ -8,8 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const FeedPage = () => {
     const dispatch = useDispatch()
     const allSongs = useSelector((state) => state.songs.allSongs)
-    const allLikes = useSelector(state => state.likes.allLikes.likes)
-    const sessionUser = useSelector((state) => state.session.user)
+
     const songs = Object.values(allSongs)
     // console.log(allSongs)
 
@@ -19,7 +18,7 @@ const FeedPage = () => {
         dispatch(getAllSongsThunk())
     }, [dispatch])
 
-    
+    console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>
@@ -33,8 +32,6 @@ const FeedPage = () => {
                     {songs.map((song) => (
                         <SingleSongCard
                         song={song}
-                        allLikes={allLikes}
-                        sessionUser={sessionUser}
                         key={song.id}
                         />
                     ))}

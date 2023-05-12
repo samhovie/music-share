@@ -23,6 +23,8 @@ export const deletelikeAction = (songId) => ({
     type: DELETE_LIKE,
     songId
 })
+//{songId: }
+//get all songs likes thunk, just
 
 
 export const getAllSongLikesThunk = (songId) => async (dispatch) => {
@@ -46,6 +48,7 @@ export const likeSongThunk = (songId) => async (dispatch) => {
     const response = await fetch(`/api/likes/${songId}`, {
         method: 'POST'
     })
+    console.log('REEESPOST',response)
     if (response.ok) {
         dispatch(getAllSongLikesThunk(songId))
     }
@@ -55,6 +58,7 @@ export const removeLikeThunk = (songId) => async (dispatch) => {
     const response = await fetch(`/api/likes/${songId}`, {
         method: 'DELETE'
     })
+    console.log('REEESSDEL',response)
     if (response.ok) {
         dispatch(getAllSongLikesThunk(songId))
     }

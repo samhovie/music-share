@@ -16,7 +16,7 @@ playlist_routes = Blueprint('playlists', __name__, url_prefix="/api/playlists")
 
 @playlist_routes.route('/')
 def get_all_playlists():
-    print('YOOO', request)
+    print('YOOOOOOOOOOOOO', request)
     playlists = Playlist.query.all()
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
 

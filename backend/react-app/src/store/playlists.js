@@ -57,6 +57,7 @@ export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
 
 export const getAllPlaylistsThunk = () => async (dispatch) => {
     const response = await fetch("/api/playlists/")
+    console.log("IN getAllPlaylistsThunk", response)
     if (response.ok) {
         const data = await response.json();
         console.log("data", data)

@@ -11,6 +11,8 @@ import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
 import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
+import { useHistory } from 'react-router-dom'
+import { createCommentThunk } from '../../store/comments'
 import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
@@ -21,10 +23,14 @@ const SingleSongCard = ({ song }) => {
     // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
     // console.log('likes', likesObj)
+    const history = useHistory()
+    const [comment, setComment] = useState('')
+    const allLikes = useSelector(state => state.likes)
+    // console.log('allLikes', allLikes)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
-    // console.log(song)
+    console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
 
     const submitHandler = (e) => {
@@ -66,8 +72,8 @@ const SingleSongCard = ({ song }) => {
                     style={{ marginRight: '1rem' }}
                 >
                     <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
-                        <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img>
-                        {/* <img src={`${}`}></img> */}
+                        {/* <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img> */}
+                        <img src={`${song.preview_img}`}></img>
                     </NavLink>
                 </div>
                 <div className='single-song-card-info'>

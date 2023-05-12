@@ -17,14 +17,15 @@ const alertClickHandler = () => {
 const CurrentUserPlaylist = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
-    console.log('user', userId)
+    const user = useSelector(state => state.session.user)
+    // console.log('user', userId)
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));
-    console.log('PAYLIST', allPlaylists)
+    // console.log('PAYLIST', allPlaylists)
     const user_id = allPlaylists.forEach(playlist => {
-        console.log('playlist user', playlist.user);
+        // console.log('playlist user', playlist.user);
     });
-    console.log(user_id)
+    // console.log(user_id)
 
     let userPlaylists = [];
     for (let playlist in allPlaylists) {
@@ -49,14 +50,16 @@ const CurrentUserPlaylist = () => {
                     />
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'
+                            <img src={`${user.profile_pic}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>
-                        <div className='profile-page-top-right'>
+                        <div className='profile-page-top-right'
+                        // style={{backgroundImage: `url(${user.banner_pic})`}}
+                        >
                             <div className='profile-page-top-right-left'>
-                                <div className='profile-page-top-display-name'>Oner</div>
-                                <div className='profile-page-top-full-name'>Moon Hyeon-joon</div>
+                                <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
+                                <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
                             <div>
                                 <button onClick={() => alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>

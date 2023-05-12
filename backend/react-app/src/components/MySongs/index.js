@@ -17,11 +17,12 @@ const alertClickHandler = () => {
 const CurrentUserSongs = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
+    const user = useSelector((state) => state.session.user)
 
     const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
-    console.log('PAYLIST', allSongs)
+    // console.log('PAYLIST', allSongs)
     const user_id = allSongs.forEach(song => {
-        console.log('song user', song.artist_id);
+        // console.log('song user', song.artist_id);
     });
     console.log(user_id)
 
@@ -48,14 +49,16 @@ const CurrentUserSongs = () => {
                     /> */}
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'
+                            <img src={`${user.profile_pic}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>
-                        <div className='profile-page-top-right'>
+                        <div className='profile-page-top-right'
+                        // style={{backgroundImage: `url(${user.banner_pic})`}}
+                        >
                             <div className='profile-page-top-right-left'>
-                                <div className='profile-page-top-display-name'>Oner</div>
-                                <div className='profile-page-top-full-name'>Moon Hyeon-joon</div>
+                                <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
+                                <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
                             <div>
                                 <button onClick={() => alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>

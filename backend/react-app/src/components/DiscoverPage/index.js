@@ -32,14 +32,14 @@ const DiscoverPage = () => {
 
                     {/* <div className='discover-page-inner-wrapper'> */}
                     <PlaylistWrapper playlists={playlists} />
-                    <PlaylistWrapper playlists={playlists} />
+                    {/* <PlaylistWrapper playlists={playlists} /> */}
                     {/* <PlaylistWrapper playlists={playlists} /> */}
                     {/* </div> */}
                 </div>
             </div>
-            {/* {playlists.map((playlist) => (
+            {playlists.map((playlist) => (
                 <PlaylistCard playlist={playlist} key={playlist.id} />
-            ))} */}
+            ))}
             {/* <PlaylistCard /> */}
 
 

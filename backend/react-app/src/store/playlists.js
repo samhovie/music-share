@@ -62,7 +62,7 @@ export const getAllPlaylistsThunk = () => async (dispatch) => {
         const data = await response.json();
         console.log("data", data)
         if (data.errors) {
-            return;
+            return data.errors;
         }
 
         dispatch(getAllPlaylistsAction(data));

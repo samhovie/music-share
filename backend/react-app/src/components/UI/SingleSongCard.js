@@ -21,11 +21,11 @@ const SingleSongCard = ({ song }) => {
     const history = useHistory()
     const [comment, setComment] = useState('')
     const allLikes = useSelector(state => state.likes)
-    console.log('allLikes', allLikes)
+    // console.log('allLikes', allLikes)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
-    console.log("SINGLESONGCARD SONGGGG", song)
+    // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
 
     const submitHandler = (e) => {

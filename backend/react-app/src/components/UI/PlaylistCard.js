@@ -2,17 +2,28 @@ import './PlaylistCard.css'
 import { NavLink } from 'react-router-dom'
 import OpenModalButton from '../OpenModalButton'
 import DeletePlaylist from '../DeletePlaylist'
+import { useSelector } from 'react-redux'
 
-const PlaylistCard = ({ playlist }) => {
-    console.log("PLAYLIST IN PLAYLIST CARD", playlist)
+const PlaylistCard = ({ playlist, playlistSong }) => {
     const playlistId = playlist.id
+
+
+    const playlists = useSelector(state => state.playlists.allPlaylists)
+    const arrayPlaylists = Object.values(playlists)
+    const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
+
+    const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
+    console.log("PLAYLIST IN PLAYLIST CARD", playlistsSongs)
+
+    if (!playlists) return null
+    // if (!playlistsSongs) return null
     return (
         <div className='playlist-card-wrapper'>
             <div className='playlist-card-image'>
                 {/* this is hardcoded, change later */}
                 <NavLink className='single-playlist-card-image-nav' to={`/playlists/${playlist.id}`} playlist={playlist}>
                     <img className='' src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
-                    {/* <img src={`${}`}></img> */}
+                    {/* <img src={`${playlistsSongs[0].preview_img}`}></img> */}
                 </NavLink>
             </div>
             <div className='playlist-card-display-name'>

@@ -3,11 +3,11 @@
     flex-direction: column;
     align-items: center;
     height: 80rem;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .song-details-page-top {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .song-details-page-bottom-wrapper {
@@ -26,12 +26,39 @@
 
 .song-details-page-post-comment {
     display: flex;
+    margin-bottom: 1rem;
+}
 
+.song-details-page-profile-pic {
+    display: flex;
+    align-items: center;
 }
 
 .song-details-page-profile-pic>img {
-    height: 30px;
-    width: 30px;
+    height: 34px;
+    width: 34px;
+}
+
+.song-details-page-comment-outer-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    background-color: gray;
+}
+
+.song-details-page-comment-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.song-details-page-comment-wrapper > form {
+    width: 100%;
+}
+
+.song-details-page-comment-input {
+    width: 99%;
 }
 
 .song-details-page-bottom-bar {
@@ -43,6 +70,10 @@
 
 .song-details-page-interactive-buttons {
     display: flex;
+}
+
+.song-details-page-interactive-buttons-like {
+    margin-right: 1rem;
 }
 
 .song-details-page-profile-comments {
@@ -74,4 +105,6 @@
 
 .song-details-page-display-comments-each {
     /* display: flex; */
+    width: 100%;
+    /* border: 1px solid purple; */
 }

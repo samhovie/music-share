@@ -30,6 +30,14 @@
     /* border: 1px solid black; */
 }
 
+.single-song-details-card-play-button {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+
+}
+
 .single-song-card-info-comment-input {
     width: 99%;
     margin-top: 2.5rem;

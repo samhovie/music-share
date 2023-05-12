@@ -37,8 +37,8 @@ playlist_songs = db.Table('playlist_songs',
 song_like = db.Table(
     'song_likes',
     # Base.metadata,
-    db.Column("user_id", db.ForeignKey("users.id"), primary_key=True),
-    db.Column("song_id", db.ForeignKey("songs.id"), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("song_id", db.ForeignKey(add_prefix_for_prod("songs.id")), primary_key=True),
 )
 
 # class CommentLike(db.Model):

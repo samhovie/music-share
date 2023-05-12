@@ -18,7 +18,10 @@ import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
-    const [comment, setComment] = useState()
+    const history = useHistory()
+    const [comment, setComment] = useState('')
+    // console.log('allLikes', allLikes)
+    // const [isLiked, setIsLiked] = useState()
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     const sessionUser = useSelector((state) => state.session.user)
     // const allLikes = useSelector(state => state.likes)
@@ -32,6 +35,15 @@ const SingleSongCard = ({ song }) => {
     // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('text', comment)
+        console.log(formData)
+        dispatch(createCommentThunk(formData, songId))
+        history.push(`/songs/${songId}`)
+    }
+
     useEffect(() => {
         // dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
@@ -43,13 +55,9 @@ const SingleSongCard = ({ song }) => {
     //     dispatch(likeSongThunk(songId))
     // }
 
-    const submitHandler = () => {
+    // const likesHandler = () => {
 
-    }
-
-    const likesHandler = () => {
-
-    }
+    // }
     return (
         <>
             <div className='single-song-card-wrapper'>

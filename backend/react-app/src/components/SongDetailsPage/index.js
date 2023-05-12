@@ -6,7 +6,7 @@ import './SongDetailsPage.css'
 import '../UI/GlobalOuterWrapper'
 import { getSongThunk } from '../../store/songs'
 import { createCommentThunk, getAllCommentsThunk } from '../../store/comments'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CommentComp from '../UI/CommentComp'
 import GetLikes from '../UI/GetLikes'
 
@@ -14,7 +14,7 @@ const SongDetailsPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { songId } = useParams();
-
+    const [url, setUrl] = useState("");
 
     const [comment, setComment] = useState('')
 
@@ -31,15 +31,21 @@ const SongDetailsPage = () => {
         const formData = new FormData()
         formData.append('text', comment)
         dispatch(createCommentThunk(formData, songId))
-        history.push(`/songs/${songId}`)
+        setUrl(`/songs/${songId}`)
+        // history.push(`/songs/${songId}`)
     }
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
         dispatch(getAllCommentsThunk(songId))
+        // if (url !== '') {
+        //     setUrl(`/songs/${songId}`)
+        // }
     }, [dispatch, songId])
 
     return (
+        <>
+        {url && <Redirect to={url}/>}
         <div className='global-outerwrapper-outer'>
             <div className='global-outerwrapper-wrapper'>
                 <div className='song-details-page-top'>
@@ -118,6 +124,7 @@ const SongDetailsPage = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

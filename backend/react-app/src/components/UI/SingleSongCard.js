@@ -18,7 +18,7 @@ import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
-    // const [isLiked, setIsLiked] = useState()
+    const [comment, setComment] = useState()
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     const sessionUser = useSelector((state) => state.session.user)
     // const allLikes = useSelector(state => state.likes)
@@ -42,6 +42,10 @@ const SingleSongCard = ({ song }) => {
     // const likesHandler = () => {
     //     dispatch(likeSongThunk(songId))
     // }
+
+    const submitHandler = () => {
+
+    }
 
     const likesHandler = () => {
 

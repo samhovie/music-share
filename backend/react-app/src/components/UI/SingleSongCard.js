@@ -5,17 +5,29 @@ import './SingleSongCard.css'
 import OpenModalButton from '../OpenModalButton'
 import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
-
+import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
+import { getAllSongLikesThunk } from '../../store/likes'
 
 
 const SingleSongCard = ({ song }) => {
+    const dispatch = useDispatch()
+    const allLikes = useSelector(state => state.likes)
+    console.log('allLikes', allLikes)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
     const songId = song.id
 
+    useEffect(() => {
+
+        dispatch(getAllSongLikesThunk(songId))
+    },[dispatch])
+
+    const likesHandler = () => {
+        
+    }
 
     return (
         <>
@@ -77,8 +89,10 @@ const SingleSongCard = ({ song }) => {
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
-                            <div className='single-song-card-info-bottom-left-column-heart'>
-                            <i class="fa-solid fa-heart" style={{color: 'yellow'}}></i>
+                            <div className='single-song-card-info-bottom-left-column-heart'
+
+                            >
+                            <i className="fa-solid fa-heart" style={{color: 'yellow'}}></i>
                                 Like
                             </div>
                             <div>

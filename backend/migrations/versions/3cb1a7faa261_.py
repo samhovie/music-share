@@ -95,8 +95,8 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
+        # op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
+        # op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
 
 

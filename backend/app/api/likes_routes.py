@@ -12,9 +12,17 @@ import os
 
 likes_routes = Blueprint('likes', __name__, url_prefix="/api/likes")
 
+@likes_routes.route('/')
+def get_all_song_likes():
+    all_song_likes = db.session.query(song_like).all()
+    print(all_song_likes)
+    return all_song_likes
+
+
+
 # get all likes for a specific song
 @likes_routes.route('/<int:songId>')
-def get_all_song_likes(songId):
+def get_all_specific_song_likes(songId):
     all_song_likes = db.session.query(song_like).filter(song_like.c.song_id == songId).all()
     userIds = [a[0] for a in all_song_likes]
     num_of_song_likes = len(userIds)

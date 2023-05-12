@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
 					<div className='navbar-site-button'
 					// style={{height: '40px'}}
 					>
-						<NavLink exact to="/"
+						<NavLink exact to="/discover"
 							style={{
 								textDecoration: 'none',
 								color: 'white',

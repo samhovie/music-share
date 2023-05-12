@@ -6,6 +6,7 @@ from app.models import song_like
 from app.models import db, User, Song
 from flask import redirect, request
 from .songs_routes import get_song
+import json
 import os
 
 
@@ -17,7 +18,9 @@ def get_all_song_likes(songId):
     all_song_likes = db.session.query(song_like).filter(song_like.c.song_id == songId).all()
     userIds = [a[0] for a in all_song_likes]
     num_of_song_likes = len(userIds)
-    return {'likes': num_of_song_likes}
+    return {'likes': num_of_song_likes,
+            'user_id': userIds
+            }
 
 
 
@@ -30,7 +33,8 @@ def get_all_user_liked_songs():
     songIds = [a[1] for a in all_user_likes]
     # print("songIdssssssssssssssssssssss", songIds)
     songs = [get_song(a) for a in songIds]
-    # print("songsssssssssssssssssssssssssss", songs)
+    print("songsssssssssssssssssssssssssss", songs)
+    # return json.dumps(songs)
     return songs
 
 # add a like to a song

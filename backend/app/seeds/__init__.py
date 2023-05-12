@@ -22,9 +22,9 @@ def seed():
         # undo_songs()
         # undo_playlists()
         undo_users()
-        undo_songs()
+        # undo_songs()
         # undo_playlist_songs()
-        undo_playlists()
+        # undo_playlists()
         undo_comments()
         undo_comments()
         # undo_playlist_songs()
@@ -46,9 +46,9 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_songs()
+    # undo_songs()
     # undo_playlist_songs()
-    undo_playlists()
+    # undo_playlists()
     undo_comments()
     undo_playlist_songs_users_likes()
     # Add other undo functions here

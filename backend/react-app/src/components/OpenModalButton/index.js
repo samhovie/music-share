@@ -6,7 +6,8 @@ function OpenModalButton({
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
-  onModalClose // optional: callback function that will be called once the modal is closed
+  onModalClose, // optional: callback function that will be called once the modal is closed
+  conditionalClass
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
@@ -16,9 +17,11 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
+  const buttonClass = 'open-modal-button' + (conditionalClass ? '-something' : '')
+
   return (
     <button onClick={onClick}
-    className='open-modal-button'
+    className={buttonClass}
     >{buttonText}</button>
   );
 }

@@ -37,5 +37,7 @@ class Playlist(db.Model):
             "updated_at": self.updated_at,
             "user": {
                 "username": self.user.username,
-            }
+                "id": self.user.id
+            },
+            "song": [song.to_dict() for song in self.song]
         }

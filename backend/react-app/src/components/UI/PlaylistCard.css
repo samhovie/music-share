@@ -1,12 +1,22 @@
 .playlist-card-wrapper {
-    display: inline-block;
-    width: 12rem;
-    height: 14.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 192px;
+    height: 228px;
     /* width: fit-content; */
-    border: 1px solid black;
+    /* float: right; */
+    margin-right: 1rem;
+    /* padding-right: 1rem; */
 }
 
-.playlist-card-image>img {
+.playlist-card-image {
+    border: 1px solid lightgray;
+    width: 12rem;
+    height: 12rem;
+
+}
+
+.playlist-card-image > img {
     width: 12rem;
     height: 12rem;
 }

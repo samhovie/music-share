@@ -1,7 +1,15 @@
 .playlist-wrapper-wrapper {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid gray;
+    padding-bottom: 2rem;
+    /* border: 1px solid orange; */
+    width: 90%;
+    border-bottom: 1px solid lightgray;
+}
+
+.playlist-wrapper-wrapper > h2 {
+    /* margin-top: rem; */
+    font-size: 25px;
 }
 
 .playlist-wrapper-description {
@@ -12,4 +20,8 @@
 .playlist-wrapper-title {
     font-size: 30px;
     font-weight: 400;
+}
+
+.playlist-wrapper-inner-wrapper {
+    display: flex;
 }

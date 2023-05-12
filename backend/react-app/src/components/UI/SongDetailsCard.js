@@ -10,7 +10,6 @@ const SongDetailsCard = ({ song }) => {
 
     return (
         <>
-
             <div className='song-details-card-wrapper'>
                 <div className='song-details-card-left'>
                     <div className='song-details-card-top'>

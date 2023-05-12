@@ -51,23 +51,30 @@ function ProfileButton({ user }) {
             {/* <li>{user.email}</li> */}
             <li>
               <NavLink exact to='/profile'
-                style={{textDecoration: 'none'}}
+                style={{ textDecoration: 'none' }}
               >
-                  Profile
+                Profile
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/likes'
-              style={{textDecoration: 'none'}}
+                style={{ textDecoration: 'none' }}
               >
                 Likes
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/songs'
-              style={{textDecoration: 'none'}}
+                style={{ textDecoration: 'none' }}
               >
                 My Songs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to='/playlists/current'
+                style={{ textDecoration: 'none' }}
+              >
+                My Playlists
               </NavLink>
             </li>
             <li>

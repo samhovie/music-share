@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <form action="/api/images" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            <div>
+                {{ form.image}}
+            </div>
+            {{ form.submit }}
+        </form>
+    </body>
+</html>

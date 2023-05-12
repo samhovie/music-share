@@ -13,7 +13,12 @@ import ProfilePage from "./components/ProfilePage";
 import SongDetailsPage from "./components/SongDetailsPage";
 // added???
 import PlaylistDetailsPage from "./components/PlaylistDetailsPage"
-import AddSongToPlaylist from "./components/AddSongToPlaylist"
+import AddSongToPlaylistModal from "./components/AddSongToPlaylistModal"
+import SongUpload from "./components/SongUpload";
+import CreatePlaylistForm from "./components/CreateNewPlaylist";
+import CurrentUserPlaylist from "./components/MyPlaylists";
+import CurrentUserSongs from "./components/MySongs";
+// import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,12 +32,27 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
-            <CreateSongForm />
+          <Route exact path='/upload'>
+            <SongUpload />
           </Route>
           <Route exact path='/profile'>
             <ProfilePage />
           </Route>
+<<<<<<< HEAD
+=======
+          <Route exact path="/playlists/current">
+            <CurrentUserPlaylist />
+          </Route>
+          <Route exact path="/playlists/new">
+            <CreatePlaylistForm />
+          </Route>
+          <Route exact path="/songs/current">
+            <CurrentUserSongs />
+          </Route>
+          <Route exact path='/playlists/:playlistId'>
+            <PlaylistDetailsPage />
+          </Route>
+>>>>>>> dev
           <Route exact path='/songs/:songId'>
             <SongDetailsPage />
           </Route>
@@ -49,11 +69,8 @@ function App() {
             <SignupFormPage />
           </Route>
           {/* added?? */}
-          <Route exact path="/playlists/:playlistId">
-            <PlaylistDetailsPage />
-          </Route>
           <Route exact path="/playlists/:playlistId/songs/:songId">
-            <AddSongToPlaylist />
+            <AddSongToPlaylistModal />
           </Route>
         </Switch>
       )}

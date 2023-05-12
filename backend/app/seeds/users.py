@@ -51,18 +51,23 @@ def seed_playlist_songs_users_likes():
     # marnie.user_like.append(song2)
     # bobbie.user_like.append(song2)
 
-    playlist1.song.append(song1)
-    playlist1.song.append(song2)
-    playlist2.song.append(song2)
-    playlist2.song.append(song1)
-    playlist3.song.append(song1)
+    # playlist1.song.append(song1)
+    # playlist1.song.append(song2)
+    # playlist2.song.append(song2)
+    # playlist2.song.append(song1)
+    # playlist3.song.append(song1)
+
+    db.session.execute(insert(playlist_songs).values(
+    playlist_id=1, song_id=1))
+    db.session.execute(insert(playlist_songs).values(
+    playlist_id=1, song_id=2))
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
-    db.session.add(playlist1)
-    db.session.add(playlist2)
-    db.session.add(playlist3)
+    # db.session.add(playlist1)
+    # db.session.add(playlist2)
+    # db.session.add(playlist3)
 
     db.session.commit()
 

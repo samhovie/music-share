@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3cb1a7faa261
+Revision ID: afb3df6b081c
 Revises:
-Create Date: 2023-05-12 11:22:54.894651
+Create Date: 2023-05-12 12:32:25.556101
 
 """
 from alembic import op
@@ -12,19 +12,14 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-def add_prefix_for_prod2(attr):
-    if environment == "production":
-        return f"{SCHEMA}.{attr}"
-    else:
-        return attr
-
 
 
 # revision identifiers, used by Alembic.
-revision = '3cb1a7faa261'
+revision = 'afb3df6b081c'
 down_revision = None
 branch_labels = None
 depends_on = None
+
 
 
 def upgrade():
@@ -76,14 +71,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table(add_prefix_for_prod2('playlist_songs'),
+    op.create_table('playlist_songs',
     sa.Column('playlist_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlists.id'], ),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('playlist_id', 'song_id')
     )
-    op.create_table(add_prefix_for_prod2('song_likes'),
+    op.create_table('song_likes',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
@@ -91,15 +86,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('user_id', 'song_id')
     )
     # ### end Alembic commands ###
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
-        # op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
-        # op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-
-
+        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
 
 
 

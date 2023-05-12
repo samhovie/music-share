@@ -23,6 +23,10 @@ function PlaylistDetailsPage() {
     console.log(current_user);
     console.log(owner)
 
+    const song = playlist.song;
+    console.log('song', song)
+    // console.log(array)
+
     // console.log(playlist)
     // console.log("user", playlist.user.username)
 
@@ -30,6 +34,7 @@ function PlaylistDetailsPage() {
     // const handleAddSongToPlaylist = () => {
     //     dispatch(addSongToPlaylistThunk(playlistId, songId));
     // };
+
 
     console.log(playlist)
 
@@ -84,7 +89,11 @@ function PlaylistDetailsPage() {
 
                             </div>
                             <div className='playlist-details-page-display-songs-each'>
-                                {/* for each song in playlist, render <SongInPlaylist /> passing in a song prop */}
+                                <div className='playlist-details-page-display-songs-each'>
+                                    {song?.map(s =>
+                                        <SingleSongCard key={s.id} song={s} />
+                                    )}
+                                </div>
                             </div>
                         </div>
 

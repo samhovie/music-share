@@ -8,15 +8,20 @@ from app.models import db
 import os
 from flask import redirect, request
 
-comment_routes = Blueprint('comments', __name__, url_prefix="")
+comment_routes = Blueprint('comments', __name__, url_prefix="/api/comments")
 
-@comment_routes.route('/api/songs/<int:id>/comments')
+
+
+
+@comment_routes.route('/<int:id>/')
 def get_song_comments(id):
     print('REQUEST', request)
     comments = Comment.query.filter_by(song_id = id).all()
     return json.dumps(comments, default=lambda c : c.to_dict())
 
-@comment_routes.route('/api/comments/<int:id>', methods=['DELETE'])
+
+
+@comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):
     comment = Comment.query.get(id)
     print(comment)
@@ -27,7 +32,9 @@ def delete_comment(id):
         db.session.commit()
         return {'success': 'good job'}
 
-@comment_routes.route('/api/songs/<int:id>/comments', methods=['POST'])
+
+
+@comment_routes.route('/<int:id>', methods=['POST'])
 def post_comment(id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']

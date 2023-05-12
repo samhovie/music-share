@@ -4,6 +4,7 @@ const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
+const UPDATE_PLAYLIST = 'songs/UPDATE_PLAYLIST'
 
 // const GET_USER_PLAYLISTS = "playlists/GET_USER_PLAYLISTS";
 
@@ -33,6 +34,11 @@ const createPlaylistAction = (playlist) => ({
 const deletePlaylistAction = (playlistId) => ({
     type: DELETE_PLAYLIST,
     playlistId
+})
+
+const updatePlaylistAction = (playlist) => ({
+    type: UPDATE_PLAYLIST,
+    playlist
 })
 
 export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
@@ -102,6 +108,26 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
         }
         dispatch(createPlaylistAction(data))
         return data
+    }
+}
+
+export const updatePlaylistThunk = (playlist, playlistId) => async (dispatch) => {
+    // console.log("TEST 2", song)
+    const response = await fetch(`/api/playlists/${playlistId}`, {
+        method: 'PUT',
+        body: playlist
+    })
+
+    if (response.ok) {
+        // console.log("TEST 3")
+        const data = await response.json();
+        // console.log("TEST 5", data)
+        if (data.errors) {
+            // console.log("TEST 6")
+            return data.errors
+        }
+        // console.log("TEST 4")
+        dispatch(updatePlaylistAction(data))
     }
 }
 

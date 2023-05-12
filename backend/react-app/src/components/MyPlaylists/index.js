@@ -17,6 +17,7 @@ const alertClickHandler = () => {
 const CurrentUserPlaylist = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
+    console.log('user', userId)
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));
     console.log('PAYLIST', allPlaylists)
@@ -84,11 +85,11 @@ const CurrentUserPlaylist = () => {
                                 </div>
                             </div>
                         </div>
-                            <div className="user-playlists-container">
-                                {userPlaylists.map((playlist) => (
-                                    <PlaylistCard key={playlist.id} playlist={playlist} />
-                                ))}
-                            </div>
+                        <div className="user-playlists-container">
+                            {userPlaylists.map((playlist) => (
+                                <PlaylistCard key={playlist.id} playlist={playlist} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

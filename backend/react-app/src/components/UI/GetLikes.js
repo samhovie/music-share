@@ -89,12 +89,16 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
           {sessionUser && (
             <div className='single-song-card-info-bottom-left-column-heart'>
               {!song.user_id.includes(sessionUser.id) ? (
-                <div onClick={likesHandler2}>
+                <div onClick={likesHandler2}
+                    className='likes-unlikes-handler'
+                >
                   <i className="fa-solid fa-heart" style={{ color: 'yellow' }}></i>
                   {`${song.likes}`} Like
                 </div>
               ) : (
-                <div onClick={unlikeHandler2}>
+                <div onClick={unlikeHandler2}
+                className='likes-unlikes-handler'
+                >
                   <i className="fa-solid fa-heart" style={{ color: 'yellow' }}></i>
                   {`${song.likes}`} Unlike
                 </div>

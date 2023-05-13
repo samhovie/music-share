@@ -79,7 +79,7 @@
     font-weight: bold;
     background-color: rgb(18, 208, 221);
     border-radius: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .single-song-card-info-bottom-left-column-heart > button {
@@ -88,6 +88,10 @@
     align-items: center;
     height: 1rem;
     width: 5rem;
+}
+
+.likes-unlikes-handler {
+    cursor:pointer;
 }
 
 .single-song-card-info-bottom-left-column-delete {

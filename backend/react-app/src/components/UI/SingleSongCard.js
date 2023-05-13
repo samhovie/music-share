@@ -133,7 +133,9 @@ const SingleSongCard = ({ song }) => {
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>
-                        <div className='single-song-card-info-bottom-left-column'>
+                        <div className='single-song-card-info-bottom-left-column'
+
+                        >
                             <GetLikes songId={songId}
                                       song={song}
                                       allLikes={allLikes}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { Provider, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -18,7 +18,20 @@ import SongUpload from "./components/SongUpload";
 import CreatePlaylistForm from "./components/CreateNewPlaylist";
 import CurrentUserPlaylist from "./components/MyPlaylists";
 import CurrentUserSongs from "./components/MySongs";
+import Player from "./components/Player";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
+
+
+export const PlayerContext = createContext();
+const PlayerProvider = ({children}) => {
+  const [url, setUrl] = useState('https://music-share-rhinos.s3.amazonaws.com/e2cb6758305b45d280045956bbfeb974.mp3')
+  return (
+    <PlayerContext.Provider value={{url, setUrl}}>
+      {children}
+    </PlayerContext.Provider>
+  );
+};
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,9 +40,15 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+
+
+
   return (
     <>
+    <PlayerProvider>
       <Navigation isLoaded={isLoaded} />
+      <Player/>
+
       {isLoaded && (
         <Switch>
           <Route exact path='/upload'>
@@ -71,6 +90,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </PlayerProvider>
     </>
   );
 }

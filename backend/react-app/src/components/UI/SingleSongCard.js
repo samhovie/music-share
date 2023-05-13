@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 // import OpenModalMenuItem from './'
 import './SingleSongCard.css'
@@ -13,8 +13,13 @@ import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom'
 import createCommentThunk from '../../store/songs'
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import { PlayerContext } from '../../App'
+
 
 import GetLikes from './GetLikes'
+
 
 const SingleSongCard = ({ song }) => {
     const dispatch = useDispatch()
@@ -31,7 +36,6 @@ const SingleSongCard = ({ song }) => {
     // console.log('likes', likesObj)
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
 
@@ -43,6 +47,15 @@ const SingleSongCard = ({ song }) => {
         dispatch(createCommentThunk(formData, songId))
         history.push(`/songs/${songId}`)
     }
+    // const Player = ({url}) => (
+    //     <AudioPlayer
+    //       autoPlay
+    //       src={url}
+    //     //   onPlay={e => setIsPlaying(!isPlaying)}
+    //       // other props here
+    //     />
+    //   );
+
 
     useEffect(() => {
         // dispatch(getAllSongsThunk())
@@ -58,8 +71,23 @@ const SingleSongCard = ({ song }) => {
     // const likesHandler = () => {
 
     // }
+
+
+    // const likesHandler = () => {
+
+    // }
+
+    const {url, setUrl} = useContext(PlayerContext)
+    function isPlayingClickHandler() {
+
+        setUrl(song.mp3_file)
+
+    }
+
+
     return (
         <>
+        {/* <Player url={song.mp3_file}></Player> */}
             <div className='single-song-card-wrapper'>
                 <div className='single-song-card-image'
                     style={{ marginRight: '1rem' }}
@@ -79,6 +107,7 @@ const SingleSongCard = ({ song }) => {
                                 style={{ marginRight: '1rem' }}
                                 onClick={isPlayingClickHandler}
                             >
+
                                 {!isPlaying ?
                                     <i className="fa-solid fa-circle-play"
                                         style={{ color: '#932db9', fontSize: '40px' }}
@@ -88,6 +117,10 @@ const SingleSongCard = ({ song }) => {
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                 }
+
+
+
+
                             </div>
                             <div className='single-song-card-next-to-play'>
                                 <div className='single-song-card-artist'>

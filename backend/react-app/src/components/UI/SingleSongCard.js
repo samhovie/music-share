@@ -47,15 +47,6 @@ const SingleSongCard = ({ song }) => {
         dispatch(createCommentThunk(formData, songId))
         history.push(`/songs/${songId}`)
     }
-    // const Player = ({url}) => (
-    //     <AudioPlayer
-    //       autoPlay
-    //       src={url}
-    //     //   onPlay={e => setIsPlaying(!isPlaying)}
-    //       // other props here
-    //     />
-    //   );
-
 
     useEffect(() => {
         // dispatch(getAllSongsThunk())
@@ -79,9 +70,15 @@ const SingleSongCard = ({ song }) => {
 
     const {url, setUrl} = useContext(PlayerContext)
     function isPlayingClickHandler() {
-
-        setUrl(song.mp3_file)
-
+        // pause song
+        setIsPlaying(!isPlaying)
+        if (!isPlaying) {
+            setUrl(song.mp3_file)
+        } else {
+            const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
+            const button = [...buttonCollection][0]
+            button.click()
+        }
     }
 
 

@@ -151,8 +151,8 @@ const SingleSongCard = ({ song, sessionUser, userSongs }) => {
                                       unlikeHandler2={unlikeHandler2}
                                       />
                             {sessionUser &&
-                             sessionUser.id === userSongs.artist_id &&
-                            (
+                             sessionUser.id === song.id &&
+
                             <>
                             {/* <div> */}
                                 <OpenModalButton
@@ -169,7 +169,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs }) => {
                                     {/* modalComponent={<ConfirmDelete />} /> */}
                             {/* </div> */}
                             </>
-                            )
+
                             }
 
                         </div>

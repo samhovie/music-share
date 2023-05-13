@@ -21,7 +21,7 @@ const SingleSongCard = ({ song }) => {
     console.log('SOOOOOOOOONNG', song)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     const sessionUser = useSelector((state) => state.session.user)
-    const [,setLikes] = useState(0)
+    const [,setLikes] = useState()
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
@@ -30,22 +30,26 @@ const SingleSongCard = ({ song }) => {
     const songId = song.id
     const likesHandler2 = () => {
         console.log('SOOONG3333',songId)
-        dispatch(likeSongThunk(songId))
-        dispatch(getAllSongsThunk())
 
         // history.push('/')
-        history.push('/feed')
-        window.location.reload()
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(likeSongThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
     }
 
     const unlikeHandler2 = () => {
         console.log('SOOONG4444',songId)
-        dispatch(removeLikeThunk(songId))
-        dispatch(getAllSongsThunk())
 
         // history.push('/')
-        history.push('/feed')
-        window.location.reload()
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(removeLikeThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
     }
     const [isPlaying, setIsPlaying] = useState(false)
 

@@ -20,7 +20,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         description: '',
         preview_img: ''
     });
-
+    console.log('playlist id', playlistId)
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId)); // assuming getPlaylistThunk is your thunk to load a specific playlist
     }, [dispatch, playlistId]);
@@ -29,7 +29,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         if (singlePlaylist) {
             setFormData({
                 name: singlePlaylist.name || '',
-                is_public: singlePlaylist.public || '',
+                is_public: singlePlaylist.is_public || '',
                 user_id: singlePlaylist.user_id || '',
                 description: singlePlaylist.description || '',
                 preview_img: singlePlaylist.preview_img || ''
@@ -84,6 +84,12 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                                 required
                                             />
                                         </div>
+                                        <input
+                                            type="checkbox"
+                                            name='is_public'
+                                            checked={formData.is_public}
+                                            onChange={handleChange}
+                                        />
                                         <div style={{ paddingBottom: '1rem' }}>
                                             <div>
                                                 <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>

@@ -8,6 +8,7 @@ export default function CreateSongForm() {
   const [mp3_file, setMp3] = useState('')
   const [genre, setGenre] = useState('')
   const [artist_name, setArtist_name] = useState('')
+  const [preview_img, setPreviewImg] = useState('')
   const [id, setId] = useState('')
 
   // console.log('hello')
@@ -24,6 +25,7 @@ export default function CreateSongForm() {
     formData.append('name', name)
     formData.append('artist_name', artist_name)
     formData.append('genre', genre)
+    formData.append('preview_img', preview_img)
     console.log(formData)
 
 
@@ -57,10 +59,10 @@ export default function CreateSongForm() {
 
   }
 
-//   const updateImage = (e) => {
-//     const file = e.target.files[0];
-//     setImage(file);
-// }
+  //   const updateImage = (e) => {
+  //     const file = e.target.files[0];
+  //     setImage(file);
+  // }
 
 
 
@@ -71,20 +73,20 @@ export default function CreateSongForm() {
 
   return (
     <>
-    {/* {audio !== '' && */}
-    < div >
-      <button onClick={start}>Play</button>
-    </div >
-    {/* } */}
-    <form
-          action="/api/songs/new"
-          method="POST"
-          enctype="multipart/form-data"
-          onSubmit={handleSubmit}
-          >
+      {/* {audio !== '' && */}
+      < div >
+        <button onClick={start}>Play</button>
+      </div >
+      {/* } */}
+      <form
+        action="/api/songs/new"
+        method="POST"
+        enctype="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
 
 
-      {/* <h1>Create a Song</h1>
+        {/* <h1>Create a Song</h1>
       <form method='POST' onSubmit={handleSubmit}> */}
         {/* <ul>
               {errors.map((error, idx) => (
@@ -138,9 +140,9 @@ export default function CreateSongForm() {
         </label> */}
         <label>
           <input
-           type="file"
-           accept="audio/*"
-          onChange={(e) => setMp3(e.target.files[0])}
+            type="file"
+            accept="audio/*"
+            onChange={(e) => setMp3(e.target.files[0])}
           >
           </input>
         </label>
@@ -152,6 +154,15 @@ export default function CreateSongForm() {
             onChange={(e) => setGenre(e.target.value)}
             required
           />
+        </label>
+        <label>
+          Preview Image
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPreviewImg(e.target.files[0])}
+          >
+          </input>
         </label>
         {/* <label>
           <input

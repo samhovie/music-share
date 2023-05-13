@@ -10,18 +10,24 @@ import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
 import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
 import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
-import { getAllSongsThunk } from '../../store/songs'
+import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
 import { useHistory } from 'react-router-dom'
 
-const SingleSongCard = ({ song }) => {
+const SingleSongCard = ({ song, sessionUser, userSongs }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
     console.log('SOOOOOOOOONNG', song)
+    console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
-    const sessionUser = useSelector((state) => state.session.user)
+    // const sessionUser = useSelector((state) => state.session.user)
+    // const userSongs = useSelector((state) => state.songs.singleSong)
+    console.log('UUUUSER', userSongs)
+    // console.log(userSongs)
     const [,setLikes] = useState()
+
+
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
@@ -59,6 +65,7 @@ const SingleSongCard = ({ song }) => {
     useEffect(() => {
         dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
+
         // dispatch(getUserLikedSongs())
     },[dispatch])
 
@@ -143,12 +150,16 @@ const SingleSongCard = ({ song }) => {
                                       likesHandler2={likesHandler2}
                                       unlikeHandler2={unlikeHandler2}
                                       />
-                            <div>
+                            {sessionUser &&
+                             sessionUser.id === userSongs.artist_id &&
+                            (
+                            <>
+                            {/* <div> */}
                                 <OpenModalButton
                                     buttonText="Update"
                                     modalComponent={<UpdateSongForm songId={songId}/>} />
-                            </div>
-                            <div >
+                            {/* </div> */}
+                            {/* <div > */}
                                 {/* <button>Delete</button>
                                 className='single-song-card-info-bottom-left-column-delete'
                                 */}
@@ -156,7 +167,10 @@ const SingleSongCard = ({ song }) => {
                                     buttonText="Delete"
                                     modalComponent={<ConfirmDelete songId={songId}/>} />
                                     {/* modalComponent={<ConfirmDelete />} /> */}
-                            </div>
+                            {/* </div> */}
+                            </>
+                            )
+                            }
 
                         </div>
                         <OpenModalButton

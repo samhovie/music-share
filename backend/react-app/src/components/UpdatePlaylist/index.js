@@ -5,6 +5,7 @@ import { updatePlaylistThunk } from '../../store/playlists';
 import { getPlaylistThunk } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
+import Upload from '../UploadImg';
 
 const UpdatePlaylistForm = ({ playlistId }) => {
     const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
@@ -39,14 +40,18 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        if (e.target.files) {
+            setFormData({ ...formData, [name]: e.target.files[0] });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
         console.log(updatedPlaylist);
-        closeModal();
+        // closeModal();
         if (updatedPlaylist) {
             history.push(`/playlists/${playlistId}`);
         }
@@ -60,8 +65,8 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                         <div className='upload-song-inner-wrapper'>
                             <form
                                 className='upload-song-form'
-                                action={`/ api / playlists / ${playlistId}`}
-                                method="PUT"
+                                // action={`/ api / playlists / ${playlistId}`}
+                                // method="PUT"
                                 encType="multipart/form-data"
                                 onSubmit={handleSubmit}
                             >
@@ -108,10 +113,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                         {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         > */}
-                                        <div>
+                                        {/* <div>
                                             <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                             <label style={{ paddingBottom: '.5rem' }}>
-                                                &nbsp;Preview Image URL
+                                                &nbsp;Preview Image
                                             </label>
 
                                         </div>
@@ -124,7 +129,13 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                             required
                                         >
 
-                                        </input>
+                                        </input> */}
+                                        <label>
+                                            Preview Image:
+                                            <Upload onChange={(e) => handleChange({ target: { name: 'preview_img', value: e.target.files[0] } })} />
+
+                                            {/* <Upload onChange={(e) => setPreviewImg(e.target.files[0])} /> */}
+                                        </label>
 
                                         <div className='upload-song-form-bottom'>
                                             <div style={{ display: 'flex', alignItems: 'center' }}>

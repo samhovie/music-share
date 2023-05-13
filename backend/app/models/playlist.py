@@ -17,9 +17,9 @@ class Playlist(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     # song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable = False)
     description = db.Column(db.String(255))
-    preview_img = db.Column(db.String(
-        255), default='https://www.akc.org/wp-content/uploads/2017/04/Lagotto-Romangolo-Tongue-Out.jpg')
+    preview_img = db.Column(db.String(255))
     created_at = db.Column(db.Date, nullable=False)
+    # 255), default='https://www.akc.org/wp-content/uploads/2017/04/Lagotto-Romangolo-Tongue-Out.jpg')
     updated_at = db.Column(db.Date, nullable=False)
     # created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     # updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())

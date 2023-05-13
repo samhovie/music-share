@@ -97,6 +97,7 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
     formData.append('name', playlist.name);
     formData.append('is_public', playlist.is_public);
     formData.append('description', playlist.description);
+    formData.append('preview_img', playlist.preview_img);
     const response = await fetch('/api/playlists/new', {
         method: 'POST',
         body: formData
@@ -126,7 +127,8 @@ export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispa
             is_public: updatedPlaylist.is_public,
             user_id: updatedPlaylist.user_id,
             description: updatedPlaylist.description,
-            id: updatedPlaylist.id
+            id: updatedPlaylist.id,
+            preview_img: updatedPlaylist.preview_img
         }),
     })
 

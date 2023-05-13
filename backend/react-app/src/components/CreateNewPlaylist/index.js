@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPlaylistThunk } from '../../store/playlists';
+import Upload from '../UploadImg';
 
 function CreatePlaylistForm() {
     const dispatch = useDispatch();
@@ -41,6 +42,10 @@ function CreatePlaylistForm() {
                     onChange={e => setNewPlaylist({ ...newPlaylist, description: e.target.value })}
                     placeholder="Description"
                 />
+            </label>
+            <label>
+                Playlist Image:
+                <Upload onChange={e => setNewPlaylist({ ...newPlaylist, image: e.target.files[0] })} />
             </label>
             <button type="submit">Create Playlist</button>
         </form>

@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './SongUpload.css'
 import { useState } from 'react'
 import { createSongThunk } from '../../store/songs'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useHistory } from 'react-router-dom'
+import Upload from '../UploadImg';
 
 const SongUpload = () => {
     const dispatch = useDispatch()
@@ -151,13 +152,17 @@ const SongUpload = () => {
 
                                         </div>
                                         <label>
-                                            Preview Image
-                                            <input
+                                            {/* Preview Image */}
+                                            {/* <input
                                                 type="file"
                                                 accept=".jpg, .jpeg, .png, .gif"
                                                 onChange={(e) => setPreviewImg(e.target.files[0])}
                                             >
-                                            </input>
+                                            </input> */}
+                                            <label>
+                                                Preview Image:
+                                                <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
+                                            </label>
                                         </label>
                                         <div>
                                             <label>

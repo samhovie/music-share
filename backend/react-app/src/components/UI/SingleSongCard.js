@@ -12,25 +12,48 @@ import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
+import { useHistory } from 'react-router-dom'
 
 const SingleSongCard = ({ song }) => {
+    const history = useHistory()
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
+    console.log('SOOOOOOOOONNG', song)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     const sessionUser = useSelector((state) => state.session.user)
+    const [,setLikes] = useState(0)
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
     // console.log('likes', likesObj)
+    const songId = song.id
+    const likesHandler2 = () => {
+        console.log('SOOONG3333',songId)
+        dispatch(likeSongThunk(songId))
+        dispatch(getAllSongsThunk())
+
+        // history.push('/')
+        history.push('/feed')
+        window.location.reload()
+    }
+
+    const unlikeHandler2 = () => {
+        console.log('SOOONG4444',songId)
+        dispatch(removeLikeThunk(songId))
+        dispatch(getAllSongsThunk())
+
+        // history.push('/')
+        history.push('/feed')
+        window.location.reload()
+    }
     const [isPlaying, setIsPlaying] = useState(false)
 
     const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
-    const songId = song.id
 
     useEffect(() => {
-        // dispatch(getAllSongsThunk())
+        dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
         // dispatch(getUserLikedSongs())
     },[dispatch])
@@ -108,8 +131,11 @@ const SingleSongCard = ({ song }) => {
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'>
                             <GetLikes songId={songId}
+                                      song={song}
                                       allLikes={allLikes}
                                       sessionUser={sessionUser}
+                                      likesHandler2={likesHandler2}
+                                      unlikeHandler2={unlikeHandler2}
                                       />
                             <div>
                                 <OpenModalButton

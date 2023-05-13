@@ -1,5 +1,5 @@
 // constants
-const GET_ALLSONGS = "songs/GET_ALLSONGS";
+export const GET_ALLSONGS = "songs/GET_ALLSONGS";
 const GET_SONG = 'songs/GET_SONG'
 const CREATE_SONG = 'songs/CREATE_SONG'
 const UPDATE_SONG = 'songs/UPDATE_SONG'
@@ -7,7 +7,7 @@ const DELETE_SONG = 'songs/DELETE_SONG'
 
 
 
-const getAllSongsAction = (songs) => ({
+export const getAllSongsAction = (songs) => ({
 	type: GET_ALLSONGS,
 	songs
 });
@@ -37,6 +37,7 @@ export const getAllSongsThunk = () => async (dispatch) => {
 	const response = await fetch("/api/songs/")
 	if (response.ok) {
 		const data = await response.json();
+		console.log('DDDAAATAAALLSONGS', data)
 		if (data.errors) {
 			return;
 		}

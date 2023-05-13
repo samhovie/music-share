@@ -1,3 +1,5 @@
+import { GET_ALLSONGS, getAllSongsThunk } from './songs'
+import {getAllSongsAction} from './songs'
 const GET_ALL_LIKES = 'likes/GET_ALL_LIKES'
 const GET_USER_LIKES = 'likes/GET_USER_LIKES'
 const POST_LIKE = 'likes/POST_LIKE'
@@ -65,7 +67,7 @@ export const removeLikeThunk = (songId) => async (dispatch) => {
 }
 
 
-const initialState = { allLikes: {}, userLikes: {} };
+const initialState = { allLikes: {}, userLikes: {}, songs: {} };
 
 export default function likesReducer(state = initialState, action) {
   let newState;
@@ -73,11 +75,22 @@ export default function likesReducer(state = initialState, action) {
     case GET_ALL_LIKES:
     //  console.log('action', action.likes)
       newState = {...state, allLikes: { 'likes': action.likes}}
-      return newState
+
+//   newState = { ...state, allLikes: action.likes };
+  return newState;
     case GET_USER_LIKES:
         newState = {...state, userLikes: {...action.likes}}
         return newState
+    case GET_ALLSONGS:
+        // console.log('AAAACTION', action.songs)
+        if (action.songs && action.songs.songs) {
+            newState = { ...state, allSongs: { ...action.allSongs } };
+            action.songs.songs.forEach(song => (newState.allSongs[song.id] = song));
+            return newState;
+          }
+          return state;
     default:
       return state;
+
   }
 }

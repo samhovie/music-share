@@ -17,6 +17,7 @@ import AddSongToPlaylistModal from "./components/AddSongToPlaylistModal"
 import SongUpload from "./components/SongUpload";
 import CreatePlaylistForm from "./components/CreateNewPlaylist";
 import CurrentUserPlaylist from "./components/MyPlaylists";
+import Likes from "./components/Likes";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/likes'>
+            <Likes />
+          </Route>
           <Route exact path='/upload'>
             <SongUpload />
           </Route>

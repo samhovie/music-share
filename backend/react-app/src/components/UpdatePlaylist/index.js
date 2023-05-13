@@ -18,7 +18,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         is_public: '',
         user_id: '',
         description: '',
-        // preview_img: ''
+        preview_img: ''
     });
 
     useEffect(() => {
@@ -32,11 +32,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                 is_public: singlePlaylist.public || '',
                 user_id: singlePlaylist.user_id || '',
                 description: singlePlaylist.description || '',
-                // preview_img: singlePlaylist.preview_img || ''
+                preview_img: singlePlaylist.preview_img || ''
             });
         }
     }, [singlePlaylist]);
-    console.log('helloå=')
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -103,23 +102,24 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                         {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         > */}
-                                        {/* <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Preview Image URL
-                                                </label>
+                                        <div>
+                                            <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                            <label style={{ paddingBottom: '.5rem' }}>
+                                                &nbsp;Preview Image URL
+                                            </label>
 
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-img-url'
-                                                type='text'
-                                                value={preview_img}
-                                                onChange={(e) => setPreviewImg(e.target.value)}
-                                                required
-                                            >
+                                        </div>
+                                        <input
+                                            className='upload_playlist_img'
+                                            type='text'
+                                            name='preview_img'
+                                            value={formData.preview_img}
+                                            onChange={handleChange}
+                                            required
+                                        >
 
-                                            </input>
-                                        </div> */}
+                                        </input>
+
                                         <div className='upload-song-form-bottom'>
                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                 <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>

@@ -193,7 +193,16 @@ export default function playlistsReducer(state = initialState, action) {
             newState = { ...state }
             newState.singlePlaylist = { ...action.playlist }
             return newState
-        case CREATE_PLAYLIST:
+        case UPDATE_PLAYLIST: {
+            newState = {
+                ...state,
+                singlePlaylist: {
+                    ...state.singlePlaylist,
+                },
+            };
+            newState[action.playlist.id] = action.playlist;
+            return newState;
+        }
         // console.log("STATEEEE", state)
         // console.log("ACTIONNN", action)
         // newState = { ...state, singlePlaylist: { ...action.singlePlaylist } }

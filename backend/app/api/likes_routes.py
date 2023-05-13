@@ -25,18 +25,20 @@ def get_all_song_likes(songId):
 
 
 # get all of a user's liked songs
-# @likes_routes.route('/user')
-# def get_all_user_liked_songs():
-#     current_user_id = current_user.id
-#     # song = Song.query.get(id)
-#     all_user_likes = db.session.query(song_like).filter(song_like.c.user_id == current_user_id).all()
-#     # print("all_user_likessssssssssssssss", all_user_likes)
-#     songIds = [a[1] for a in all_user_likes]
-#     # print("songIdssssssssssssssssssssss", songIds)
-#     songs = [get_song(a) for a in songIds]
-#     print("songsssssssssssssssssssssssssss", songs)
-#     # return json.dumps(songs)
-#     return songs
+@likes_routes.route('/user')
+def get_all_user_liked_songs():
+    current_user_id = current_user.id
+    # songQuery = Song.query.get(id)
+    # song = songQuery.to_dict()
+    all_user_likes = db.session.query(song_like).filter(song_like.c.user_id == current_user_id).all()
+    print("all_user_likessssssssssssssss", all_user_likes)
+    songIds = [a[1] for a in all_user_likes]
+    print("songIdssssssssssssssssssssss", songIds)
+    # songs = [get_song(a) for a in songIds]
+    songs = [Song.query.get(a).to_dict() for a in songIds]
+    # print("songsssssssssssssssssssssssssss", songs)
+    # return json.dumps(songs)
+    return { 'userSongs': songs }
 
 # add a like to a song
 @likes_routes.route('/<int:songId>', methods = ['POST'])

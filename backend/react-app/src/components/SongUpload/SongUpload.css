@@ -9,13 +9,15 @@
 .upload-song-inner-wrapper {
     height: 55rem;
     width: 40rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .upload-song-form {
+    margin-top: 5rem;
     height: 80%;
     padding: 1rem;
     /* border: 1px solid red; */
+    background-color: cadetblue;
 }
 
 .upload-song-form-wrapped {
@@ -27,10 +29,15 @@
     padding-right: 1rem;
 }
 
-.upload-song-form-upload > img {
+.upload-song-form-upload > input {
     height: 15.4rem;
     width: 15.4rem;
 }
+
+/* .upload-song-form-upload > img {
+    height: 15.4rem;
+    width: 15.4rem;
+} */
 
 .upload-song-form-info {
     height: 100%;

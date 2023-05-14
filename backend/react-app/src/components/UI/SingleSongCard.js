@@ -72,8 +72,18 @@ const SingleSongCard = ({ song }) => {
 
 
     function isPlayingClickHandler() {
-        // pause song
 
+
+
+        // show player (on first play?)
+        const mainCollection = document.getElementsByClassName("rhap_container");
+        const mainPlayer = [...mainCollection][0]
+        mainPlayer.style.visibility = 'visible'
+        mainPlayer.style.opacity = '1'
+
+
+
+        // I know we need to do the get func that just grabs the first one but I'm too lazy to look it up
         const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
         const button = [...buttonCollection][0]
 

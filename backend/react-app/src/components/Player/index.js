@@ -1,6 +1,7 @@
 import React, { useContext, createRef } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import './Player.css'
 import { PlayerContext } from "../../App";
 
 export default function Player() {
@@ -22,7 +23,6 @@ export default function Player() {
           // we need to check if there is a url to set it to playing
           setIsPlaying(Boolean(url))
         }
-        console.log('player', isPlaying)
 
       }
 

@@ -35,7 +35,11 @@ const UserLikesPage = () => {
         <>
         {userSongs.length > 0 ?
         <>
-        <h3>Here are all the awesome vibes you've liked!</h3>
+        <div
+        className='user-likes-page-top'
+        >
+        <h3>Check out all the awesome vibes you've liked!</h3>
+        </div>
         <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>
                     <div className='feed-page-wrapper'>

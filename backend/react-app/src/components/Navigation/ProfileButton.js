@@ -6,7 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const history = useHistory()
@@ -91,6 +91,7 @@ function ProfileButton({ user }) {
             <li>
               <button
               className='nav-bar-profile-button-log-out'
+              type='submit'
               onClick={handleLogout}>Log Out</button>
             </li>
           </>

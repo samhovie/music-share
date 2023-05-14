@@ -14,6 +14,8 @@ const UserLikesPage = () => {
     const userSongs = useSelector((state) => state.likes.userLikes.userSongs)
     const [isUserLikesPage, setIsUserLikesPage] = useState(false)
 
+    // const songs = Object.values(userSongs)
+
     // console.log(userSongs)
     useEffect(() => {
         setIsUserLikesPage(true)

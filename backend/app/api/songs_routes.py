@@ -171,4 +171,5 @@ def delete_song(id):
 @songs_routes.route('/<int:id>')
 def get_song(id):
     song = Song.query.get(id)
+    print('song in songs routes', song)
     return song.to_dict()

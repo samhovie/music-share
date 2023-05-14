@@ -6,7 +6,7 @@ import GetSong from './GetSong'
 import GetUser from './GetUser'
 
 const CommentComp = ({ comment }) => {
-    console.log("DOOM", comment)
+    // console.log("DOOM", comment)
     const dispatch = useDispatch()
 
     const commentOwner = comment && comment.userId

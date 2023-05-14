@@ -48,9 +48,9 @@ export const getAllUsersThunk = () => async (dispatch) => {
 };
 
 export const getUserThunk = (id) => async (dispatch) => {
-	// console.log("THE IDDDD ", id)
+	console.log("THE PASSED IDDDD ", id)
 	const response = await fetch(`/api/users/${id}`)
-	// console.log("THE RESPONSE ", response)
+	console.log("THE RESPONSE ", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {

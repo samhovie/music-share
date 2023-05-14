@@ -33,10 +33,7 @@ def seed_playlist_songs_users_likes():
         username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name ='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='https://i.scdn.co/image/ab6761610000e5ebd1ec5a64a834adc0e2ba03a2')
 
 
-    song1 = Song(
-        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", preview_img='https://citizeninsane.eu/music/okc/img/karmapoliceprint.jpg', created_at=date.today(), updated_at=date.today())
-    song2 = Song(
-        name="Karma", artist_name="Efren", artist_id=2, mp3_file="song2.mp3", genre="Rock", preview_img='https://citizeninsane.eu/music/okc/img/karmapoliceprint.jpg', created_at=date.today(), updated_at=date.today())
+
     song3 = Song(
         name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="4N.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song4 = Song(
@@ -57,6 +54,22 @@ def seed_playlist_songs_users_likes():
         name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Hearmyvoice.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song12 = Song(
         name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="Neverstoppingatall.mp3", genre="Instrumental", preview_img='https://i1.sndcdn.com/artworks-000640383319-5urady-t500x500.jpg', created_at=date.today(), updated_at=date.today())
+
+
+
+    song1 = Song(
+        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bdc505fef18742a6954daa345f9e3068.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
+    )
+    song2 = Song(
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bf2be0b18f4b4f85aaa5d2f3bac9642a.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+    )
+    # new songs SH
+    song13 = Song(
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/8031c80c59fa42a5ba129c7077172139.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+    )
+    song14 = Song(
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+    )
 
     playlist1 = Playlist(
         name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
@@ -93,6 +106,9 @@ def seed_playlist_songs_users_likes():
     db.session.add(song10)
     db.session.add(song11)
     db.session.add(song12)
+    # new songs SH
+    db.session.add(song13)
+    db.session.add(song14)
     db.session.add(playlist1)
     db.session.add(playlist2)
     db.session.add(playlist3)

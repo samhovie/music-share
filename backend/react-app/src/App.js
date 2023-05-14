@@ -24,11 +24,17 @@ import SplashPage from "./components/SplashPage";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 
+function usePlayer() {
+  const [url, setUrl] = useState('');
+  const [isPlaying, setIsPlaying] = useState(false);
+  return {url, setUrl, isPlaying, setIsPlaying};
+}
+
 export const PlayerContext = createContext();
-const PlayerProvider = ({ children }) => {
-  const [url, setUrl] = useState('https://music-share-rhinos.s3.amazonaws.com/e2cb6758305b45d280045956bbfeb974.mp3')
+const PlayerProvider = ({children}) => {
+  const {url, setUrl, isPlaying, setIsPlaying} = usePlayer()
   return (
-    <PlayerContext.Provider value={{ url, setUrl }}>
+    <PlayerContext.Provider value={{url, setUrl, isPlaying, setIsPlaying}}>
       {children}
     </PlayerContext.Provider>
   );
@@ -41,7 +47,6 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
 
 
 

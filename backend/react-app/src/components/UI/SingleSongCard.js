@@ -63,7 +63,8 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
         // history.push('/feed')
         // window.location.reload()
     }
-    const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, setIsPlaying] = useState(false)
 
     // const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
@@ -76,16 +77,8 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
         dispatch(createCommentThunk(formData, songId))
         history.push(`/songs/${songId}`)
     }
-    // const Player = ({url}) => (
-    //     <AudioPlayer
-    //       autoPlay
-    //       src={url}
-    //     //   onPlay={e => setIsPlaying(!isPlaying)}
-    //       // other props here
-    //     />
-    //   );
 
-
+    const {url, setUrl, isPlaying, setIsPlaying} = useContext(PlayerContext)
     useEffect(() => {
         dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
@@ -107,10 +100,38 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
 
     // }
 
-    const {url, setUrl} = useContext(PlayerContext)
+
+
     function isPlayingClickHandler() {
-        setIsPlaying(!isPlaying)
-        setUrl(song.mp3_file)
+
+
+
+        // show player (on first play?)
+        const mainCollection = document.getElementsByClassName("rhap_container");
+        const mainPlayer = [...mainCollection][0]
+        mainPlayer.style.visibility = 'visible'
+        mainPlayer.style.opacity = '1'
+
+
+
+        // I know we need to do the get func that just grabs the first one but I'm too lazy to look it up
+        const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
+        const button = [...buttonCollection][0]
+
+        // if we're on a song card we can always set it without checking if there's a url
+        if (!isPlaying && url !== song.mp3_file) {
+            // song will autoplay on change
+            setUrl(song.mp3_file)
+        } else if(!isPlaying && url === song.mp3_file) {
+            // we need to unpause
+            button.click()
+        }
+        else {
+            // it's playing our song
+            // we want to click the main button to that pauses it
+            button.click()
+        }
+        console.log('card', isPlaying)
     }
 
 
@@ -137,12 +158,12 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                 onClick={isPlayingClickHandler}
                             >
 
-                                {!isPlaying ?
-                                    <i className="fa-solid fa-circle-play"
+                                {isPlaying && url === song.mp3_file ?
+                                    <i className="fa-solid fa-pause "
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                     :
-                                    <i className="fa-solid fa-pause"
+                                    <i className="fa-solid fa-circle-play"
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                 }

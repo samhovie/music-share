@@ -34,7 +34,7 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
 
     const likes = allLikes && allLikes.likes
     const userIds = allLikes && allLikes.user_id
-    console.log('ALLLLIIIKES', userIds)
+    // console.log('ALLLLIIIKES', userIds)
 
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)

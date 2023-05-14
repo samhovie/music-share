@@ -19,7 +19,7 @@ const FeedPage = () => {
         dispatch(getSongThunk(sessionUser.id))
     }, [dispatch])
 
-    console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
+    // console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>

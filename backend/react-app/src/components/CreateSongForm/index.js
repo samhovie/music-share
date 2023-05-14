@@ -24,7 +24,7 @@ export default function CreateSongForm() {
     formData.append('name', name)
     formData.append('artist_name', artist_name)
     formData.append('genre', genre)
-    console.log(formData)
+    // console.log(formData)
 
 
     // const data = {
@@ -49,7 +49,7 @@ export default function CreateSongForm() {
     if (response.ok) {
       const item = await response.json();
       // dispatch(add(item));
-      console.log(item['mp3_file'])
+      // console.log(item['mp3_file'])
       audio = new Audio(item['mp3_file'])
       return item;
     }

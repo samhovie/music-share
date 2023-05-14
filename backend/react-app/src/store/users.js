@@ -79,9 +79,17 @@ export const getUserThunk = (id) => async (dispatch) => {
 
 export const updateUserThunk = (user, userId) => async (dispatch) => {
 	console.log("TEST 2", user)
+	// console.log("TEST ENTRIES", user.entries())
+	const formData = new FormData()
+        formData.append('display_name', user.display_name)
+        formData.append('first_name', user.first_name)
+        formData.append('last_name', user.last_name)
+        formData.append('city', user.city)
+        formData.append('country', user.country)
+        formData.append('bio', user.bio)
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'PUT',
-		body: user
+		body: formData
 	})
 	console.log(response)
 	if (response.ok) {

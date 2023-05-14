@@ -8,70 +8,53 @@ import { useHistory } from 'react-router-dom'
 const UpdateProfile = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { closeModal } = useModal
+    const { closeModal } = useModal()
     const user = useSelector(state => state.session.user)
-    // const [displayName, setDisplayName] = useState(user.displayName)
-    // const [firstName, setFirstName] = useState(user.firstName)
-    // const [lastName, setLastName] = useState(user.lastName)
-    // const [city, setCity] = useState(user.city)
-    // const [country, setCountry] = useState(user.coutnry)
-    // const [bio, setBio] = useState(user.bio)
-    // const [err, setErr] = useState({})
-    // const [displayErr, setDisplayErr] = useState(false)
-    // const [changed, setChanged] = useState(false)
-    const [formData, setFormData] = useState({
-        displayName: '',
-        firstName: '',
-        lastName: '',
-        city: '',
-        country: '',
-        bio: '',
-        // profile_pic: ''
-    });
+    const [displayName, setDisplayName] = useState(user.display_name)
+    const [firstName, setFirstName] = useState(user.first_name)
+    const [lastName, setLastName] = useState(user.last_name)
+    const [city, setCity] = useState(user.city)
+    const [country, setCountry] = useState(user.country)
+    const [bio, setBio] = useState(user.bio)
+    const [err, setErr] = useState({})
+    const [displayErr, setDisplayErr] = useState(false)
+    const [changed, setChanged] = useState(false)
 
     useEffect(() => {
-        if (user) {
-            setFormData({
-                displayName: user.displayName || '',
-                firstName: user.firstName || '',
-                lastName: user.lastName || '',
-                city: user.city || '',
-                country: user.country || '',
-                bio: user.bio || '',
-                // profile_pic: user.profile_pic || ''
-            });
-        }
-    }, [user]);
+        const errors = {}
+        if (!displayName) errors.displayName = "Display name is required"
+        if (!firstName) errors.firstName = "First name is required"
+        if (!lastName) errors.lastName = "Last name is required"
+        if (!city) errors.city = "City is required"
+        if (!country) errors.country = "Country is required"
+        if (!bio) errors.bio = "bio is required"
+        if (bio && bio.length > 200) errors.bio = "Bio is too long!"
+        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
+        setErr(errors)
+    }, [displayName, firstName, lastName, city, country, bio])
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        // console.log(name, value)
-        setFormData({ ...formData, [name]: value });
-        console.log("FORM DATA ", formData)
-    };
-
-    const cancelHandler = async () => {
-        //     closeModal()
+    const cancelHandler = () => {
+            closeModal()
     }
 
-    const submitHandler = async (e) => {
-        console.log('HEY')
+    const submitHandler = (e) => {
+        // console.log('HEY')
         e.preventDefault();
-        // if (Object.keys(err).length > 0) {
-        // 	setDisplayErr(true)
-        // 	console.log(displayErr)
-        // 	console.log('handlesubmit', err)
-        // 	return
-        // }
-        // else {
-        let newForm = new FormData()
-        newForm = {...formData}
-        console.log("THIS IS NEW FORM", newForm)
-        const updatedUser = await dispatch(updateUserThunk(newForm, user.id))
-        // setUrl(`/groups/${newGroup.id}`)
-        history.push(`/profile`)
-        // closeModal()
-        // }
+
+        if (Object.keys(err).length > 0) {
+            setDisplayErr(true)
+            // console.log(displayErr)
+            // console.log('handlesubmit', err)
+            return
+        }
+        else {
+            const newUser = {display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio}
+            // console.log(newUser)
+            dispatch(updateUserThunk(newUser, user.id))
+            // setUrl(`/groups/${newGroup.id}`)
+            history.push(`/profile`)
+        }
+        closeModal()
     }
 
 
@@ -99,9 +82,9 @@ const UpdateProfile = () => {
                                 <input
                                     type="text"
                                     name="displayName"
-                                    value={formData.displayName}
-                                    onChange={handleChange}
-                                >{user.display_name}</input>
+                                    value={displayName}
+                                    onChange={(e) => setDisplayName(e.target.value)}
+                                />
                             </label>
                             <div className='update-profile-form-double-div update-profile-form-names-div' >
                                 <label
@@ -111,10 +94,10 @@ const UpdateProfile = () => {
                                     <input
                                         type="text"
                                         name="firstName"
-                                        value={formData.firstName}
-                                        onChange={handleChange}
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
                                         className='update-profile-form-first-name update-profile-form-names-input'
-                                    >{user.display_name}</input>
+                                    />
 
                                 </label>
                                 <label
@@ -124,10 +107,10 @@ const UpdateProfile = () => {
                                     <input
                                         type="text"
                                         name="lastName"
-                                        value={formData.lastName}
-                                        onChange={handleChange}
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                         className='update-profile-form-first-name update-profile-form-names-input'
-                                    >{user.display_name}</input>
+                                    />
 
                                 </label>
                             </div>
@@ -139,10 +122,10 @@ const UpdateProfile = () => {
                                     <input
                                         type="text"
                                         name="city"
-                                        value={formData.city}
-                                        onChange={handleChange}
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
                                         className='update-profile-form-city update-profile-form-location-input'
-                                    >{user.display_name}</input>
+                                    />
 
                                 </label>
                                 <label
@@ -152,10 +135,10 @@ const UpdateProfile = () => {
                                     <input
                                         type="text"
                                         name="country"
-                                        value={formData.country}
-                                        onChange={handleChange}
+                                        value={country}
+                                        onChange={(e) => setCountry(e.target.value)}
                                         className='update-profile-form-country update-profile-form-location-input'
-                                    >{user.display_name}</input>
+                                    />
 
                                 </label>
                             </div>
@@ -164,8 +147,8 @@ const UpdateProfile = () => {
                                 Bio
                                 <textarea
                                     name="bio"
-                                    value={formData.bio}
-                                    onChange={handleChange}
+                                    value={bio}
+                                    onChange={(e) => setBio(e.target.value)}
                                     className='update-profile-form-bio'
                                     rows='8'
                                 >

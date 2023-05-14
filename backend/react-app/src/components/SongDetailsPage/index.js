@@ -31,8 +31,10 @@ const SongDetailsPage = () => {
         const formData = new FormData()
         formData.append('text', comment)
         dispatch(createCommentThunk(formData, songId))
-        setUrl(`/songs/${songId}`)
-        // history.push(`/songs/${songId}`)
+        // setUrl(`/songs/${songId}`)
+        // history.push(`/discover`)
+        history.push(`/songs/${songId}`)
+        // dispatch(createCommentThunk(formData, songId))
     }
 
     useEffect(() => {

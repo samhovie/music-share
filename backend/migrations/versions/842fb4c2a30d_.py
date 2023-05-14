@@ -1,8 +1,20 @@
 """empty message
 
-Revision ID: faeb0cd44d0f
+<<<<<<< HEAD:backend/migrations/versions/6608ff3e894a_.py
+<<<<<<<< HEAD:backend/migrations/versions/6608ff3e894a_.py
+Revision ID: 6608ff3e894a
 Revises: 
-Create Date: 2023-05-12 14:34:24.470516
+Create Date: 2023-05-12 11:13:01.223454
+========
+Revision ID: b977bafb3516
+Revises: 
+Create Date: 2023-05-13 03:18:04.916084
+>>>>>>>> likesAndReducer:backend/migrations/versions/b977bafb3516_.py
+=======
+Revision ID: 842fb4c2a30d
+Revises: 
+Create Date: 2023-05-13 21:59:06.955161
+>>>>>>> randoms:backend/migrations/versions/842fb4c2a30d_.py
 
 """
 from alembic import op
@@ -10,7 +22,15 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'faeb0cd44d0f'
+<<<<<<< HEAD:backend/migrations/versions/6608ff3e894a_.py
+<<<<<<<< HEAD:backend/migrations/versions/6608ff3e894a_.py
+revision = '6608ff3e894a'
+========
+revision = 'b977bafb3516'
+>>>>>>>> likesAndReducer:backend/migrations/versions/b977bafb3516_.py
+=======
+revision = '842fb4c2a30d'
+>>>>>>> randoms:backend/migrations/versions/842fb4c2a30d_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,8 +46,11 @@ def upgrade():
     sa.Column('display_name', sa.String(length=255), nullable=True),
     sa.Column('first_name', sa.String(length=255), nullable=True),
     sa.Column('last_name', sa.String(length=255), nullable=True),
+    sa.Column('city', sa.String(length=255), nullable=True),
+    sa.Column('country', sa.String(length=255), nullable=True),
     sa.Column('bio', sa.Text(), nullable=True),
     sa.Column('profile_pic', sa.String(length=255), nullable=True),
+    sa.Column('banner_pic', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

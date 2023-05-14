@@ -20,14 +20,15 @@ import CurrentUserPlaylist from "./components/MyPlaylists";
 import CurrentUserSongs from "./components/MySongs";
 import Player from "./components/Player";
 import UserLikesPage from "./components/UserLikesPage";
+import SplashPage from "./components/SplashPage";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 
 export const PlayerContext = createContext();
-const PlayerProvider = ({children}) => {
+const PlayerProvider = ({ children }) => {
   const [url, setUrl] = useState('https://music-share-rhinos.s3.amazonaws.com/e2cb6758305b45d280045956bbfeb974.mp3')
   return (
-    <PlayerContext.Provider value={{url, setUrl}}>
+    <PlayerContext.Provider value={{ url, setUrl }}>
       {children}
     </PlayerContext.Provider>
   );
@@ -46,54 +47,57 @@ function App() {
 
   return (
     <>
-    <PlayerProvider>
-      <Navigation isLoaded={isLoaded} />
-      <Player/>
+      <PlayerProvider>
+        <Navigation isLoaded={isLoaded} />
+        <Player />
 
-      {isLoaded && (
-        <Switch>
-          <Route exact path='/likes'>
-            <UserLikesPage />
-          </Route>
-          <Route exact path='/upload'>
-            <SongUpload />
-          </Route>
-          <Route exact path='/profile'>
-            <ProfilePage />
-          </Route>
-          <Route exact path="/playlists/current">
-            <CurrentUserPlaylist />
-          </Route>
-          <Route exact path="/playlists/new">
-            <CreatePlaylistForm />
-          </Route>
-          <Route exact path="/songs/current">
-            <CurrentUserSongs />
-          </Route>
-          <Route exact path='/playlists/:playlistId'>
-            <PlaylistDetailsPage />
-          </Route>
-          <Route exact path='/songs/:songId'>
-            <SongDetailsPage />
-          </Route>
-          <Route exact path="/discover">
-            <DiscoverPage />
-          </Route>
-          <Route exact path="/feed">
-            <FeedPage />
-          </Route>
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          {/* added?? */}
-          <Route exact path="/playlists/:playlistId/songs/:songId">
-            <AddSongToPlaylistModal />
-          </Route>
-        </Switch>
-      )}
+        {isLoaded && (
+          <Switch>
+            <Route exact path='/likes'>
+              <UserLikesPage />
+            </Route>
+            <Route exact path='/'>
+              <SplashPage />
+            </Route>
+            <Route exact path='/upload'>
+              <SongUpload />
+            </Route>
+            <Route exact path='/profile'>
+              <ProfilePage />
+            </Route>
+            <Route exact path="/playlists/current">
+              <CurrentUserPlaylist />
+            </Route>
+            <Route exact path="/playlists/new">
+              <CreatePlaylistForm />
+            </Route>
+            <Route exact path="/songs/current">
+              <CurrentUserSongs />
+            </Route>
+            <Route exact path='/playlists/:playlistId'>
+              <PlaylistDetailsPage />
+            </Route>
+            <Route exact path='/songs/:songId'>
+              <SongDetailsPage />
+            </Route>
+            <Route exact path="/discover">
+              <DiscoverPage />
+            </Route>
+            <Route exact path="/feed">
+              <FeedPage />
+            </Route>
+            <Route exact path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            {/* added?? */}
+            <Route exact path="/playlists/:playlistId/songs/:songId">
+              <AddSongToPlaylistModal />
+            </Route>
+          </Switch>
+        )}
       </PlayerProvider>
     </>
   );

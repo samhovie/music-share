@@ -11,7 +11,7 @@ export default function CreateSongForm() {
   const [id, setId] = useState('')
 
   // console.log('hello')
-  console.log(name, genre, artist_name)
+  // console.log(name, genre, artist_name)
 
   const csrf = localStorage.getItem("csrf_token")
 

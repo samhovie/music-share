@@ -21,9 +21,12 @@ class User(db.Model, UserMixin):
     display_name = db.Column(db.String(255))
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
+    city = db.Column(db.String(255))
+    country = db.Column(db.String(255))
+
     bio = db.Column(db.Text)
     profile_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
-    # banner_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
+    banner_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
 
     songs = db.relationship('Song', back_populates = 'user', cascade='all, delete-orphan')
     user_like = db.relationship('Song', secondary=song_like, back_populates='liked_song')
@@ -52,5 +55,8 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'bio': self.bio,
-            'profile_pic': self.profile_pic
+            'city': self.city,
+            'country': self.country,
+            'profile_pic': self.profile_pic,
+            'banner_pic': self.banner_pic
         }

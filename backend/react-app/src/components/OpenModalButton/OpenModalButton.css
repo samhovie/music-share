@@ -13,3 +13,19 @@
     cursor: pointer;
     border-radius: 10px
 }
+
+.navbar-home-feed-library-feed > button {
+    text-decoration: none;
+}
+
+.open-modal-button-something {
+    color: white;
+    background-color: darkslategray;
+    border-style: none;
+    font-size: 14px;
+    text-decoration: none!important;
+}
+
+.open-modal-button-something:hover {
+    cursor: pointer;
+}

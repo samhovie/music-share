@@ -6,8 +6,10 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -34,6 +36,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -56,7 +59,7 @@ function ProfileButton({ user }) {
                 Profile
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink exact to='/likes'
                 style={{ textDecoration: 'none' }}
               >
@@ -76,7 +79,7 @@ function ProfileButton({ user }) {
               >
                 My Playlists
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

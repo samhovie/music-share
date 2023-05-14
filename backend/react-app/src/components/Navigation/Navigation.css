@@ -34,6 +34,10 @@
   color: white;
 }
 
+.navbar-home-feed-library-feed > button {
+  text-decoration: none;
+}
+
 .navbar-all-three {
   display: flex;
   padding: 0 2.5rem;

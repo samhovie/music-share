@@ -29,10 +29,15 @@
     padding-right: 1rem;
 }
 
-.upload-song-form-upload > img {
+.upload-song-form-upload > input {
     height: 15.4rem;
     width: 15.4rem;
 }
+
+/* .upload-song-form-upload > img {
+    height: 15.4rem;
+    width: 15.4rem;
+} */
 
 .upload-song-form-info {
     height: 100%;

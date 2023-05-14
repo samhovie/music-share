@@ -76,12 +76,19 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<>
 							<div className='navbar-upload-button'>
-								<NavLink
-									to='/upload'
-									style={{ textDecoration: 'none', color: 'white' }}>
-									Upload
-
-								</NavLink>
+								{sessionUser ?
+									<NavLink
+										to='/upload'
+										style={{ textDecoration: 'none', color: 'white' }}>
+										Upload
+									</NavLink> :
+									<OpenModalButton
+										buttonText="Upload"
+										// onItemClick={closeMenu}
+										modalComponent={<SignupFormModal />}
+										conditionalClass='something'
+									/>
+								}
 							</div>
 							<div className='navbar-profile-button'>
 								<ProfileButton user={sessionUser} />

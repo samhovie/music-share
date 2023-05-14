@@ -150,10 +150,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 onChange={(e) => setDescription(e.target.value)}
                                 required
                             />
-                            <label>
+                            {/* <label>
                                 Preview Image:
                                 <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
-                            </label>
+                            </label> */}
                         </div>
                         {/* <div
                                             style={{ paddingBottom: '1rem' }}

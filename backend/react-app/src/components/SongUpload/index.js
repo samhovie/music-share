@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './SongUpload.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createSongThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom'
 import Upload from '../UploadImg';
@@ -17,10 +17,23 @@ const SongUpload = () => {
     const [artist_name, setArtist_name] = useState('')
     const [preview_img, setPreviewImg] = useState('')
     const [id, setId] = useState('')
+    const [err, setErr] = useState({})
+    const [displayErr, setDisplayErr] = useState(false)
 
     const sessionUser = useSelector((state) => state.session.user);
-    const current_user = sessionUser.username;
-    console.log(current_user)
+    const current_user = sessionUser.display_name;
+
+    useEffect(() => {
+        const errors = {}
+        if (!name) errors.name = "Name is required"
+        if (!description) errors.description = "Description is required"
+        if (!genre) errors.genre = "Genre is required"
+        if (!artist_name) errors.artist_name = "Artist is required"
+        if (!mp3_file.endsWith('.wav') && !mp3_file.endsWith('.mp3') && !mp3_file.endsWith('.acc') && !mp3_file.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
+        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
+        setErr(errors)
+    }, [name, description, genre, artist_name, mp3_file])
+    // console.log(current_user)
 
     // const fileUploadClickHandler = (e) => {
     //     e.preventDefault()
@@ -33,18 +46,26 @@ const SongUpload = () => {
 
     // let audio = ''
 
+    const alertClick = () => {
+        alert('Feature coming soon!')
+    }
+
     let handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData()
-        formData.append('mp3_file', mp3_file)
-        formData.append('name', name)
-        formData.append('artist_name', current_user)
-        formData.append('genre', genre)
-        formData.append('preview_img', preview_img)
-        // formData.append('description', description)
+        if (Object.keys(err).length > 0) {
+            setDisplayErr(true)
+        }
+        else {
+            const formData = new FormData()
+            formData.append('mp3_file', mp3_file)
+            formData.append('name', name)
+            formData.append('artist_name', current_user)
+            formData.append('genre', genre)
+            formData.append('description', description)
 
-        dispatch(createSongThunk(formData))
-        history.push('/songs/current')
+            dispatch(createSongThunk(formData))
+            history.push('/feed')
+        }
     }
 
     return (
@@ -63,7 +84,14 @@ const SongUpload = () => {
                                 <div className='upload-song-form-wrapped'>
 
                                     <div className='upload-song-form-upload'>
-                                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
+                                        {/* <img src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'></img> */}
+                                        <input
+                                        type='image'
+                                        src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                                        onClick={alertClick}
+                                        >
+
+                                        </input>
                                     </div>
                                     {/* style={{ paddingBottom: '1rem' }} */}
                                     <div className='upload-song-form-info'>
@@ -88,14 +116,15 @@ const SongUpload = () => {
 
                                             </input>
                                         </div>
+                                        {displayErr === true && err.name && (<p className="errors">· {err.name}</p>)}
 
-                                        {/* <div
+                                        <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
                                                 <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Author
+                                                    &nbsp;Artist Name
                                                 </label>
 
                                             </div>
@@ -108,7 +137,8 @@ const SongUpload = () => {
                                             >
 
                                             </input>
-                                        </div> */}
+                                        </div>
+                                        {displayErr === true && err.artist_name && (<p className="errors">· {err.artist_name}</p>)}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}
@@ -130,6 +160,7 @@ const SongUpload = () => {
                                             >
                                             </input>
                                         </div>
+                                        {displayErr === true && err.genre && (<p className="errors">· {err.genre}</p>)}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}
@@ -149,6 +180,7 @@ const SongUpload = () => {
                                                 required
                                             >
                                             </textarea>
+                                            {displayErr === true && err.bio && (<p className="errors">· {err.bio}</p>)}
 
                                         </div>
                                         <label>
@@ -175,6 +207,7 @@ const SongUpload = () => {
                                             </label>
 
                                         </div>
+                                        {displayErr === true && err.mp3_file && (<p className="errors">· {err.mp3_file}</p>)}
 
                                         {/* <div
                                             style={{ paddingBottom: '4rem' }}

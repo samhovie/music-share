@@ -17,8 +17,8 @@ const SongUpload = () => {
     const [id, setId] = useState('')
 
     const sessionUser = useSelector((state) => state.session.user);
-    const current_user = sessionUser.username;
-    console.log(current_user)
+    const current_user = sessionUser.display_name;
+    // console.log(current_user)
 
     // const fileUploadClickHandler = (e) => {
     //     e.preventDefault()
@@ -38,7 +38,7 @@ const SongUpload = () => {
         formData.append('name', name)
         formData.append('artist_name', current_user)
         formData.append('genre', genre)
-        // formData.append('description', description)
+        formData.append('description', description)
 
         dispatch(createSongThunk(formData))
         history.push('/feed')
@@ -86,13 +86,13 @@ const SongUpload = () => {
                                             </input>
                                         </div>
 
-                                        {/* <div
+                                        <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
                                                 <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Author
+                                                    &nbsp;Artist Name
                                                 </label>
 
                                             </div>
@@ -105,7 +105,7 @@ const SongUpload = () => {
                                             >
 
                                             </input>
-                                        </div> */}
+                                        </div>
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}

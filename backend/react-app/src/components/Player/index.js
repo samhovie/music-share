@@ -15,7 +15,7 @@ export default function Player() {
 
         if (isPlaying && button) {
           button.classList.remove("fa-circle-play")
-          button.classList.add("fa-pause-song")
+          button.classList.add("fa-pause")
           setIsPlaying(false)
         } else {
           // if it is not playing, we need to know what play button to pause
@@ -25,15 +25,6 @@ export default function Player() {
         }
 
       }
-
-    //   const mainPlayButtonCol = document.getElementsByClassName("rhap_main-controls-button rhap_play-pause-button")
-    //   const mainPlayPause = [...mainPlayButtonCol][0]
-    //   console.log(mainPlayPause)
-    //   if (mainPlayPause) mainPlayPause.addEventListener('onClick', onPlayerPlayPause)
-
-
-
-
 
     return <AudioPlayer onPlay={onPlayerPlayPause} onPause={onPlayerPlayPause} src={url} />;
 }

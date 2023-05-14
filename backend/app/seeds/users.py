@@ -35,25 +35,25 @@ def seed_playlist_songs_users_likes():
 
 
     song3 = Song(
-        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="4N.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5f2f3541f509489686c854f5e2e4b684.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song4 = Song(
-        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="8SIX.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5e4abfd5eb0c43eca856879c6b47bacd.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song5 = Song(
-        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-i.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/99098fae725648468b15352c6711177e.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song6 = Song(
-        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-iii.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/b1efd99327b8400081bd91c207db47b8.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song7 = Song(
-        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="lilas.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song8 = Song(
-        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="jaguarN0-10.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song9 = Song(
-        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Talktoyou.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/260758e7ba274dbbb1e72ab67e8d6129.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song10 = Song(
-        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Underneath the Sky.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/fc0bb74d0d4f465f9d777397b98a45a9.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song11 = Song(
-        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Hearmyvoice.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song12 = Song(
-        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="Neverstoppingatall.mp3", genre="Instrumental", preview_img='https://i1.sndcdn.com/artworks-000640383319-5urady-t500x500.jpg', created_at=date.today(), updated_at=date.today())
+        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='https://i1.sndcdn.com/artworks-000640383319-5urady-t500x500.jpg', created_at=date.today(), updated_at=date.today())
 
 
 

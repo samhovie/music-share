@@ -24,12 +24,12 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     const [comment, setComment] = useState('')
     // console.log('allLikes', allLikes)
     // const [isLiked, setIsLiked] = useState()
-    console.log('SOOOOOOOOONNG', song)
-    console.log('SESSSSION', sessionUser)
+    console.log('SOOOOOOOOONNG', song.preview_img)
+    // console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     // const sessionUser = useSelector((state) => state.session.user)
     // const userSongs = useSelector((state) => state.songs.singleSong)
-    console.log('UUUUSER', userSongs)
+    // console.log('UUUUSER', userSongs)
     // console.log(userSongs)
     const [,setLikes] = useState()
 
@@ -41,7 +41,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     // console.log('likes', likesObj)
     const songId = song.id
     const likesHandler2 = () => {
-        console.log('SOOONG3333',songId)
+        // console.log('SOOONG3333',songId)
 
         // history.push('/')
         // setLikes()
@@ -72,7 +72,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('text', comment)
-        console.log(formData)
+        // console.log(formData)
         dispatch(createCommentThunk(formData, songId))
         history.push(`/songs/${songId}`)
     }

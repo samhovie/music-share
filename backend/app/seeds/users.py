@@ -38,25 +38,25 @@ def seed_playlist_songs_users_likes():
     song2 = Song(
         name="Karma", artist_name="Efren", artist_id=2, mp3_file="song2.mp3", genre="Rock", preview_img='https://citizeninsane.eu/music/okc/img/karmapoliceprint.jpg', created_at=date.today(), updated_at=date.today())
     song3 = Song(
-        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="4N.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="4N.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song4 = Song(
-        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="8SIX.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="8SIX.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song5 = Song(
-        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-i.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-i.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song6 = Song(
-        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-iii.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="pianoVIIIVI-iii.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song7 = Song(
-        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="lilas.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="lilas.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song8 = Song(
-        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="jaguarN0-10.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="jaguarN0-10.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song9 = Song(
-        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Talktoyou.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Talktoyou.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song10 = Song(
-        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Underneath the Sky.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Underneath the Sky.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song11 = Song(
-        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Hearmyvoice.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="Hearmyvoice.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
     song12 = Song(
-        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="Neverstoppingatall.mp3", genre="Instrumental", preview_img='https://static.wikia.nocookie.net/86-eighty-six/images/7/79/Soundtrack_album_cover.jpg/revision/latest?cb=20210607145154', created_at=date.today(), updated_at=date.today())
+        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="Neverstoppingatall.mp3", genre="Instrumental", preview_img='https://i1.sndcdn.com/artworks-000640383319-5urady-t500x500.jpg', created_at=date.today(), updated_at=date.today())
 
     playlist1 = Playlist(
         name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())

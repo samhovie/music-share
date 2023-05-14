@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import './SongDetailsPage.css'
 import '../UI/GlobalOuterWrapper'
-import { getSongThunk } from '../../store/songs'
+import { getSongThunk, getAllSongsThunk } from '../../store/songs'
 import { createCommentThunk, getAllCommentsThunk } from '../../store/comments'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CommentComp from '../UI/CommentComp'
 import GetLikes from '../UI/GetLikes'
 import { getUserThunk } from '../../store/users'
 import ArtistDetails from '../UI/ArtistDetails'
+import { likeSongThunk, removeLikeThunk } from '../../store/likes'
+
+
 
 const SongDetailsPage = () => {
     const dispatch = useDispatch()
@@ -21,9 +24,13 @@ const SongDetailsPage = () => {
     const [comment, setComment] = useState('')
 
     const theComments = useSelector((state) => state.comments.allComments)
-    const theSong = useSelector((state) => state.songs.singleSong)
+    // const theSong = useSelector((state) => state.songs.singleSong)
     const artistId = useSelector(state => state.songs.singleSong.artist_id)
     const sessionUser = useSelector(state => state.session.user)
+    const song = useSelector((state) => state.songs.singleSong)
+    const selectedSong = useSelector(state => state.songs.allSongs[songId])
+    console.log('SSSSEELECTED', selectedSong)
+    // console.log("THE COMMENTSSSSS", theComments)
     const comments = Object.values(theComments)
     console.log("theSONGSSSS", comments)
     // dispatch(getUserThunk(theSong.artist_id))
@@ -44,10 +51,32 @@ const SongDetailsPage = () => {
     useEffect(() => {
         dispatch(getSongThunk(songId))
         dispatch(getAllCommentsThunk(songId))
+        dispatch(getAllSongsThunk())
+        // dispatch(likeSongThunk(songId))
+        // dispatch(removeLikeThunk(songId))
         // if (url !== '') {
         //     setUrl(`/songs/${songId}`)
         // }
     }, [dispatch, songId])
+
+    const likesHandler2 = () => {
+        console.log('SOOONG3333',songId)
+
+        dispatch(getAllSongsThunk())
+        dispatch(likeSongThunk(songId))
+        dispatch(getAllSongsThunk())
+    }
+
+    const unlikeHandler2 = () => {
+        console.log('SOOONG4444',songId)
+
+
+        dispatch(getAllSongsThunk())
+        dispatch(removeLikeThunk(songId))
+        dispatch(getAllSongsThunk())
+    }
+
+    if (!selectedSong) return null
 
     return (
         <>
@@ -55,7 +84,7 @@ const SongDetailsPage = () => {
         <div className='global-outerwrapper-outer'>
             <div className='global-outerwrapper-wrapper'>
                 <div className='song-details-page-top'>
-                    <SongDetailsCard song={theSong} />
+                    <SongDetailsCard song={song} />
                 </div>
                 <div className='song-details-page-bottom-wrapper'>
                     <div className='song-details-page-bottom'>
@@ -89,7 +118,13 @@ const SongDetailsPage = () => {
                         <div className='song-details-page-bottom-bar'>
                             <div className='song-details-page-interactive-buttons'>
                                 <div className='song-details-page-interactive-buttons-like'>
-                                    <button>Like</button>
+                                    {/* <button>Like</button> */}
+                                    <GetLikes
+                                        song={selectedSong}
+                                        sessionUser={sessionUser}
+                                        likesHandler2={likesHandler2}
+                                        unlikeHandler2={unlikeHandler2}
+                                    />
                                 </div>
                                 <div className='song-details-page-interactive-buttons-add'>
                                     <button>
@@ -102,7 +137,7 @@ const SongDetailsPage = () => {
                             </div>
                         </div>
                         <div className='song-details-page-profile-comments'>
-                            <ArtistDetails song={theSong}/>
+                            <ArtistDetails song={song}/>
                             <div className='song-details-page-display-comments-each'>
                                 <CommentComp />
                                 {comments.map(comment => {

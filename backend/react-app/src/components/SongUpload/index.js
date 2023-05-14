@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './SongUpload.css'
 import { useState } from 'react'
 import { createSongThunk } from '../../store/songs'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useHistory } from 'react-router-dom'
+import Upload from '../UploadImg';
 
 const SongUpload = () => {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const SongUpload = () => {
     const [mp3_file, setMp3] = useState('')
     const [genre, setGenre] = useState('')
     const [artist_name, setArtist_name] = useState('')
+    const [preview_img, setPreviewImg] = useState('')
     const [id, setId] = useState('')
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -38,10 +40,11 @@ const SongUpload = () => {
         formData.append('name', name)
         formData.append('artist_name', current_user)
         formData.append('genre', genre)
+        formData.append('preview_img', preview_img)
         // formData.append('description', description)
 
         dispatch(createSongThunk(formData))
-        history.push('/feed')
+        history.push('/songs/current')
     }
 
     return (
@@ -148,6 +151,19 @@ const SongUpload = () => {
                                             </textarea>
 
                                         </div>
+                                        <label>
+                                            {/* Preview Image */}
+                                            {/* <input
+                                                type="file"
+                                                accept=".jpg, .jpeg, .png, .gif"
+                                                onChange={(e) => setPreviewImg(e.target.files[0])}
+                                            >
+                                            </input> */}
+                                            <label>
+                                                Preview Image:
+                                                <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
+                                            </label>
+                                        </label>
                                         <div>
                                             <label>
                                                 <input

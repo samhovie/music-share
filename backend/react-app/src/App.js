@@ -58,11 +58,11 @@ function App() {
 
         {isLoaded && (
           <Switch>
-            <Route exact path='/likes'>
-              <UserLikesPage />
-            </Route>
             <Route exact path='/'>
               <SplashPage />
+            </Route>
+            <Route exact path='/likes'>
+              <UserLikesPage />
             </Route>
             <Route exact path='/upload'>
               <SongUpload />

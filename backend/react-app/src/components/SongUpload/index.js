@@ -29,7 +29,7 @@ const SongUpload = () => {
         if (!description) errors.description = "Description is required"
         if (!genre) errors.genre = "Genre is required"
         if (!artist_name) errors.artist_name = "Artist is required"
-        if (!mp3_file.endsWith('.wav') && !mp3_file.endsWith('.mp3') && !mp3_file.endsWith('.acc') && !mp3_file.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
+        if (!mp3_file || (!mp3_file.endsWith('.wav') && !mp3_file.endsWith('.mp3') && !mp3_file.endsWith('.acc') && !mp3_file.endsWith('.aiff'))) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [name, description, genre, artist_name, mp3_file])
@@ -61,8 +61,8 @@ const SongUpload = () => {
             formData.append('name', name)
             formData.append('artist_name', current_user)
             formData.append('genre', genre)
-           formData.append('preview_img', preview_img)
-         formData.append('description', description)
+            formData.append('preview_img', preview_img)
+            formData.append('description', description)
 
             dispatch(createSongThunk(formData))
             history.push('/songs/current')
@@ -87,9 +87,9 @@ const SongUpload = () => {
                                     <div className='upload-song-form-upload'>
                                         {/* <img src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'></img> */}
                                         <input
-                                        type='image'
-                                        src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-                                        onClick={alertClick}
+                                            type='image'
+                                            src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                                            onClick={alertClick}
                                         >
 
                                         </input>

@@ -90,47 +90,80 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
     }
 }
 
+// export const createPlaylistThunk = (playlist) => async (dispatch) => {
+//     const formData = new FormData();
+//     formData.append('id', playlist.id);
+//     formData.append('user_id', playlist.user_id)
+//     formData.append('name', playlist.name);
+//     formData.append('is_public', playlist.is_public);
+//     formData.append('description', playlist.description);
+//     // formData.append('preview_img', playlist.preview_img);
+//     formData.append('file', playlist.preview_img);
+//     const response = await fetch('/api/playlists/new', {
+//         method: 'POST',
+//         body: formData
+//     })
+//     console.log(response);
+
+//     if (response.ok) {
+//         const data = await response.json();
+//         console.log(data)
+//         if (data.errors) {
+//             return data.errors
+//         }
+//         dispatch(createPlaylistAction(data.id, data))
+//         return data
+//     }
+// }
+
 export const createPlaylistThunk = (playlist) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('id', playlist.id);
-    formData.append('user_id', playlist.user_id)
-    formData.append('name', playlist.name);
-    formData.append('is_public', playlist.is_public);
-    formData.append('description', playlist.description);
-    formData.append('preview_img', playlist.preview_img);
-    const response = await fetch('/api/playlists/new', {
+    const response = await fetch('/api/playlists/new', { // Change to your appropriate endpoint
         method: 'POST',
-        body: formData
-    })
-    console.log(response);
+        body: playlist,
+    });
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data)
         if (data.errors) {
-            return data.errors
+            return data.errors;
         }
-        dispatch(createPlaylistAction(data.id, data))
-        return data
+        dispatch(createPlaylistAction(data));
+        return data;
     }
 }
 
+
 export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispatch) => {
     console.log("TEST this", playlistId)
+    const { name, is_public, description, preview_img } = updatedPlaylist;
+
+    // const response = await fetch(`/api/playlists/${playlistId}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         name: updatedPlaylist.name,
+    //         is_public: updatedPlaylist.is_public,
+    //         user_id: updatedPlaylist.user_id,
+    //         description: updatedPlaylist.description,
+    //         id: updatedPlaylist.id,
+    //         preview_img: updatedPlaylist.preview_img
+    //     }),
+    // })
+    const formData = new FormData();
+    formData.append('name', updatedPlaylist.name);
+    formData.append('is_public', updatedPlaylist.is_public);
+    // formData.append('user_id', updatedPlaylist.user_id);
+    formData.append('description', updatedPlaylist.description);
+    // formData.append('id', updatedPlaylist.id);
+    if (preview_img)
+        formData.append('preview_img', updatedPlaylist.preview_img);
+
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: updatedPlaylist.name,
-            is_public: updatedPlaylist.is_public,
-            user_id: updatedPlaylist.user_id,
-            description: updatedPlaylist.description,
-            id: updatedPlaylist.id,
-            preview_img: updatedPlaylist.preview_img
-        }),
-    })
+        body: formData,
+    });
 
     if (response.ok) {
         const data = await response.json();

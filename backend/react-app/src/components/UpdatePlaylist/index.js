@@ -6,6 +6,7 @@ import { getPlaylistThunk } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 import Upload from '../UploadImg';
+import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
     const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
@@ -16,10 +17,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const [formData, setFormData] = useState({
         name: '',
-        is_public: '',
-        user_id: '',
+        is_public: false,
+        // user_id: '',
         description: '',
-        preview_img: ''
+        // preview_img: null
     });
     console.log('playlist id', playlistId)
     useEffect(() => {
@@ -30,18 +31,23 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         if (singlePlaylist) {
             setFormData({
                 name: singlePlaylist.name || '',
-                is_public: singlePlaylist.is_public || '',
-                user_id: singlePlaylist.user_id || '',
+                is_public: singlePlaylist.is_public || false,
+                // user_id: singlePlaylist.user_id || '',
                 description: singlePlaylist.description || '',
-                preview_img: singlePlaylist.preview_img || ''
+                // preview_img: null
             });
         }
     }, [singlePlaylist]);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        if (e.target.files) {
-            setFormData({ ...formData, [name]: e.target.files[0] });
+        // const { name, value } = e.target;
+        const { name, type, checked, value, files } = e.target;
+        if (type === "checkbox") {
+            setFormData({ ...formData, [name]: checked });
+        } else if (e.target.files) {
+            setFormData({ ...formData, [name]: e.target.files })
+        } else if (name === 'preview_img') {
+            setFormData({ ...formData, [name]: e.target.files });
         } else {
             setFormData({ ...formData, [name]: value });
         }
@@ -49,8 +55,9 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('form data', formData);
         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
-        console.log(updatedPlaylist);
+        console.log('updated playlist', updatedPlaylist);
         // closeModal();
         if (updatedPlaylist) {
             history.push(`/playlists/${playlistId}`);
@@ -59,61 +66,58 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     return (
         <>
-            <div className='global-outerwrapper-outer'>
-                <div className='global-outerwrapper-wrapper'>
-                    <div className='upload-song-outer-wrapper'>
-                        <div className='upload-song-inner-wrapper'>
-                            <form
-                                className='upload-song-form'
-                                // action={`/ api / playlists / ${playlistId}`}
-                                // method="PUT"
-                                encType="multipart/form-data"
-                                onSubmit={handleSubmit}
-                            >
-                                <div className='upload-song-form-wrapped'>
-                                    <div className='upload-song-form-upload'>
-                                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
-                                    </div>
-                                    <div className='upload-song-form-info'>
-                                        <div style={{ paddingBottom: '1rem' }}>
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Title</label>
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-title'
-                                                type='text'
-                                                name='name'
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                                required
-                                            />
-                                        </div>
-                                        <input
-                                            type="checkbox"
-                                            name='is_public'
-                                            checked={formData.is_public}
-                                            onChange={handleChange}
-                                        />
-                                        <div style={{ paddingBottom: '1rem' }}>
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Description</label>
-                                            </div>
-                                            <textarea
-                                                id="story"
-                                                name="description"
-                                                rows="5"
-                                                cols="40"
-                                                value={formData.description}
-                                                onChange={handleChange}
-                                                required
-                                            />
-                                        </div>
-                                        {/* <div
+
+            <form
+                className='create-playlist-form'
+                // action={`/ api / playlists / ${playlistId}`}
+                // method="PUT"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+            >
+                <div className='upload-song-form-wrapped'>
+                    <div className='upload-song-form-upload'>
+                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
+                    </div>
+                    <div className='upload-song-form-info'>
+                        <div style={{ paddingBottom: '1rem' }}>
+                            <div>
+                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Title</label>
+                            </div>
+                            <input
+                                className='upload-song-form-all-input upload-song-form-title'
+                                type='text'
+                                name='name'
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <input
+                            type="checkbox"
+                            name='is_public'
+                            checked={formData.is_public}
+                            onChange={handleChange}
+                        />
+                        <div style={{ paddingBottom: '1rem' }}>
+                            <div>
+                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Description</label>
+                            </div>
+                            <textarea
+                                id="story"
+                                name="description"
+                                rows="5"
+                                cols="40"
+                                value={formData.description}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         > */}
-                                        {/* <div>
+                        {/* <div>
                                             <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                             <label style={{ paddingBottom: '.5rem' }}>
                                                 &nbsp;Preview Image
@@ -130,29 +134,25 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                         >
 
                                         </input> */}
-                                        <label>
+                        {/* <label>
                                             Preview Image:
                                             <Upload onChange={(e) => handleChange({ target: { name: 'preview_img', value: e.target.files[0] } })} />
 
                                             {/* <Upload onChange={(e) => setPreviewImg(e.target.files[0])} /> */}
-                                        </label>
+                        {/* </label> */}
 
-                                        <div className='upload-song-form-bottom'>
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
-                                                <h5>&nbsp;Required fields</h5>
-                                            </div>
-                                            <div className='upload-song-form-bottom-bar-button-div'>
-                                                <button type='submit'>Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                        <div className='upload-song-form-bottom'>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
+                                <h5>&nbsp;Required fields</h5>
+                            </div>
+                            <div className='upload-song-form-bottom-bar-button-div'>
+                                <button type='submit'>Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

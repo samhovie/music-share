@@ -4,20 +4,21 @@ import SingleSongCard from "../UI/SingleSongCard"
 import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import './UserLikesPage.css'
 import { getAllSongLikesThunk, getUserLikedSongsThunk } from '../../store/likes'
+import { NavLink } from 'react-router-dom'
 
 
 const UserLikesPage = () => {
     const dispatch = useDispatch()
     const allSongs = useSelector((state) => state.songs.allSongs)
     const sessionUser = useSelector((state) => state.session.user)
-    const userSongs = useSelector((state) => state.likes.userLikes)
-    const [isUserLikes, setIsUserLikes] = useState(false)
-    
+    const userSongs = useSelector((state) => state.likes.userLikes.userSongs)
+    const [isUserLikesPage, setIsUserLikesPage] = useState(false)
+
     const songs = Object.values(allSongs)
 
     // console.log(userSongs)
     useEffect(() => {
-        setIsUserLikes(true)
+        setIsUserLikesPage(true)
     },[])
 
     useEffect(() => {
@@ -32,7 +33,9 @@ const UserLikesPage = () => {
 
     return (
         <>
-        <h2>Here are all the awesome vibes you've liked!</h2>
+        {userSongs.length > 0 ?
+        <>
+        <h3>Here are all the awesome vibes you've liked!</h3>
         <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>
                     <div className='feed-page-wrapper'>
@@ -46,11 +49,21 @@ const UserLikesPage = () => {
                         key={song.id}
                         sessionUser={sessionUser}
                         userSongs={userSongs}
-                        isUserLikes={isUserLikes}
+                        isUserLikesPage={isUserLikesPage}
                         />
                     ))}
                 </div>
             </div>
+        </>
+        :
+        <div>
+            <NavLink exact to='/feed'>
+
+                Oh wow, you haven't liked anything yet! Go like something now!
+
+            </NavLink>
+        </div>
+        }
 
         </>
     )

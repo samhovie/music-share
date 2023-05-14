@@ -82,7 +82,7 @@ export default function likesReducer(state = initialState, action) {
     case GET_USER_LIKES:
         console.log('AAACTION_USER', action)
         newState = {...state, userLikes: {...action.likes}}
-        action.likes.userSongs.forEach(song => newState.userLikes[song.id] = song)
+        // action.likes.userLikes.userSongs.forEach(song => newState.likes.userLikes.userSongs[song.id] = song)
         return newState
     case GET_ALLSONGS:
         // console.log('AAAACTION', action.songs)

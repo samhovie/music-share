@@ -14,7 +14,7 @@ import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
 import { useHistory } from 'react-router-dom'
 
-const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikes }) => {
+const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
@@ -141,8 +141,9 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikes }) => {
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'
+                            >
+                        {!isUserLikesPage &&
 
-                        >
                             <GetLikes songId={songId}
                                       song={song}
                                       allLikes={allLikes}
@@ -150,6 +151,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikes }) => {
                                       likesHandler2={likesHandler2}
                                       unlikeHandler2={unlikeHandler2}
                                       />
+                        }
                             {sessionUser &&
                              sessionUser.id === song.id &&
 

@@ -13,8 +13,8 @@ const DeletePlaylist = ({ playlistId }) => {
     // const songId = useSelector(state => state)
     const deleteClick = (e) => {
         dispatch(deletePlaylistThunk(playlistId))
-        history.push('/playlists/current')
         closeModal()
+        window.location.reload();
     }
 
     const keepClick = (e) => {

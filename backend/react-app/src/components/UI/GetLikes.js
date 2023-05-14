@@ -25,7 +25,7 @@ import {useHistory} from 'react-router-dom'
 
 const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHandler2}) => {
     const history = useHistory()
-    console.log('SOOOOONG', song)
+    console.log('SOOOOONGUUUUUU', song)
     const dispatch = useDispatch()
     const [isLiked, setIsLiked] = useState()
     // const nallLikes = useSelector(state => state.likes.allLikes.likes)
@@ -80,7 +80,7 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
     // if (!allLikes) return null
     // if (!allLikes.user_id) return null
     if (!sessionUser) return null
-
+    if (!song) return null
     // return (
     //     <>
     //     {!song.user_id.includes(sessionUser.id) ?

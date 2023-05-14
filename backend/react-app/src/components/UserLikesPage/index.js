@@ -61,7 +61,9 @@ const UserLikesPage = () => {
         </>
         :
         <div>
-            <NavLink exact to='/feed'>
+            <NavLink
+            className='you-no-likey-yet'
+            exact to='/feed'>
 
                 Oh wow, you haven't liked anything yet! Go like something now!
 

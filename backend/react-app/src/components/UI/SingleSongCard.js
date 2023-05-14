@@ -139,11 +139,11 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
 
                                 {!isPlaying ?
                                     <i className="fa-solid fa-circle-play"
-                                        style={{ color: '#932db9', fontSize: '40px' }}
+                                        style={{ color: '#932db9', fontSize: '40px', cursor: 'pointer' }}
                                     ></i>
                                     :
                                     <i className="fa-solid fa-pause"
-                                        style={{ color: '#932db9', fontSize: '40px' }}
+                                        style={{ color: '#932db9', fontSize: '40px', cursor: 'pointer' }}
                                     ></i>
                                 }
 
@@ -167,9 +167,14 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                         {/* </div> */}
                     </div>
                     <div className='single-song-card-info-soundwave'>
-                        <p>
+                        {/* <p>
                             -------------------------------------------------------------
-                        </p>
+                        </p> */}
+                        <img
+
+                        src='https://media.istockphoto.com/id/1176100626/vector/sound-waves-motion-sound-wave-abstract-background.jpg?s=612x612&w=0&k=20&c=EypnQvOtttmj_5JCKkcWy_ul0mS1g3j6md9zamNpmRA='>
+
+                        </img>
                     </div>
                     <div className='single-song-card-info-comment'>
                         <form
@@ -187,7 +192,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                     setComment(e.target.value)
                                 }
                                 }
-                                placeholder='Write a comment'
+                                placeholder='(Comments feature incomplete). Press enter to leave a comment!'
                             // style={{display: 'none'}}
                             />
                         </form>

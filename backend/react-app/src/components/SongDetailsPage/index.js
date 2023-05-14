@@ -24,6 +24,7 @@ const SongDetailsPage = () => {
     const theComments = useSelector((state) => state.comments.allComments)
     const song = useSelector((state) => state.songs.singleSong)
     const selectedSong = useSelector(state => state.songs.allSongs[songId])
+    console.log('SSSSEELECTED', selectedSong)
     const sessionUser = useSelector((state) => state.session.user)
     // console.log("THE COMMENTSSSSS", theComments)
     const comments = Object.values(theComments)
@@ -46,8 +47,8 @@ const SongDetailsPage = () => {
         dispatch(getSongThunk(songId))
         dispatch(getAllCommentsThunk(songId))
         dispatch(getAllSongsThunk())
-        dispatch(likeSongThunk(songId))
-        dispatch(removeLikeThunk(songId))
+        // dispatch(likeSongThunk(songId))
+        // dispatch(removeLikeThunk(songId))
         // if (url !== '') {
         //     setUrl(`/songs/${songId}`)
         // }
@@ -69,6 +70,8 @@ const SongDetailsPage = () => {
         dispatch(removeLikeThunk(songId))
         dispatch(getAllSongsThunk())
     }
+
+    if (!selectedSong) return null
 
     return (
         <>

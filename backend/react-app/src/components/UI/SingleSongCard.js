@@ -14,7 +14,7 @@ import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import GetLikes from './GetLikes'
 import { useHistory } from 'react-router-dom'
 
-const SingleSongCard = ({ song, sessionUser, userSongs }) => {
+const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikes }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()

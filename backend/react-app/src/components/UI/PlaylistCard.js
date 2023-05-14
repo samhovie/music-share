@@ -10,8 +10,8 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
 
 
     const playlists = useSelector(state => state.playlists.allPlaylists)
-    const arrayPlaylists = Object.values(playlists)
-    const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
+    // const arrayPlaylists = Object.values(playlists)
+    // const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
 
     const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
     console.log("PLAYLIST IN PLAYLIST CARD", playlistsSongs)

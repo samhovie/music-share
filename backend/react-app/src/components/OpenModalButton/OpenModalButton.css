@@ -18,6 +18,34 @@
     text-decoration: none;
 }
 
+.open-modal-button-signup {
+    border-style: none;
+    border-radius: 5px;
+    background-color: aquamarine;
+    font-size: 2rem;
+    padding: 10px 3rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.open-modal-button-signup:hover {
+    cursor: pointer;
+}
+
+.open-modal-button-login {
+    height: fit-content;
+    /* opacity: 1; */
+    background-color: #A0D8B3;
+    border-style: none;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 4px 10px;
+    color: black;
+}
+
+.open-modal-button-login:hover {
+    cursor: pointer;
+}
+
 .open-modal-button-something {
     color: white;
     background-color: darkslategray;

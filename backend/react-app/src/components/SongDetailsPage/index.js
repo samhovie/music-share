@@ -25,7 +25,7 @@ const SongDetailsPage = () => {
     const artistId = useSelector(state => state.songs.singleSong.artist_id)
     const sessionUser = useSelector(state => state.session.user)
     const comments = Object.values(theComments)
-    console.log("theSONGSSSS", theSong)
+    console.log("theSONGSSSS", comments)
     // dispatch(getUserThunk(theSong.artist_id))
 
 
@@ -102,7 +102,7 @@ const SongDetailsPage = () => {
                             </div>
                         </div>
                         <div className='song-details-page-profile-comments'>
-                            < ArtistDetails artistId = {artistId} song={theSong}/>
+                            <ArtistDetails song={theSong}/>
                             <div className='song-details-page-display-comments-each'>
                                 <CommentComp />
                                 {comments.map(comment => {

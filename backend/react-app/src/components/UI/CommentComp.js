@@ -8,8 +8,8 @@ import GetUser from './GetUser'
 const CommentComp = ({ comment }) => {
     // console.log("DOOM", comment)
     const dispatch = useDispatch()
-
-    const commentOwner = comment && comment.userId
+    console.log(comment)
+    // const commentOwner = comment && comment.userId
     // const theComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(theComments)
     // dispatch(getAllCommentsThunk(songId))
@@ -30,15 +30,12 @@ const CommentComp = ({ comment }) => {
                     <div className='comment-info'>
                         <div className='comment-info-left'>
                             <div className='comment-info-left-user'>
-                                <GetUser userId={commentOwner} />
+                                {/* <GetUser userId={commentOwner} /> */}
                             </div>
                             <div className='comment-info-left-text'>
                                 {`${comment.text}`}
                             </div>
                         </div>
-                        {/* <div className='comment-info-right'>
-                            <GetSong songId = {comment.songId}/>
-                        </div> */}
                     </div>
                 </div>
             </div>

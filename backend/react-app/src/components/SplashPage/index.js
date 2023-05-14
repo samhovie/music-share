@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import './SplashPage.css'
+import OpenModalButton from '../OpenModalButton'
+import SignupFormModal from '../SignupFormModal'
+import LoginFormModal from '../LoginFormModal'
 
 
 
@@ -26,11 +29,20 @@ const SplashPage = () => {
                         <div className='splash-page-middle'>
                             <h2>Join us</h2>
                             <h3>Save tracks and create playlists! All for free (for now)</h3>
-                            <button className='splash-page-middle-signup'>Sign up!</button>
+                            <OpenModalButton
+									buttonText="Sign up!"
+									// onItemClick={closeMenu}
+									modalComponent={<SignupFormModal />}
+									splashSignupClass='splash-page'
+								/>
                             <div className='splash-page-middle-login-div'>
                                 <h5>Already have an account? &nbsp;&nbsp;</h5>
-                                <button className='splash-page-middle-login'>Log in</button>
-                            </div>
+                                <OpenModalButton
+									buttonText="Login"
+									// onItemClick={closeMenu}
+									modalComponent={<LoginFormModal />}
+									splashLoginClass='splash-page'
+								/>                            </div>
                         </div>
                         <div className='splash-page-footer'>
                             <div className='splash-page-footer-inner'>

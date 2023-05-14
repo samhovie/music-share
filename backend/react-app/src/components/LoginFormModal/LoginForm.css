@@ -59,3 +59,12 @@
     padding: 4px 10px;
     color: black;
 }
+/*
+.login-modal-submit-button:hover {
+    cursor: pointer;
+} */
+
+.login-modal-demo > div:hover{
+    cursor: pointer;
+
+}

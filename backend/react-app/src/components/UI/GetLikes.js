@@ -77,8 +77,8 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
     // </>
     // )
     // } else {
-    if (!allLikes) return null
-    if (!allLikes.user_id) return null
+    // if (!allLikes) return null
+    // if (!allLikes.user_id) return null
     if (!sessionUser) return null
 
     // return (

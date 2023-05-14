@@ -189,7 +189,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                         </p>
                     </div>
                     <div className='single-song-card-info-comment'>
-                        <form
+                        {/* <form
                             action={`/api/comments/:songId`}
                             method="POST"
                             encType="multipart/form-data"
@@ -207,7 +207,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                 placeholder='Write a comment'
                             // style={{display: 'none'}}
                             />
-                        </form>
+                        </form> */}
                     </div>
                     <div className='single-song-card-info-bottom'>
                         <div className='single-song-card-info-bottom-left-column'
@@ -251,7 +251,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                         />
                         <div className='single-song-card-info-bottom-right-column'>
                             {/* <div className='single-song-card-info-bottom-right-column-plays'>Plays</div> */}
-                            <div className='single-song-card-info-bottom-right-column-comments'>Comments</div>
+                            {/* <div className='single-song-card-info-bottom-right-column-comments'>Comments</div> */}
                         </div>
                     </div>
 

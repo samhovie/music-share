@@ -15,6 +15,7 @@ comment_routes = Blueprint('comments', __name__, url_prefix="/api/comments")
 def get_song_comments(songId):
     # print('REQUEST', request)
     comments = Comment.query.filter_by(song_id = songId).all()
+    res = []
     for comment in comments:
         commenter = User.query.get(comment.user_id)
         comment = comment.to_dict()
@@ -22,13 +23,14 @@ def get_song_comments(songId):
         # print(commenter)
         comment['user_profile_pic'] = commenter['profile_pic']
         comment['username'] = commenter['username']
+        res.append(comment)
         # print("COMMMENT TOOO DICTT", comment)
     # print(type(comments))
     # comments = json.dumps(comments)
     # comments = json.dumps(comments, default=lambda c : c.to_dict())
     print("COMMMENT TOOO DICTT", comments)
 
-    return json.dumps(comments, default=lambda c : c.to_dict())
+    return json.dumps(res, default=lambda c : c.to_dict())
 
 
 

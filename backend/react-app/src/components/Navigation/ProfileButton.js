@@ -59,13 +59,14 @@ function ProfileButton({ user }) {
                 Profile
               </NavLink>
             </li>
-            {/* <li>
+            <li>
               <NavLink exact to='/likes'
                 style={{ textDecoration: 'none' }}
               >
                 Likes
               </NavLink>
             </li>
+            {/*
             <li>
               <NavLink exact to='/songs'
                 style={{ textDecoration: 'none' }}

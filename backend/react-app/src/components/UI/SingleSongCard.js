@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 // import OpenModalMenuItem from './'
 import './SingleSongCard.css'
@@ -7,34 +7,82 @@ import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
-import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
+import { getAllSongLikesThunk, getUserLikedSongs, getSongThunk } from '../../store/likes'
 import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom'
 import createCommentThunk from '../../store/songs'
-
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import { PlayerContext } from '../../App'
 import GetLikes from './GetLikes'
 
-const SingleSongCard = ({ song }) => {
+const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
+    const history = useHistory()
     const dispatch = useDispatch()
-    const [comment, setComment] = useState()
+    const [comment, setComment] = useState('')
+    // console.log('allLikes', allLikes)
+    // const [isLiked, setIsLiked] = useState()
+    console.log('SOOOOOOOOONNG', song.preview_img)
+    // console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
-    const sessionUser = useSelector((state) => state.session.user)
+    // const sessionUser = useSelector((state) => state.session.user)
+    // const userSongs = useSelector((state) => state.songs.singleSong)
+    // console.log('UUUUSER', userSongs)
+    // console.log(userSongs)
+    const [,setLikes] = useState()
+
+
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
     // console.log('likes', likesObj)
-    const [isPlaying, setIsPlaying] = useState(false)
-
-    const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
-    // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
+    const likesHandler2 = () => {
+        // console.log('SOOONG3333',songId)
 
+        // history.push('/')
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(likeSongThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
+    }
+
+    const unlikeHandler2 = () => {
+        console.log('SOOONG4444',songId)
+
+        // history.push('/')
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(removeLikeThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
+    }
+    // const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, setIsPlaying] = useState(false)
+
+    // const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
+    // console.log(song)
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('text', comment)
+        // console.log(formData)
+        dispatch(createCommentThunk(formData, songId))
+        history.push(`/songs/${songId}`)
+    }
+
+    const {url, setUrl, isPlaying, setIsPlaying} = useContext(PlayerContext)
     useEffect(() => {
-        // dispatch(getAllSongsThunk())
+        dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
+
         // dispatch(getUserLikedSongs())
     },[dispatch])
 
@@ -43,15 +91,49 @@ const SingleSongCard = ({ song }) => {
     //     dispatch(likeSongThunk(songId))
     // }
 
-    const submitHandler = () => {
+    // const likesHandler = () => {
 
+    // }
+
+
+    // const likesHandler = () => {
+
+    // }
+
+
+
+    function isPlayingClickHandler() {
+
+        // show player (on first play?)
+        const mainCollection = document.getElementsByClassName("rhap_container");
+        const mainPlayer = [...mainCollection][0]
+        mainPlayer.style.visibility = 'visible'
+        mainPlayer.style.opacity = '1'
+
+        // I know we need to do the get func that just grabs the first one but I'm too lazy to look it up
+        const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
+        const button = [...buttonCollection][0]
+
+        // if we're on a song card we can always set it without checking if there's a url
+        if (!isPlaying && url !== song.mp3_file) {
+            // song will autoplay on change
+            setUrl(song.mp3_file)
+        } else if(!isPlaying && url === song.mp3_file) {
+            // we need to unpause
+            button.click()
+        }
+        else {
+            // it's playing our song
+            // we want to click the main button to that pauses it
+            button.click()
+        }
+        // console.log('card', isPlaying)
     }
 
-    const likesHandler = () => {
 
-    }
     return (
         <>
+        {/* <Player url={song.mp3_file}></Player> */}
             <div className='single-song-card-wrapper'>
                 <div className='single-song-card-image'
                     style={{ marginRight: '1rem' }}
@@ -71,15 +153,20 @@ const SingleSongCard = ({ song }) => {
                                 style={{ marginRight: '1rem' }}
                                 onClick={isPlayingClickHandler}
                             >
-                                {!isPlaying ?
-                                    <i className="fa-solid fa-circle-play"
+
+                                {isPlaying && url === song.mp3_file ?
+                                    <i className="fa-solid fa-pause "
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                     :
-                                    <i className="fa-solid fa-pause"
+                                    <i className="fa-solid fa-circle-play"
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                 }
+
+
+
+
                             </div>
                             <div className='single-song-card-next-to-play'>
                                 <div className='single-song-card-artist'>
@@ -123,25 +210,39 @@ const SingleSongCard = ({ song }) => {
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>
-                        <div className='single-song-card-info-bottom-left-column'>
+                        <div className='single-song-card-info-bottom-left-column'
+                            >
+                        {!isUserLikesPage &&
+
                             <GetLikes songId={songId}
+                                      song={song}
                                       allLikes={allLikes}
                                       sessionUser={sessionUser}
+                                      likesHandler2={likesHandler2}
+                                      unlikeHandler2={unlikeHandler2}
                                       />
-                            <div>
+                        }
+                            {sessionUser &&
+                             sessionUser.id === song.id &&
+
+                            <>
+                            {/* <div> */}
                                 <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<UpdateSongForm songId={songId} />} />
-                            </div>
-                            <div >
+                                    modalComponent={<UpdateSongForm songId={songId}/>} />
+                            {/* </div> */}
+                            {/* <div > */}
                                 {/* <button>Delete</button>
                                 className='single-song-card-info-bottom-left-column-delete'
                                 */}
                                 <OpenModalButton
                                     buttonText="Delete"
-                                    modalComponent={<ConfirmDelete songId={songId} />} />
-                                {/* modalComponent={<ConfirmDelete />} /> */}
-                            </div>
+                                    modalComponent={<ConfirmDelete songId={songId}/>} />
+                                    {/* modalComponent={<ConfirmDelete />} /> */}
+                            {/* </div> */}
+                            </>
+
+                            }
 
                         </div>
                         <OpenModalButton

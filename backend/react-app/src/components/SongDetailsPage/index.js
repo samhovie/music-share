@@ -6,24 +6,28 @@ import './SongDetailsPage.css'
 import '../UI/GlobalOuterWrapper'
 import { getSongThunk } from '../../store/songs'
 import { createCommentThunk, getAllCommentsThunk } from '../../store/comments'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CommentComp from '../UI/CommentComp'
 import GetLikes from '../UI/GetLikes'
+import { getUserThunk } from '../../store/users'
+import ArtistDetails from '../UI/ArtistDetails'
 
 const SongDetailsPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { songId } = useParams();
-
+    const [url, setUrl] = useState("");
 
     const [comment, setComment] = useState('')
 
     const theComments = useSelector((state) => state.comments.allComments)
     const theSong = useSelector((state) => state.songs.singleSong)
-    // console.log("THE COMMENTSSSSS", theComments)
+    const artistId = useSelector(state => state.songs.singleSong.artist_id)
+    const sessionUser = useSelector(state => state.session.user)
     const comments = Object.values(theComments)
-    // console.log("THE COMMENTSSSSS", comments)
-    // console.log("theSONGGGGGG ", theSong)
+    console.log("theSONGSSSS", comments)
+    // dispatch(getUserThunk(theSong.artist_id))
+
 
 
     const submitHandler = (e) => {
@@ -31,15 +35,23 @@ const SongDetailsPage = () => {
         const formData = new FormData()
         formData.append('text', comment)
         dispatch(createCommentThunk(formData, songId))
+        // setUrl(`/songs/${songId}`)
+        // history.push(`/discover`)
         history.push(`/songs/${songId}`)
+        // dispatch(createCommentThunk(formData, songId))
     }
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
         dispatch(getAllCommentsThunk(songId))
+        // if (url !== '') {
+        //     setUrl(`/songs/${songId}`)
+        // }
     }, [dispatch, songId])
 
     return (
+        <>
+        {url && <Redirect to={url}/>}
         <div className='global-outerwrapper-outer'>
             <div className='global-outerwrapper-wrapper'>
                 <div className='song-details-page-top'>
@@ -49,7 +61,7 @@ const SongDetailsPage = () => {
                     <div className='song-details-page-bottom'>
                         <div className='song-details-page-post-comment'>
                             <div className='song-details-page-profile-pic'>
-                                <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'></img>
+                                <img src={sessionUser.profile_pic}></img>
                             </div>
                             <div className='song-details-page-comment-outer-wrapper'>
                                 <div className='song-details-page-comment-wrapper'
@@ -67,8 +79,7 @@ const SongDetailsPage = () => {
                                             value={comment}
                                             onChange={(e) => {
                                                 setComment(e.target.value)
-                                            }
-                                            }
+                                            }}
                                             placeholder='Let the artist know what you think!'></input>
                                     </form>
                                 </div>
@@ -91,19 +102,7 @@ const SongDetailsPage = () => {
                             </div>
                         </div>
                         <div className='song-details-page-profile-comments'>
-                            <div className='song-details-page-artist'>
-                                <div className='song-details-page-artist-image'>
-                                    <img
-                                        src='https://resizing.flixster.com/eU7-Qa3193jrUTIth9yZM3DdsF4=/218x280/v2/https://flxt.tmsimg.com/assets/761404_v9_aa.jpg'
-                                    ></img>
-                                </div>
-                                <p
-                                    className='song-details-page-artist-name'
-                                >
-                                    Nobuo Uematsu
-                                </p>
-
-                            </div>
+                            <ArtistDetails song={theSong}/>
                             <div className='song-details-page-display-comments-each'>
                                 <CommentComp />
                                 {comments.map(comment => {
@@ -118,6 +117,7 @@ const SongDetailsPage = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

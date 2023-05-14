@@ -37,9 +37,9 @@ const DiscoverPage = () => {
                     {/* </div> */}
                 </div>
             </div>
-            {playlists.map((playlist) => (
+            {/* {playlists.map((playlist) => (
                 <PlaylistCard playlist={playlist} key={playlist.id} playlistSong = {playlist.song}/>
-            ))}
+            ))} */}
             {/* <PlaylistCard /> */}
 
 

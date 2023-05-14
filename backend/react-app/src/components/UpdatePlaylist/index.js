@@ -24,9 +24,22 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     //     description: '',
     //     preview_img: ''
     // });
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [is_public, setPublic] = useState('')
+    useEffect(() => {
+        const fetchPlaylistDetails = async () => {
+            const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
+            if (singlePlaylist) {
+                setName(singlePlaylist.name)
+                setPublic(singlePlaylist.is_public)
+                setDescription(singlePlaylist.description)
+                setPreviewImg(playlist.preview_img || '')
+            }
+        }
+        fetchPlaylistDetails();
+    }, [dispatch, playlistId]);
+
+    const [name, setName] = useState(singlePlaylist.name)
+    const [description, setDescription] = useState(singlePlaylist.description)
+    const [is_public, setPublic] = useState(singlePlaylist.is_public)
     const [preview_img, setPreviewImg] = useState('')
 
 
@@ -50,18 +63,6 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     //     }
 
     console.log('playlist id', playlistId)
-    useEffect(() => {
-        const fetchPlaylistDetails = async () => {
-            const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
-            if (singlePlaylist) {
-                setName(singlePlaylist.name)
-                setPublic(singlePlaylist.is_public)
-                setDescription(singlePlaylist.description)
-                setPreviewImg(playlist.preview_img || '')
-            }
-        }
-        fetchPlaylistDetails();
-    }, [dispatch, playlistId]);
 
     // const [formData, setFormData] = useState({
     //     name: '',
@@ -87,8 +88,8 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('form data', updatedFormData);
         const updatedFormData = new FormData();
+        console.log('form data', updatedFormData);
         updatedFormData.append('name', name)
         updatedFormData.append('is_public', is_public)
         updatedFormData.append('description', description)
@@ -124,7 +125,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 className='upload-song-form-all-input upload-song-form-title'
                                 type='text'
                                 name='name'
-                                value={singlePlaylist.name}
+                                value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
                             />
@@ -132,7 +133,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                         <input
                             type="checkbox"
                             name='is_public'
-                            checked={singlePlaylist.is_public}
+                            checked={is_public}
                             onChange={(e) => setPublic(e.target.value)}
                         />
                         <div style={{ paddingBottom: '1rem' }}>
@@ -145,7 +146,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 name="description"
                                 rows="5"
                                 cols="40"
-                                value={singlePlaylist.description}
+                                value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 required
                             />

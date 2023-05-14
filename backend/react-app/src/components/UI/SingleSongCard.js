@@ -24,7 +24,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     const [comment, setComment] = useState('')
     // console.log('allLikes', allLikes)
     // const [isLiked, setIsLiked] = useState()
-    console.log('SOOOOOOOOONNG', song.preview_img)
+    // console.log('SOOOOOOOOONNG', song.preview_img)
     // console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     // const sessionUser = useSelector((state) => state.session.user)
@@ -53,7 +53,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     }
 
     const unlikeHandler2 = () => {
-        console.log('SOOONG4444',songId)
+        // console.log('SOOONG4444',songId)
 
         // history.push('/')
         // setLikes()

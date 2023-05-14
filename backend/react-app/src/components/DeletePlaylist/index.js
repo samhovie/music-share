@@ -13,7 +13,7 @@ const DeletePlaylist = ({ playlistId }) => {
     // const songId = useSelector(state => state)
     const deleteClick = (e) => {
         dispatch(deletePlaylistThunk(playlistId))
-        history.push('/profile')
+        history.push('/playlists/current')
         closeModal()
     }
 

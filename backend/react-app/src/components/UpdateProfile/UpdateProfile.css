@@ -6,7 +6,7 @@
 
 .update-profile-inner-wrapper {
     height: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .update-profile-title {
@@ -18,12 +18,43 @@
 
 .update-profile-image-form {
     display: flex;
+    width: 100%;
+}
+
+.update-profile-image {
+    margin-right: 2rem;
 }
 
 .update-profile-image > img {
     height: 18rem;
     width: 18rem;
     border-radius: 150px;
+}
+
+.update-profile-form {
+    width: 100%
+}
+
+.update-profile-form-label {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0
+}
+
+.update-profile-form-double-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.update-profile-form-names-input {
+    width: 16rem;
+}
+
+.update-profile-form-location-input {
+    width: 16rem;
+
 }
 
 .update-profile-bottom {
@@ -34,9 +65,22 @@
 .update-profile-bottom-bar-button-div {
     display: flex;
     align-items: center;
+    margin-top: 1rem;
 }
 
-.update-profile-bottom-bar-button-div > button{
+.update-profile-bottom-bar-cancel {
+    background-color: white;
+    margin-right: 1rem;
+    border-style: none;
+    font-size: 15px;
+}
+
+.update-profile-bottom-bar-save {
+    background-color: lightgreen;
+    border-radius: 4px;
+    color: white;
+    font-size: 15px;
+    padding: 3px 10px;
     /* display: flex; */
     /* justify-content: center; */
 }

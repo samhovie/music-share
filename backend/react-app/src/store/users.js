@@ -77,25 +77,25 @@ export const getUserThunk = (id) => async (dispatch) => {
 // 	}
 // }
 
-// export const updateUserThunk = (user, userId) => async (dispatch) => {
-// 	// console.log("TEST 2", user)
-// 	const response = await fetch(`/api/users/${userId}`, {
-// 		method: 'PUT',
-// 		body: user
-// 	})
-
-// 	if	(response.ok) {
-// 		// console.log("TEST 3")
-// 		const data = await response.json();
-// 		// console.log("TEST 5", data)
-// 		if (data.errors) {
-// 			// console.log("TEST 6")
-// 			return data.errors
-// 		}
-// 		// console.log("TEST 4")
-// 		dispatch(updateUserAction(data))
-// 	}
-// }
+export const updateUserThunk = (user, userId) => async (dispatch) => {
+	console.log("TEST 2", user)
+	const response = await fetch(`/api/users/${userId}`, {
+		method: 'PUT',
+		body: user
+	})
+	console.log(response)
+	if (response.ok) {
+		console.log("TEST 3")
+		const data = await response.json();
+		console.log("TEST 5", data)
+		if (data.errors) {
+			console.log("TEST 6")
+			return data.errors
+		}
+		console.log("TEST 4")
+		dispatch(updateUserAction(data))
+	}
+}
 
 // export const deleteUserThunk = (userId) => async (dispatch) => {
 // 	const response = await fetch(`/api/users/${userId}`, {
@@ -130,11 +130,11 @@ export default function usersReducer(state = initialState, action) {
 		// 	// console.log("ACTIONNN", action)
 		// 	newState = { ...state, singleUser: {...action.singleUser}}
 		// 	return newState
-		// case UPDATE_USER:
-		// 	// console.log(action)
-		// 	newState = {...state, singleUser: {...state.singleUser}}
-		// 	newState.singleUser[action.user.id] = action.user
-		// 	return newState
+		case UPDATE_USER:
+			// console.log(action)
+			newState = {...state, singleUser: {...state.singleUser}}
+			newState.singleUser[action.user.id] = action.user
+			return newState
 		// case DELETE_USER:
 		// 	newState = {...state, allUsers: {...state.allUsers}}
 		// 	delete newState.allUsers[action.userId]

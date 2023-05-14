@@ -21,48 +21,74 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
 
   const demoClick = () => {
-    dispatch(sessionActions.login('demo@aa.io', 'password' ))
+    dispatch(sessionActions.login('demo@aa.io', 'password'))
     history.push('/discover')
     closeModal()
   }
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <div className="login-modal-demo">
-          <div onClick={() => demoClick()}>Demo User</div>
-        </div>
-      </form>
+      <div className="login-modal-wrapper">
+
+        <h1>Log In</h1>
+        <form onSubmit={handleSubmit}
+          className="login-modal-form"
+        >
+          <ul
+          // style={{marginTop: '2rem'}}
+          >
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+
+          <div className="login-modal-email-div login-modal-sep-div">
+            <label
+              className="login-modal-labels"
+            >
+              Email
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="login-modal-password-div login-modal-sep-div">
+            <label
+              className="login-modal-labels"
+            >
+              Password
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="login-modal-bottom">
+            <div>
+              <button
+                className="login-modal-submit-button"
+                type="submit">Log In</button>
+
+            </div>
+            <div className="login-modal-demo">
+              <div onClick={() => demoClick()}>Demo User</div>
+            </div>
+
+          </div>
+        </form>
+      </div>
     </>
   );
 }

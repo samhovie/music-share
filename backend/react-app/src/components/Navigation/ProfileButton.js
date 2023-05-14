@@ -56,7 +56,7 @@ function ProfileButton({ user }) {
                 Profile
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink exact to='/likes'
                 style={{ textDecoration: 'none' }}
               >
@@ -76,7 +76,7 @@ function ProfileButton({ user }) {
               >
                 My Playlists
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

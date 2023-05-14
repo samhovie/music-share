@@ -2,13 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 30rem;
     height: 40rem;
-    background-color: lightblue;
+    background-color: #E5F9DB;
 }
 
 .signup-modal-wrapper > h1 {
-    margin-bottom: -20px;
+    /* margin-bottom: -20px; */
+}
+
+.signup-modal-h1 > p {
+    color: red;
 }
 
 .signup-modal-form {
@@ -30,7 +35,7 @@
     flex-direction: column;
     /* justify-content: center; */
     /* margin-right: 42%; */
-    margin: 2rem 0rem;
+    margin: 1.5rem 0rem;
     width: 100%;
 }
 
@@ -60,7 +65,7 @@
 
 .signup-modal-submit-div > button{
     margin: 3% 0%;
-    background-color:cornflowerblue;
+    background-color:#A0D8B3;
     box-shadow: 2px 2px 1px black;
     border: 2px solid black;
     color: white;

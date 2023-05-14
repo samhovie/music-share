@@ -23,9 +23,10 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if(ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
+
     };
 
     document.addEventListener("click", closeMenu);
@@ -54,16 +55,22 @@ function ProfileButton({ user }) {
             {/* <li>{user.email}</li> */}
             <li>
               <NavLink exact to='/profile'
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none',
+                         color: 'black',
+                         border: 'black'
+                      }}
               >
                 Profile
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/likes'
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none',
+                         color: 'black',
+                         border: 'black'
+                        }}
               >
-                Likes
+                My Likes
               </NavLink>
             </li>
             {/*
@@ -82,7 +89,9 @@ function ProfileButton({ user }) {
               </NavLink>
             </li> */}
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button
+              className='nav-bar-profile-button-log-out'
+              onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

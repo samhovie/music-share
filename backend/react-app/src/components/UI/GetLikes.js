@@ -105,7 +105,7 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
         <>
           {sessionUser && (
             <div className='single-song-card-info-bottom-left-column-heart'>
-              {!song.user_id.includes(sessionUser.id) ? (
+              {song && song.user_id && !song.user_id.includes(sessionUser.id) ? (
                 <div onClick={likesHandler2}
                     className='likes-unlikes-handler'
                 >

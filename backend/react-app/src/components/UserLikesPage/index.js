@@ -14,7 +14,7 @@ const UserLikesPage = () => {
     const userSongs = useSelector((state) => state.likes.userLikes.userSongs)
     const [isUserLikesPage, setIsUserLikesPage] = useState(false)
 
-    const songs = Object.values(userSongs)
+    // const songs = Object.values(userSongs)
 
     // console.log(userSongs)
     useEffect(() => {
@@ -43,7 +43,7 @@ const UserLikesPage = () => {
                             Hear the latest songs
                         </h3>
                     </div>
-                    {songs.map((song) => (
+                    {userSongs.map((song) => (
                         <SingleSongCard
                         song={song}
                         key={song.id}

@@ -12,6 +12,10 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
     const playlists = useSelector(state => state.playlists.allPlaylists)
     const arrayPlaylists = Object.values(playlists)
     const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
+    const sessionUser = useSelector((state) => state.session.user);
+    const owner = playlist.user && playlist.user.id;
+    const current_user = sessionUser.id;
+    const owner_username = playlist.user && playlist.user.username;
 
     const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
     console.log("PLAYLIST IN PLAYLIST CARD", playlistsSongs)
@@ -36,19 +40,23 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                 {/* this is hardcoded, change later */}
                 {`${playlist.name}`}
             </div>
-            <div className='single-song-card-info-bottom-left-column-delete'>
-                <i>delete</i>
-                <OpenModalButton
-                    buttonText="Delete"
-                    modalComponent={<DeletePlaylist playlistId={playlist.id} />} />
-                {/* modalComponent={<ConfirmDelete />} /> */}
-            </div>
-            <div>
-                <OpenModalButton
-                    buttonText="Update"
-                    modalComponent={<UpdatePlaylistForm playlistId={playlist.id} />} />
-            </div>
-        </div>
+            {current_user == owner && (
+                < div className='single-song-card-info-bottom-left-column-delete'>
+                    <i>delete</i>
+                    <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<DeletePlaylist playlistId={playlist.id} />} />
+                    {/* modalComponent={<ConfirmDelete />} /> */}
+                </div>
+            )}
+            {current_user == owner && (
+                <div>
+                    <OpenModalButton
+                        buttonText="Update"
+                        modalComponent={<UpdatePlaylistForm playlistId={playlist.id} />} />
+                </div>
+            )}
+        </div >
     )
 }
 

@@ -9,7 +9,7 @@ const CommentComp = ({ comment }) => {
     // console.log("DOOM", comment)
     const dispatch = useDispatch()
     console.log(comment)
-    // const commentOwner = comment && comment.userId
+    const commentOwner = comment && comment.userId
     // const theComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(theComments)
     // dispatch(getAllCommentsThunk(songId))
@@ -25,12 +25,12 @@ const CommentComp = ({ comment }) => {
             <div className='comment-outer-wrapper'>
                 <div className='comment-inner-wrapper'>
                     <div className='comment-profile-pic'>
-                        <img src='https://pbs.twimg.com/media/FuE8jf_XsAk0AVf?format=jpg&name=medium'></img>
+                        <img src={`${comment.user_profile_pic}`}></img>
                     </div>
                     <div className='comment-info'>
                         <div className='comment-info-left'>
                             <div className='comment-info-left-user'>
-                                {/* <GetUser userId={commentOwner} /> */}
+                                {comment.username}
                             </div>
                             <div className='comment-info-left-text'>
                                 {`${comment.text}`}

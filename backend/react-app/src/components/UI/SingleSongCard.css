@@ -66,6 +66,10 @@
     width: 100%;
 }
 
+.single-song-card-info-comment {
+    height: 3rem;
+}
+
 .single-song-card-info-bottom {
     display: flex;
     justify-content: space-between;

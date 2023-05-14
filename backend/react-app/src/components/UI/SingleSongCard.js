@@ -34,7 +34,7 @@ const SingleSongCard = ({ song }) => {
     // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
     // console.log('likes', likesObj)
-    const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, setIsPlaying] = useState(false)
 
     // console.log("SINGLESONGCARD SONGGGG", song)
     const songId = song.id
@@ -48,6 +48,7 @@ const SingleSongCard = ({ song }) => {
         history.push(`/songs/${songId}`)
     }
 
+    const {url, setUrl, isPlaying, setIsPlaying} = useContext(PlayerContext)
     useEffect(() => {
         // dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
@@ -68,16 +69,24 @@ const SingleSongCard = ({ song }) => {
 
     // }
 
-    const {url, setUrl} = useContext(PlayerContext)
+
+
     function isPlayingClickHandler() {
         // pause song
-        setIsPlaying(!isPlaying)
-        if (!isPlaying) {
+
+        const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
+        const button = [...buttonCollection][0]
+
+        // if we're on a song card we can always set it without checking if there's a url
+
+        if (!isPlaying && url !== song.mp3_file) {
+            // song will autoplay on change
             setUrl(song.mp3_file)
+            setIsPlaying(true)
         } else {
-            const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
-            const button = [...buttonCollection][0]
+            // we want to click the main button to that it pauses
             button.click()
+            setIsPlaying(false)
         }
     }
 
@@ -105,12 +114,12 @@ const SingleSongCard = ({ song }) => {
                                 onClick={isPlayingClickHandler}
                             >
 
-                                {!isPlaying ?
-                                    <i className="fa-solid fa-circle-play"
+                                {isPlaying && url === song.mp3_file ?
+                                    <i className="fa-solid fa-pause "
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                     :
-                                    <i className="fa-solid fa-pause"
+                                    <i className="fa-solid fa-circle-play"
                                         style={{ color: '#932db9', fontSize: '40px' }}
                                     ></i>
                                 }

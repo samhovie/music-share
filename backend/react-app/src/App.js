@@ -22,11 +22,18 @@ import Player from "./components/Player";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 
+function usePlayer() {
+  const [url, setUrl] = useState('');
+  const [isPlaying, setIsPlaying] = useState(false);
+  return {url, setUrl, isPlaying, setIsPlaying};
+}
+
+
 export const PlayerContext = createContext();
 const PlayerProvider = ({children}) => {
-  const [url, setUrl] = useState('https://music-share-rhinos.s3.amazonaws.com/e2cb6758305b45d280045956bbfeb974.mp3')
+  const {url, setUrl, isPlaying, setIsPlaying} = usePlayer()
   return (
-    <PlayerContext.Provider value={{url, setUrl}}>
+    <PlayerContext.Provider value={{url, setUrl, isPlaying, setIsPlaying}}>
       {children}
     </PlayerContext.Provider>
   );
@@ -41,6 +48,34 @@ function App() {
   }, [dispatch]);
 
 
+  // const url = useContext(PlayerContext)
+
+
+
+  // const onPlayerPlayPause = () => {
+
+  //   const {url, isPlaying, setIsPlaying} = usePlayer()
+
+  //   // if it's playing, we need to find the pause class and change it to play (if exists)
+  //   const buttonCollection = document.getElementsByClassName("fa-pause");
+  //   const button = [...buttonCollection][0] ? [...buttonCollection][0] : false
+
+  //   if (isPlaying && button) {
+  //     button.classList.remove("fa-circle-play")
+  //     button.classList.add("fa-pause-song")
+  //     setIsPlaying(false)
+  //   } else {
+  //     // if it is not playing, we need to know what play button to pause
+  //     // individual cards get context, check if their song is playing
+  //     // we need to check if there is a url to set it to playing
+  //     setIsPlaying(Boolean(url))
+  //   }
+
+  // }
+
+  // const mainPlayButtonCol = document.getElementsByClassName("rhap_main-controls-button rhap_play-pause-button")
+  // const mainPlayPause = [...mainPlayButtonCol][0] ? [...mainPlayButtonCol][0] : false
+  // if (mainPlayPause) mainPlayPause.addEventListener('onClick', onPlayerPlayPause)
 
 
   return (

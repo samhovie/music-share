@@ -18,11 +18,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    display_name = db.Column(db.String(255))
-    first_name = db.Column(db.String(255))
-    last_name = db.Column(db.String(255))
-    city = db.Column(db.String(255))
-    country = db.Column(db.String(255))
+    display_name = db.Column(db.String(255), default='Please change')
+    first_name = db.Column(db.String(255), default='Please change')
+    last_name = db.Column(db.String(255), default='Please change')
+    city = db.Column(db.String(255), default='Please change')
+    country = db.Column(db.String(255), default='Please change')
 
     bio = db.Column(db.Text)
     profile_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')

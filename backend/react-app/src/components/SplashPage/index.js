@@ -9,6 +9,8 @@ const SplashPage = () => {
 
     if (sessionUser) return <Redirect to="/discover" />;
 
+
+
     return (
         <>
             <div className='global-outerwrapper-outer'>

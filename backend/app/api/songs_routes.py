@@ -19,8 +19,8 @@ def get_all_songs():
     res = []
     for song in songs:
         song = song.to_dict()
-        song['likes'] = get_all_song_likes(song['id'])['likes']
-        song['user_id'] = get_all_song_likes(song['id'])['user_id']
+        song['likes'] = get_all_specific_song_likes(song['id'])['likes']
+        song['user_id'] = get_all_specific_song_likes(song['id'])['user_id']
         print('SSOOOONG', song)
         res.append(song)
 

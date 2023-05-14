@@ -23,7 +23,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if(ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
+      if (ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
 
@@ -37,7 +37,8 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    history.push('/')
+    // history.push('/')
+    window.location.replace('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -55,20 +56,22 @@ function ProfileButton({ user }) {
             {/* <li>{user.email}</li> */}
             <li>
               <NavLink exact to='/profile'
-                style={{ textDecoration: 'none',
-                         color: 'black',
-                         border: 'black'
-                      }}
+                style={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  border: 'black'
+                }}
               >
                 Profile
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/likes'
-                style={{ textDecoration: 'none',
-                         color: 'black',
-                         border: 'black'
-                        }}
+                style={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  border: 'black'
+                }}
               >
                 My Likes
               </NavLink>
@@ -90,9 +93,9 @@ function ProfileButton({ user }) {
             </li> */}
             <li>
               <button
-              className='nav-bar-profile-button-log-out'
-              type='submit'
-              onClick={handleLogout}>Log Out</button>
+                className='nav-bar-profile-button-log-out'
+                type='submit'
+                onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

@@ -1,5 +1,5 @@
 import { getAllSongLikesThunk } from '../../store/likes'
-import { getAllSongsThunk } from '../../store/songs'
+import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import SingleSongCard from '../UI/SingleSongCard'
 import './FeedPage.css'
 import { useState, useEffect } from 'react'
@@ -8,17 +8,18 @@ import { useDispatch, useSelector } from 'react-redux'
 const FeedPage = () => {
     const dispatch = useDispatch()
     const allSongs = useSelector((state) => state.songs.allSongs)
-
+    const sessionUser = useSelector((state) => state.session.user)
+    const userSongs = useSelector((state) => state.songs.singleSong)
     const songs = Object.values(allSongs)
     // console.log(allSongs)
 
 
-
     useEffect(() => {
         dispatch(getAllSongsThunk())
+        dispatch(getSongThunk(sessionUser.id))
     }, [dispatch])
 
-    console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
+    // console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>
@@ -33,6 +34,8 @@ const FeedPage = () => {
                         <SingleSongCard
                         song={song}
                         key={song.id}
+                        sessionUser={sessionUser}
+                        userSongs={userSongs}
                         />
                     ))}
                 </div>

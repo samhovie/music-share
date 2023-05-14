@@ -10,7 +10,7 @@ import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
     const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
-    console.log('single playlist', singlePlaylist)
+    // console.log('single playlist', singlePlaylist)
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();

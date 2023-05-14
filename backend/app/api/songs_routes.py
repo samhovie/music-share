@@ -1,11 +1,12 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Song
+from app.models import Song, User
 from app.forms import SongForm
 from datetime import date
 from app.models import db
 from flask import redirect, request
-from .likes_routes import get_all_specific_song_likes
+from .likes_routes import get_all_specific_song_likes, get_all_song_likes
+# from .user_routes import user
 from app.aws import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3
 )
@@ -21,6 +22,7 @@ def get_all_songs():
     for song in songs:
         song = song.to_dict()
         song['likes'] = get_all_specific_song_likes(song['id'])['likes']
+        song['user_id'] = get_all_specific_song_likes(song['id'])['user_id']
         print('SSOOOONG', song)
         res.append(song)
 
@@ -182,4 +184,10 @@ def delete_song(id):
 @songs_routes.route('/<int:id>')
 def get_song(id):
     song = Song.query.get(id)
-    return song.to_dict()
+    artist = User.query.get(song.artist_id)
+    song = song.to_dict()
+    artist = artist.to_dict()
+    song['artist'] = artist
+    # print('song in songs routes', song)
+
+    return song

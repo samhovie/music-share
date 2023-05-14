@@ -6,8 +6,10 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -21,9 +23,10 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if(ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
+
     };
 
     document.addEventListener("click", closeMenu);
@@ -34,6 +37,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -51,18 +55,25 @@ function ProfileButton({ user }) {
             {/* <li>{user.email}</li> */}
             <li>
               <NavLink exact to='/profile'
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none',
+                         color: 'black',
+                         border: 'black'
+                      }}
               >
                 Profile
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/likes'
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none',
+                         color: 'black',
+                         border: 'black'
+                        }}
               >
-                Likes
+                My Likes
               </NavLink>
             </li>
+            {/*
             <li>
               <NavLink exact to='/songs'
                 style={{ textDecoration: 'none' }}
@@ -76,9 +87,11 @@ function ProfileButton({ user }) {
               >
                 My Playlists
               </NavLink>
-            </li>
+            </li> */}
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button
+              className='nav-bar-profile-button-log-out'
+              onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

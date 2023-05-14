@@ -1,7 +1,7 @@
 import json
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Comment
+from app.models import Comment, User
 from app.forms import CommentForm
 from datetime import date
 from app.models import db
@@ -13,8 +13,21 @@ comment_routes = Blueprint('comments', __name__, url_prefix="/api/comments")
 
 @comment_routes.route('/<int:songId>')
 def get_song_comments(songId):
-    print('REQUEST', request)
+    # print('REQUEST', request)
     comments = Comment.query.filter_by(song_id = songId).all()
+    for comment in comments:
+        commenter = User.query.get(comment.user_id)
+        comment = comment.to_dict()
+        commenter = commenter.to_dict()
+        # print(commenter)
+        comment['user_profile_pic'] = commenter['profile_pic']
+        comment['username'] = commenter['username']
+        # print("COMMMENT TOOO DICTT", comment)
+    # print(type(comments))
+    # comments = json.dumps(comments)
+    # comments = json.dumps(comments, default=lambda c : c.to_dict())
+    print("COMMMENT TOOO DICTT", comments)
+
     return json.dumps(comments, default=lambda c : c.to_dict())
 
 
@@ -22,7 +35,6 @@ def get_song_comments(songId):
 @comment_routes.route('/<int:commentId>', methods=['DELETE'])
 def delete_comment(commentId):
     comment = Comment.query.get(commentId)
-    print(comment)
     if comment.user_id != current_user.id:
         return {"errors": 'nacho comment'}
     else:

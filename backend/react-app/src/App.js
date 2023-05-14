@@ -19,6 +19,7 @@ import CreatePlaylistForm from "./components/CreateNewPlaylist";
 import CurrentUserPlaylist from "./components/MyPlaylists";
 import CurrentUserSongs from "./components/MySongs";
 import Player from "./components/Player";
+import UserLikesPage from "./components/UserLikesPage";
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 
@@ -51,6 +52,9 @@ function App() {
 
       {isLoaded && (
         <Switch>
+          <Route exact path='/likes'>
+            <UserLikesPage />
+          </Route>
           <Route exact path='/upload'>
             <SongUpload />
           </Route>

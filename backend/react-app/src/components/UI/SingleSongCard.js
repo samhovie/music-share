@@ -7,7 +7,7 @@ import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
-import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
+import { getAllSongLikesThunk, getUserLikedSongs, getSongThunk } from '../../store/likes'
 import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
@@ -16,28 +16,57 @@ import createCommentThunk from '../../store/songs'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { PlayerContext } from '../../App'
-
-
 import GetLikes from './GetLikes'
 
-
-const SingleSongCard = ({ song }) => {
-    const dispatch = useDispatch()
+const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
     const [comment, setComment] = useState('')
     // console.log('allLikes', allLikes)
     // const [isLiked, setIsLiked] = useState()
+    console.log('SOOOOOOOOONNG', song)
+    console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
-    const sessionUser = useSelector((state) => state.session.user)
+    // const sessionUser = useSelector((state) => state.session.user)
+    // const userSongs = useSelector((state) => state.songs.singleSong)
+    console.log('UUUUSER', userSongs)
+    // console.log(userSongs)
+    const [,setLikes] = useState()
+
+
     // const allLikes = useSelector(state => state.likes)
     // const userLikes = useSelector(state => console.log('STATE', state))
     // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
     // console.log('likes', likesObj)
+    const songId = song.id
+    const likesHandler2 = () => {
+        console.log('SOOONG3333',songId)
+
+        // history.push('/')
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(likeSongThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
+    }
+
+    const unlikeHandler2 = () => {
+        console.log('SOOONG4444',songId)
+
+        // history.push('/')
+        // setLikes()
+        dispatch(getAllSongsThunk())
+        dispatch(removeLikeThunk(songId))
+        dispatch(getAllSongsThunk())
+        // history.push('/feed')
+        // window.location.reload()
+    }
     const [isPlaying, setIsPlaying] = useState(false)
 
-    // console.log("SINGLESONGCARD SONGGGG", song)
-    const songId = song.id
+    // const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
+    // console.log(song)
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -58,8 +87,9 @@ const SingleSongCard = ({ song }) => {
 
 
     useEffect(() => {
-        // dispatch(getAllSongsThunk())
+        dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
+
         // dispatch(getUserLikedSongs())
     },[dispatch])
 
@@ -79,9 +109,8 @@ const SingleSongCard = ({ song }) => {
 
     const {url, setUrl} = useContext(PlayerContext)
     function isPlayingClickHandler() {
-
+        setIsPlaying(!isPlaying)
         setUrl(song.mp3_file)
-
     }
 
 
@@ -164,25 +193,39 @@ const SingleSongCard = ({ song }) => {
                         </form>
                     </div>
                     <div className='single-song-card-info-bottom'>
-                        <div className='single-song-card-info-bottom-left-column'>
+                        <div className='single-song-card-info-bottom-left-column'
+                            >
+                        {!isUserLikesPage &&
+
                             <GetLikes songId={songId}
+                                      song={song}
                                       allLikes={allLikes}
                                       sessionUser={sessionUser}
+                                      likesHandler2={likesHandler2}
+                                      unlikeHandler2={unlikeHandler2}
                                       />
-                            <div>
+                        }
+                            {sessionUser &&
+                             sessionUser.id === song.id &&
+
+                            <>
+                            {/* <div> */}
                                 <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<UpdateSongForm songId={songId} />} />
-                            </div>
-                            <div >
+                                    modalComponent={<UpdateSongForm songId={songId}/>} />
+                            {/* </div> */}
+                            {/* <div > */}
                                 {/* <button>Delete</button>
                                 className='single-song-card-info-bottom-left-column-delete'
                                 */}
                                 <OpenModalButton
                                     buttonText="Delete"
-                                    modalComponent={<ConfirmDelete songId={songId} />} />
-                                {/* modalComponent={<ConfirmDelete />} /> */}
-                            </div>
+                                    modalComponent={<ConfirmDelete songId={songId}/>} />
+                                    {/* modalComponent={<ConfirmDelete />} /> */}
+                            {/* </div> */}
+                            </>
+
+                            }
 
                         </div>
                         <OpenModalButton

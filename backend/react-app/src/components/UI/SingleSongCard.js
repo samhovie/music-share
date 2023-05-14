@@ -73,15 +73,11 @@ const SingleSongCard = ({ song }) => {
 
     function isPlayingClickHandler() {
 
-
-
         // show player (on first play?)
         const mainCollection = document.getElementsByClassName("rhap_container");
         const mainPlayer = [...mainCollection][0]
         mainPlayer.style.visibility = 'visible'
         mainPlayer.style.opacity = '1'
-
-
 
         // I know we need to do the get func that just grabs the first one but I'm too lazy to look it up
         const buttonCollection = document.getElementsByClassName("rhap_play-pause-button");
@@ -100,7 +96,7 @@ const SingleSongCard = ({ song }) => {
             // we want to click the main button to that pauses it
             button.click()
         }
-        console.log('card', isPlaying)
+        // console.log('card', isPlaying)
     }
 
 

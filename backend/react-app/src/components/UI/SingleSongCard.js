@@ -78,16 +78,19 @@ const SingleSongCard = ({ song }) => {
         const button = [...buttonCollection][0]
 
         // if we're on a song card we can always set it without checking if there's a url
-
         if (!isPlaying && url !== song.mp3_file) {
             // song will autoplay on change
             setUrl(song.mp3_file)
-            setIsPlaying(true)
-        } else {
-            // we want to click the main button to that it pauses
+        } else if(!isPlaying && url === song.mp3_file) {
+            // we need to unpause
             button.click()
-            setIsPlaying(false)
         }
+        else {
+            // it's playing our song
+            // we want to click the main button to that pauses it
+            button.click()
+        }
+        console.log('card', isPlaying)
     }
 
 

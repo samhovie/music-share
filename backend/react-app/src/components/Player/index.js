@@ -8,8 +8,6 @@ export default function Player() {
 
     const onPlayerPlayPause = () => {
 
-
-
         // if it's playing, we need to find the pause class and change it to play (if exists)
         const buttonCollection = document.getElementsByClassName("fa-pause");
         const button = [...buttonCollection][0] ? [...buttonCollection][0] : false
@@ -24,16 +22,18 @@ export default function Player() {
           // we need to check if there is a url to set it to playing
           setIsPlaying(Boolean(url))
         }
+        console.log('player', isPlaying)
 
       }
 
-      const mainPlayButtonCol = document.getElementsByClassName("rhap_main-controls-button rhap_play-pause-button")
-      const mainPlayPause = [...mainPlayButtonCol][0] ? [...mainPlayButtonCol][0] : false
-      if (mainPlayPause) mainPlayPause.addEventListener('onClick', onPlayerPlayPause)
+    //   const mainPlayButtonCol = document.getElementsByClassName("rhap_main-controls-button rhap_play-pause-button")
+    //   const mainPlayPause = [...mainPlayButtonCol][0]
+    //   console.log(mainPlayPause)
+    //   if (mainPlayPause) mainPlayPause.addEventListener('onClick', onPlayerPlayPause)
 
 
 
 
 
-    return <AudioPlayer src={url} />;
+    return <AudioPlayer onPlay={onPlayerPlayPause} onPause={onPlayerPlayPause} src={url} />;
 }

@@ -29,10 +29,17 @@ def seed_playlist_songs_users_likes():
         username='bobbie', email='bobbie@aa.io', password='password')
 
     song1 = Song(
-        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="song1.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
+        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bdc505fef18742a6954daa345f9e3068.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
     )
     song2 = Song(
-        name="Karma", artist_name="Efren", artist_id=2, mp3_file="song2.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bf2be0b18f4b4f85aaa5d2f3bac9642a.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+    )
+    # new songs SH
+    song3 = Song(
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/8031c80c59fa42a5ba129c7077172139.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+    )
+    song4 = Song(
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
     )
 
     playlist1 = Playlist(
@@ -59,6 +66,9 @@ def seed_playlist_songs_users_likes():
 
     db.session.add(song1)
     db.session.add(song2)
+    # new songs SH
+    db.session.add(song3)
+    db.session.add(song4)
     db.session.add(playlist1)
     db.session.add(playlist2)
     db.session.add(playlist3)

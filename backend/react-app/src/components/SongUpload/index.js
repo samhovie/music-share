@@ -23,11 +23,14 @@ const SongUpload = () => {
 
     useEffect(() => {
         const errors = {}
+        console.log("TYPEOFFFFF", typeof(mp3_file))
+        console.log("RIGHT UNDER", console.log(mp3_file))
+
         if (!name) errors.name = "Name is required"
         if (!description) errors.description = "Description is required"
         if (!genre) errors.genre = "Genre is required"
         if (!artist_name) errors.artist_name = "Artist is required"
-        if (!mp3_file.endsWith('.wav') && !mp3_file.endsWith('.mp3') && !mp3_file.endsWith('.acc') && !mp3_file.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
+        if (mp3_file && !mp3_file.name.endsWith('.wav') && !mp3_file.name.endsWith('.mp3') && !mp3_file.name.endsWith('.acc') && !mp3_file.name.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [name, description, genre, artist_name, mp3_file])

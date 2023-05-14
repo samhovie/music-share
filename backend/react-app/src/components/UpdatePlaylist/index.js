@@ -15,53 +15,89 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     const history = useHistory();
     const { closeModal } = useModal();
 
-    const [formData, setFormData] = useState({
-        name: '',
-        is_public: false,
-        // user_id: '',
-        description: '',
-        // preview_img: null
-    });
+    const playlist = useSelector(state => state.playlists.singlePlaylist)
+
+    // const [formData, setFormData] = useState({
+    //     name: '',
+    //     is_public: false,
+    //     // user_id: '',
+    //     description: '',
+    //     preview_img: ''
+    // });
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [is_public, setPublic] = useState('')
+    const [preview_img, setPreviewImg] = useState('')
+
+
+
+
+    //     let handleSubmit = async (e) => {
+    //         // console.log("--------------------TEST 1----------------------")
+    //         e.preventDefault();
+    //         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
+    //         // const formData = new FormData()
+    //         // formData.append('mp3_file', mp3_file)
+    //         // formData.append('name', name)
+    //         // formData.append('artist_name', artist_name)
+    //         // formData.append('genre', genre)
+    //         // // formData.append('description', description)
+    //         // dispatch(updatePlaylistThunk(formData, songId))
+    //         closeModal()
+    //         if (updatedPlaylist) {
+    //             history.push(`/playlists/${playlistId}`);
+    //         }
+    //     }
+
     console.log('playlist id', playlistId)
     useEffect(() => {
-        dispatch(getPlaylistThunk(playlistId)); // assuming getPlaylistThunk is your thunk to load a specific playlist
+        const fetchPlaylistDetails = async () => {
+            const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
+            if (singlePlaylist) {
+                setName(singlePlaylist.name)
+                setPublic(singlePlaylist.is_public)
+                setDescription(singlePlaylist.description)
+                setPreviewImg(playlist.preview_img || '')
+            }
+        }
+        fetchPlaylistDetails();
     }, [dispatch, playlistId]);
 
-    useEffect(() => {
-        if (singlePlaylist) {
-            setFormData({
-                name: singlePlaylist.name || '',
-                is_public: singlePlaylist.is_public || false,
-                // user_id: singlePlaylist.user_id || '',
-                description: singlePlaylist.description || '',
-                // preview_img: null
-            });
-        }
-    }, [singlePlaylist]);
+    // const [formData, setFormData] = useState({
+    //     name: '',
+    //     artist_name: '',
+    //     artist_id: '',
+    //     description: '',
+    //     // preview_img: ''
+    // });
 
-    const handleChange = (e) => {
-        // const { name, value } = e.target;
-        const { name, type, checked, value, files } = e.target;
-        if (type === "checkbox") {
-            setFormData({ ...formData, [name]: checked });
-        } else if (e.target.files) {
-            setFormData({ ...formData, [name]: e.target.files })
-        } else if (name === 'preview_img') {
-            setFormData({ ...formData, [name]: e.target.files });
-        } else {
-            setFormData({ ...formData, [name]: value });
-        }
-    };
+    // const handleChange = (e) => {
+    //     // const { name, value } = e.target;
+    //     const { name, type, checked, value, files } = e.target;
+    //     if (type === "checkbox") {
+    //         setFormData({ ...formData, [name]: checked });
+    //     } else if (e.target.files) {
+    //         setFormData({ ...formData, [name]: e.target.files })
+    //     } else if (name === 'preview_img') {
+    //         setFormData({ ...formData, [name]: e.target.files });
+    //     } else {
+    //         setFormData({ ...formData, [name]: value });
+    //     }
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('form data', formData);
-        const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
-        console.log('updated playlist', updatedPlaylist);
-        // closeModal();
-        if (updatedPlaylist) {
-            history.push(`/playlists/${playlistId}`);
-        }
+        console.log('form data', updatedFormData);
+        const updatedFormData = new FormData();
+        updatedFormData.append('name', name)
+        updatedFormData.append('is_public', is_public)
+        updatedFormData.append('description', description)
+        updatedFormData.append('preview_img', preview_img)
+        // const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
+        console.log('updated playlist', updatedFormData);
+        await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
+        closeModal();
+        history.push(`/playlists/${playlistId}`);
     }
 
     return (
@@ -88,16 +124,16 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 className='upload-song-form-all-input upload-song-form-title'
                                 type='text'
                                 name='name'
-                                value={formData.name}
-                                onChange={handleChange}
+                                value={singlePlaylist.name}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                             />
                         </div>
                         <input
                             type="checkbox"
                             name='is_public'
-                            checked={formData.is_public}
-                            onChange={handleChange}
+                            checked={singlePlaylist.is_public}
+                            onChange={(e) => setPublic(e.target.value)}
                         />
                         <div style={{ paddingBottom: '1rem' }}>
                             <div>
@@ -109,10 +145,14 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 name="description"
                                 rows="5"
                                 cols="40"
-                                value={formData.description}
-                                onChange={handleChange}
+                                value={singlePlaylist.description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 required
                             />
+                            <label>
+                                Preview Image:
+                                <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
+                            </label>
                         </div>
                         {/* <div
                                             style={{ paddingBottom: '1rem' }}

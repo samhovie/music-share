@@ -7,9 +7,8 @@ from app.models import User
 
 class PlaylistForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
-    is_public = BooleanField('public', validators=[DataRequired()])
+    is_public = BooleanField('public')
     description = StringField('description', validators=[DataRequired()])
-    preview_img = FileField("Image File", validators=[
-                            FileRequired()])
+    preview_img = FileField("Image File")
 
     # FileAllowed(list(ALLOWED_EXTENSIONS))

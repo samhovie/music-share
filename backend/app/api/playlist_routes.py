@@ -68,17 +68,29 @@ def update_playlist(id):
         elif playlist.user_id != current_user.id:
             return {"errors": "nacho playlist"}
 
+        print('REQUEST', request.files.keys)
+        preview_img_file = request.files["preview_img"]
+        preview_img_file.filename = get_unique_filename(
+            preview_img_file.filename)
+        preview_img_upload = upload_file_to_s3(preview_img_file)
+
+        if "url" not in preview_img_upload:
+            return preview_img_upload, 400
+
+        preview_img_url = preview_img_upload["url"]
+
         playlist.name = form.data['name']
         playlist.is_public = form.data['is_public']
         playlist.description = form.data['description']
         playlist.user_id = current_user.id
         if 'preview_img' in form.data:
-            playlist.preview_img = form.data['preview_img']
+            playlist.preview_img = preview_img_url
         else:
             playlist.preview_img = None
         # playlist.preview_img = form.data['preview_img']
         playlist.updated_at = date.today()
 
+        db.session.add(playlist)
         db.session.commit()
 
         return playlist.to_dict()
@@ -142,5 +154,3 @@ def get_current_user_playlists():
     playlists = Playlist.query.filter_by(user_id=current_user.id).all()
     print('user', playlists)
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
-
-

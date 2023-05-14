@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
+from sqlalchemy import desc, asc, func
 from app.models import Song, User
 from app.forms import SongForm
 from datetime import date
@@ -15,22 +16,25 @@ songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
 
 @songs_routes.route('/')
 def get_all_songs():
-    songs = Song.query.all()
-    print('SOOONGSPYTHON')
+    # songs = db.session.query(Song).order_by(desc(Song.id))
+    # songs = Song.query.order_by(func.date(Song.created_at).desc()).all()
+    # songs = Song.query.order_by(Song.created_at.desc()).all()
+    songs = Song.query.order_by(desc(Song.created_at)).all()
     res = []
     for song in songs:
         song = song.to_dict()
         song['likes'] = get_all_specific_song_likes(song['id'])['likes']
         song['user_id'] = get_all_specific_song_likes(song['id'])['user_id']
-        print('SSOOOONG', song)
+        # print('SSOOOONG', song)
         res.append(song)
+    # print("INSIDE GET ALL SONGS PY", songs)
 
     return {"songs": [song for song in res]}
 
 
 @songs_routes.route('/new', methods=['POST'])
 def post_songs():
-    print("TEST 3333333333333")
+    # print("TEST 3333333333333")
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # if request.method == "GET":
@@ -50,10 +54,10 @@ def post_songs():
         # with open(image) as file:
         #     upload = upload_file_to_s3(file)
 
-        print("REQUEST.FILES", request.files)
+        # print("REQUEST.FILES", request.files)
         # print(request.files['name'])
         if "url" not in upload:
-            print("UPLOAD[ERRORS]", upload['errors'])
+            # print("UPLOAD[ERRORS]", upload['errors'])
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message

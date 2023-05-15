@@ -30,25 +30,25 @@ const SplashPage = () => {
                             <h2>Join us</h2>
                             <h3>Save tracks and create playlists! All for free (for now)</h3>
                             <OpenModalButton
-									buttonText="Sign up!"
-									// onItemClick={closeMenu}
-									modalComponent={<SignupFormModal />}
-									splashSignupClass='splash-page'
-								/>
+                                buttonText="Sign up!"
+                                // onItemClick={closeMenu}
+                                modalComponent={<SignupFormModal />}
+                                splashSignupClass='splash-page'
+                            />
                             <div className='splash-page-middle-login-div'>
                                 <h5>Already have an account? &nbsp;&nbsp;</h5>
                                 <OpenModalButton
-									buttonText="Login"
-									// onItemClick={closeMenu}
-									modalComponent={<LoginFormModal />}
-									splashLoginClass='splash-page'
-								/>                            </div>
+                                    buttonText="Login"
+                                    // onItemClick={closeMenu}
+                                    modalComponent={<LoginFormModal />}
+                                    splashLoginClass='splash-page'
+                                />                            </div>
                         </div>
                         <div className='splash-page-footer'>
                             <div className='splash-page-footer-inner'>
-                                    Find out more about us:
+                                Find out more about us:
 
-                                    <div className='splash-page-about-content'>
+                                <div className='splash-page-about-content'>
                                     <a href='https://github.com/elcruzada' target="_blank">Efren Github</a>
                                     <a href='https://github.com/katiegeyer' target="_blank">Katie Github</a>
                                     <a href='https://github.com/samhovie' target="_blank">Sam Github</a>

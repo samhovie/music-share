@@ -27,7 +27,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
             <div className='playlist-card-image'>
                 {/* this is hardcoded, change later */}
                 {playlist && <NavLink className='single-playlist-card-image-nav' to={`/playlists/${playlist.id}`} playlist={playlist}>
-                    <img className='' src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
+                    <img className='' src={`${playlist.preview_img}`}></img>
                     {/* <img src={`${playlistsSongs[0].preview_img}`}></img> */}
                 </NavLink>}
             </div>

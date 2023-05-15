@@ -73,10 +73,10 @@ function App() {
             <Route exact path="/playlists/current">
               <CurrentUserPlaylist />
             </Route>
-            <Route exact path="/all/current">
+            {/* <Route exact path="/all/current">
               <CurrentUserPlaylist />
               <CurrentUserSongs />
-            </Route>
+            </Route> */}
             <Route exact path="/playlists/new">
               <CreatePlaylistForm />
             </Route>

@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     country = db.Column(db.String(255), default='Please change')
 
     bio = db.Column(db.Text)
-    profile_pic = db.Column(db.String(255), default='')
+    profile_pic = db.Column(db.String(255), default='https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1429&q=80')
     banner_pic = db.Column(db.String(255), default='')
 
     songs = db.relationship('Song', back_populates = 'user', cascade='all, delete-orphan')

@@ -19,6 +19,7 @@ const SongUpload = () => {
     const [id, setId] = useState('')
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
+    const [isFetching, setIsFetching] = useState(false)
 
     const sessionUser = useSelector((state) => state.session.user);
     const current_user = sessionUser.display_name;
@@ -56,17 +57,37 @@ const SongUpload = () => {
             formData.append('preview_img', preview_img)
             formData.append('description', description)
 
-            dispatch(createSongThunk(formData))
+            setIsFetching(true);
+           await dispatch(createSongThunk(formData))
+
+            setTimeout(function () {
+                console.log("Delayed for 5 second.");
+                setIsFetching(false);
+            }, 5000);
             history.push('/songs/current')
         }
     }
 
     return (
-        <>
+        <> {
+            isFetching ?
             <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper'>
                     <div className='upload-song-outer-wrapper'>
                         <div className='upload-song-inner-wrapper'>
+                            <h1>
+                            LOADING. . .
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            :
+            <div className='global-outerwrapper-outer'>
+                <div className='global-outerwrapper-wrapper'>
+                    <div className='upload-song-outer-wrapper'>
+                        <div className='upload-song-inner-wrapper'>
+
                             <form
                                 className='upload-song-form'
                                 action="/api/songs/new"
@@ -190,7 +211,7 @@ const SongUpload = () => {
                                             </label> */}
                                         </label>
                                         <div>
-                                            <label style={{display:'flex', flexDirection:'column'}}>
+                                            <label style={{ display: 'flex', flexDirection: 'column' }}>
                                                 Audio File:
                                                 <input
                                                     type="file"
@@ -248,6 +269,7 @@ const SongUpload = () => {
                     </div>
                 </div>
             </div>
+        }
         </>
 
     )

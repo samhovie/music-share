@@ -34,7 +34,8 @@ const UpdateProfile = () => {
     }, [displayName, firstName, lastName, city, country, bio])
 
     const cancelHandler = () => {
-            closeModal()
+        closeModal()
+
     }
 
     const submitHandler = (e) => {
@@ -48,13 +49,14 @@ const UpdateProfile = () => {
             return
         }
         else {
-            const newUser = {display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio}
+            const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
             // console.log(newUser)
             dispatch(updateUserThunk(newUser, user.id))
             // setUrl(`/groups/${newGroup.id}`)
             history.push(`/profile`)
         }
         closeModal()
+        window.location.reload();
     }
 
 

@@ -9,9 +9,7 @@ const ProfilePage = () => {
     const user = useSelector(state => state.session.user)
     // console.log("PROFILE PAGE USERRRR", user)
 
-    const alertClickHandler = () => {
-        return alert('Feature Coming Soon!')
-    }
+
 
     if (!user) return null
     return (

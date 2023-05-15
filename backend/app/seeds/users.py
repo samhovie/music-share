@@ -27,60 +27,56 @@ def seed_playlist_songs_users_likes():
         username='marnie', email='marnie@aa.io', password='password', display_name='Marnieeee', first_name='Marnie', last_name='bloob', city='Saigon', country='Vietnam', bio='Love this app', profile_pic='')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', display_name='Bobbbbie', first_name='Bob', last_name='Bie', city='San Francisco', country='US', bio='It works over here too', profile_pic='')
-    hirosawa = User (
-        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name ='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic='')
-    kohya = User (
-        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name ='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='')
-
-
+    hirosawa = User(
+        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic='')
+    kohya = User(
+        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='')
 
     song3 = Song(
-        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5f2f3541f509489686c854f5e2e4b684.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5f2f3541f509489686c854f5e2e4b684.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song4 = Song(
-        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5e4abfd5eb0c43eca856879c6b47bacd.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5e4abfd5eb0c43eca856879c6b47bacd.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song5 = Song(
-        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/99098fae725648468b15352c6711177e.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/99098fae725648468b15352c6711177e.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song6 = Song(
-        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/b1efd99327b8400081bd91c207db47b8.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/b1efd99327b8400081bd91c207db47b8.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song7 = Song(
-        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song8 = Song(
-        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song9 = Song(
-        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/260758e7ba274dbbb1e72ab67e8d6129.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/260758e7ba274dbbb1e72ab67e8d6129.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song10 = Song(
-        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/fc0bb74d0d4f465f9d777397b98a45a9.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/fc0bb74d0d4f465f9d777397b98a45a9.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song11 = Song(
-        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
+        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
     song12 = Song(
-        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
-
-
+        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
 
     song1 = Song(
-        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bdc505fef18742a6954daa345f9e3068.mp3", genre="Alternative", created_at=date.today(), updated_at=date.today()
+        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bdc505fef18742a6954daa345f9e3068.mp3", genre="Alternative",  preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today()
     )
     song2 = Song(
-        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bf2be0b18f4b4f85aaa5d2f3bac9642a.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/bf2be0b18f4b4f85aaa5d2f3bac9642a.mp3", genre="Rock",  preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today()
     )
     # new songs SH
     song13 = Song(
-        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/8031c80c59fa42a5ba129c7077172139.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/8031c80c59fa42a5ba129c7077172139.mp3", genre="Rock",  preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today()
     )
     song14 = Song(
-        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Rock", created_at=date.today(), updated_at=date.today()
+        name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Rock", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today()
     )
 
     playlist1 = Playlist(
-        name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", created_at=date.today(), updated_at=date.today())
+        name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", preview_img="https://e1.pxfuel.com/desktop-wallpaper/924/396/desktop-wallpaper-spotify-playlist-covers-simpson-300x300-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
     playlist2 = Playlist(
-        name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today())
+        name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/53/672/desktop-wallpaper-150-spotify-playlist-covers-ideas-aesthetic-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
     playlist3 = Playlist(
-        name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", created_at=date.today(), updated_at=date.today())
+        name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/213/149/desktop-wallpaper-sunset-spotify-playlist-cover-spotify-covers.jpg", created_at=date.today(), updated_at=date.today())
     playlist4 = Playlist(
-        name="Hiroyuki Sawano 86", public=False, user_id=4, description="Lena is looking at Shin", created_at=date.today(), updated_at=date.today())
+        name="Hiroyuki Sawano 86", public=False, user_id=4, description="Lena is looking at Shin", preview_img="https://e1.pxfuel.com/desktop-wallpaper/676/329/desktop-wallpaper-gabby-on-playlist-covers-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
     playlist5 = Playlist(
-        name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", created_at=date.today(), updated_at=date.today())
+        name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", preview_img="https://e1.pxfuel.com/desktop-wallpaper/59/542/desktop-wallpaper-aesthetic-music-playlist-covers-spotify-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
 
     # demo.user_like.append(song1)
     # marnie.user_like.append(song1)
@@ -121,35 +117,31 @@ def seed_playlist_songs_users_likes():
     db.session.add(kohya)
     db.session.commit()
 
-
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=1, song_id=1))
+        playlist_id=1, song_id=1))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=1, song_id=2))
+        playlist_id=1, song_id=2))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=3))
+        playlist_id=4, song_id=3))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=4))
+        playlist_id=4, song_id=4))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=5))
+        playlist_id=4, song_id=5))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=6))
+        playlist_id=4, song_id=6))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=7))
+        playlist_id=4, song_id=7))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=4, song_id=8))
+        playlist_id=4, song_id=8))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=5, song_id=9))
+        playlist_id=5, song_id=9))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=5, song_id=10))
+        playlist_id=5, song_id=10))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=5, song_id=11))
+        playlist_id=5, song_id=11))
     db.session.execute(insert(playlist_songs).values(
-    playlist_id=5, song_id=12))
+        playlist_id=5, song_id=12))
     db.session.commit()
-
-
-
 
 
 # def seed_playlist_songs():
@@ -227,8 +219,6 @@ def seed_comments():
     comment10 = Comment(
         user_id=2, song_id=5, text="Listen to this while studying!"
     )
-
-
 
     db.session.add(comment1)
     db.session.add(comment2)

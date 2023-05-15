@@ -52,9 +52,7 @@
     display: flex;
 }
 
-.song-details-card-play-button {
-
-}
+.song-details-card-play-button {}
 
 .single-song-card-next-to-play {
     display: flex;
@@ -94,7 +92,7 @@
     /* cursor: pointer; */
 }
 
-.single-song-card-info-bottom-left-column-heart > button {
+.single-song-card-info-bottom-left-column-heart>button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,7 +101,14 @@
 }
 
 .likes-unlikes-handler {
-    cursor:pointer;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 5px;
+    border: 1px solid darkgreen;
+    background-color: rgb(36, 105, 82);
+    font-size: 1rem;
+    padding: 5px 1rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .single-song-card-info-bottom-left-column-delete {
@@ -114,7 +119,7 @@
     width: 5rem;
 }
 
-.single-song-card-info-bottom-left-column-delete > button {
+.single-song-card-info-bottom-left-column-delete>button {
     display: flex;
     justify-content: center;
     align-items: center;

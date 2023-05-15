@@ -3,6 +3,7 @@ import UpdateProfile from '../UpdateProfile'
 import { NavLink } from 'react-router-dom'
 import './ProfilePage.css'
 import { useSelector } from 'react-redux'
+import DeleteUser from '../DeleteUser'
 
 const ProfilePage = () => {
     const user = useSelector(state => state.session.user)
@@ -58,7 +59,15 @@ const ProfilePage = () => {
                                         modalComponent={<UpdateProfile />} />
                                 </div>
                             </div>
+                            <div className='profile-page-bottom-selections-right'>
+                                <div className='a'>
+                                    <OpenModalButton
+                                        buttonText="Delete User Profile"
+                                        modalComponent={<DeleteUser />} />
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

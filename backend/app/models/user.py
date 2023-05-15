@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from .join_tables import song_like
 
 def default_image():
-    return 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fgradient-background&psig=AOvVaw398xtaZYyTlHb0vyZ6E5-3&ust=1683907415521000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPjdgo3S7f4CFQAAAAAdAAAAABAE'
+    return ''
 
 
 class User(db.Model, UserMixin):
@@ -25,8 +25,8 @@ class User(db.Model, UserMixin):
     country = db.Column(db.String(255), default='Please change')
 
     bio = db.Column(db.Text)
-    profile_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
-    banner_pic = db.Column(db.String(255), default='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
+    profile_pic = db.Column(db.String(255), default='')
+    banner_pic = db.Column(db.String(255), default='')
 
     songs = db.relationship('Song', back_populates = 'user', cascade='all, delete-orphan')
     user_like = db.relationship('Song', secondary=song_like, back_populates='liked_song')

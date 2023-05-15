@@ -5,7 +5,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 def default_image():
-    return 'https://www.google.com/imgres?imgurl=https%3A%2F%2F99designs-blog.imgix.net%2Fblog%2Fwp-content%2Fuploads%2F2018%2F12%2FGradient_builder_2.jpg%3Fauto%3Dformat%26q%3D60%26w%3D1815%26h%3D1200%26fit%3Dcrop%26crop%3Dfaces&tbnid=U0z7E6f6bSxjiM&vet=12ahUKEwjQgLDB0-3-AhVXOkQIHQEACXUQMygAegUIARDsAQ..i&imgrefurl=https%3A%2F%2F99designs.com%2Fblog%2Ftrends%2Fgradient-design-trend%2F&docid=HrH3J7EPJ6J-OM&w=1815&h=1200&q=gradient&ved=2ahUKEwjQgLDB0-3-AhVXOkQIHQEACXUQMygAegUIARDsAQ'
+    return ''
 
 
 class Song(db.Model):
@@ -21,7 +21,7 @@ class Song(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     mp3_file = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
-    preview_img = db.Column(db.String(255), default='https://www.google.com/imgres?imgurl=https%3A%2F%2F99designs-blog.imgix.net%2Fblog%2Fwp-content%2Fuploads%2F2018%2F12%2FGradient_builder_2.jpg%3Fauto%3Dformat%26q%3D60%26w%3D1815%26h%3D1200%26fit%3Dcrop%26crop%3Dfaces&tbnid=U0z7E6f6bSxjiM&vet=12ahUKEwjQgLDB0-3-AhVXOkQIHQEACXUQMygAegUIARDsAQ..i&imgrefurl=https%3A%2F%2F99designs.com%2Fblog%2Ftrends%2Fgradient-design-trend%2F&docid=HrH3J7EPJ6J-OM&w=1815&h=1200&q=gradient&ved=2ahUKEwjQgLDB0-3-AhVXOkQIHQEACXUQMygAegUIARDsAQ')
+    preview_img = db.Column(db.String(255), default='')
     # song_position = db.Column(db.String(100), nullable = False)
     created_at = db.Column(db.Date, nullable=False)
     updated_at = db.Column(db.Date, nullable=False)

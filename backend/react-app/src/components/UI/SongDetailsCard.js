@@ -19,11 +19,11 @@ const SongDetailsCard = ({ song }) => {
                             >
                                 {!isPlaying ?
                                     <i className="fa-solid fa-circle-play"
-                                        style={{ color: '#932db9', fontSize: '60px' }}
+                                        style={{ color: '#932db9', fontSize: '60px', cursor: 'pointer' }}
                                     ></i>
                                     :
                                     <i className="fa-solid fa-pause"
-                                        style={{ color: '#932db9', fontSize: '60px' }}
+                                        style={{ color: '#932db9', fontSize: '60px',cursor: 'pointer' }}
                                     ></i>
                                 }
                             </div>

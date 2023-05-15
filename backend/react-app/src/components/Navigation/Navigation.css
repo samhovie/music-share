@@ -12,6 +12,7 @@
   align-items: center;
   background-color: darkslategray;
   height: 4rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .navbar-wrapper-content {
@@ -20,9 +21,7 @@
   padding: 2rem;
 }
 
-.navbar-site-button {
-
-}
+.navbar-site-button {}
 
 .fa-bell {
   /* font-size: 200px; */
@@ -34,7 +33,7 @@
   color: white;
 }
 
-.navbar-home-feed-library-feed > button {
+.navbar-home-feed-library-feed>button {
   text-decoration: none;
 }
 

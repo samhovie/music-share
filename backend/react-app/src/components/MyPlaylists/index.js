@@ -76,8 +76,9 @@ const CurrentUserPlaylist = () => {
                         <div className='profile-page-bottom-selections'>
                             <div className='profile-page-bottom-selections-left'>
                                 <h2>
-                                    All
-                                </h2>
+                                    <NavLink to={"/all/current"} className="profile-songs-link">
+                                        All
+                                    </NavLink></h2>
                                 <h2>
                                     <NavLink to={"/songs/current"} className="profile-songs-link">
                                         Songs

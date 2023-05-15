@@ -10,6 +10,9 @@ import UpdateProfile from '../UpdateProfile';
 import '../MyPlaylists/MyPlaylists.css'
 import { getAllSongsThunk } from '../../store/songs';
 
+//create new component with just songs, just playlists sans links
+//add the component to the 'all in my profile' component
+
 const alertClickHandler = () => {
     return alert('Feature Coming Soon!')
 }
@@ -68,9 +71,10 @@ const CurrentUserSongs = () => {
                     <div className='profile-page-bottom'>
                         <div className='profile-page-bottom-selections'>
                             <div className='profile-page-bottom-selections-left'>
-                                <h2>
-                                    All
-                                </h2>
+                            <h2>
+                                    <NavLink to={"/all/current"} className="profile-songs-link">
+                                        All
+                                    </NavLink></h2>
                                 <h2>
                                     <NavLink to={"/songs/current"} className="profile-songs-link">
                                         Songs

@@ -41,7 +41,7 @@ const UpdateSongForm = ({ songId }) => {
             setArtist_name(song.artist_name)
             // setId(song.id)
 
-            setPreviewImg(song.preview_img || 'https://cdn.dribbble.com/users/45782/screenshots/11304218/gradient_02_a_4x.jpg')
+            // setPreviewImg(song.preview_img || 'https://cdn.dribbble.com/users/45782/screenshots/11304218/gradient_02_a_4x.jpg')
         }
 
         fetchSongDetails();
@@ -102,7 +102,7 @@ const UpdateSongForm = ({ songId }) => {
         // console.log('UPPPDATED', updatedSong);
         closeModal();
         // if (updatedSong) {
-            history.push(`/songs/${songId}`);
+        history.push(`/songs/${songId}`);
         // }
     }
 
@@ -123,98 +123,95 @@ const UpdateSongForm = ({ songId }) => {
 
     return (
         <>
-            <div className='global-outerwrapper-outer'>
-                <div className='global-outerwrapper-wrapper'>
-                    <div className='upload-song-outer-wrapper'>
-                        <div className='upload-song-inner-wrapper'>
-                            <form
-                                className='upload-song-form'
-                                action={`/api/songs/${songId}`}
-                                method="PUT"
-                                encType="multipart/form-data"
-                                onSubmit={handleSubmit}
-                            >
-                                <div className='upload-song-form-wrapped'>
-                                        <ul>
-                                            {err.name && <li>{err.name}</li>}
-                                            {err.artist_name && <li>{err.artist_name}</li>}
-                                            {err.genre && <li>{err.genre}</li>}
-                                            {err.preview_img && <li>{err.preview_img}</li>}
-                                        </ul>
-                                    <div className='upload-song-form-upload'>
-                                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
+
+            <div className='update-profile-outer-wrapper'>
+                <div className='update-profile-inner-wrapper'>
+                    <form
+                        className='update-profile-form'
+                        action={`/api/songs/${songId}`}
+                        method="PUT"
+                        encType="multipart/form-data"
+                        onSubmit={handleSubmit}
+                    >
+                        <div className='upload-song-form-wrapped'>
+                            <ul>
+                                {err.name && <li>{err.name}</li>}
+                                {err.artist_name && <li>{err.artist_name}</li>}
+                                {err.genre && <li>{err.genre}</li>}
+                                {/* {err.preview_img && <li>{err.preview_img}</li>} */}
+                            </ul>
+
+                            <div className='upload-song-form-info'>
+
+                                <div
+                                    style={{ paddingBottom: '1rem' }}
+                                >
+                                    <div>
+                                        <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                        <label style={{ paddingBottom: '.5rem' }}>
+                                            &nbsp;Title
+                                        </label>
+
                                     </div>
-                                    <div className='upload-song-form-info'>
+                                    <input
+                                        className='upload-song-form-all-input upload-song-form-title'
+                                        type='text'
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        // required
+                                        placeholder='Enter a name here'
+                                    >
+                                    </input>
+                                </div>
 
-                                        <div
-                                            style={{ paddingBottom: '1rem' }}
-                                        >
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Title
-                                                </label>
+                                <div
+                                    style={{ paddingBottom: '1rem' }}
+                                >
+                                    <div>
+                                        <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                        <label style={{ paddingBottom: '.5rem' }}>
+                                            &nbsp;Author
+                                        </label>
 
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-title'
-                                                type='text'
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                                // required
-                                                placeholder='Enter a name here'
-                                            >
-                                            </input>
-                                        </div>
+                                    </div>
+                                    <input
+                                        className='upload-song-form-all-input upload-song-form-title'
+                                        type='text'
+                                        value={artist_name}
+                                        onChange={(e) => setArtist_name(e.target.value)}
+                                        placeholder='Enter an artist name here'
+                                    // required
+                                    >
 
-                                        <div
-                                            style={{ paddingBottom: '1rem' }}
-                                        >
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Author
-                                                </label>
+                                    </input>
+                                </div>
 
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-title'
-                                                type='text'
-                                                value={artist_name}
-                                                onChange={(e) => setArtist_name(e.target.value)}
-                                                placeholder='Enter an artist name here'
-                                                // required
-                                            >
+                                <div
+                                    style={{ paddingBottom: '1rem' }}
+                                >
 
-                                            </input>
-                                        </div>
+                                    <div>
+                                        <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                        <label style={{ paddingBottom: '.5rem' }}>
+                                            &nbsp;Genre
+                                        </label>
 
-                                        <div
-                                            style={{ paddingBottom: '1rem' }}
-                                        >
-
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Genre
-                                                </label>
-
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-genre'
-                                                type="text"
-                                                value={genre}
-                                                onChange={(e) => setGenre(e.target.value)}
-                                                placeholder='Enter a genre here'
-                                                // required
-                                            >
-                                            </input>
-                                        </div>
-                                        <div
-                                            style={{ paddingBottom: '1rem' }}
-                                        >
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                    </div>
+                                    <input
+                                        className='upload-song-form-all-input upload-song-form-genre'
+                                        type="text"
+                                        value={genre}
+                                        onChange={(e) => setGenre(e.target.value)}
+                                        placeholder='Enter a genre here'
+                                    // required
+                                    >
+                                    </input>
+                                </div>
+                                <div
+                                    style={{ paddingBottom: '1rem' }}
+                                >
+                                    {/* <div> */}
+                                    {/* <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Preview Image URL
                                                 </label>
@@ -227,12 +224,12 @@ const UpdateSongForm = ({ songId }) => {
                                                 onChange={(e) => setPreviewImg(e.target.value)}
                                                 placeholder='Enter a preview image here.'
                                                 // required
-                                            >
+                                            > */}
 
-                                            </input>
-                                        </div>
+                                    {/* </input> */}
+                                    {/* </div> */}
 
-                                        {/* <div
+                                    {/* <div
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
@@ -252,7 +249,7 @@ const UpdateSongForm = ({ songId }) => {
                                             </textarea>
 
                                         </div> */}
-                                        {/* <div>
+                                    {/* <div>
                                             <label>
                                                 {mp3_file_name || "No file chosen"}
                                                 <input
@@ -266,23 +263,22 @@ const UpdateSongForm = ({ songId }) => {
 
                                         </div> */}
 
-                                        <div className='upload-song-form-bottom'>
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
-                                                <h5>&nbsp;Required fields</h5>
-                                            </div>
-                                            <div className='upload-song-form-bottom-bar-button-div'>
+                                    <div className='upload-song-form-bottom'>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
+                                            <h5>&nbsp;Required fields</h5>
+                                        </div>
+                                        <div className='upload-song-form-bottom-bar-button-div'>
 
-                                                <button type='submit'>Save</button>
-                                            </div>
+                                            <button type='submit'>Save</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

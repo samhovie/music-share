@@ -9,7 +9,9 @@ function OpenModalButton({
   onModalClose, // optional: callback function that will be called once the modal is closed
   conditionalClass,
   splashSignupClass,
-  splashLoginClass
+  splashLoginClass,
+  loginModalClass,
+  signupModalClass
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
@@ -22,9 +24,10 @@ function OpenModalButton({
 
   let buttonClass
   if (conditionalClass) buttonClass = 'open-modal-button-something'
-
   else if (splashSignupClass) buttonClass = 'open-modal-button-signup'
   else if (splashLoginClass) buttonClass = 'open-modal-button-login'
+  else if (loginModalClass) buttonClass = 'open-modal-button-from-login'
+  else if (signupModalClass) buttonClass = 'open-modal-button-from-signup'
 
   else buttonClass = 'open-modal-button'
 

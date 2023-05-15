@@ -4,6 +4,8 @@ import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -102,12 +104,19 @@ function SignupFormModal() {
 						</label>
 
 						<div className="signup-modal-submit-div">
-							<button
-							type="submit"
-							disabled={!email || !username || !password || !confirmPassword}
-							>Sign Up</button>
+								<OpenModalButton
+									buttonText="Already have an account? Log in"
+									// onItemClick={closeMenu}
+									modalComponent={<LoginFormModal />}
+									signupModalClass='signup'
+								/>
+								<button
+								className="signup-modal-submit-signup"
+									type="submit"
+									disabled={!email || !username || !password || !confirmPassword}
+								>Sign Up</button>
 
-						</div>
+							</div>
 					</form>
 				</div>
 			</div>

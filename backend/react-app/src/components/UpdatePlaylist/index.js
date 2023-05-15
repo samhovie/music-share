@@ -17,13 +17,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const playlist = useSelector(state => state.playlists.singlePlaylist)
 
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     is_public: false,
-    //     // user_id: '',
-    //     description: '',
-    //     preview_img: ''
-    // });
+  
     useEffect(() => {
         const fetchPlaylistDetails = async () => {
             const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
@@ -45,46 +39,8 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
 
 
-    //     let handleSubmit = async (e) => {
-    //         // console.log("--------------------TEST 1----------------------")
-    //         e.preventDefault();
-    //         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
-    //         // const formData = new FormData()
-    //         // formData.append('mp3_file', mp3_file)
-    //         // formData.append('name', name)
-    //         // formData.append('artist_name', artist_name)
-    //         // formData.append('genre', genre)
-    //         // // formData.append('description', description)
-    //         // dispatch(updatePlaylistThunk(formData, songId))
-    //         closeModal()
-    //         if (updatedPlaylist) {
-    //             history.push(`/playlists/${playlistId}`);
-    //         }
-    //     }
-
     console.log('playlist id', playlistId)
 
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     artist_name: '',
-    //     artist_id: '',
-    //     description: '',
-    //     // preview_img: ''
-    // });
-
-    // const handleChange = (e) => {
-    //     // const { name, value } = e.target;
-    //     const { name, type, checked, value, files } = e.target;
-    //     if (type === "checkbox") {
-    //         setFormData({ ...formData, [name]: checked });
-    //     } else if (e.target.files) {
-    //         setFormData({ ...formData, [name]: e.target.files })
-    //     } else if (name === 'preview_img') {
-    //         setFormData({ ...formData, [name]: e.target.files });
-    //     } else {
-    //         setFormData({ ...formData, [name]: value });
-    //     }
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();

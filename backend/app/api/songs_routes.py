@@ -133,7 +133,8 @@ def update_song(id):
         # song.mp3_file = url
         song.mp3_file = form.data['mp3_file']
         song.genre = form.data['genre']
-        song.preview_img = form.data['preview_img']
+        # song.preview_img = form.data['preview_img']
+        # song.preview_img = form.data['preview_img']
         song.artist_id = current_user.id
         song.updated_at = date.today()
         song.created_at = date.today()

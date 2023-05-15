@@ -16,11 +16,11 @@ class Song(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    artist_name = db.Column(db.String(255), nullable=False)
+    artist_name = db.Column(db.String(255))
     artist_id = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod('users.id')), nullable=False)
-    mp3_file = db.Column(db.String(255), nullable=False)
-    genre = db.Column(db.String(255), nullable=False)
+        add_prefix_for_prod('users.id')))
+    mp3_file = db.Column(db.String(255))
+    genre = db.Column(db.String(255))
     preview_img = db.Column(db.String(255), default='https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&fit=max&w=930')
     # song_position = db.Column(db.String(100), nullable = False)
     created_at = db.Column(db.Date, nullable=False)

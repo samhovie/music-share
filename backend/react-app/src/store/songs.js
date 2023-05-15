@@ -79,39 +79,92 @@ export const createSongThunk = (song) => async (dispatch) => {
 	}
 }
 
-export const updateSongThunk = (song, updatedSong) => async (dispatch) => {
-	console.log("TEST 2", song)
-	console.log('TEEEEEST3333', updatedSong)
+// export const updateSongThunk = (song, updatedSong) => async (dispatch) => {
+// 	console.log("TEST 2", song)
+// 	console.log('TEEEEEST3333', updatedSong)
 
-	const response = await fetch(`/api/songs/${song}`, {
-		method: 'PUT',
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: updatedSong
-		// body: JSON.stringify({
-		// 	id: updatedSong.id,
-		// 	name: updatedSong.name,
-		// 	artist_name: updatedSong.artist_name,
-		// 	artist_id: updatedSong.artist_id,
-		// 	genre: updatedSong.genre,
-		// 	preview_img: updatedSong.preview_img
-		// }),
-	})
+// 	const response = await fetch(`/api/songs/${song}`, {
+// 		method: 'PUT',
+// 		headers: {
+// 			"Content-Type": "application/json",
+// 		},
+// 		body: updatedSong
+// body: JSON.stringify({
+// 	id: updatedSong.id,
+// 	name: updatedSong.name,
+// 	artist_name: updatedSong.artist_name,
+// 	artist_id: updatedSong.artist_id,
+// 	genre: updatedSong.genre,
+// 	preview_img: updatedSong.preview_img
+// }),
+// 	})
 
-	if (response.ok) {
-		console.log('response222', response)
-		const data = await response.json();
-		console.log('DAAATA22222', data)
-		if (data.errors) {
-			// console.log("TEST 6")
-			return data.errors
+// 	if (response.ok) {
+// 		console.log('response222', response)
+// 		const data = await response.json();
+// 		console.log('DAAATA22222', data)
+// 		if (data.errors) {
+// 			// console.log("TEST 6")
+// 			return data.errors
+// 		}
+// 		// console.log("TEST 4")
+// 		dispatch(updateSongAction(data))
+// 		return data
+// 	}
+// }
+// export const updateSongThunk = (songId, updatedSong) => async (dispatch) => {
+// 	const formData = new FormData();
+// for (const key in updatedSong) {
+// 	// 	formData.append(key, updatedSong[key]);
+// 	// }
+
+// 	const response = await fetch(`/api/songs/${songId}`, {
+// 		method: 'PUT',
+// 		body: updatedSong,
+// 	});
+// 	console.log('response', response)
+
+// 	if (response.ok) {
+// 		const data = await response.json();
+// 		console.log('datadata', data)
+// 		if (data.errors) {
+// 			return data.errors
+// 		}
+// 		dispatch(updateSongAction(data));
+// 		console.log('datadata', data)
+
+// 		return data;
+// 	}
+// }
+export const updateSongThunk = (songId, updatedSong) => async (dispatch) => {
+	const formData = new FormData();
+	for (const key in updatedSong) {
+		formData.append(key, updatedSong[key]);
+	}
+	try {
+		const response = await fetch(`/api/songs/${songId}`, {
+			method: 'PUT',
+			body: updatedSong,
+		});
+		console.log('response', response)
+
+		if (response.ok) {
+			const data = await response.json();
+			console.log('data', data)
+			if (data.errors) {
+				return data.errors
+			}
+			dispatch(updateSongAction(data));
+			console.log('data', data)
+
+			return data;
 		}
-		// console.log("TEST 4")
-		dispatch(updateSongAction(data))
-		return data
+	} catch (error) {
+		console.error('Error:', error);
 	}
 }
+
+
 
 export const deleteSongThunk = (songId) => async (dispatch) => {
 	const response = await fetch(`/api/songs/${songId}`, {
@@ -149,20 +202,20 @@ export default function songsReducer(state = initialState, action) {
 		case UPDATE_SONG:
 			newState = {
 				...state,
-				allSongs: {
-					...state.allSongs,
+				singleSong: {
+					...state.singleSong,
 				},
 			};
 			newState.allSongs[action.song.id] = action.song;
 			return newState;
-			// newState = { ...state, allSongs: { ...state.allSongs, [action.song.id]: {
-			// 		...state.allSongs[action.song.id],
-			// 		...action.song,
-			// 	  },
-			// 	},
-			//   };
-			//   newState = { ...state, single}
-			//   return newState
+		// newState = { ...state, allSongs: { ...state.allSongs, [action.song.id]: {
+		// 		...state.allSongs[action.song.id],
+		// 		...action.song,
+		// 	  },
+		// 	},
+		//   };
+		//   newState = { ...state, single}
+		//   return newState
 		case DELETE_SONG:
 			newState = { ...state, allSongs: { ...state.allSongs } }
 			delete newState.allSongs[action.songId]

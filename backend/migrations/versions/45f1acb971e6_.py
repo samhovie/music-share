@@ -1,4 +1,4 @@
-k """empty message
+"""
 
 Revision ID: 45f1acb971e6
 Revises:

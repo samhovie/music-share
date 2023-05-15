@@ -47,18 +47,7 @@ const ProfilePage = () => {
                     </div>
 
                     <div className='profile-page-bottom-selections-right'>
-                        <div className='a'>
-                            <OpenModalButton
-                                buttonText="Edit"
-                                modalComponent={<UpdateProfile />} />
-                        </div>
-                    </div>
-                    <div className='profile-page-bottom-selections-right'>
-                        <div className='a'>
-                            <OpenModalButton
-                                buttonText="Delete User Profile"
-                                modalComponent={<DeleteUser />} />
-                        </div>
+
                     </div>
                 </div>
 

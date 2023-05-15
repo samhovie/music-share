@@ -79,7 +79,9 @@ function LoginFormModal() {
             <div>
               <button
                 className="login-modal-submit-button"
-                type="submit">Log In</button>
+                type="submit"
+                disabled={!email || !password}
+                >Log In</button>
 
             </div>
             <div className="login-modal-demo">

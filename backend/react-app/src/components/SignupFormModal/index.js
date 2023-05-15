@@ -102,7 +102,10 @@ function SignupFormModal() {
 						</label>
 
 						<div className="signup-modal-submit-div">
-							<button type="submit">Sign Up</button>
+							<button
+							type="submit"
+							disabled={!email || !username || !password || !confirmPassword}
+							>Sign Up</button>
 
 						</div>
 					</form>

@@ -70,7 +70,7 @@ def post_songs():
             genre=form.data['genre'],
             artist_id=current_user.id,
             # preview_img=preview_img_url,
-            preview_img=''
+            preview_img='',
             created_at=date.today(),
             updated_at=date.today()
         )

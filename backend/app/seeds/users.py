@@ -22,38 +22,38 @@ from sqlalchemy import insert
 def seed_playlist_songs_users_likes():
 
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', display_name='Demo user', first_name='Demo', last_name='Demo', city='Demo', country='Demo', bio='Demo User', profile_pic='https://previews.123rf.com/images/lkeskinen/lkeskinen1611/lkeskinen161107812/66881555-demo-rubber-stamp-grunge-design-with-dust-scratches-effects-can-be-easily-removed-for-a-clean.jpg')
+        username='Demo', email='demo@aa.io', password='password', display_name='Demo user', first_name='Demo', last_name='Demo', city='Demo', country='Demo', bio='Demo User', profile_pic='')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', display_name='Marnieeee', first_name='Marnie', last_name='bloob', city='Saigon', country='Vietnam', bio='Love this app', profile_pic='https://cdn.britannica.com/18/137318-050-29F7072E/rooster-Rhode-Island-Red-roosters-chicken-domestication.jpg')
+        username='marnie', email='marnie@aa.io', password='password', display_name='Marnieeee', first_name='Marnie', last_name='bloob', city='Saigon', country='Vietnam', bio='Love this app', profile_pic='')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', display_name='Bobbbbie', first_name='Bob', last_name='Bie', city='San Francisco', country='US', bio='It works over here too', profile_pic='https://styles.redditmedia.com/t5_2uc06/styles/communityIcon_0zttllkgeaa81.png?width=256&v=enabled&s=37b76e9adfe0e716c1d6ec1d43250db31bb7cf1a')
+        username='bobbie', email='bobbie@aa.io', password='password', display_name='Bobbbbie', first_name='Bob', last_name='Bie', city='San Francisco', country='US', bio='It works over here too', profile_pic='')
     hirosawa = User (
-        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name ='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/egKyVXXlJ2u3oI0tVxgGK5qeIO6.jpg')
+        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name ='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic='')
     kohya = User (
-        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name ='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='https://i.scdn.co/image/ab6761610000e5ebd1ec5a64a834adc0e2ba03a2')
+        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name ='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='')
 
 
 
     song3 = Song(
-        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5f2f3541f509489686c854f5e2e4b684.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="4N", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5f2f3541f509489686c854f5e2e4b684.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song4 = Song(
-        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5e4abfd5eb0c43eca856879c6b47bacd.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="8SIX", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5e4abfd5eb0c43eca856879c6b47bacd.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song5 = Song(
-        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/99098fae725648468b15352c6711177e.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-i", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/99098fae725648468b15352c6711177e.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song6 = Song(
-        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/b1efd99327b8400081bd91c207db47b8.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="pianoVIIIVI-iii", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/b1efd99327b8400081bd91c207db47b8.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song7 = Song(
-        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Lilas", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song8 = Song(
-        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="JaguarN0-10", artist_name="Hiroyuki Sawano", artist_id=4, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0c52bd67b176497a9a7b998ab952ad77.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song9 = Song(
-        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/260758e7ba274dbbb1e72ab67e8d6129.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Talk to you", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/260758e7ba274dbbb1e72ab67e8d6129.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song10 = Song(
-        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/fc0bb74d0d4f465f9d777397b98a45a9.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Underneath the Sky", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/fc0bb74d0d4f465f9d777397b98a45a9.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song11 = Song(
-        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Instrumental", preview_img='https://cdn.shopify.com/s/files/1/0568/8482/2076/products/4534530129758_grande.jpg?v=1655348292', created_at=date.today(), updated_at=date.today())
+        name="Hear My Voice", artist_name="Kohta Yamamoto", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
     song12 = Song(
-        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='https://i1.sndcdn.com/artworks-000640383319-5urady-t500x500.jpg', created_at=date.today(), updated_at=date.today())
+        name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='', created_at=date.today(), updated_at=date.today())
 
 
 

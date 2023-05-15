@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './SongUpload.css'
 import { useState, useEffect } from 'react'
 import { createSongThunk } from '../../store/songs'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useHistory } from 'react-router-dom'
+import Upload from '../UploadImg';
 
 const SongUpload = () => {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const SongUpload = () => {
     const [mp3_file, setMp3] = useState('')
     const [genre, setGenre] = useState('')
     const [artist_name, setArtist_name] = useState('')
+    const [preview_img, setPreviewImg] = useState('')
     const [id, setId] = useState('')
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
@@ -23,11 +25,14 @@ const SongUpload = () => {
 
     useEffect(() => {
         const errors = {}
+        console.log("TYPEOFFFFF", typeof(mp3_file))
+        console.log("RIGHT UNDER", console.log(mp3_file))
+
         if (!name) errors.name = "Name is required"
         if (!description) errors.description = "Description is required"
         if (!genre) errors.genre = "Genre is required"
         if (!artist_name) errors.artist_name = "Artist is required"
-        if (!mp3_file.endsWith('.wav') && !mp3_file.endsWith('.mp3') && !mp3_file.endsWith('.acc') && !mp3_file.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
+        if (mp3_file && !mp3_file.name.endsWith('.wav') && !mp3_file.name.endsWith('.mp3') && !mp3_file.name.endsWith('.acc') && !mp3_file.name.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [name, description, genre, artist_name, mp3_file])
@@ -181,6 +186,19 @@ const SongUpload = () => {
                                             {displayErr === true && err.bio && (<p className="errors">· {err.bio}</p>)}
 
                                         </div>
+                                        <label>
+                                            {/* Preview Image */}
+                                            {/* <input
+                                                type="file"
+                                                accept=".jpg, .jpeg, .png, .gif"
+                                                onChange={(e) => setPreviewImg(e.target.files[0])}
+                                            >
+                                            </input> */}
+                                            <label>
+                                                Preview Image:
+                                                <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
+                                            </label>
+                                        </label>
                                         <div>
                                             <label>
                                                 <input

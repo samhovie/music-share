@@ -10,9 +10,10 @@ from .likes_routes import get_all_specific_song_likes, get_all_song_likes
 # from .user_routes import user
 from app.aws import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3
-    )
+)
 
 songs_routes = Blueprint('songs', __name__, url_prefix="/api/songs")
+
 
 @songs_routes.route('/')
 def get_all_songs():
@@ -65,7 +66,15 @@ def post_songs():
             return upload, 400
         url = upload["url"]
 
+        preview_img_file = request.files["preview_img"]
+        preview_img_file.filename = get_unique_filename(
+            preview_img_file.filename)
+        preview_img_upload = upload_file_to_s3(preview_img_file)
 
+        if "url" not in preview_img_upload:
+            return preview_img_upload, 400
+
+        preview_img_url = preview_img_upload["url"]
 
         new_song = Song(
             name=form.data['name'],
@@ -73,6 +82,7 @@ def post_songs():
             mp3_file=url,
             genre=form.data['genre'],
             artist_id=current_user.id,
+            preview_img=preview_img_url,
             created_at=date.today(),
             updated_at=date.today()
         )
@@ -83,7 +93,7 @@ def post_songs():
 
     return {"errors": form.errors}
 
-#old PUT route
+# old PUT route
 # @songs_routes.route('/<int:id>', methods=["PUT"])
 # def update_song(id):
 #     form = SongForm()
@@ -110,6 +120,7 @@ def post_songs():
 #         return song.to_dict()
 
 #     return {"errors": form.errors}
+
 
 @songs_routes.route('/<int:id>', methods=["PUT"])
 def update_song(id):
@@ -148,6 +159,7 @@ def update_song(id):
         song.artist_name = form.data['artist_name']
         song.mp3_file = url
         song.genre = form.data['genre']
+        song.preview_img = form.data['preview_img']
         song.artist_id = current_user.id
         song.updated_at = date.today()
 

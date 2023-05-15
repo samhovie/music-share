@@ -23,42 +23,63 @@ const UpdateSongForm = ({ songId }) => {
     const [id, setId] = useState('')
     const [preview_img, setPreviewImg] = useState('')
 
-    useEffect(() => {
-        const fetchSongDetails = async () => {
-            const songData = await dispatch(getSongThunk(songId));
+    // useEffect(() => {
+    //     const fetchSongDetails = async () => {
+    //         const songData = await dispatch(getSongThunk(songId));
 
-            setName(songData.name)
-            setPublic(songData.is_public)
-            // setDescription(songData.description)
-            setText(songData.text)
-            setMp3FileName(songData.mp3_file_name)
-            setGenre(songData.genre)
-            setArtist_name(songData.artist_name)
-            setId(songData.id)
-            setPreviewImg(song.preview_img || '')
-        }
+    //         setName(songData.name)
+    //         setPublic(songData.is_public)
+    //         // setDescription(songData.description)
+    //         setText(songData.text)
+    //         setMp3FileName(songData.mp3_file_name)
+    //         setGenre(songData.genre)
+    //         setArtist_name(songData.artist_name)
+    //         setId(songData.id)
+    //         setPreviewImg(song.preview_img || '')
+    //     }
 
-        fetchSongDetails();
-    }, [dispatch, songId]);
+    //     fetchSongDetails();
+    // }, [dispatch, songId]);
+    const [formData, setFormData] = useState({
+        name: '',
+        artist_name: '',
+        artist_id: '',
+        description: '',
+        // preview_img: ''
+    });
 
     const handleFileChange = (e) => {
         setMp3(e.target.files[0])
         setMp3FileName(e.target.files[0].name)
     }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-    let handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData()
-        formData.append('mp3_file', mp3_file)
-        formData.append('name', name)
-        formData.append('artist_name', artist_name)
-        formData.append('genre', genre)
-        formData.append('preview_img', preview_img)
-        // formData.append('description', description)
-        dispatch(updateSongThunk(formData, songId))
-        closeModal()
-        history.push('/profile')
+        const updatedSong = await dispatch(updateSongThunk(songId, formData));
+        console.log(updatedSong);
+        closeModal();
+        if (updatedSong) {
+            history.push(`/songs/${songId}`);
+        }
     }
+
+    // let handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData()
+    //     formData.append('mp3_file', mp3_file)
+    //     formData.append('name', name)
+    //     formData.append('artist_name', artist_name)
+    //     formData.append('genre', genre)
+    //     formData.append('preview_img', preview_img)
+    //     // formData.append('description', description)
+    //     dispatch(updateSongThunk(formData, songId))
+    //     closeModal()
+    //     history.push('/profile')
+    // }
 
     return (
         <>
@@ -94,7 +115,7 @@ const UpdateSongForm = ({ songId }) => {
                                                 className='upload-song-form-all-input upload-song-form-title'
                                                 type='text'
                                                 value={name}
-                                                onChange={(e) => setName(e.target.value)}
+                                                onChange={handleChange}
                                                 required
                                             >
                                             </input>
@@ -114,7 +135,7 @@ const UpdateSongForm = ({ songId }) => {
                                                 className='upload-song-form-all-input upload-song-form-title'
                                                 type='text'
                                                 value={artist_name}
-                                                onChange={(e) => setArtist_name(e.target.value)}
+                                                onChange={handleChange}
                                                 required
                                             >
 
@@ -136,7 +157,7 @@ const UpdateSongForm = ({ songId }) => {
                                                 className='upload-song-form-all-input upload-song-form-genre'
                                                 type="text"
                                                 value={genre}
-                                                onChange={(e) => setGenre(e.target.value)}
+                                                onChange={handleChange}
                                                 required
                                             >
                                             </input>
@@ -155,7 +176,7 @@ const UpdateSongForm = ({ songId }) => {
                                                 className='upload-song-form-all-input upload-song-form-img-url'
                                                 type='text'
                                                 value={preview_img}
-                                                onChange={(e) => setPreviewImg(e.target.value)}
+                                                onChange={handleChange}
                                                 required
                                             >
 

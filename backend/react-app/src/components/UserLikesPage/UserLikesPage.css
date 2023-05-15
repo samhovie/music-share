@@ -1,0 +1,32 @@
+.user-likes-page-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding: 2rem;
+}
+
+.single-song-card-info-soundwave > img {
+    display: flex;
+    padding-top: 25px;
+    width: 60rem;
+    max-height: 2.5rem;
+    border-radius: 20px;
+}
+
+.you-no-likey-yet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 2rem;
+    border: 3px solid black;
+    text-decoration: none;
+    color: darkgreen;
+    cursor: pointer;
+    background-color: beige;
+    border-radius: 2px;
+}

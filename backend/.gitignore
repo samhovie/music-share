@@ -7,7 +7,7 @@ Pipfile
 /.vscode/
 
 /node_modules
-/migrations
+
 
 # production
 /build

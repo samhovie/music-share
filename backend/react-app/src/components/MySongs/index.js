@@ -23,6 +23,7 @@ const CurrentUserSongs = () => {
     const user = useSelector((state) => state.session.user)
 
     const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
+    const [isProfileSongs, setIsProfileSongs] = useState(false)
     // console.log('PAYLIST', allSongs)
     const user_id = allSongs.forEach(song => {
         // console.log('song user', song.artist_id);
@@ -41,6 +42,10 @@ const CurrentUserSongs = () => {
     useEffect(() => {
         dispatch(getAllSongsThunk());
     }, [dispatch]);
+
+    useEffect(() => {
+        setIsProfileSongs(true)
+    },[])
 
     return (
         <>
@@ -93,7 +98,12 @@ const CurrentUserSongs = () => {
                         </div>
                         <div className="user-playlists-container">
                             {userSongs.map((song) => (
-                                <SingleSongCard key={song.id} song={song} />
+                                <SingleSongCard
+                                key={song.id}
+                                song={song}
+                                sessionUser={user}
+                                isProfileSongs={isProfileSongs}
+                                />
                             ))}
                         </div>
                     </div>

@@ -81,25 +81,28 @@ export const createSongThunk = (song) => async (dispatch) => {
 
 export const updateSongThunk = (song, updatedSong) => async (dispatch) => {
 	console.log("TEST 2", song)
+	console.log('TEEEEEST3333', updatedSong)
 
 	const response = await fetch(`/api/songs/${song}`, {
 		method: 'PUT',
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({
-			id: updatedSong.id,
-			name: updatedSong.name,
-			artist_name: updatedSong.artist_name,
-			artist_id: updatedSong.artist_id,
-			genre: updatedSong.genre,
-			preview_img: updatedSong.preview_img
-		}),
+		body: updatedSong
+		// body: JSON.stringify({
+		// 	id: updatedSong.id,
+		// 	name: updatedSong.name,
+		// 	artist_name: updatedSong.artist_name,
+		// 	artist_id: updatedSong.artist_id,
+		// 	genre: updatedSong.genre,
+		// 	preview_img: updatedSong.preview_img
+		// }),
 	})
 
 	if (response.ok) {
+		console.log('response222', response)
 		const data = await response.json();
-
+		console.log('DAAATA22222', data)
 		if (data.errors) {
 			// console.log("TEST 6")
 			return data.errors
@@ -146,12 +149,20 @@ export default function songsReducer(state = initialState, action) {
 		case UPDATE_SONG:
 			newState = {
 				...state,
-				singleSong: {
-					...state.singleSong,
+				allSongs: {
+					...state.allSongs,
 				},
 			};
-			newState[action.song.id] = action.song;
+			newState.allSongs[action.song.id] = action.song;
 			return newState;
+			// newState = { ...state, allSongs: { ...state.allSongs, [action.song.id]: {
+			// 		...state.allSongs[action.song.id],
+			// 		...action.song,
+			// 	  },
+			// 	},
+			//   };
+			//   newState = { ...state, single}
+			//   return newState
 		case DELETE_SONG:
 			newState = { ...state, allSongs: { ...state.allSongs } }
 			delete newState.allSongs[action.songId]

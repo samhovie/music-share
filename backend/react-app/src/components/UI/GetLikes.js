@@ -23,7 +23,7 @@ import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
 import {useHistory} from 'react-router-dom'
 
-const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHandler2}) => {
+const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHandler2, isProfileSongs}) => {
     const history = useHistory()
     // console.log('SOOOOONG', song)
     // console.log('SOOOOONGUUUUUU', song)
@@ -104,7 +104,7 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
 
     return (
         <>
-          {sessionUser && (
+          {sessionUser && !isProfileSongs && (
             <div className='single-song-card-info-bottom-left-column-heart'>
               {song && song.user_id && !song.user_id.includes(sessionUser.id) ? (
                 <div onClick={likesHandler2}

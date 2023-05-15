@@ -81,12 +81,12 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 	console.log("TEST 2", user)
 	// console.log("TEST ENTRIES", user.entries())
 	const formData = new FormData()
-        formData.append('display_name', user.display_name)
-        formData.append('first_name', user.first_name)
-        formData.append('last_name', user.last_name)
-        formData.append('city', user.city)
-        formData.append('country', user.country)
-        formData.append('bio', user.bio)
+	formData.append('display_name', user.display_name)
+	formData.append('first_name', user.first_name)
+	formData.append('last_name', user.last_name)
+	formData.append('city', user.city)
+	formData.append('country', user.country)
+	formData.append('bio', user.bio)
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'PUT',
 		body: formData
@@ -140,8 +140,10 @@ export default function usersReducer(state = initialState, action) {
 		// 	return newState
 		case UPDATE_USER:
 			// console.log(action)
-			newState = {...state, singleUser: {...state.singleUser}}
-			newState.singleUser[action.user.id] = action.user
+			// newState = {...state, singleUser: {...state.singleUser}}
+			// newState.singleUser[action.user.id] = action.user
+			// return newState
+			newState = { ...state, singleUser: action.user }
 			return newState
 		// case DELETE_USER:
 		// 	newState = {...state, allUsers: {...state.allUsers}}

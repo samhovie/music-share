@@ -53,10 +53,11 @@ const SongUpload = () => {
             formData.append('name', name)
             formData.append('artist_name', current_user)
             formData.append('genre', genre)
+            formData.append('preview_img', preview_img)
             formData.append('description', description)
 
             dispatch(createSongThunk(formData))
-            history.push('/feed')
+            history.push('/songs/current')
         }
     }
 
@@ -78,9 +79,9 @@ const SongUpload = () => {
                                     <div className='upload-song-form-upload'>
                                         {/* <img src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'></img> */}
                                         <input
-                                        type='image'
-                                        src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-                                        onClick={alertClick}
+                                            type='image'
+                                            src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                                            onClick={alertClick}
                                         >
 
                                         </input>

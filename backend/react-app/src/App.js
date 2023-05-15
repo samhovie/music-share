@@ -27,14 +27,14 @@ import SplashPage from "./components/SplashPage";
 function usePlayer() {
   const [url, setUrl] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
-  return {url, setUrl, isPlaying, setIsPlaying};
+  return { url, setUrl, isPlaying, setIsPlaying };
 }
 
 export const PlayerContext = createContext();
-const PlayerProvider = ({children}) => {
-  const {url, setUrl, isPlaying, setIsPlaying} = usePlayer()
+const PlayerProvider = ({ children }) => {
+  const { url, setUrl, isPlaying, setIsPlaying } = usePlayer()
   return (
-    <PlayerContext.Provider value={{url, setUrl, isPlaying, setIsPlaying}}>
+    <PlayerContext.Provider value={{ url, setUrl, isPlaying, setIsPlaying }}>
       {children}
     </PlayerContext.Provider>
   );
@@ -58,11 +58,11 @@ function App() {
 
         {isLoaded && (
           <Switch>
-            <Route exact path='/likes'>
-              <UserLikesPage />
-            </Route>
             <Route exact path='/'>
               <SplashPage />
+            </Route>
+            <Route exact path='/likes'>
+              <UserLikesPage />
             </Route>
             <Route exact path='/upload'>
               <SongUpload />
@@ -72,6 +72,10 @@ function App() {
             </Route>
             <Route exact path="/playlists/current">
               <CurrentUserPlaylist />
+            </Route>
+            <Route exact path="/all/current">
+              <CurrentUserPlaylist />
+              <CurrentUserSongs />
             </Route>
             <Route exact path="/playlists/new">
               <CreatePlaylistForm />

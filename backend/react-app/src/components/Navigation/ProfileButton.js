@@ -6,10 +6,11 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom";
+//figure out how to use history to redirect to splash page
 
 function ProfileButton({ user }) {
-  const history = useHistory()
+  // const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -23,7 +24,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if(ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
+      if (ulRef && ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
 
@@ -37,7 +38,8 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    history.push('/')
+    // history.push('/')
+    window.location.replace('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -54,21 +56,31 @@ function ProfileButton({ user }) {
             {/* <li>{user.username}</li> */}
             {/* <li>{user.email}</li> */}
             <li>
+<<<<<<< HEAD
               <NavLink exact to='/songs/current'
                 style={{ textDecoration: 'none',
                          color: 'black',
                          border: 'black'
                       }}
+=======
+              <NavLink exact to='/profile'
+                style={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  border: 'black'
+                }}
+>>>>>>> dev
               >
                 Profile
               </NavLink>
             </li>
             <li>
               <NavLink exact to='/likes'
-                style={{ textDecoration: 'none',
-                         color: 'black',
-                         border: 'black'
-                        }}
+                style={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  border: 'black'
+                }}
               >
                 My Likes
               </NavLink>
@@ -90,8 +102,9 @@ function ProfileButton({ user }) {
             </li> */}
             <li>
               <button
-              className='nav-bar-profile-button-log-out'
-              onClick={handleLogout}>Log Out</button>
+                className='nav-bar-profile-button-log-out'
+                type='submit'
+                onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

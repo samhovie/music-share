@@ -14,7 +14,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
     const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
     const sessionUser = useSelector((state) => state.session.user);
     const owner = playlist.user && playlist.user.id;
-    const current_user = sessionUser.id;
+    const current_user = sessionUser ? sessionUser.id : undefined;
     const owner_username = playlist.user && playlist.user.username;
 
     const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
@@ -26,10 +26,10 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
         <div className='playlist-card-wrapper'>
             <div className='playlist-card-image'>
                 {/* this is hardcoded, change later */}
-                <NavLink className='single-playlist-card-image-nav' to={`/playlists/${playlist.id}`} playlist={playlist}>
-                    <img className='' src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
+                {playlist && <NavLink className='single-playlist-card-image-nav' to={`/playlists/${playlist.id}`} playlist={playlist}>
+                    <img className='' src={`${playlist.preview_img}`}></img>
                     {/* <img src={`${playlistsSongs[0].preview_img}`}></img> */}
-                </NavLink>
+                </NavLink>}
             </div>
             <div className='playlist-card-display-name'>
                 {/* this is hardcoded, change later */}

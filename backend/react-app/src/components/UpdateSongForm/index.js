@@ -96,9 +96,7 @@ const UpdateSongForm = ({ songId }) => {
                             >
                                 <div className='upload-song-form-wrapped'>
 
-                                    <div className='upload-song-form-upload'>
-                                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
-                                    </div>
+
                                     <div className='upload-song-form-info'>
 
                                         <div

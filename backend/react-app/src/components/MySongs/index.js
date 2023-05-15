@@ -45,7 +45,7 @@ const CurrentUserSongs = () => {
 
     useEffect(() => {
         setIsProfileSongs(true)
-    },[])
+    }, [])
 
     return (
         <>
@@ -68,16 +68,14 @@ const CurrentUserSongs = () => {
                                 <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
                                 <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
-                            <div>
-                                <button onClick={() => alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>
-                            </div>
+
                         </div>
                     </div>
                     <div className='profile-page-bottom'>
                         <div className='profile-page-bottom-selections'>
                             <div className='profile-page-bottom-selections-left'>
-                            {/* <h2> */}
-                                    {/* <NavLink to={"/all/current"} className="profile-songs-link">
+                                {/* <h2> */}
+                                {/* <NavLink to={"/all/current"} className="profile-songs-link">
                                         All
                                     </NavLink></h2> */}
                                 <h2>
@@ -99,10 +97,10 @@ const CurrentUserSongs = () => {
                         <div className="user-playlists-container">
                             {userSongs.map((song) => (
                                 <SingleSongCard
-                                key={song.id}
-                                song={song}
-                                sessionUser={user}
-                                isProfileSongs={isProfileSongs}
+                                    key={song.id}
+                                    song={song}
+                                    sessionUser={user}
+                                    isProfileSongs={isProfileSongs}
                                 />
                             ))}
                         </div>

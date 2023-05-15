@@ -131,6 +131,7 @@ const SongUpload = () => {
                                                 className='upload-song-form-all-input upload-song-form-title'
                                                 type='text'
                                                 value={name}
+                                                placeholder='Enter a title'
                                                 onChange={(e) => setName(e.target.value)}
                                                 // required
                                             >
@@ -154,6 +155,7 @@ const SongUpload = () => {
                                                 type='text'
                                                 value={artist_name}
                                                 onChange={(e) => setArtist_name(e.target.value)}
+                                                placeholder='Enter artist name here'
                                                 // required
                                             >
 
@@ -177,6 +179,7 @@ const SongUpload = () => {
                                                 type="text"
                                                 value={genre}
                                                 onChange={(e) => setGenre(e.target.value)}
+                                                placeholder='Enter genre here'
                                                 // required
                                             >
                                             </input>
@@ -197,6 +200,7 @@ const SongUpload = () => {
                                                 rows="5" cols="40"
                                                 type="text"
                                                 value={description}
+                                                placeholder='Enter a description here'
                                                 onChange={(e) => setDescription(e.target.value)}
                                                 // required
                                             >

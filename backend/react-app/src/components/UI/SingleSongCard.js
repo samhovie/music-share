@@ -18,7 +18,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import { PlayerContext } from '../../App'
 import GetLikes from './GetLikes'
 
-const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
+const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfileSongs }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [comment, setComment] = useState('')
@@ -226,6 +226,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                       sessionUser={sessionUser}
                                       likesHandler2={likesHandler2}
                                       unlikeHandler2={unlikeHandler2}
+                                      isProfileSongs={isProfileSongs}
                                       />
                         }
                             {sessionUser &&

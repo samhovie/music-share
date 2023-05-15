@@ -16,16 +16,16 @@ const UpdateSongForm = ({ songId }) => {
     console.log('SIIINGLE', song)
 
     const [name, setName] = useState('')
-    const [is_public, setPublic] = useState(false)
+    // const [is_public, setPublic] = useState(false)
     // const [description, setDescription] = useState('')
-    const [text, setText] = useState('')
+    // const [text, setText] = useState('')
     const [mp3_file, setMp3] = useState(null)
     const [mp3_file_name, setMp3FileName] = useState('')
     const [genre, setGenre] = useState('')
     const [artist_name, setArtist_name] = useState('')
-    const [id, setId] = useState('')
+    // const [id, setId] = useState('')
     const [preview_img, setPreviewImg] = useState('')
-    const [artist_id, setArtist_id] = useState('')
+    // const [artist_id, setArtist_id] = useState('')
     const [err, setErr] = useState({})
 
     useEffect(() => {
@@ -84,7 +84,7 @@ const UpdateSongForm = ({ songId }) => {
         const formData = {
             name,
             artist_name,
-            artist_id,
+            // artist_id,
             preview_img,
             mp3_file
         }

@@ -5,6 +5,12 @@
     padding: 20px;
 }
 
+.demo-user-playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .playlist-details-page-top {
     /* Styles for the top section of the page */
     /* Customize as needed */

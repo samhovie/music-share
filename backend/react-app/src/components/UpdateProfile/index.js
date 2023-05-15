@@ -27,7 +27,7 @@ const UpdateProfile = () => {
         if (!lastName) errors.lastName = "Last name is required"
         if (!city) errors.city = "City is required"
         if (!country) errors.country = "Country is required"
-        if (!bio) errors.bio = "bio is required"
+        if (!bio) errors.bio = "Bio is required"
         if (bio && bio.length > 200) errors.bio = "Bio is too long!"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
@@ -62,12 +62,24 @@ const UpdateProfile = () => {
 
     return (
         <>
+
             <div className='update-profile-outer-wrapper'>
                 <div className='update-profile-inner-wrapper'>
                     <div className='update-profile-title' >Edit your Profile</div>
                     <div className='update-profile-image-form'>
                         <div className='update-profile-image'>
                             <img src={`${user.profile_pic}`}></img>
+                            <ul>
+                            {displayErr && err.displayName && <li>{err.displayName}</li>}
+                            {displayErr && err.firstName && <li>{err.firstName}</li>}
+                            {displayErr && err.lastName && <li>{err.lastName}</li>}
+                            {displayErr && err.city && <li>{err.city}</li>}
+                            {displayErr && err.country && <li>{err.country}</li>}
+                            {displayErr && err.bio && <li>{err.bio}</li>}
+
+                            </ul>
+
+
                         </div>
 
                         <form

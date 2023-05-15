@@ -100,7 +100,7 @@ function ProfileButton({ user }) {
             <li>
               <button
                 className='nav-bar-profile-button-log-out'
-                type='submit'
+                // type='submit'
                 onClick={handleLogout}>Log Out</button>
             </li>
           </>

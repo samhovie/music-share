@@ -58,19 +58,28 @@
 
 .signup-modal-submit-div {
     display: flex;
-    justify-content: center;
-    width: 50%;
+    justify-content: space-around;
+    width: 100%;
     /* margin-bottom: 2%; */
 }
 
-.signup-modal-submit-div > button{
-    margin: 3% 0%;
+.open-modal-button-from-signup {
+    border-style: none;
+    background-color: #E5F9DB
+}
+
+.open-modal-button-from-signup:hover {
+    cursor: pointer;
+}
+
+.signup-modal-submit-signup{
+    margin: 2% 0%;
     background-color:#A0D8B3;
     box-shadow: 2px 2px 1px black;
     border: 2px solid black;
     color: white;
-    width: 80%;
+    /* width: 80%; */
     /* height: 100%; */
-    padding: 4% 2%;
+    padding: 5px 1rem;
     font-size: 1em;
 }

@@ -6,6 +6,8 @@ import * as sessionActions from '../../store/session'
 import { NavLink } from "react-router-dom";
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
 
 function LoginFormModal() {
   const history = useHistory()
@@ -80,13 +82,24 @@ function LoginFormModal() {
             <div>
               <button
                 className="login-modal-submit-button"
-                type="submit">Log In</button>
+                type="submit"
+                disabled={!email || !password}
+              >Log In</button>
 
             </div>
             <div className="login-modal-demo">
               <div onClick={() => demoClick()}>Demo User</div>
             </div>
              
+          </div>
+
+          <div className="login-form-signup">
+          <OpenModalButton
+									buttonText="Don't have an account? Sign up!"
+									// onItemClick={closeMenu}
+									modalComponent={<SignupFormModal />}
+									loginModalClass='login'
+								/>
           </div>
         </form>
       </div>

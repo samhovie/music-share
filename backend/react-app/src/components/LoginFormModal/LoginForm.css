@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 25rem;
+    min-height: 28rem;
     /* height: fit-content; */
     width: 20rem;
     background-color: #E5F9DB;
@@ -65,6 +65,23 @@
 } */
 
 .login-modal-demo > div:hover{
+    cursor: pointer;
+
+}
+
+
+.login-form-signup {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.login-form-signup > button{
+    border-style: none;
+    background-color: #E5F9DB;
+}
+
+.login-form-signup > button:hover {
     cursor: pointer;
 
 }

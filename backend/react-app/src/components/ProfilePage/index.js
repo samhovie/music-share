@@ -38,9 +38,9 @@ const ProfilePage = () => {
                     <div className='profile-page-bottom'>
                         <div className='profile-page-bottom-selections'>
                             <div className='profile-page-bottom-selections-left'>
-                                <h2>
+                                {/* <h2>
                                     All
-                                </h2>
+                                </h2> */}
                                 <h2>
                                     <NavLink to={"/songs/current"} className="profile-songs-link">
                                         Songs

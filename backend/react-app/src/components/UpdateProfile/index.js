@@ -83,6 +83,7 @@ const UpdateProfile = () => {
                                     type="text"
                                     name="displayName"
                                     value={displayName}
+                                    placeholder="Enter a display name here"
                                     onChange={(e) => setDisplayName(e.target.value)}
                                 />
                             </label>
@@ -95,6 +96,7 @@ const UpdateProfile = () => {
                                         type="text"
                                         name="firstName"
                                         value={firstName}
+                                        placeholder="Enter your first name here"
                                         onChange={(e) => setFirstName(e.target.value)}
                                         className='update-profile-form-first-name update-profile-form-names-input'
                                     />
@@ -108,6 +110,7 @@ const UpdateProfile = () => {
                                         type="text"
                                         name="lastName"
                                         value={lastName}
+                                        placeholder="Enter your last name here"
                                         onChange={(e) => setLastName(e.target.value)}
                                         className='update-profile-form-first-name update-profile-form-names-input'
                                     />
@@ -123,6 +126,7 @@ const UpdateProfile = () => {
                                         type="text"
                                         name="city"
                                         value={city}
+                                        placeholder='Enter a city here'
                                         onChange={(e) => setCity(e.target.value)}
                                         className='update-profile-form-city update-profile-form-location-input'
                                     />
@@ -136,6 +140,7 @@ const UpdateProfile = () => {
                                         type="text"
                                         name="country"
                                         value={country}
+                                        placeholder="Enter a country here"
                                         onChange={(e) => setCountry(e.target.value)}
                                         className='update-profile-form-country update-profile-form-location-input'
                                     />
@@ -148,6 +153,7 @@ const UpdateProfile = () => {
                                 <textarea
                                     name="bio"
                                     value={bio}
+                                    placeholder='Bio description required'
                                     onChange={(e) => setBio(e.target.value)}
                                     className='update-profile-form-bio'
                                     rows='8'

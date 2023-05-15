@@ -109,7 +109,7 @@ const SongDetailsPage = () => {
                                             onChange={(e) => {
                                                 setComment(e.target.value)
                                             }}
-                                            placeholder='Let the artist know what you think!'></input>
+                                            placeholder='(FEATURE INCOMPLETE) Press Enter and let the artist know what you think!'></input>
                                     </form>
                                 </div>
 

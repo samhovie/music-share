@@ -41,8 +41,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                 {`${playlist.name}`}
             </div>
             {current_user == owner && (
-                < div className='single-song-card-info-bottom-left-column-delete'>
-                    <i>delete</i>
+                < div>
                     <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeletePlaylist playlistId={playlist.id} />} />

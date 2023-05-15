@@ -21,3 +21,12 @@
 
     /* border: 1px solid deeppink; */
 }
+
+.open-modal-button button {
+    border-style: none;
+    border-radius: 5px;
+    background-color: aquamarine;
+    font-size: 2rem;
+    padding: 10px 3rem;
+    font-family: 'Courier New', Courier, monospace;
+}

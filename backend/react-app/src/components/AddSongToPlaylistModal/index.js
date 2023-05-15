@@ -85,6 +85,9 @@ function AddSongToPlaylistModal({ songId }) {
     const playlist = useSelector(state => state.playlists.singlePlaylist);
     const [selectedPlaylist, setSelectedPlaylist] = useState("");
     const playlistId = playlist.id
+    const sessionUser = useSelector((state) => state.session.user);
+    const current_user = sessionUser.id;
+
     const { closeModal } = useModal();
 
     useEffect(() => {
@@ -101,21 +104,26 @@ function AddSongToPlaylistModal({ songId }) {
     };
 
     return (
-            <div className="modal" onClick={closeModal}>
-                <div className="modal-content" onClick={e => e.stopPropagation()}>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Select Playlist:
-                            <select className="playlist-select" value={selectedPlaylist} onChange={e => setSelectedPlaylist(e.target.value)}>
-                                {Object.values(playlists).map(playlist => (
+        <div className="modal" onClick={closeModal}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+                <form onSubmit={handleSubmit}>
+                    <select
+                        className="playlist-select"
+                        value={selectedPlaylist}
+                        onChange={e => setSelectedPlaylist(e.target.value)}
+                    >
+                        {
+                            Object.values(playlists)
+                                .filter(playlist => playlist.user.id === current_user)
+                                .map(playlist => (
                                     <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
-                                ))}
-                            </select>
-                        </label>
-                        <button className="add-song-btn" type="submit">Add Song</button>
-                    </form>
-                </div>
+                                ))
+                        }
+                    </select>
+                    <button className="add-song-btn" type="submit">Add Song</button>
+                </form>
             </div>
+        </div>
     );
 }
 export default AddSongToPlaylistModal;

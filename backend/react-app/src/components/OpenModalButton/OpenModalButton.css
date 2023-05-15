@@ -1,20 +1,14 @@
 .open-modal-button {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 10px;
-    margin: 4px 2px;
-    background-color: rgb(107, 17, 60);
-    box-shadow: rgb(225, 255, 196);
-    border: line;
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 10px
+    border-style: none;
+    border-radius: 5px;
+    border: 1px solid darkgreen;
+    background-color: aquamarine;
+    font-size: 1rem;
+    padding: 5px 1rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.navbar-home-feed-library-feed > button {
+.navbar-home-feed-library-feed>button {
     text-decoration: none;
 }
 
@@ -51,7 +45,7 @@
     background-color: darkslategray;
     border-style: none;
     font-size: 14px;
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 .open-modal-button-something:hover {

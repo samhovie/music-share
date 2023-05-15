@@ -1,4 +1,4 @@
-.profile-page-outer {
+/* .profile-page-outer {
     display: flex;
     justify-content: center;
     background-color: #E5F9DB;
@@ -7,7 +7,7 @@
 
 .profile-page-content-wrapper {
     /* border: 1px solid black; */
-    display: flex;
+/* display: flex;
     flex-direction: column;
     background-color: #A0D8B3;
     border-radius: 5px;
@@ -61,10 +61,10 @@
     border-radius: 5px;
     padding: .7rem;
     margin-top: 1rem;
-}
+} */
 
 /* START OF PROFILE-PAGE-BOTTOM */
-
+/*
 .profile-page-bottom {
     height: 100%;
 }
@@ -90,11 +90,90 @@
     display: flex;
     width: 40px;
     /* height: fit-content; */
-    align-items: center;
+/* align-items: center;
     margin-right: 1rem;
 }
 
 .a > button{
     padding: 5px 11px;
     font-size: 16px;
+} */
+.profile-page-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #A0D8B3;
+}
+
+.profile-page-top-left {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-page-pic {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.profile-page-top-right {
+    flex-basis: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-page-user-info {
+    flex-basis: 60%;
+}
+
+.profile-page-top-display-name {
+    font-size: 24px;
+    color: #000;
+}
+
+.profile-page-top-full-name {
+    font-size: 16px;
+    color: #333;
+}
+
+.profile-page-buttons {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.a > button{
+    padding: 10px;
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.a > button:hover {
+    background-color: #555;
+}
+
+.profile-page-bottom-selections {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    background-color: #E5F9DB;
+}
+
+.profile-songs-link {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.profile-songs-link:hover {
+    color: #555;
 }

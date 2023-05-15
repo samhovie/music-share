@@ -26,6 +26,7 @@ const DiscoverPage = () => {
             <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>
                     <OpenModalButton
+                        className='buttonss'
                         modalComponent={<CreatePlaylistForm />}
                         buttonText="Create Playlist"
                     />

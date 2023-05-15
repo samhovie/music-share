@@ -20,56 +20,50 @@ const ProfilePage = () => {
                 <div className='global-outerwrapper-wrapper'>
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${user.profile_pic}`}
-                                className='profile-page-pic'
-                            ></img>
+                            <img src={`${user.profile_pic}`} className='profile-page-pic'></img>
                         </div>
-                        <div className='profile-page-top-right'
-                        // style={{backgroundImage: `url(${user.banner_pic})`}}
-                        >
-                            <div className='profile-page-top-right-left'>
+                        <div className='profile-page-top-right'>
+                            <div className='profile-page-user-info'>
                                 <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
                                 <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
-                            <div>
-                                <button onClick={() => alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>
+                            <div className='profile-page-buttons'>
+                                <OpenModalButton
+                                    buttonText="Edit"
+                                    modalComponent={<UpdateProfile />} />
+                                <OpenModalButton
+                                    buttonText="Delete User Profile"
+                                    modalComponent={<DeleteUser />} />
                             </div>
                         </div>
                     </div>
                     <div className='profile-page-bottom'>
                         <div className='profile-page-bottom-selections'>
-                            <div className='profile-page-bottom-selections-left'>
-                                {/* <h2>
-                                    <NavLink to={"/all/current"} className="profile-songs-link">
-                                        All
-                                    </NavLink></h2> */}
-
-                                <h2>
-                                    <NavLink to={"/songs/current"} className="profile-songs-link">
-                                        Songs
-                                    </NavLink></h2>
-                                <h2> <NavLink to={"/playlists/current"} className="profile-songs-link">
-                                    Playlists
-                                </NavLink></h2>
-                            </div>
-                            <div className='profile-page-bottom-selections-right'>
-                                <div className='a'>
-                                    <OpenModalButton
-                                        buttonText="Edit"
-                                        modalComponent={<UpdateProfile />} />
-                                </div>
-                            </div>
-                            <div className='profile-page-bottom-selections-right'>
-                                <div className='a'>
-                                    <OpenModalButton
-                                        buttonText="Delete User Profile"
-                                        modalComponent={<DeleteUser />} />
-                                </div>
-                            </div>
+                            <NavLink to={"/songs/current"} className="profile-songs-link">
+                                Songs
+                            </NavLink>
+                            <NavLink to={"/playlists/current"} className="profile-songs-link">
+                                Playlists
+                            </NavLink>
                         </div>
+                    </div>
 
+                    <div className='profile-page-bottom-selections-right'>
+                        <div className='a'>
+                            <OpenModalButton
+                                buttonText="Edit"
+                                modalComponent={<UpdateProfile />} />
+                        </div>
+                    </div>
+                    <div className='profile-page-bottom-selections-right'>
+                        <div className='a'>
+                            <OpenModalButton
+                                buttonText="Delete User Profile"
+                                modalComponent={<DeleteUser />} />
+                        </div>
                     </div>
                 </div>
+
             </div>
         </>
     )

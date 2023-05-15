@@ -18,6 +18,7 @@ const CurrentUserPlaylist = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
     const user = useSelector(state => state.session.user)
+    
     // console.log('user', userId)
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));

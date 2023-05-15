@@ -99,6 +99,13 @@ const SongUpload = () => {
 
                                     <div className='upload-song-form-upload'>
                                         {/* <img src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'></img> */}
+                                        {/* <ul>
+                                        {displayErr === true && err.name && (<li className="errors">· {err.name}</li>)}
+                                        {displayErr === true && err.artist_name && (<li className="errors">· {err.artist_name}</li>)}
+                                        {displayErr === true && err.genre && (<li className="errors">· {err.genre}</li>)}
+                                        {displayErr === true && err.description && (<li className="errors">· {err.description}</li>)}
+                                        {displayErr === true && err.mp3_file && (<li className="errors">· {err.mp3_file}</li>)}
+                                        </ul> */}
                                         <input
                                             type='image'
                                             src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -125,7 +132,7 @@ const SongUpload = () => {
                                                 type='text'
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
-                                                required
+                                                // required
                                             >
 
                                             </input>
@@ -147,7 +154,7 @@ const SongUpload = () => {
                                                 type='text'
                                                 value={artist_name}
                                                 onChange={(e) => setArtist_name(e.target.value)}
-                                                required
+                                                // required
                                             >
 
                                             </input>
@@ -170,7 +177,7 @@ const SongUpload = () => {
                                                 type="text"
                                                 value={genre}
                                                 onChange={(e) => setGenre(e.target.value)}
-                                                required
+                                                // required
                                             >
                                             </input>
                                         </div>
@@ -191,7 +198,7 @@ const SongUpload = () => {
                                                 type="text"
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
-                                                required
+                                                // required
                                             >
                                             </textarea>
                                             {displayErr === true && err.description && (<div className="errors">· {err.description}</div>)}

@@ -48,11 +48,11 @@ const SplashPage = () => {
                             <div className='splash-page-footer-inner'>
                                     Find out more about us:
 
-                                <div className='splash-page-about-content'>
-                                    <h5>Efren Github</h5>
-                                    <h5>Katie Github</h5>
-                                    <h5>Sam Github</h5>
-                                    <h5>Quentin Github</h5>
+                                    <div className='splash-page-about-content'>
+                                    <a href='https://github.com/elcruzada' target="_blank">Efren Github</a>
+                                    <a href='https://github.com/katiegeyer' target="_blank">Katie Github</a>
+                                    <a href='https://github.com/samhovie' target="_blank">Sam Github</a>
+                                    <a href='https://github.com/codenamejetro' target="_blank">Quentin Github</a>
                                 </div>
                             </div>
                             {/* <div className='splash-page-top-img-div'>

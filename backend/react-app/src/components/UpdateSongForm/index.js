@@ -135,10 +135,6 @@ const UpdateSongForm = ({ songId }) => {
                                 onSubmit={handleSubmit}
                             >
                                 <div className='upload-song-form-wrapped'>
-<<<<<<< HEAD
-
-
-=======
                                         <ul>
                                             {err.name && <li>{err.name}</li>}
                                             {err.artist_name && <li>{err.artist_name}</li>}
@@ -148,7 +144,6 @@ const UpdateSongForm = ({ songId }) => {
                                     <div className='upload-song-form-upload'>
                                         <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
                                     </div>
->>>>>>> littleThings5
                                     <div className='upload-song-form-info'>
 
                                         <div

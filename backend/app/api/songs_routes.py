@@ -116,21 +116,6 @@ def update_song(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # if "mp3_file" not in request.files:
-        #     return {"errors": "song file required"}, 400
-        # image = request.files["mp3_file"]
-        # print(image)
-        # image.filename = get_unique_filename(image.filename)
-        # upload = upload_file_to_s3(image)
-        # # print(request.files['name'])
-        # if "url" not in upload:
-        #     print(upload['errors'])
-        # # if the dictionary doesn't have a url key
-        # # it means that there was an error when we tried to upload
-        # # so we send back that error message
-        #     # return render_template("post_form.html", form=form, errors=[upload])
-        #     return upload, 400
-        # url = upload["url"]
 
         song = Song.query.get(id)
 

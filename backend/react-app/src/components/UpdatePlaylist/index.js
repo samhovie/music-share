@@ -112,9 +112,6 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                 onSubmit={handleSubmit}
             >
                 <div className='upload-song-form-wrapped'>
-                    <div className='upload-song-form-upload'>
-                        <img src='https://media.glamour.com/photos/5f980f5cc0115735c138a7a9/16:9/w_2560%2Cc_limit/drake.jpg'></img>
-                    </div>
                     <div className='upload-song-form-info'>
                         <div style={{ paddingBottom: '1rem' }}>
                             <div>
@@ -130,6 +127,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 required
                             />
                         </div>
+                        <div>
+                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Is Public</label>
+                            </div>
                         <input
                             type="checkbox"
                             name='is_public'

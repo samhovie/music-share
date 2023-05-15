@@ -29,10 +29,10 @@ const SongDetailsPage = () => {
     const sessionUser = useSelector(state => state.session.user)
     const song = useSelector((state) => state.songs.singleSong)
     const selectedSong = useSelector(state => state.songs.allSongs[songId])
-    console.log('SSSSEELECTED', selectedSong)
+    // console.log('SSSSEELECTED', selectedSong)
     // console.log("THE COMMENTSSSSS", theComments)
     const comments = Object.values(theComments)
-    console.log("theSONGSSSS", comments)
+    // console.log("theSONGSSSS", comments)
     // dispatch(getUserThunk(theSong.artist_id))
 
 
@@ -60,7 +60,7 @@ const SongDetailsPage = () => {
     }, [dispatch, songId])
 
     const likesHandler2 = () => {
-        console.log('SOOONG3333',songId)
+        // console.log('SOOONG3333',songId)
 
         dispatch(getAllSongsThunk())
         dispatch(likeSongThunk(songId))
@@ -68,7 +68,7 @@ const SongDetailsPage = () => {
     }
 
     const unlikeHandler2 = () => {
-        console.log('SOOONG4444',songId)
+        // console.log('SOOONG4444',songId)
 
 
         dispatch(getAllSongsThunk())

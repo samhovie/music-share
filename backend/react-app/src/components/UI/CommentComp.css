@@ -3,7 +3,7 @@
     /* justify-content: center; */
     align-items: center;
     height: 2rem;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
     padding: 10px;
 }
@@ -25,7 +25,7 @@
 .comment-profile-pic > img {
     height: 2rem;
     width: 2rem;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     border-radius: 10px;
 }
 

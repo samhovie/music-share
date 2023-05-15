@@ -22,6 +22,7 @@
 
 .upload-song-form-wrapped {
     display: flex;
+    flex-direction: row;
     height: 100%;
 }
 
@@ -30,6 +31,8 @@
 }
 
 .upload-song-form-upload > input {
+    display: flex;
+    /* align-items: baseline; */
     height: 15.4rem;
     width: 15.4rem;
 }

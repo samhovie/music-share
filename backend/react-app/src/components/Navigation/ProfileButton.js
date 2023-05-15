@@ -54,7 +54,7 @@ function ProfileButton({ user }) {
             {/* <li>{user.username}</li> */}
             {/* <li>{user.email}</li> */}
             <li>
-              <NavLink exact to='/profile'
+              <NavLink exact to='/songs/current'
                 style={{ textDecoration: 'none',
                          color: 'black',
                          border: 'black'

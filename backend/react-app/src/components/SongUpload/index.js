@@ -25,29 +25,18 @@ const SongUpload = () => {
 
     useEffect(() => {
         const errors = {}
-        console.log("TYPEOFFFFF", typeof(mp3_file))
-        console.log("RIGHT UNDER", console.log(mp3_file))
+        // console.log("TYPEOFFFFF", typeof(mp3_file))
+        // console.log("RIGHT UNDER", console.log(mp3_file))
 
         if (!name) errors.name = "Name is required"
         if (!description) errors.description = "Description is required"
         if (!genre) errors.genre = "Genre is required"
         if (!artist_name) errors.artist_name = "Artist is required"
+        if (!mp3_file) errors.mp3_file = "Song should be uploaded"
         if (mp3_file && !mp3_file.name.endsWith('.wav') && !mp3_file.name.endsWith('.mp3') && !mp3_file.name.endsWith('.acc') && !mp3_file.name.endsWith('.aiff')) errors.mp3_file = "Unsupported file. Upload a '.wav', '.mp3', '.acc', or '.aiff' file"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [name, description, genre, artist_name, mp3_file])
-    // console.log(current_user)
-
-    // const fileUploadClickHandler = (e) => {
-    //     e.preventDefault()
-
-
-
-    // }
-
-    // const csrf = localStorage.getItem("csrf_token")
-
-    // let audio = ''
 
     const alertClick = () => {
         alert('Feature coming soon!')
@@ -119,7 +108,7 @@ const SongUpload = () => {
 
                                             </input>
                                         </div>
-                                        {displayErr === true && err.name && (<p className="errors">· {err.name}</p>)}
+                                        {displayErr === true && err.name && (<div className="errors">· {err.name}</div>)}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}
@@ -141,7 +130,7 @@ const SongUpload = () => {
 
                                             </input>
                                         </div>
-                                        {displayErr === true && err.artist_name && (<p className="errors">· {err.artist_name}</p>)}
+                                        {displayErr === true && err.artist_name && (<div className="errors">· {err.artist_name}</div>)}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}
@@ -163,7 +152,7 @@ const SongUpload = () => {
                                             >
                                             </input>
                                         </div>
-                                        {displayErr === true && err.genre && (<p className="errors">· {err.genre}</p>)}
+                                        {displayErr === true && err.genre && (<div className="errors">· {err.genre}</div>)}
 
                                         <div
                                             style={{ paddingBottom: '1rem' }}
@@ -183,7 +172,7 @@ const SongUpload = () => {
                                                 required
                                             >
                                             </textarea>
-                                            {displayErr === true && err.bio && (<p className="errors">· {err.bio}</p>)}
+                                            {displayErr === true && err.description && (<div className="errors">· {err.description}</div>)}
 
                                         </div>
                                         <label>
@@ -194,13 +183,14 @@ const SongUpload = () => {
                                                 onChange={(e) => setPreviewImg(e.target.files[0])}
                                             >
                                             </input> */}
-                                            <label>
+                                            {/* <label>
                                                 Preview Image:
                                                 <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
-                                            </label>
+                                            </label> */}
                                         </label>
                                         <div>
-                                            <label>
+                                            <label style={{display:'flex', flexDirection:'column'}}>
+                                                Audio File:
                                                 <input
                                                     type="file"
                                                     accept="audio/*"
@@ -210,7 +200,7 @@ const SongUpload = () => {
                                             </label>
 
                                         </div>
-                                        {displayErr === true && err.mp3_file && (<p className="errors">· {err.mp3_file}</p>)}
+                                        {displayErr === true && err.mp3_file && (<div className="errors">· {err.mp3_file}</div>)}
 
                                         {/* <div
                                             style={{ paddingBottom: '4rem' }}

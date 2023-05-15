@@ -11,83 +11,91 @@ const UpdateSongForm = ({ songId }) => {
     const { closeModal } = useModal()
 
     // const song = useSelector(state => state.songs.singleSong)
-    const song = useSelector(state => state.songs.allSongs[songId])
+    const song = useSelector(state => state.songs.singleSong)
 
     console.log('SIIINGLE', song)
-
-    const [name, setName] = useState('')
-    // const [is_public, setPublic] = useState(false)
-    // const [description, setDescription] = useState('')
-    // const [text, setText] = useState('')
-    const [mp3_file, setMp3] = useState(null)
-    const [mp3_file_name, setMp3FileName] = useState('')
-    const [genre, setGenre] = useState('')
-    const [artist_name, setArtist_name] = useState('')
-    // const [id, setId] = useState('')
-    const [preview_img, setPreviewImg] = useState('')
-    // const [artist_id, setArtist_id] = useState('')
-    const [err, setErr] = useState({})
 
     useEffect(() => {
         const fetchSongDetails = async () => {
             await dispatch(getSongThunk(songId));
 
-            setName(song.name)
-            // setPublic(song.is_public)
-            // setDescription(songData.description)
-            // setText(song.text)
-            setMp3FileName(song.mp3_file)
-            setGenre(song.genre)
-            setArtist_name(song.artist_name)
-            // setId(song.id)
+            // if (song) {
+            // setName(song.name)
+            // // setPublic(song.is_public)
+            // //         // setDescription(songData.description)
+            // //         // setText(song.text)
+            // setMp3FileName(song.mp3_file)
+            // setGenre(song.genre)
+            // setArtist_name(song.artist_name)
+            // //         // setId(song.id)
+            // //...
+            if (song && song !== undefined) {
+                setName(song.name)
+                setMp3FileName(song.mp3_file)
+                setGenre(song.genre)
+                setArtist_name(song.artist_name)
+            }
 
-            // setPreviewImg(song.preview_img || 'https://cdn.dribbble.com/users/45782/screenshots/11304218/gradient_02_a_4x.jpg')
+
         }
 
         fetchSongDetails();
 
-        dispatch(getAllSongsThunk())
+        // dispatch(getAllSongsThunk())
     }, [dispatch, songId]);
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     artist_name: '',
-    //     artist_id: '',
-    //     description: '',
-    //     // preview_img: ''
-    // });
 
-    // const handleFileChange = (e) => {
-    //     setMp3(e.target.files[0])
-    //     setMp3FileName(e.target.files[0].name)
-    // }
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({ ...formData, [name]: value });
-    // };
+    // const [name, setName] = useState('')
+    // // const [description, setDescription] = useState('')
+    // // const [text, setText] = useState('')
+    // const [mp3_file, setMp3] = useState(null)
+    // const [mp3_file_name, setMp3FileName] = useState('')
+    // const [genre, setGenre] = useState('')
+    // const [artist_name, setArtist_name] = useState('')
+    // // const [id, setId] = useState('')
+    // // const [preview_img, setPreviewImg] = useState('')
+    // const [artist_id, setArtist_id] = useState('')
+    const [err, setErr] = useState({})
+    const [name, setName] = useState(song.name || '');
+    const [artist_name, setArtist_name] = useState(song.artist_name || '');
+    const [genre, setGenre] = useState(song.genre || '');
+    const [mp3_file, setMp3] = useState(song.mp3_file || null);
+    const [mp3_file_name, setMp3FileName] = useState(song.mp3_file || '');
+
+
+
+
 
     useEffect(() => {
         const errors = {}
         if (!name) errors.name = "Name is required"
         if (!artist_name) errors.artist_name = "Artist name is required"
-        if (!genre) errors.genre = "Genre is required"
-        if (!preview_img) errors.preview_img = "Preview Image is required"
+        // if (!genre) errors.genre = "Genre is required"
+        // if (!preview_img) errors.preview_img = "Preview Image is required"
 
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
-    }, [name, artist_name, genre, preview_img])
+    }, [name, artist_name, genre])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
 
 
-        const formData = {
-            name,
-            artist_name,
-            // artist_id,
-            preview_img,
-            mp3_file
-        }
+        // const formData = {
+        //     name,
+        //     artist_name,
+        //     artist_id,
+        //     preview_img,
+        //     mp3_file
+        // }
+        const formData = new FormData();
+        console.log('FOOOORM', formData)
+        formData.append('name', name);
+        formData.append('artist_name', artist_name);
+        // formData.append('artist_id', artist_id);
+        // formData.append('preview_img', preview_img);
+        formData.append('mp3_file', mp3_file);
+
         // const formData = new FormData()
         // formData.append('name', name)
         // // formData.append('is_public', name)
@@ -99,6 +107,7 @@ const UpdateSongForm = ({ songId }) => {
         // formData.append('preview_img', preview_img)
         // console.log('FOOOORM', formData)
         await dispatch(updateSongThunk(songId, formData));
+        console.log("FORMFORM", formData)
         // console.log('UPPPDATED', updatedSong);
         closeModal();
         // if (updatedSong) {
@@ -106,19 +115,7 @@ const UpdateSongForm = ({ songId }) => {
         // }
     }
 
-    // let handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData()
-    //     formData.append('mp3_file', mp3_file)
-    //     formData.append('name', name)
-    //     formData.append('artist_name', artist_name)
-    //     formData.append('genre', genre)
-    //     formData.append('preview_img', preview_img)
-    //     // formData.append('description', description)
-    //     dispatch(updateSongThunk(formData, songId))
-    //     closeModal()
-    //     history.push('/profile')
-    // }
+
     if (!song) return null
 
     return (
@@ -127,12 +124,17 @@ const UpdateSongForm = ({ songId }) => {
             <div className='update-profile-outer-wrapper'>
                 <div className='update-profile-inner-wrapper'>
                     <form
+                        // className='update-profile-form'
+                        // action={`/api/songs/${songId}`}
+                        // method="PUT"
+                        // encType="multipart/form-data"
+                        // onSubmit={handleSubmit}
                         className='update-profile-form'
-                        action={`/api/songs/${songId}`}
-                        method="PUT"
                         encType="multipart/form-data"
                         onSubmit={handleSubmit}
                     >
+
+
                         <div className='upload-song-form-wrapped'>
                             <ul>
                                 {err.name && <li>{err.name}</li>}
@@ -210,58 +212,13 @@ const UpdateSongForm = ({ songId }) => {
                                 <div
                                     style={{ paddingBottom: '1rem' }}
                                 >
-                                    {/* <div> */}
-                                    {/* <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Preview Image URL
-                                                </label>
 
-                                            </div>
-                                            <input
-                                                className='upload-song-form-all-input upload-song-form-img-url'
-                                                type='text'
-                                                value={preview_img}
-                                                onChange={(e) => setPreviewImg(e.target.value)}
-                                                placeholder='Enter a preview image here.'
-                                                // required
-                                            > */}
+                                    <input
+                                        type="file"
+                                        accept="audio/*"
+                                        onChange={(e) => setMp3(e.target.files[0])}
+                                    />
 
-                                    {/* </input> */}
-                                    {/* </div> */}
-
-                                    {/* <div
-                                            style={{ paddingBottom: '1rem' }}
-                                        >
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.5rem' }}>
-                                                    &nbsp;Description
-                                                </label>
-
-                                            </div>
-                                            <textarea id="story" name="story"
-                                                rows="5" cols="40"
-                                                type="text"
-                                                value={description}
-                                                onChange={(e) => setDescription(e.target.value)}
-                                                required
-                                            >
-                                            </textarea>
-
-                                        </div> */}
-                                    {/* <div>
-                                            <label>
-                                                {mp3_file_name || "No file chosen"}
-                                                <input
-                                                    type="file"
-                                                    accept="audio/*"
-                                                    // onChange={mp3_file_name}
-                                                    onChange={(e) => setMp3(e.target.files[0])}
-                                                >
-                                                </input>
-                                            </label>
-
-                                        </div> */}
 
                                     <div className='upload-song-form-bottom'>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>

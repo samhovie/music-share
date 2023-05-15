@@ -135,30 +135,6 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
 
 export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispatch) => {
     console.log("TEST this", playlistId)
-    // const { name, is_public, description, preview_img } = updatedPlaylist;
-
-    // const response = await fetch(`/api/playlists/${playlistId}`, {
-    //     method: 'PUT',
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         name: updatedPlaylist.name,
-    //         is_public: updatedPlaylist.is_public,
-    //         user_id: updatedPlaylist.user_id,
-    //         description: updatedPlaylist.description,
-    //         id: updatedPlaylist.id,
-    //         preview_img: updatedPlaylist.preview_img
-    //     }),
-    // })
-    // // const formData = new FormData();
-    // formData.append('name', updatedPlaylist.name);
-    // formData.append('is_public', updatedPlaylist.is_public);
-    // formData.append('user_id', updatedPlaylist.user_id);
-    // formData.append('description', updatedPlaylist.description);
-    // // formData.append('id', updatedPlaylist.id);
-    // if (preview_img)
-    //     formData.append('preview_img', updatedPlaylist.preview_img);
 
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',

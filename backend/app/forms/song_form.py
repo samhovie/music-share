@@ -7,8 +7,9 @@ from app.models import User
 
 
 class SongForm(FlaskForm):
-    name = StringField('Title', validators=[DataRequired()])
-    artist_name = StringField('Artist', validators=[DataRequired()])
+    name = StringField('Title')
+    artist_name = StringField('Artist')
     # mp3_file = StringField('File', validators=[DataRequired()])
-    mp3_file = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    genre = StringField('Genre', validators=[DataRequired()])
+    mp3_file = FileField("Image File", validators=[
+                         FileAllowed(list(ALLOWED_EXTENSIONS))])
+    genre = StringField('Genre')

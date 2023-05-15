@@ -229,7 +229,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                       />
                         }
                             {sessionUser &&
-                             sessionUser.id === song.id &&
+                             sessionUser.id === song.artist_id &&
 
                             <>
                             {/* <div> */}

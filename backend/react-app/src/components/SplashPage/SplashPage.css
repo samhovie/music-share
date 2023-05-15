@@ -108,3 +108,13 @@
     width: 100%;
     font-weight: 100;
 }
+
+
+.splash-page-about-content > a {
+    padding-top: 1rem;
+    text-decoration: none;
+    color: black;
+}
+.splash-page-about-content > a:hover {
+    cursor: pointer;
+}

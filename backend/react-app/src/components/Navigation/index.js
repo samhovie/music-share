@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user);
 
-	const navClickHandler = () => {
+	const discoverClickHandler = () => {
 		if (sessionUser) {
 			history.push('/')
 		}
@@ -27,21 +27,27 @@ function Navigation({ isLoaded }) {
 					<div className='navbar-site-button'
 					// style={{height: '40px'}}
 					>
-						<NavLink exact to="/discover"
+						<img
+							className='navbar-icon'
+							onClick={discoverClickHandler}
+							src='https://styles.redditmedia.com/t5_2uc06/styles/communityIcon_0zttllkgeaa81.png?width=256&v=enabled&s=37b76e9adfe0e716c1d6ec1d43250db31bb7cf1a'></img>
+						{/* <NavLink exact to="/discover"
+							className='navbar-icon'
 							style={{
 								textDecoration: 'none',
 								color: 'white',
 								borderRadius: '5px'
 							}}
 						>
-							Music Share
-						</NavLink>
+
+						</NavLink> */}
 					</div>
 					<div className='navbar-home-feed-library'>
 						<div className='navbar-home-feed-library-home navbar-all-three'>
 
 							<NavLink exact to='/discover'
-								style={{ textDecoration: 'none', color: 'white' }}
+
+								style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
 							>
 								Home
 							</NavLink>
@@ -50,7 +56,7 @@ function Navigation({ isLoaded }) {
 						>
 							{sessionUser ?
 								<NavLink exact to='/feed'
-									style={{ textDecoration: 'none', color: 'white' }}
+									style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
 								>Feed</NavLink> :
 								<OpenModalButton
 									buttonText="Feed"
@@ -61,7 +67,10 @@ function Navigation({ isLoaded }) {
 							}
 						</div>
 						<div onClick={() => alertClickHandler()} className='navbar-home-feed-library-library navbar-all-three'>
-							Library
+							<div style={{ display:'flex', alignItems:'center'}}>
+								Library
+
+							</div>
 						</div>
 
 						<div className='navbar-search-bar'>

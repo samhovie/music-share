@@ -18,7 +18,7 @@ const CurrentUserPlaylist = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
     const user = useSelector(state => state.session.user)
-    
+
     // console.log('user', userId)
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));
@@ -68,9 +68,7 @@ const CurrentUserPlaylist = () => {
                                 <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
                                 <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
-                            <div>
-                                <button onClick={() => alertClickHandler()} className='upload-header-image-button'>Upload Header Image</button>
-                            </div>
+                
                         </div>
                     </div>
                     <div className='profile-page-bottom'>

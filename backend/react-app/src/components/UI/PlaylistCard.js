@@ -36,7 +36,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                 {`${playlist.user.username}`}
 
             </div>
-            <div className='playlist-card-title'>
+            <div className='c'>
                 {/* this is hardcoded, change later */}
                 {`${playlist.name}`}
             </div>

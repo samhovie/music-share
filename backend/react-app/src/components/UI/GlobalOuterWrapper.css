@@ -1,6 +1,6 @@
 .global-outerwrapper-outer {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     justify-content: center;
     background-color: #E5F9DB;
     min-height: 75rem;

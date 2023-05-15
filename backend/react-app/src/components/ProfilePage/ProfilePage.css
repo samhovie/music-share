@@ -146,9 +146,11 @@
     justify-content: space-between;
 }
 
-.a > button{
+.a>button {
     padding: 10px;
     font-size: 14px;
+    align-items: center;
+    left: 10%;
     background-color: #333;
     color: #fff;
     border: none;
@@ -157,8 +159,8 @@
     transition: background-color 0.2s ease;
 }
 
-.a > button:hover {
-    background-color: #555;
+.a>button:hover {
+    /* background-color: #555; */
 }
 
 .profile-page-bottom-selections {

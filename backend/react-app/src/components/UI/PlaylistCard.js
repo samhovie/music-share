@@ -14,6 +14,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
     const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
     const sessionUser = useSelector((state) => state.session.user);
     const owner = playlist.user && playlist.user.id;
+    
     const current_user = sessionUser.id;
     const owner_username = playlist.user && playlist.user.username;
 

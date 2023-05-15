@@ -63,7 +63,7 @@
 
 .single-song-card-info-soundwave {
     /* border: 1px solid black; */
-    width: 100%;
+    width: 53rem;
 }
 
 .single-song-card-info-comment {
@@ -126,3 +126,7 @@
 .single-song-card-info-bottom-right-column {
     display: flex;
 }
+
+/* .single-song-card-info-soundwave > img {
+    width: 40rem;
+} */

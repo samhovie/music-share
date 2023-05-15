@@ -248,8 +248,8 @@ export default function playlistsReducer(state = initialState, action) {
         // return newState
         case CREATE_PLAYLIST:
             newState = { ...state }
-            newState.singlePlaylist = { ...action.playlist }
-            newState.allPlaylists[action.id] = action.playlist  // Add the new playlist to allPlaylists
+            newState.singlePlaylist = { ...action.playlistId }
+            newState.allPlaylists[action.playlistId.id] = action.playlistId  // Add the new playlist to allPlaylists
             return newState
 
         // case GET_USER_PLAYLISTS:

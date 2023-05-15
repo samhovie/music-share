@@ -1,3 +1,20 @@
+Welcome to Music Share!
+
+	Music Share is the all-new, best music streaming platform that will fit all your music listening needs.
+
+Heading to our website, you will be greeted by a homepage where you can sign up, or log in if you already have an account. You can sign up or log in at any time by clicking the profile button in the navigation bar at the top.
+
+Upon signing up, you will be logged in to your account and sent to your profile page where you can update your display name across the site, and a bit of user info like your name, location, and a place for you to describe yourself.
+
+Play the newest songs on the platform by hitting “Feed” at the top of your page. Play, like, leave a comment, add it to your playlist for later, and for more details about the song or the user that shared the track, head over to that song’s details page by clicking on its portrait. Here, you can see comments posted by other users and details about the user that posted that song.
+
+Once you click “Home” at the top, the site will redirect you to the newest playlists on the platform. Click on any playlist’s portrait to view the songs within that playlist.
+
+Any time you are logged on, you can share your songs with the rest of those on music share by uploading a song, found in the navigation bar at the top of your screen!
+
+Soon, you will be able to view others’ profile pages, seeing the songs they’ve uploaded and playlists they’ve curated. We plan to fully implement comments as a way of interact with the content others users bring out, and being able to further customize your user profiles by adding in images.
+
+
 # Flask React Project
 
 This is the starter for the Flask React project.

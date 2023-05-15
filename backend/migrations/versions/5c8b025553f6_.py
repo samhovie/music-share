@@ -1,30 +1,16 @@
 """empty message
 
-<<<<<<<< HEAD:backend/migrations/versions/d63d22719e7c_.py
-Revision ID: d63d22719e7c
+Revision ID: 5c8b025553f6
 Revises: 
-Create Date: 2023-05-13 10:37:54.193865
-========
-Revision ID: b50f24557bd9
-Revises:
-Create Date: 2023-05-14 11:28:58.091111
->>>>>>>> dev:backend/migrations/versions/b50f24557bd9_.py
+Create Date: 2023-05-14 22:29:51.021996
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:backend/migrations/versions/d63d22719e7c_.py
-revision = 'd63d22719e7c'
-========
-revision = 'b50f24557bd9'
->>>>>>>> dev:backend/migrations/versions/b50f24557bd9_.py
+revision = '5c8b025553f6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,8 +26,11 @@ def upgrade():
     sa.Column('display_name', sa.String(length=255), nullable=True),
     sa.Column('first_name', sa.String(length=255), nullable=True),
     sa.Column('last_name', sa.String(length=255), nullable=True),
+    sa.Column('city', sa.String(length=255), nullable=True),
+    sa.Column('country', sa.String(length=255), nullable=True),
     sa.Column('bio', sa.Text(), nullable=True),
     sa.Column('profile_pic', sa.String(length=255), nullable=True),
+    sa.Column('banner_pic', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -95,13 +84,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('user_id', 'song_id')
     )
     # ### end Alembic commands ###
-    if environment == "production":
-        op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
 def downgrade():

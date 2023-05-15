@@ -182,12 +182,14 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                         </div>
                         {/* </div> */}
                     </div>
-                    <div className='single-song-card-info-soundwave'>
+                    <div className='single-song-card-info-soundwave'
+
+                    >
                         {/* <p>
                             -------------------------------------------------------------
                         </p> */}
                         <img
-
+                        style={{width: '52rem'}}
                         src='https://media.istockphoto.com/id/1176100626/vector/sound-waves-motion-sound-wave-abstract-background.jpg?s=612x612&w=0&k=20&c=EypnQvOtttmj_5JCKkcWy_ul0mS1g3j6md9zamNpmRA='>
 
                         </img>
@@ -227,7 +229,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage }) => {
                                       />
                         }
                             {sessionUser &&
-                             sessionUser.id === song.id &&
+                             sessionUser.id === song.artist_id &&
 
                             <>
                             {/* <div> */}

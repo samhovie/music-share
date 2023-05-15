@@ -21,7 +21,7 @@ class Song(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     mp3_file = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
-    preview_img = db.Column(db.String(255), default='')
+    preview_img = db.Column(db.String(255), default='https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&fit=max&w=930')
     # song_position = db.Column(db.String(100), nullable = False)
     created_at = db.Column(db.Date, nullable=False)
     updated_at = db.Column(db.Date, nullable=False)

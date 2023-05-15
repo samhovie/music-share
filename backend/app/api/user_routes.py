@@ -26,7 +26,9 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-#updateUser
+# updateUser
+
+
 @user_routes.route('/<int:userId>', methods=['PUT'])
 def update_user(userId):
     print("REQUEST.GETDATA", request.get_data)
@@ -55,3 +57,25 @@ def update_user(userId):
         return user.to_dict()
 
     return {"errors": form.errors}
+
+# deleteUser
+
+
+@user_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_user(id):
+    """
+    Delete a user by id and returns a success message
+    """
+    user = User.query.get(id)
+
+    if not user:
+        return {"errors": "user doesn't exist"}
+
+    elif user.id != current_user.id:
+        return {"errors": "not your account"}
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return {"message": "User deleted"}

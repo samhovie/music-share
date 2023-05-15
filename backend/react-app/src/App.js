@@ -21,6 +21,8 @@ import CurrentUserSongs from "./components/MySongs";
 import Player from "./components/Player";
 import UserLikesPage from "./components/UserLikesPage";
 import SplashPage from "./components/SplashPage";
+import DeleteUser from "./components/DeleteUser";
+
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
 
@@ -66,6 +68,9 @@ function App() {
             </Route>
             <Route exact path='/upload'>
               <SongUpload />
+            </Route>
+            <Route exact path="/delete-account" >
+              <DeleteUser />
             </Route>
             <Route exact path='/profile'>
               <ProfilePage />

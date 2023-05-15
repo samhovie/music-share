@@ -1,39 +1,32 @@
-import { useDispatch, useSelector } from "react-redux"
-import { deleteUserThunk } from "../../store/users"
-import { useModal } from "../../context/Modal"
-import { useHistory } from "react-router-dom"
-// import './DeletePlaylist.css'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { deleteUserThunk } from '../../store/users'; // replace with the correct path to your Redux file
 
-const DeleteUser = ({ userId }) => {
-    const history = useHistory()
-    const { closeModal } = useModal()
-    const dispatch = useDispatch()
 
-    // console.log("SONGIDDDD", songId)
-    // const songId = useSelector(state => state)
-    const deleteClick = (e) => {
-        dispatch(deleteUserThunk(userId))
-        closeModal()
-        window.location.reload();
-    }
+const DeleteUser = () => {
+    const dispatch = useDispatch();
 
-    const keepClick = (e) => {
-        closeModal()
-    }
+    // Assume you have a state in Redux store that holds the current user information
+    // and 'id' is one of the properties
+    const sessionUser = useSelector((state) => state.session.user);
+    const current_user = sessionUser.id;
+
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            dispatch(deleteUserThunk(current_user));
+            // After deleting the user, you might want to redirect to a different page or clear user from local state
+            // Depending on your application, you might want to handle this inside the deleteUserThunk itself
+        }
+        window.location.replace('/')
+    };
 
     return (
-        <div className="confirm-delete-wrapper">
-            <div className="confirm-delete-inner-wrapper">
-                <div className="confirm-delete-title">Confirm Delete</div>
-                <div className="confirm-delete-question">Are you sure you want to remove this item? This action cannot be undone.</div>
-                <div className="confirm-delete-buttons">
-                    <div className="confirm-delete-delete confirm-buttons" onClick={deleteClick}>{`Delete`}</div>
-                    <div className="confirm-delete-cancel confirm-buttons" onClick={keepClick}>{`Cancel`}</div>
-                </div>
-            </div>
+        <div>
+            <h2>Delete User Account</h2>
+            <button onClick={handleDelete}>Delete My Account</button>
         </div>
-    )
-}
+    );
+};
 
-
-export default DeleteUser
+export default DeleteUser;

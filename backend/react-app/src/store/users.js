@@ -105,19 +105,32 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 	}
 }
 
+// export const deleteUserThunk = (userId) => async (dispatch) => {
+// 	const response = await fetch(`/api/users/${userId}`, {
+// 		method: 'DELETE',
+// 		body: userId
+// 	})
+// 	if (response.ok) {
+// 		const data = await response.json()
+// 		if (data.errors) {
+// 			return data.errors
+// 		}
+// 		dispatch(deleteUserAction(data))
+// 	}
+// }
 export const deleteUserThunk = (userId) => async (dispatch) => {
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'DELETE',
-		body: userId
 	})
 	if (response.ok) {
 		const data = await response.json()
 		if (data.errors) {
 			return data.errors
 		}
-		dispatch(deleteUserAction(data))
+		dispatch(deleteUserAction(userId))
 	}
 }
+
 
 const initialState = { allUsers: {}, singleUser: {} }
 
@@ -146,7 +159,7 @@ export default function usersReducer(state = initialState, action) {
 			newState = { ...state, singleUser: action.user }
 			return newState
 		case DELETE_USER:
-			newState = {...state, allUsers: {...state.allUsers}}
+			newState = { ...state, allUsers: { ...state.allUsers } }
 			delete newState.allUsers[action.userId]
 			return newState
 

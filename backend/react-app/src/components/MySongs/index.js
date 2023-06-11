@@ -17,9 +17,9 @@ const CurrentUserSongs = () => {
     const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
     const [isProfileSongs, setIsProfileSongs] = useState(false)
 
-    const user_id = allSongs.forEach(song => {
+    // const user_id = allSongs.forEach(song => {
 
-    });
+    // });
 
 
     let userSongs = [];

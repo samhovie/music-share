@@ -36,10 +36,11 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const handleLogout = (e) => {
+
     e.preventDefault();
     dispatch(logout());
     history.push('/')
-  };
+    };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);

@@ -56,7 +56,6 @@ const UpdateProfile = () => {
             history.push(`/profile`)
         }
         closeModal()
-        window.location.reload();
     }
 
 

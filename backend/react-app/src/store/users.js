@@ -87,7 +87,7 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 		method: 'PUT',
 		body: formData
 	})
-	 (response)
+
 	if (response.ok) {
 
 		const data = await response.json();

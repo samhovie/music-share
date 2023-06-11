@@ -9,7 +9,6 @@ const DeletePlaylist = ({ playlistId }) => {
     const deleteClick = (e) => {
         dispatch(deletePlaylistThunk(playlistId))
         closeModal()
-        window.location.reload();
     }
 
     const keepClick = (e) => {

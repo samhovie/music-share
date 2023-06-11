@@ -19,6 +19,7 @@ import Player from "./components/Player";
 import UserLikesPage from "./components/UserLikesPage";
 import SplashPage from "./components/SplashPage";
 import DeleteUser from "./components/DeleteUser";
+import { useSelector } from "react-redux";
 
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
@@ -30,7 +31,7 @@ function usePlayer() {
 }
 
 export const PlayerContext = createContext();
-const PlayerProvider = ({ children }) => {
+export const PlayerProvider = ({ children }) => {
   const { url, setUrl, isPlaying, setIsPlaying } = usePlayer()
   return (
     <PlayerContext.Provider value={{ url, setUrl, isPlaying, setIsPlaying }}>
@@ -43,6 +44,8 @@ const PlayerProvider = ({ children }) => {
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -51,14 +54,15 @@ function App() {
 
   return (
     <>
-      <PlayerProvider>
-        <Navigation isLoaded={isLoaded} />
+        {/* <Navigation isLoaded={isLoaded} /> */}
+        {sessionUser && <Navigation isLoaded={isLoaded} />}
         <Player />
 
         {isLoaded && (
           <Switch>
             <Route exact path='/'>
-              <SplashPage />
+              {/* <SplashPage /> */}
+              {!sessionUser ? <SplashPage /> : <DiscoverPage />}
             </Route>
             <Route exact path='/likes'>
               <UserLikesPage />
@@ -109,7 +113,6 @@ function App() {
             </Route>
           </Switch>
         )}
-      </PlayerProvider>
     </>
   );
 }

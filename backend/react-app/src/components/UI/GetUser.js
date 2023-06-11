@@ -6,7 +6,7 @@ import { getUserThunk } from '../../store/users'
 const GetUser = ({userId}) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    // console.log("USERRRRR", user)
+
 
     useEffect(() => {
         dispatch(getUserThunk(userId))

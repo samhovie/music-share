@@ -1,8 +1,7 @@
 
 const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHandler2, isProfileSongs}) => {
     // const history = useHistory()
-    // console.log('SOOOOONG', song)
-    // console.log('SOOOOONGUUUUUU', song)
+
     // const dispatch = useDispatch()
     // const [isLiked, setIsLiked] = useState()
     // const nallLikes = useSelector(state => state.likes.allLikes.likes)
@@ -11,21 +10,17 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
 
     // const likes = allLikes && allLikes.likes
     // const userIds = allLikes && allLikes.user_id
-    // console.log('ALLLLIIIKES', userIds)
 
-    // const userLikes = useSelector(state => console.log('STATE', state))
-    // console.log('allLikes', allLikes.allLikes.likes)
+
     // const likesObj = allLikes.allLikes.likes
-    // console.log('LIIIKESSOOOBBBJJJ',likesObj)
+
 
 
     // const likesHandler1 = () => {
-    //     console.log('SOOONG111',songId)
     //     dispatch(likeSongThunk(songId))
     // }
 
     // const unlikeHandler1 = () => {
-    //     console.log('SOOONG2222',songId)
     //     dispatch(removeLikeThunk(songId))
     // }
 

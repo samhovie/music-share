@@ -5,9 +5,9 @@ const ArtistDetails = ({ song }) => {
     // const dispatch = useDispatch()
 
     // const artist = useSelector(state => state)
-    // console.log("ARTIST", song)
+
     // useEffect(() => {
-    //     console.log("ARTIST IDD ", artistId)
+
     //     dispatch(getUserThunk(artistId))
     // }, [dispatch, artistId])
 

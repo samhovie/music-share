@@ -16,15 +16,15 @@ const CurrentUserSongs = () => {
 
     const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
     const [isProfileSongs, setIsProfileSongs] = useState(false)
-    // console.log('PAYLIST', allSongs)
+
     const user_id = allSongs.forEach(song => {
-        // console.log('song user', song.artist_id);
+
     });
-    console.log(user_id)
+
 
     let userSongs = [];
     for (let song in allSongs) {
-        // console.log(allPlaylists[playlist])
+
         if (allSongs[song].artist_id === userId) {
             userSongs.push(allSongs[song])
         }

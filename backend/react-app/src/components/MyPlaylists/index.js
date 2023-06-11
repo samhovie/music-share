@@ -15,18 +15,18 @@ const CurrentUserPlaylist = () => {
     const userId = useSelector((state) => state.session.user.id);
     const user = useSelector(state => state.session.user)
 
-    // console.log('user', userId)
+
 
     const allPlaylists = useSelector((state) => Object.values(state.playlists.allPlaylists));
-    // console.log('PAYLIST', allPlaylists)
+
     // const user_id = allPlaylists.forEach(playlist => {
-    //     console.log('playlist user', playlist.user.id);
+
     // });
-    // console.log(user_id)
+
 
     let userPlaylists = [];
     // for (let playlist in allPlaylists) {
-    //     // console.log(allPlaylists[playlist])
+
     //     if (allPlaylists[playlist].user.id == userId) {
     //         userPlaylists.push(allPlaylists[playlist])
     //     }

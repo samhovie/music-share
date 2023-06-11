@@ -5,7 +5,6 @@ import { getAllSongsThunk } from '../../store/songs';
 
 const Homepage = () => {
     const dispatch = useDispatch()
-    const allSongs = useSelector(state => console.log(state))
     const [songs, setSongs] = useState([]);
 
 
@@ -17,7 +16,6 @@ const Homepage = () => {
         const getAllSongs = async () => {
             const res = await fetch('/api/songs');
             const data = await res.json();
-            console.log(data)
             setSongs(data.songs);
         };
 

@@ -17,8 +17,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
     const current_user = sessionUser ? sessionUser.id : undefined;
     // const owner_username = playlist.user && playlist.user.username;
 
-    const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
-    console.log("PLAYLIST IN PLAYLIST CARD", playlistsSongs)
+    // const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
 
     if (!playlists) return null
     // if (!playlistsSongs) return null

@@ -23,26 +23,17 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
     const dispatch = useDispatch()
     // const [comment, setComment] = useState('')
     // const comment = ''
-    // console.log('allLikes', allLikes)
     // const [isLiked, setIsLiked] = useState()
-    // console.log('SOOOOOOOOONNG', song.preview_img)
-    // console.log('SESSSSION', sessionUser)
     const allLikes = useSelector(state => state.likes.allLikes.likes)
     // const sessionUser = useSelector((state) => state.session.user)
     // const userSongs = useSelector((state) => state.songs.singleSong)
-    // console.log('UUUUSER', userSongs)
-    // console.log(userSongs)
     // const [,setLikes] = useState()
 
 
     // const allLikes = useSelector(state => state.likes)
-    // const userLikes = useSelector(state => console.log('STATE', state))
-    // console.log('allLikes', allLikes.allLikes.likes)
     // const likesObj = allLikes.allLikes.likes
-    // console.log('likes', likesObj)
     const songId = song.id
     const likesHandler2 = () => {
-        // console.log('SOOONG3333',songId)
 
         // history.push('/')
         // setLikes()
@@ -54,7 +45,6 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
     }
 
     const unlikeHandler2 = () => {
-        // console.log('SOOONG4444',songId)
 
         // history.push('/')
         // setLikes()
@@ -68,13 +58,11 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
     // const [isPlaying, setIsPlaying] = useState(false)
 
     // const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
-    // console.log(song)
 
     // const submitHandler = (e) => {
     //     e.preventDefault()
     //     const formData = new FormData()
     //     formData.append('text', comment)
-    //     // console.log(formData)
     //     dispatch(createCommentThunk(formData, songId))
     //     history.push(`/songs/${songId}`)
     // }
@@ -87,7 +75,6 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
         // dispatch(getUserLikedSongs())
     },[dispatch, songId])
 
-    // console.log('SOOOONNGIIIDD', song.id)
     // const likesHandler = () => {
     //     dispatch(likeSongThunk(songId))
     // }
@@ -128,7 +115,6 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
             // we want to click the main button to that pauses it
             button.click()
         }
-        // console.log('card', isPlaying)
     }
 
 

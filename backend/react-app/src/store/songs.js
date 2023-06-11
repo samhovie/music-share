@@ -35,36 +35,35 @@ const deleteSongAction = (songId) => ({
 
 export const getAllSongsThunk = () => async (dispatch) => {
 	const response = await fetch("/api/songs/")
-	console.log("responseeeeeeeeeeeeeeee", response)
 	if (response.ok) {
 		const data = await response.json();
-		console.log('DDDAAATAAALLSONGS', data)
+
 		if (data.errors) {
 			return;
 		}
-		console.log("dataaaaaaaaaaaaaaaa", data)
+
 
 		dispatch(getAllSongsAction(data));
 	}
 };
 
 export const getSongThunk = (id) => async (dispatch) => {
-	// console.log("THE IDDDD ", id)
+
 	const response = await fetch(`/api/songs/${id}`)
-	// console.log("THE RESPONSE ", response)
+
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return
 		}
-		// console.log("DATAAAA ", data)
+
 		dispatch(getSongAction(data))
 		return data
 	}
 }
 
 export const createSongThunk = (song) => async (dispatch) => {
-	// console.log("SONG")
+
 	const response = await fetch('/api/songs/new', {
 		method: 'POST',
 		body: song
@@ -80,8 +79,8 @@ export const createSongThunk = (song) => async (dispatch) => {
 }
 
 // export const updateSongThunk = (song, updatedSong) => async (dispatch) => {
-// 	console.log("TEST 2", song)
-// 	console.log('TEEEEEST3333', updatedSong)
+
+
 
 // 	const response = await fetch(`/api/songs/${song}`, {
 // 		method: 'PUT',
@@ -100,14 +99,14 @@ export const createSongThunk = (song) => async (dispatch) => {
 // 	})
 
 // 	if (response.ok) {
-// 		console.log('response222', response)
+// 		 ('response222', response)
 // 		const data = await response.json();
-// 		console.log('DAAATA22222', data)
+// 		 ('DAAATA22222', data)
 // 		if (data.errors) {
-// 			// console.log("TEST 6")
+// 			//  ("TEST 6")
 // 			return data.errors
 // 		}
-// 		// console.log("TEST 4")
+// 		//  ("TEST 4")
 // 		dispatch(updateSongAction(data))
 // 		return data
 // 	}
@@ -122,16 +121,16 @@ export const createSongThunk = (song) => async (dispatch) => {
 // 		method: 'PUT',
 // 		body: updatedSong,
 // 	});
-// 	console.log('response', response)
+// 	 ('response', response)
 
 // 	if (response.ok) {
 // 		const data = await response.json();
-// 		console.log('datadata', data)
+// 		 ('datadata', data)
 // 		if (data.errors) {
 // 			return data.errors
 // 		}
 // 		dispatch(updateSongAction(data));
-// 		console.log('datadata', data)
+// 		 ('datadata', data)
 
 // 		return data;
 // 	}
@@ -146,16 +145,16 @@ export const updateSongThunk = (songId, updatedSong) => async (dispatch) => {
 			method: 'PUT',
 			body: updatedSong,
 		});
-		console.log('response', response)
+
 
 		if (response.ok) {
 			const data = await response.json();
-			console.log('data', data)
+
 			if (data.errors) {
 				return data.errors
 			}
 			dispatch(updateSongAction(data));
-			console.log('data', data)
+
 
 			return data;
 		}
@@ -190,13 +189,13 @@ export default function songsReducer(state = initialState, action) {
 			action.songs.songs.forEach(song => newState.allSongs[song.id] = song)
 			return newState
 		case GET_SONG:
-			// console.log("ACTIONN ", action)
+			//  ("ACTIONN ", action)
 			newState = { ...state, singleSong: { ...action.song } }
-			// console.log("NEW STATEEEE ", newState)
+			//  ("NEW STATEEEE ", newState)
 			return newState
 		case CREATE_SONG:
-			// console.log("STATEEEE", state)
-			// console.log("ACTIONNN", action)
+			//  ("STATEEEE", state)
+			//  ("ACTIONNN", action)
 			newState = { ...state, singleSong: { ...action.singleSong } }
 			return newState
 		case UPDATE_SONG:

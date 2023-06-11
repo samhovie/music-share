@@ -3,9 +3,6 @@ import PlaylistCard from './PlaylistCard'
 
 
 const PlaylistWrapper = ({ playlists }) => {
-    // let description = false
-    // let description = true
-    console.log("PLAYLISTS", playlists)
 
     return (
         <>

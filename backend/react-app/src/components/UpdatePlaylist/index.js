@@ -10,7 +10,7 @@ import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
     const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
-    // console.log('single playlist', singlePlaylist)
+    // ('single playlist', singlePlaylist)
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
@@ -39,19 +39,14 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
 
 
-    console.log('playlist id', playlistId)
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const updatedFormData = new FormData();
-        console.log('form data', updatedFormData);
         updatedFormData.append('name', name)
         updatedFormData.append('is_public', is_public)
         updatedFormData.append('description', description)
         updatedFormData.append('preview_img', preview_img)
-        // const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
-        console.log('updated playlist', updatedFormData);
         await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
         closeModal();
         history.push(`/playlists/${playlistId}`);
@@ -199,7 +194,7 @@ export default UpdatePlaylistForm
 //     };
 
 //     let handleSubmit = async (e) => {
-//         // console.log("--------------------TEST 1----------------------")
+//         // ("--------------------TEST 1----------------------")
 //         e.preventDefault();
 //         const updatedPlaylist = await dispatch(updatePlaylistThunk(playlistId, formData));
 //         // const formData = new FormData()

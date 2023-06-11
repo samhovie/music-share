@@ -34,8 +34,7 @@ function SignupFormModal() {
 		e.preventDefault()
 		if (Object.keys(errs).length > 0) {
 			setDisplayErr(true)
-			// console.log(displayErr)
-			// console.log('handlesubmit', errs)
+
 			return
 		}
 		else {

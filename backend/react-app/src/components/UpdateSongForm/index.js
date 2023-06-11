@@ -87,7 +87,6 @@ const UpdateSongForm = ({ songId }) => {
         //     mp3_file
         // }
         const formData = new FormData();
-        console.log('FOOOORM', formData)
         formData.append('name', name);
         formData.append('artist_name', artist_name);
         // formData.append('artist_id', artist_id);
@@ -103,10 +102,9 @@ const UpdateSongForm = ({ songId }) => {
         // // // formData.append('description', description)
 
         // formData.append('preview_img', preview_img)
-        // console.log('FOOOORM', formData)
+        //  ('FOOOORM', formData)
         await dispatch(updateSongThunk(songId, formData));
-        console.log("FORMFORM", formData)
-        // console.log('UPPPDATED', updatedSong);
+        //  ('UPPPDATED', updatedSong);
         closeModal();
         // if (updatedSong) {
         history.push(`/songs/${songId}`);
@@ -302,7 +300,7 @@ export default UpdateSongForm
 //     const handleSubmit = async (e) => {
 //         e.preventDefault();
 //         const updatedSong = await dispatch(updateSongThunk(songId, formData));
-//         console.log(updatedSong);
+//          (updatedSong);
 //         closeModal();
 //         if (updatedSong) {
 //             history.push(`/songs/${songId}`);
@@ -509,7 +507,7 @@ export default UpdateSongForm
 //     const [id, setId] = useState('')
 
 //     let handleSubmit = async (e) => {
-//         // console.log("--------------------TEST 1----------------------")
+//         //  ("--------------------TEST 1----------------------")
 //         e.preventDefault();
 //         const formData = new FormData()
 //         formData.append('mp3_file', mp3_file)

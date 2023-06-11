@@ -39,18 +39,18 @@ const UpdateProfile = () => {
     }
 
     const submitHandler = (e) => {
-        // console.log('HEY')
+        //  ('HEY')
         e.preventDefault();
 
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
-            // console.log(displayErr)
-            // console.log('handlesubmit', err)
+            //  (displayErr)
+            //  ('handlesubmit', err)
             return
         }
         else {
             const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
-            // console.log(newUser)
+            //  (newUser)
             dispatch(updateUserThunk(newUser, user.id))
             // setUrl(`/groups/${newGroup.id}`)
             history.push(`/profile`)

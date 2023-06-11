@@ -21,7 +21,7 @@ function CreatePlaylistForm() {
     // const handleCreatePlaylist = async (e) => {
     //     e.preventDefault();
     //     const playlistData = await dispatch(createPlaylistThunk(newPlaylist));
-    //     console.log(playlistData)
+
     // }
     const handleCreatePlaylist = async (e) => {
         e.preventDefault();
@@ -36,7 +36,6 @@ function CreatePlaylistForm() {
         if (playlistData && playlistData.id) {
             closeModal();
             history.push(`/playlists/${playlistData.id}`)
-            console.log(playlistData);
         }
     }
 

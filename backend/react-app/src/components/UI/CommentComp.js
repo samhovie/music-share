@@ -6,9 +6,7 @@ import './CommentComp.css'
 // import GetUser from './GetUser'
 
 const CommentComp = ({ comment }) => {
-    // console.log("DOOM", comment)
     // const dispatch = useDispatch()
-    // console.log(comment)
     // const commentOwner = comment && comment.userId
     // const theComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(theComments)

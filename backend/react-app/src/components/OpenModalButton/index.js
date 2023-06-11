@@ -32,7 +32,6 @@ function OpenModalButton({
   else buttonClass = 'open-modal-button'
 
 
-  // console.log('BUTTON CLASS', buttonClass)
 
 
   return (

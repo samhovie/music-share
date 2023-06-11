@@ -11,8 +11,6 @@ export default function CreateSongForm() {
   const [preview_img, setPreviewImg] = useState('')
   // const [id, setId] = useState('')
 
-  // console.log('hello')
-  // console.log(name, genre, artist_name)
 
   const csrf = localStorage.getItem("csrf_token")
 
@@ -26,7 +24,7 @@ export default function CreateSongForm() {
     formData.append('artist_name', artist_name)
     formData.append('genre', genre)
     formData.append('preview_img', preview_img)
-    console.log(formData)
+
 
     const response = await fetch(`/api/songs/new`, {
       method: 'DELETE',

@@ -11,15 +11,13 @@ const FeedPage = () => {
     const sessionUser = useSelector((state) => state.session.user)
     const userSongs = useSelector((state) => state.songs.singleSong)
     const songs = Object.values(allSongs)
-    // console.log(allSongs)
+
 
 
     useEffect(() => {
         dispatch(getAllSongsThunk())
         dispatch(getSongThunk(sessionUser.id))
     }, [dispatch, sessionUser.id])
-
-    // console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 
     return (
         <>

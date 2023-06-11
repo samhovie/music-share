@@ -27,9 +27,6 @@ const SongUpload = () => {
 
     useEffect(() => {
         const errors = {}
-        // console.log("TYPEOFFFFF", typeof(mp3_file))
-        // console.log("RIGHT UNDER", console.log(mp3_file))
-
         if (!name) errors.name = "Name is required"
         if (!description) errors.description = "Description is required"
         if (!genre) errors.genre = "Genre is required"
@@ -62,7 +59,6 @@ const SongUpload = () => {
            await dispatch(createSongThunk(formData))
 
             setTimeout(function () {
-                console.log("Delayed for 5 second.");
                 setIsFetching(false);
             }, 5000);
             history.push('/songs/current')

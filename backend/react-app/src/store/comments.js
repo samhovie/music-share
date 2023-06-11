@@ -34,29 +34,29 @@ const deleteCommentAction = (commentId) => ({
 
 
 export const getAllCommentsThunk = (songId) => async (dispatch) => {
-    // console.log("START CREATE COMMENT THUNKKKKK")
+    //  ("START CREATE COMMENT THUNKKKKK")
 	const response = await fetch(`/api/comments/${songId}`)
-    // console.log("SECOND CREATE COMMENT THUNKKKKK", response)
+    //  ("SECOND CREATE COMMENT THUNKKKKK", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return;
 		}
-        // console.log("THIRD CREATE COMMENT THUNKKKKK")
+        //  ("THIRD CREATE COMMENT THUNKKKKK")
 		dispatch(getAllCommentsAction(data));
 	}
 };
 
 // export const getCommentThunk = (id) => async (dispatch) => {
-// 	// console.log("THE IDDDD ", id)
+// 	//  ("THE IDDDD ", id)
 // 	const response = await fetch(`/api/comments/${id}`)
-// 	// console.log("THE RESPONSE ", response)
+// 	//  ("THE RESPONSE ", response)
 // 	if (response.ok) {
 // 		const data = await response.json();
 // 		if (data.errors) {
 // 			return
 // 		}
-// 		// console.log("DATAAAA ", data)
+// 		//  ("DATAAAA ", data)
 // 		dispatch(getCommentAction(data))
 // 	}
 // }
@@ -76,21 +76,21 @@ export const createCommentThunk = (comment, songId) => async (dispatch) => {
 }
 
 export const updateCommentThunk = (song, songId) => async (dispatch) => {
-	// console.log("TEST 2", song)
+	//  ("TEST 2", song)
 	const response = await fetch(`/api/comments/${songId}`, {
 		method: 'PUT',
 		body: song
 	})
 
 	if	(response.ok) {
-		// console.log("TEST 3")
+		//  ("TEST 3")
 		const data = await response.json();
-		// console.log("TEST 5", data)
+		//  ("TEST 5", data)
 		if (data.errors) {
-			// console.log("TEST 6")
+			//  ("TEST 6")
 			return data.errors
 		}
-		// console.log("TEST 4")
+		//  ("TEST 4")
 		dispatch(updateCommentAction(data))
 	}
 }
@@ -116,21 +116,21 @@ export default function commentsReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_ALLCOMMENTS:
 			newState = { ...state, allComments: { ...action.allComments } }
-            console.log("ACTIONNNN", action)
+
 			action.comments.forEach(comment => newState.allComments[comment.id] = comment)
 			return newState
 		// case GET_COMMENT:
-		// 	// console.log("ACTIONN ", action)
+		// 	//  ("ACTIONN ", action)
 		// 	newState = { ...state, singleSong: { ...action.song } }
-		// 	// console.log("NEW STATEEEE ", newState)
+		// 	//  ("NEW STATEEEE ", newState)
 		// 	return newState
 		case CREATE_COMMENT:
-			// console.log("STATEEEE", state)
-			// console.log("ACTIONNN", action)
+			//  ("STATEEEE", state)
+			//  ("ACTIONNN", action)
 			newState = { ...state, singleComment: {...action.singleComment}}
 			return newState
 		case UPDATE_COMMENT:
-			// console.log(action)
+			//  (action)
 			newState = {...state, singleComment: {...state.singleComment}}
 			newState.singleComment[action.comment.id] = action.comment
 			return newState

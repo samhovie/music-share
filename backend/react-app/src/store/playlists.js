@@ -64,10 +64,9 @@ export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
 
 export const getAllPlaylistsThunk = () => async (dispatch) => {
     const response = await fetch("/api/playlists/")
-    console.log("IN getAllPlaylistsThunk", response)
     if (response.ok) {
         const data = await response.json();
-        console.log("data", data)
+
         if (data.errors) {
             return data.errors;
         }
@@ -77,15 +76,15 @@ export const getAllPlaylistsThunk = () => async (dispatch) => {
 };
 
 export const getPlaylistThunk = (id) => async (dispatch) => {
-    // console.log("THE IDDDD ", id)
+    //  ("THE IDDDD ", id)
     const response = await fetch(`/api/playlists/${id}`)
-    // console.log("THE RESPONSE ", response)
+    //  ("THE RESPONSE ", response)
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
             return
         }
-        // console.log("DATAAAA ", data)
+        //  ("DATAAAA ", data)
         dispatch(getPlaylistAction(data))
     }
 }
@@ -103,11 +102,11 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
 //         method: 'POST',
 //         body: formData
 //     })
-//     console.log(response);
+//      (response);
 
 //     if (response.ok) {
 //         const data = await response.json();
-//         console.log(data)
+//          (data)
 //         if (data.errors) {
 //             return data.errors
 //         }
@@ -134,7 +133,7 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
 
 
 export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispatch) => {
-    console.log("TEST this", playlistId)
+
 
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',
@@ -145,10 +144,10 @@ export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispa
         const data = await response.json();
 
         if (data.errors) {
-            // console.log("TEST 6")
+            //  ("TEST 6")
             return data.errors
         }
-        // console.log("TEST 4")
+        //  ("TEST 4")
         dispatch(updatePlaylistAction(data))
         return data
     }
@@ -186,18 +185,18 @@ const initialState = { allPlaylists: {}, singlePlaylist: {}, userPlaylists: {} }
 
 export default function playlistsReducer(state = initialState, action) {
     let newState;
-    // console.log("ACTIONN ", action)
-    // console.log("NEW STATEEEE ", newState)
+    //  ("ACTIONN ", action)
+    //  ("NEW STATEEEE ", newState)
     switch (action.type) {
         case GET_ALLPLAYLISTS:
             newState = { ...state, allPlaylists: { ...action.allPlaylists } }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
-            // console.log("NEW STATEEEE ", newState)
-            // console.log("newState", newState)
+            //  ("NEW STATEEEE ", newState)
+            //  ("newState", newState)
             return newState
         case GET_PLAYLIST:
             newState = { ...state, singlePlaylist: { ...action.playlist } }
-            // console.log("stateeeeee", newState)
+            //  ("stateeeeee", newState)
             return newState
         // addedd???
         case ADD_SONG_TO_PLAYLIST:
@@ -214,8 +213,8 @@ export default function playlistsReducer(state = initialState, action) {
             newState[action.playlist.id] = action.playlist;
             return newState;
         }
-        // console.log("STATEEEE", state)
-        // console.log("ACTIONNN", action)
+        //  ("STATEEEE", state)
+        //  ("ACTIONNN", action)
         // newState = { ...state, singlePlaylist: { ...action.singlePlaylist } }
         // return newState
         // newState = { ...state }

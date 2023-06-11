@@ -35,34 +35,30 @@ const deleteUserAction = (userId) => ({
 
 export const getAllUsersThunk = () => async (dispatch) => {
 	const response = await fetch("/api/users/")
-	console.log("responseeeeeeeeeeeeeeee", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return;
 		}
-		console.log("dataaaaaaaaaaaaaaaa", data)
 
 		dispatch(getAllUsersAction(data));
 	}
 };
 
 export const getUserThunk = (id) => async (dispatch) => {
-	console.log("THE PASSED IDDDD ", id)
 	const response = await fetch(`/api/users/${id}`)
-	console.log("THE RESPONSE ", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return
 		}
-		// console.log("DATAAAA ", data)
+		//  ("DATAAAA ", data)
 		dispatch(getUserAction(data))
 	}
 }
 
 // export const createUserThunk = (user) => async (dispatch) => {
-// 	// console.log("USER")
+// 	//  ("USER")
 // 	const response = await fetch('/api/users/new', {
 // 		method: 'POST',
 // 		body: user
@@ -78,8 +74,8 @@ export const getUserThunk = (id) => async (dispatch) => {
 // }
 
 export const updateUserThunk = (user, userId) => async (dispatch) => {
-	console.log("TEST 2", user)
-	// console.log("TEST ENTRIES", user.entries())
+
+	//  ("TEST ENTRIES", user.entries())
 	const formData = new FormData()
 	formData.append('display_name', user.display_name)
 	formData.append('first_name', user.first_name)
@@ -91,16 +87,16 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 		method: 'PUT',
 		body: formData
 	})
-	console.log(response)
+	 (response)
 	if (response.ok) {
-		console.log("TEST 3")
+
 		const data = await response.json();
-		console.log("TEST 5", data)
+
 		if (data.errors) {
-			console.log("TEST 6")
+
 			return data.errors
 		}
-		console.log("TEST 4")
+
 		dispatch(updateUserAction(data))
 	}
 }
@@ -142,17 +138,17 @@ export default function usersReducer(state = initialState, action) {
 			action.users.users.forEach(user => newState.allUsers[user.id] = user)
 			return newState
 		case GET_USER:
-			// console.log("ACTIONN ", action)
+			//  ("ACTIONN ", action)
 			newState = { ...state, singleUser: { ...action.user } }
-			// console.log("NEW STATEEEE ", newState)
+			//  ("NEW STATEEEE ", newState)
 			return newState
 		// case CREATE_USER:
-		// 	// console.log("STATEEEE", state)
-		// 	// console.log("ACTIONNN", action)
+		// 	//  ("STATEEEE", state)
+		// 	//  ("ACTIONNN", action)
 		// 	newState = { ...state, singleUser: {...action.singleUser}}
 		// 	return newState
 		case UPDATE_USER:
-			// console.log(action)
+			//  (action)
 			// newState = {...state, singleUser: {...state.singleUser}}
 			// newState.singleUser[action.user.id] = action.user
 			// return newState

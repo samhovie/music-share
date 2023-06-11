@@ -17,8 +17,6 @@ function PlaylistDetailsPage() {
   const owner_username = playlist.user && playlist.user.username;
   const playlistSong = useSelector((state) => state.playlists.singlePlaylist.song)
   const length = playlistSong?.length
-  // console.log('playlistttttt', length)
-  // console.log(playlistSong.length)
 
   useEffect(() => {
     dispatch(getPlaylistThunk(playlistId));

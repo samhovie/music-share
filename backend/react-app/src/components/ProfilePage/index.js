@@ -7,7 +7,6 @@ import DeleteUser from '../DeleteUser'
 
 const ProfilePage = () => {
     const user = useSelector(state => state.session.user)
-    // console.log("PROFILE PAGE USERRRR", user)
 
 
 

@@ -3,7 +3,6 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from '../../store/session'
-import { NavLink } from "react-router-dom";
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
@@ -43,7 +42,6 @@ function LoginFormModal() {
           className="login-modal-form"
         >
           <ul
-          // style={{marginTop: '2rem'}}
           >
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
@@ -90,7 +88,7 @@ function LoginFormModal() {
             <div className="login-modal-demo">
               <div onClick={() => demoClick()}>Demo User</div>
             </div>
-             
+
           </div>
 
           <div className="login-form-signup">

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { deleteSongThunk } from "../../store/songs"
 import { useModal } from "../../context/Modal"
 import { useHistory } from "react-router-dom"
@@ -9,8 +9,6 @@ const ConfirmDelete = ({ songId }) => {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
 
-    // console.log("SONGIDDDD", songId)
-    // const songId = useSelector(state => state)
     const deleteClick = (e) => {
         dispatch(deleteSongThunk(songId))
         history.push('/profile')

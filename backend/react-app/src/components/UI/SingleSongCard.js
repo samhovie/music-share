@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 // import OpenModalMenuItem from './'
 import './SingleSongCard.css'
@@ -7,21 +7,22 @@ import ConfirmDelete from './ConfirmDelete'
 import UpdateSongForm from '../UpdateSongForm'
 import { useDispatch, useSelector } from 'react-redux'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal'
-import { getAllSongLikesThunk, getUserLikedSongs, getSongThunk } from '../../store/likes'
+import { getAllSongLikesThunk } from '../../store/likes'
 import { likeSongThunk } from '../../store/likes'
 import { removeLikeThunk } from '../../store/likes'
 import { getAllSongsThunk } from '../../store/songs'
-import { useHistory } from 'react-router-dom'
-import createCommentThunk from '../../store/songs'
-import AudioPlayer from 'react-h5-audio-player';
+// import { useHistory } from 'react-router-dom'
+// import createCommentThunk from '../../store/songs'
+// import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { PlayerContext } from '../../App'
 import GetLikes from './GetLikes'
 
 const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfileSongs }) => {
-    const history = useHistory()
+    // const history = useHistory()
     const dispatch = useDispatch()
-    const [comment, setComment] = useState('')
+    // const [comment, setComment] = useState('')
+    // const comment = ''
     // console.log('allLikes', allLikes)
     // const [isLiked, setIsLiked] = useState()
     // console.log('SOOOOOOOOONNG', song.preview_img)
@@ -31,7 +32,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
     // const userSongs = useSelector((state) => state.songs.singleSong)
     // console.log('UUUUSER', userSongs)
     // console.log(userSongs)
-    const [,setLikes] = useState()
+    // const [,setLikes] = useState()
 
 
     // const allLikes = useSelector(state => state.likes)
@@ -69,22 +70,22 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
     // const isPlayingClickHandler = () => setIsPlaying(!isPlaying)
     // console.log(song)
 
-    const submitHandler = (e) => {
-        e.preventDefault()
-        const formData = new FormData()
-        formData.append('text', comment)
-        // console.log(formData)
-        dispatch(createCommentThunk(formData, songId))
-        history.push(`/songs/${songId}`)
-    }
+    // const submitHandler = (e) => {
+    //     e.preventDefault()
+    //     const formData = new FormData()
+    //     formData.append('text', comment)
+    //     // console.log(formData)
+    //     dispatch(createCommentThunk(formData, songId))
+    //     history.push(`/songs/${songId}`)
+    // }
 
-    const {url, setUrl, isPlaying, setIsPlaying} = useContext(PlayerContext)
+    const {url, setUrl, isPlaying} = useContext(PlayerContext)
     useEffect(() => {
         dispatch(getAllSongsThunk())
         dispatch(getAllSongLikesThunk(songId))
 
         // dispatch(getUserLikedSongs())
-    },[dispatch])
+    },[dispatch, songId])
 
     // console.log('SOOOONNGIIIDD', song.id)
     // const likesHandler = () => {
@@ -140,7 +141,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
                 >
                     <NavLink className='single-song-card-image-nav' to={`/songs/${song.id}`}>
                         {/* <img className='' src='https://external-preview.redd.it/MY3_HQFLzswJrX8tYEEbBuodnWH67nqf5gDYSZrFh0s.jpg?auto=webp&s=c75ba2d2994db81df63721b8da0af2316dd3df86'></img> */}
-                        <img src={`${song.preview_img}`}></img>
+                        <img alt ='' src={`${song.preview_img}`}></img>
                     </NavLink>
                 </div>
                 <div className='single-song-card-info'>
@@ -189,6 +190,7 @@ const SingleSongCard = ({ song, sessionUser, userSongs, isUserLikesPage, isProfi
                             -------------------------------------------------------------
                         </p> */}
                         <img
+                        alt=''
                         style={{width: '52rem'}}
                         src='https://media.istockphoto.com/id/1176100626/vector/sound-waves-motion-sound-wave-abstract-background.jpg?s=612x612&w=0&k=20&c=EypnQvOtttmj_5JCKkcWy_ul0mS1g3j6md9zamNpmRA='>
 

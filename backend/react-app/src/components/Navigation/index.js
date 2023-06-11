@@ -29,6 +29,7 @@ function Navigation({ isLoaded }) {
 						// style={{height: '40px'}}
 						>
 							<img
+								alt=''
 								className='navbar-icon'
 								onClick={discoverClickHandler}
 								src='https://styles.redditmedia.com/t5_2uc06/styles/communityIcon_0zttllkgeaa81.png?width=256&v=enabled&s=37b76e9adfe0e716c1d6ec1d43250db31bb7cf1a'></img>

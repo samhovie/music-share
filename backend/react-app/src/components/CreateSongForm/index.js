@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 export default function CreateSongForm() {
   const [name, setName] = useState('')
-  const [is_public, setPublic] = useState(false)
-  const [description, setDescription] = useState('')
-  const [text, setText] = useState('')
+  // const [is_public, setPublic] = useState(false)
+  // const [description, setDescription] = useState('')
+  // const [text, setText] = useState('')
   const [mp3_file, setMp3] = useState('')
   const [genre, setGenre] = useState('')
   const [artist_name, setArtist_name] = useState('')
   const [preview_img, setPreviewImg] = useState('')
-  const [id, setId] = useState('')
+  // const [id, setId] = useState('')
 
   // console.log('hello')
   // console.log(name, genre, artist_name)
@@ -28,41 +28,22 @@ export default function CreateSongForm() {
     formData.append('preview_img', preview_img)
     console.log(formData)
 
-
-    // const data = {
-    //   name,
-    //   artist_name,
-    //   genre,
-    //   'mp3_file': formData
-    // }
-    // console.log(data)
-    // console.log(formData)
-
     const response = await fetch(`/api/songs/new`, {
       method: 'DELETE',
       headers: {
-        // 'Content-Type': 'application/json',
         'X-CSRFToken': csrf
       },
       body: formData
-      // body: data
     });
 
     if (response.ok) {
       const item = await response.json();
-      // dispatch(add(item));
-      // console.log(item['mp3_file'])
       audio = new Audio(item['mp3_file'])
       return item;
     }
 
 
   }
-
-  //   const updateImage = (e) => {
-  //     const file = e.target.files[0];
-  //     setImage(file);
-  // }
 
 
 
@@ -73,11 +54,10 @@ export default function CreateSongForm() {
 
   return (
     <>
-      {/* {audio !== '' && */}
       < div >
         <button onClick={start}>Play</button>
       </div >
-      {/* } */}
+
       <form
         action="/api/songs/new"
         method="POST"
@@ -86,22 +66,6 @@ export default function CreateSongForm() {
       >
 
 
-        {/* <h1>Create a Song</h1>
-      <form method='POST' onSubmit={handleSubmit}> */}
-        {/* <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul> */}
-        {/* <label>
-          id
-          <input
-            type="text"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            required
-          />
-        </label> */}
         <label>
           Name
           <input
@@ -120,24 +84,7 @@ export default function CreateSongForm() {
             required
           />
         </label>
-        {/* <label>
-          public
-          <input
-            type="checkbox"
-            onChange={(e) => setPublic(!is_public)}
-            checked={is_public}
-            // required
-          />
-        </label> */}
-        {/* <label>
-          File
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label> */}
+
         <label>
           <input
             type="file"
@@ -164,14 +111,7 @@ export default function CreateSongForm() {
           >
           </input>
         </label>
-        {/* <label>
-          <input
-          type='text'
-          // value={text}
-          onChange={(e) => setText(e.target.value)}
-          >
-          </input>
-        </label> */}
+
         <button type="submit">Create</button>
       </form>
     </>

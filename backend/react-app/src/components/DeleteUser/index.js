@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteUserThunk } from '../../store/users'; // replace with the correct path to your Redux file
@@ -18,7 +18,6 @@ const DeleteUser = () => {
             // After deleting the user, you might want to redirect to a different page or clear user from local state
             // Depending on your application, you might want to handle this inside the deleteUserThunk itself
         }
-        window.location.replace('/')
     };
 
     return (

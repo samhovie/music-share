@@ -1,40 +1,16 @@
-// import { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { getAllSongLikesThunk } from '../../store/likes'
-// // import './GetUser.css'
-
-// const GetLikes = ({songId}) => {
-//     const dispatch = useDispatch()
-//     const likes = useSelector(state => state.likes.allLikes)
-//     // console.log("USERRRRR", likesNum)
-
-//     useEffect(() => {
-//         dispatch(getAllSongLikesThunk(songId))
-//     }, [dispatch])
-
-//     if (!likes || !likes.likes) return null
-//     // return (likes.likes)
-//     return ("likes.likes")
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllSongLikesThunk, getUserLikedSongs } from '../../store/likes'
-import { likeSongThunk } from '../../store/likes'
-import { removeLikeThunk } from '../../store/likes'
-import { getAllSongsThunk } from '../../store/songs'
-import {useHistory} from 'react-router-dom'
 
 const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHandler2, isProfileSongs}) => {
-    const history = useHistory()
+    // const history = useHistory()
     // console.log('SOOOOONG', song)
     // console.log('SOOOOONGUUUUUU', song)
-    const dispatch = useDispatch()
-    const [isLiked, setIsLiked] = useState()
+    // const dispatch = useDispatch()
+    // const [isLiked, setIsLiked] = useState()
     // const nallLikes = useSelector(state => state.likes.allLikes.likes)
     // const nsessionUser = useSelector((state) => state.session.user)
     // const nsong = useSelector((state) => state.songs)
 
-    const likes = allLikes && allLikes.likes
-    const userIds = allLikes && allLikes.user_id
+    // const likes = allLikes && allLikes.likes
+    // const userIds = allLikes && allLikes.user_id
     // console.log('ALLLLIIIKES', userIds)
 
     // const userLikes = useSelector(state => console.log('STATE', state))

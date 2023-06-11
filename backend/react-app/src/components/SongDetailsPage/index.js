@@ -9,7 +9,7 @@ import { createCommentThunk, getAllCommentsThunk } from '../../store/comments'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import CommentComp from '../UI/CommentComp'
 import GetLikes from '../UI/GetLikes'
-import { getUserThunk } from '../../store/users'
+// import { getUserThunk } from '../../store/users'
 import ArtistDetails from '../UI/ArtistDetails'
 import { likeSongThunk, removeLikeThunk } from '../../store/likes'
 
@@ -19,13 +19,13 @@ const SongDetailsPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { songId } = useParams();
-    const [url, setUrl] = useState("");
-
+    // const [url, setUrl] = useState("");
+    const url = '' //FIX
     const [comment, setComment] = useState('')
 
     const theComments = useSelector((state) => state.comments.allComments)
     // const theSong = useSelector((state) => state.songs.singleSong)
-    const artistId = useSelector(state => state.songs.singleSong.artist_id)
+    // const artistId = useSelector(state => state.songs.singleSong.artist_id)
     const sessionUser = useSelector(state => state.session.user)
     const song = useSelector((state) => state.songs.singleSong)
     const selectedSong = useSelector(state => state.songs.allSongs[songId])
@@ -90,7 +90,7 @@ const SongDetailsPage = () => {
                     <div className='song-details-page-bottom'>
                         <div className='song-details-page-post-comment'>
                             <div className='song-details-page-profile-pic'>
-                                <img src={sessionUser.profile_pic}></img>
+                                <img alt ='' src={sessionUser.profile_pic}></img>
                             </div>
                             <div className='song-details-page-comment-outer-wrapper'>
                                 <div className='song-details-page-comment-wrapper'

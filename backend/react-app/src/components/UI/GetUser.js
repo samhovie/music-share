@@ -10,7 +10,7 @@ const GetUser = ({userId}) => {
 
     useEffect(() => {
         dispatch(getUserThunk(userId))
-    }, [dispatch])
+    }, [dispatch, userId])
 
     if (!user || !user.username) return null
 

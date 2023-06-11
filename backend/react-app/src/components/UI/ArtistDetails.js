@@ -1,10 +1,8 @@
-import { useEffect } from 'react'
 import './ArtistDetails.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUserThunk } from '../../store/users'
+// import { useDispatch } from 'react-redux'
 
 const ArtistDetails = ({ song }) => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     // const artist = useSelector(state => state)
     // console.log("ARTIST", song)
@@ -21,6 +19,7 @@ const ArtistDetails = ({ song }) => {
 
             <div className='song-details-page-artist-image'>
                 <img
+                alt=''
                     src={song.artist.profile_pic}
                 ></img>
             </div>

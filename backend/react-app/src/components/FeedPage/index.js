@@ -1,8 +1,8 @@
-import { getAllSongLikesThunk } from '../../store/likes'
+
 import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import SingleSongCard from '../UI/SingleSongCard'
 import './FeedPage.css'
-import { useState, useEffect } from 'react'
+import {  useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const FeedPage = () => {
@@ -17,7 +17,7 @@ const FeedPage = () => {
     useEffect(() => {
         dispatch(getAllSongsThunk())
         dispatch(getSongThunk(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
     // console.log('SOOOOOOOOOOONNNNNGGGGZZZZ', allSongs)
 

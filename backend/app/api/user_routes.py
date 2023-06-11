@@ -58,7 +58,6 @@ def update_user(userId):
 
     return {"errors": form.errors}
 
-# deleteUser
 
 
 @user_routes.route('/<int:id>', methods=['DELETE'])

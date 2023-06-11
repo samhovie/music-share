@@ -6,11 +6,11 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 //figure out how to use history to redirect to splash page
 
 function ProfileButton({ user }) {
-  // const history = useHistory()
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -38,8 +38,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    // history.push('/')
-    window.location.replace('/')
+    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

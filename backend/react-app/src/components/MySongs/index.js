@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPlaylistsThunk } from '../../store/playlists';
-import SongDetailsCard from '../UI/SongDetailsCard';
 import SingleSongCard from '../UI/SingleSongCard';
 import OpenModalButton from '../OpenModalButton';
-// import CreatePlaylistForm from '../CreateNewPlaylist';
 import { NavLink } from 'react-router-dom';
 import UpdateProfile from '../UpdateProfile';
 import '../MyPlaylists/MyPlaylists.css'
 import { getAllSongsThunk } from '../../store/songs';
 
-//create new component with just songs, just playlists sans links
-//add the component to the 'all in my profile' component
 
-const alertClickHandler = () => {
-    return alert('Feature Coming Soon!')
-}
 
 const CurrentUserSongs = () => {
     const dispatch = useDispatch();
@@ -33,7 +25,7 @@ const CurrentUserSongs = () => {
     let userSongs = [];
     for (let song in allSongs) {
         // console.log(allPlaylists[playlist])
-        if (allSongs[song].artist_id == userId) {
+        if (allSongs[song].artist_id === userId) {
             userSongs.push(allSongs[song])
         }
     }
@@ -57,7 +49,7 @@ const CurrentUserSongs = () => {
                     /> */}
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${user.profile_pic}`}
+                            <img alt='' src={`${user.profile_pic}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>

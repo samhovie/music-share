@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPlaylistThunk } from '../../store/playlists';
-import PlaylistCard from '../UI/PlaylistCard';
+// import PlaylistCard from '../UI/PlaylistCard';
 import { NavLink } from 'react-router-dom';
 import SingleSongCard from '../UI/SingleSongCard';
 import './PlaylistDetailsPage.css';
@@ -11,13 +11,13 @@ function PlaylistDetailsPage() {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
-  const sessionUser = useSelector((state) => state.session.user);
-  const owner = playlist.user && playlist.user.id;
-  const current_user = sessionUser.id;
+  // const sessionUser = useSelector((state) => state.session.user);
+  // const owner = playlist.user && playlist.user.id;
+  // const current_user = sessionUser.id;
   const owner_username = playlist.user && playlist.user.username;
   const playlistSong = useSelector((state) => state.playlists.singlePlaylist.song)
   const length = playlistSong?.length
-  console.log('playlistttttt', length)
+  // console.log('playlistttttt', length)
   // console.log(playlistSong.length)
 
   useEffect(() => {

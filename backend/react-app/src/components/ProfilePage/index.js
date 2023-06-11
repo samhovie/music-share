@@ -18,7 +18,7 @@ const ProfilePage = () => {
                 <div className='global-outerwrapper-wrapper'>
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${user.profile_pic}`} className='profile-page-pic'></img>
+                            <img alt='' src={`${user.profile_pic}`} className='profile-page-pic'></img>
                         </div>
                         <div className='profile-page-top-right'>
                             <div className='profile-page-user-info'>

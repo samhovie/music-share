@@ -1,5 +1,4 @@
-import { GET_ALLSONGS, getAllSongsThunk } from './songs'
-import {getAllSongsAction} from './songs'
+import { GET_ALLSONGS } from './songs'
 
 const GET_ALL_LIKES = 'likes/GET_ALL_LIKES'
 const GET_USER_LIKES = 'likes/GET_USER_LIKES'

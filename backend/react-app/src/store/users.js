@@ -1,7 +1,7 @@
 // constants
 const GET_ALLUSERS = "users/GET_ALLUSERS";
 const GET_USER = 'users/GET_USER'
-const CREATE_USER = 'users/CREATE_USER'
+// const CREATE_USER = 'users/CREATE_USER'
 const UPDATE_USER = 'users/UPDATE_USER'
 const DELETE_USER = 'users/DELETE_USER'
 
@@ -17,10 +17,10 @@ const getUserAction = (user) => ({
 	user
 })
 
-const createUserAction = (user) => ({
-	type: CREATE_USER,
-	user
-})
+// const createUserAction = (user) => ({
+// 	type: CREATE_USER,
+// 	user
+// })
 
 const updateUserAction = (user) => ({
 	type: UPDATE_USER,

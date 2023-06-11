@@ -59,7 +59,7 @@
 
 .update-profile-bottom {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .update-profile-bottom-bar-button-div {

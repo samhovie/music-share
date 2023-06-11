@@ -5,7 +5,7 @@ import { updatePlaylistThunk } from '../../store/playlists';
 import { getPlaylistThunk } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
-import Upload from '../UploadImg';
+// import Upload from '../UploadImg';
 import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
@@ -17,7 +17,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
 
     const playlist = useSelector(state => state.playlists.singlePlaylist)
 
-  
+
     useEffect(() => {
         const fetchPlaylistDetails = async () => {
             const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
@@ -29,7 +29,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             }
         }
         fetchPlaylistDetails();
-    }, [dispatch, playlistId]);
+    }, [dispatch, playlistId, playlist.preview_img]);
 
     const [name, setName] = useState(singlePlaylist.name)
     const [description, setDescription] = useState(singlePlaylist.description)

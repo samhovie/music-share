@@ -6,16 +6,16 @@ import UpdatePlaylistForm from '../UpdatePlaylist'
 import { useSelector } from 'react-redux'
 
 const PlaylistCard = ({ playlist, playlistSong }) => {
-    const playlistId = playlist.id
+    // const playlistId = playlist.id
 
 
     const playlists = useSelector(state => state.playlists.allPlaylists)
-    const arrayPlaylists = Object.values(playlists)
-    const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
+    // const arrayPlaylists = Object.values(playlists)
+    // const thePlaylist = arrayPlaylists.filter((playlistObj) => playlistObj.id === playlistId)
     const sessionUser = useSelector((state) => state.session.user);
     const owner = playlist.user && playlist.user.id;
     const current_user = sessionUser ? sessionUser.id : undefined;
-    const owner_username = playlist.user && playlist.user.username;
+    // const owner_username = playlist.user && playlist.user.username;
 
     const playlistsSongs = useSelector(state => state.playlists.allPlaylists.song)
     console.log("PLAYLIST IN PLAYLIST CARD", playlistsSongs)
@@ -27,7 +27,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
             <div className='playlist-card-image'>
                 {/* this is hardcoded, change later */}
                 {playlist && <NavLink className='single-playlist-card-image-nav' to={`/playlists/${playlist.id}`} playlist={playlist}>
-                    <img className='' src={`${playlist.preview_img}`}></img>
+                    <img  alt='' className='' src={`${playlist.preview_img}`}></img>
                     {/* <img src={`${playlistsSongs[0].preview_img}`}></img> */}
                 </NavLink>}
             </div>
@@ -40,7 +40,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                 {/* this is hardcoded, change later */}
                 {`${playlist.name}`}
             </div>
-            {current_user == owner && (
+            {current_user === owner && (
                 < div>
                     <OpenModalButton
                         buttonText="Delete"
@@ -48,7 +48,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                     {/* modalComponent={<ConfirmDelete />} /> */}
                 </div>
             )}
-            {current_user == owner && (
+            {current_user === owner && (
                 <div>
                     <OpenModalButton
                         buttonText="Update"

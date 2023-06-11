@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import SingleSongCard from "../UI/SingleSongCard"
 import { getAllSongsThunk, getSongThunk } from '../../store/songs'
 import './UserLikesPage.css'
-import { getAllSongLikesThunk, getUserLikedSongsThunk } from '../../store/likes'
+import { getUserLikedSongsThunk } from '../../store/likes'
 import { NavLink } from 'react-router-dom'
 
 
@@ -25,7 +25,7 @@ const UserLikesPage = () => {
         dispatch(getAllSongsThunk())
         dispatch(getSongThunk(sessionUser.id))
         dispatch(getUserLikedSongsThunk())
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
     if (!sessionUser) return null
     if (!userSongs) return null

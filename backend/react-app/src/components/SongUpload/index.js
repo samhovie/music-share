@@ -3,20 +3,21 @@ import './SongUpload.css'
 import { useState, useEffect } from 'react'
 import { createSongThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom'
-import Upload from '../UploadImg';
+// import Upload from '../UploadImg';
 
 const SongUpload = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [name, setName] = useState('')
-    const [is_public, setPublic] = useState(false)
+    // const [is_public, setPublic] = useState(false)
     const [description, setDescription] = useState('')
-    const [text, setText] = useState('')
+    // const [text, setText] = useState('')
     const [mp3_file, setMp3] = useState('')
     const [genre, setGenre] = useState('')
     const [artist_name, setArtist_name] = useState('')
-    const [preview_img, setPreviewImg] = useState('')
-    const [id, setId] = useState('')
+    // const [preview_img, setPreviewImg] = useState('')
+    const preview_img = ''
+    // const [id, setId] = useState('')
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
     const [isFetching, setIsFetching] = useState(false)
@@ -107,6 +108,7 @@ const SongUpload = () => {
                                         {displayErr === true && err.mp3_file && (<li className="errors">· {err.mp3_file}</li>)}
                                         </ul> */}
                                         <input
+                                            alt = ''
                                             type='image'
                                             src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
                                             onClick={alertClick}

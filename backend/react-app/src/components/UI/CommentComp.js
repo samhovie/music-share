@@ -1,15 +1,15 @@
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import './CommentComp.css'
-import { useDispatch } from 'react-redux'
-import { getSongThunk } from '../../store/songs'
-import GetSong from './GetSong'
-import GetUser from './GetUser'
+// import { useDispatch } from 'react-redux'
+// import { getSongThunk } from '../../store/songs'
+// import GetSong from './GetSong'
+// import GetUser from './GetUser'
 
 const CommentComp = ({ comment }) => {
     // console.log("DOOM", comment)
-    const dispatch = useDispatch()
-    console.log(comment)
-    const commentOwner = comment && comment.userId
+    // const dispatch = useDispatch()
+    // console.log(comment)
+    // const commentOwner = comment && comment.userId
     // const theComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(theComments)
     // dispatch(getAllCommentsThunk(songId))
@@ -25,7 +25,7 @@ const CommentComp = ({ comment }) => {
             <div className='comment-outer-wrapper'>
                 <div className='comment-inner-wrapper'>
                     <div className='comment-profile-pic'>
-                        <img src={`${comment.user_profile_pic}`}></img>
+                        <img alt='' src={`${comment.user_profile_pic}`}></img>
                     </div>
                     <div className='comment-info'>
                         <div className='comment-info-left'>

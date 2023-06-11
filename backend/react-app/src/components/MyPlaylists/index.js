@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlaylistsThunk } from '../../store/playlists';
 import PlaylistCard from '../UI/PlaylistCard';
-import PlaylistWrapper from '../UI/PlaylistWrapper';
 import '../DiscoverPage/DiscoverPage.css';
 import OpenModalButton from '../OpenModalButton';
 import CreatePlaylistForm from '../CreateNewPlaylist';
@@ -10,9 +9,6 @@ import { NavLink } from 'react-router-dom';
 import UpdateProfile from '../UpdateProfile';
 import './MyPlaylists.css'
 
-const alertClickHandler = () => {
-    return alert('Feature Coming Soon!')
-}
 
 const CurrentUserPlaylist = () => {
     const dispatch = useDispatch();
@@ -36,7 +32,7 @@ const CurrentUserPlaylist = () => {
     //     }
     // }
     for (let playlist in allPlaylists) {
-        if (allPlaylists[playlist] && allPlaylists[playlist].user && allPlaylists[playlist].user.id == userId) {
+        if (allPlaylists[playlist] && allPlaylists[playlist].user && allPlaylists[playlist].user.id === userId) {
             userPlaylists.push(allPlaylists[playlist])
         }
     }
@@ -57,7 +53,7 @@ const CurrentUserPlaylist = () => {
                     />
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${user.profile_pic}`}
+                            <img alt='' src={`${user.profile_pic}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>
@@ -68,7 +64,7 @@ const CurrentUserPlaylist = () => {
                                 <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
                                 <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
-                
+
                         </div>
                     </div>
                     <div className='profile-page-bottom'>

@@ -18,7 +18,7 @@ const UpdateProfile = () => {
     const [bio, setBio] = useState(user.bio)
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
-    const [changed, setChanged] = useState(false)
+    // const [changed, setChanged] = useState(false)
 
     useEffect(() => {
         const errors = {}
@@ -68,7 +68,7 @@ const UpdateProfile = () => {
                     <div className='update-profile-title' >Edit your Profile</div>
                     <div className='update-profile-image-form'>
                         <div className='update-profile-image'>
-                            <img src={`${user.profile_pic}`}></img>
+                            <img alt='' src={`${user.profile_pic}`}></img>
                             <ul>
                             {displayErr && err.displayName && <li>{err.displayName}</li>}
                             {displayErr && err.firstName && <li>{err.firstName}</li>}

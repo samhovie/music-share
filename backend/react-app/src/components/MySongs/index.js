@@ -57,7 +57,7 @@ const CurrentUserSongs = () => {
                     /> */}
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${user.profile_pic}`}
+                            <img src={`${(user && user.profile_pic) || 'https://meshgradient.com/gallery/5.png'}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>

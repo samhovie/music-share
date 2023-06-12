@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { createPlaylistThunk } from '../../store/playlists';
@@ -8,6 +8,7 @@ import { useModal } from '../../context/Modal';
 
 function CreatePlaylistForm() {
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState({})
     const history = useHistory();
     const { closeModal } = useModal();
 
@@ -23,8 +24,23 @@ function CreatePlaylistForm() {
     //     const playlistData = await dispatch(createPlaylistThunk(newPlaylist));
     //     console.log(playlistData)
     // }
+    useEffect(() => {
+        const errors = {}
+        // console.log("TYPEOFFFFF", typeof(mp3_file))
+        // console.log("RIGHT UNDER", console.log(mp3_file))
+
+        if (!newPlaylist.name) errors.name = "Name is required"
+        if (!newPlaylist.is_public) errors.is_public = "Check is required"
+        if (!newPlaylist.description) errors.description = "Description is required"
+        if (!newPlaylist.preview_img) errors.preview_img = "Preview image is required"
+        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
+        setErrors(errors)
+    }, [newPlaylist])
+
     const handleCreatePlaylist = async (e) => {
         e.preventDefault();
+
+
 
         const formData = new FormData();
         formData.append('name', newPlaylist.name);
@@ -42,6 +58,10 @@ function CreatePlaylistForm() {
 
     return (
         <form className="create-playlist-form" onSubmit={handleCreatePlaylist}>
+                    {errors.name && <p>{errors.name}</p>}
+                    {errors.is_public && <p>{errors.is_public}</p>}
+                    {errors.description && <p>{errors.description}</p>}
+                    {errors.preview_img && <p>{errors.preview_img}</p>}
             <div className="create-playlist-header">
                 <h2>Create New Playlist</h2>
             </div>

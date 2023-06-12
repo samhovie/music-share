@@ -6,10 +6,11 @@
     align-items: center;
     padding: 2rem;
     background-color: #ffffff;
+    /* width: 100rem; */
 }
 
 .global-outerwrapper-wrapper {
-    width: 100%;
+    /* width: 100rem; */
     max-width: 600px;
     padding: 2rem;
     border-radius: 10px;

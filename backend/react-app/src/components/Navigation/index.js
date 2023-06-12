@@ -26,6 +26,7 @@ function Navigation({ isLoaded }) {
 				<div className='navbar-wrapper'>
 					<div className='navbar-wrapper-content'>
 						<div className='navbar-site-button'
+							style={{ borderRadius: '10px' }}
 						// style={{height: '40px'}}
 						>
 							<img
@@ -79,7 +80,18 @@ function Navigation({ isLoaded }) {
 									<input
 										className='navbar-search-bar-input'
 										placeholder='Search feature coming soon!'
-									></input>
+									>
+
+									</input>
+									<button
+										style={{ height: '2.53rem', border: 'none', padding: '.6rem', borderRadius: '5px' }}
+									>
+
+										<i className="fas fa-search"
+										>
+
+										</i>
+									</button>
 								</form>
 							</div>
 						</div>

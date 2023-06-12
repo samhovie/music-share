@@ -95,7 +95,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: darkslategray;
+  /* background-color: darkslategray; */
+  background-color: black;
   height: 4rem;
   font-family: 'Courier New', Courier, monospace;
   /* Added this */
@@ -133,9 +134,12 @@
 }
 
 .navbar-search-bar-input {
-  border-radius: 5px;
+  /* border-radius: 5px; */
   width: 20rem;
+  height: 2.2rem;
   margin-left: 2.5rem;
+  padding: 2px;
+  border: 1px solid gray;
 }
 
 .navbar-upload-button {

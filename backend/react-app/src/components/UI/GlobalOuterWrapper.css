@@ -2,7 +2,9 @@
     display: flex;
     font-family: 'Courier New', Courier, monospace;
     justify-content: center;
-    background-color: #E5F9DB;
+    /* background-color: #E5F9DB; */
+    /* background-color: black; */
+    background-color: darkslategray;
     min-height: 75rem;
     height: fit-content;
 }
@@ -13,7 +15,7 @@
     flex-direction: column;
     background-color: #A0D8B3;
     border-radius: 5px;
-    width: 70rem;
+    width: 100rem;
     min-height: 75rem;
     height: fit-content;
 }

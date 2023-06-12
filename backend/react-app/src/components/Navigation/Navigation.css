@@ -80,6 +80,7 @@
 .navbar-icon {
   height: 1.7rem;
   width: 1.7rem;
+  margin-top: .5rem;
   /* border: 1px solid red; */
   background-image: url(//styles.redditmedia.com/t5_2uc06/styles/communityIcon_0zttllkgeaa81.png?width=256&v=enabled&s=37b76e9adfe0e716c1d6ec1d43250db31bb7cf1a)
 }

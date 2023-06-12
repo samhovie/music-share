@@ -9,7 +9,7 @@ import Upload from '../UploadImg';
 import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
-    const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
+    const singlePlaylist = useSelector((state) => state.playlists.allPlaylists[playlistId]);
     // console.log('single playlist', singlePlaylist)
     const dispatch = useDispatch();
     const history = useHistory();

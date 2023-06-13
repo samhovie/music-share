@@ -142,7 +142,9 @@ const SongDetailsPage = () => {
                                 <CommentComp />
                                 {comments.map(comment => {
                                     // <CommentComp />
-                                    return <CommentComp comment={comment} />
+                                    return <CommentComp comment={comment}
+                                                        commentId={comment.id}
+                                    />
                                     // <Comment {...comment}/>
                                     // console.log("A COMMENTTTTTT", comment)
                                 })}

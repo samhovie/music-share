@@ -61,7 +61,6 @@ function App() {
         {isLoaded && (
           <Switch>
             <Route exact path='/'>
-              {/* <SplashPage /> */}
               {!sessionUser ? <SplashPage /> : <DiscoverPage />}
             </Route>
             <Route exact path='/likes'>

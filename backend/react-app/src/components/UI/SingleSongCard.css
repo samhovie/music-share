@@ -1,6 +1,6 @@
 .single-song-card-wrapper {
     display: flex;
-    width: 65rem;
+    width: 40rem;
     height: 12rem;
     /* border-bottom: 1px solid black; */
     margin-bottom: 3rem;
@@ -61,7 +61,7 @@
 
 .single-song-card-info-soundwave {
     /* border: 1px solid black; */
-    width: 53rem;
+    width: 100%;
 }
 
 .single-song-card-info-comment {

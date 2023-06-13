@@ -98,6 +98,7 @@
   background-color: darkslategray;
   height: 4rem;
   font-family: 'Courier New', Courier, monospace;
+  /* position: fixed; */
   /* Added this */
 }
 

@@ -10,9 +10,6 @@ import LoginFormModal from '../LoginFormModal'
 const SplashPage = () => {
     const sessionUser = useSelector(state => state.session.user)
 
-    // console.log(sessionUser)
-    // if (sessionUser) return <Redirect to="/discover" />;
-
 
 
     return (

@@ -85,6 +85,8 @@
 }
 .profile-dropdown {
   position: absolute;
+  top: 60px;
+  border-radius: 5px;
 }
 
 .hidden {

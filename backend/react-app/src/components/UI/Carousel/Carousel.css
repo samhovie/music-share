@@ -4,6 +4,6 @@
 
 .carousel-section img {
    height: 10rem;
-   width: auto;
+   width: 50%;
    /* object-fit: cover; */
 }

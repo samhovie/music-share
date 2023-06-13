@@ -25,7 +25,7 @@ const CommentComp = ({ comment }) => {
             <div className='comment-outer-wrapper'>
                 <div className='comment-inner-wrapper'>
                     <div className='comment-profile-pic'>
-                        <img src={`${comment.user_profile_pic}`}></img>
+                        <img src={`${comment.user_profile_pic || 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}`}></img>
                     </div>
                     <div className='comment-info'>
                         <div className='comment-info-left'>

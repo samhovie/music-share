@@ -116,21 +116,6 @@ def update_song(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # if "mp3_file" not in request.files:
-        #     return {"errors": "song file required"}, 400
-        # image = request.files["mp3_file"]
-        # print(image)
-        # image.filename = get_unique_filename(image.filename)
-        # upload = upload_file_to_s3(image)
-        # # print(request.files['name'])
-        # if "url" not in upload:
-        #     print(upload['errors'])
-        # # if the dictionary doesn't have a url key
-        # # it means that there was an error when we tried to upload
-        # # so we send back that error message
-        #     # return render_template("post_form.html", form=form, errors=[upload])
-        #     return upload, 400
-        # url = upload["url"]
 
         song = Song.query.get(id)
 
@@ -140,17 +125,10 @@ def update_song(id):
         elif song.artist_id != current_user.id:
             return {"errors": "nacho song"}
 
-        # if song.mp3_file:
-        #     remove_file_from_s3(song.mp3_file)
-
         song.name = form.data['name']
         song.artist_name = form.data['artist_name']
-        # song.mp3_file = url
-        song.mp3_file = form.data['mp3_file']
         song.genre = form.data['genre']
-        # song.preview_img = form.data['preview_img']
-        # song.preview_img = form.data['preview_img']
-        song.artist_id = current_user.id
+        # song.artist_id = current_user.id
         song.updated_at = date.today()
         song.created_at = date.today()
 

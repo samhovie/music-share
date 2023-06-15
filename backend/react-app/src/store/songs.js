@@ -78,89 +78,26 @@ export const createSongThunk = (song) => async (dispatch) => {
 	}
 }
 
-// export const updateSongThunk = (song, updatedSong) => async (dispatch) => {
 
+export const updateSongThunk = (song) => async (dispatch) => {
 
+	console.log(song.get('id'))
+	const response = await fetch(`/api/songs/${song.get('id')}`, {
+		method: 'PUT',
+		body: song,
+	});
 
-// 	const response = await fetch(`/api/songs/${song}`, {
-// 		method: 'PUT',
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: updatedSong
-// body: JSON.stringify({
-// 	id: updatedSong.id,
-// 	name: updatedSong.name,
-// 	artist_name: updatedSong.artist_name,
-// 	artist_id: updatedSong.artist_id,
-// 	genre: updatedSong.genre,
-// 	preview_img: updatedSong.preview_img
-// }),
-// 	})
+	if (response.ok) {
+		const data = await response.json();
 
-// 	if (response.ok) {
-// 		 ('response222', response)
-// 		const data = await response.json();
-// 		 ('DAAATA22222', data)
-// 		if (data.errors) {
-// 			//  ("TEST 6")
-// 			return data.errors
-// 		}
-// 		//  ("TEST 4")
-// 		dispatch(updateSongAction(data))
-// 		return data
-// 	}
-// }
-// export const updateSongThunk = (songId, updatedSong) => async (dispatch) => {
-// 	const formData = new FormData();
-// for (const key in updatedSong) {
-// 	// 	formData.append(key, updatedSong[key]);
-// 	// }
-
-// 	const response = await fetch(`/api/songs/${songId}`, {
-// 		method: 'PUT',
-// 		body: updatedSong,
-// 	});
-// 	 ('response', response)
-
-// 	if (response.ok) {
-// 		const data = await response.json();
-// 		 ('datadata', data)
-// 		if (data.errors) {
-// 			return data.errors
-// 		}
-// 		dispatch(updateSongAction(data));
-// 		 ('datadata', data)
-
-// 		return data;
-// 	}
-// }
-export const updateSongThunk = (songId, updatedSong) => async (dispatch) => {
-	const formData = new FormData();
-	for (const key in updatedSong) {
-		formData.append(key, updatedSong[key]);
-	}
-	try {
-		const response = await fetch(`/api/songs/${songId}`, {
-			method: 'PUT',
-			body: updatedSong,
-		});
-
-
-		if (response.ok) {
-			const data = await response.json();
-
-			if (data.errors) {
-				return data.errors
-			}
-			dispatch(updateSongAction(data));
-
-
-			return data;
+		if (data.errors) {
+			return data.errors
 		}
-	} catch (error) {
-		console.error('Error:', error);
+		dispatch(updateSongAction(data));
+
+		return data;
 	}
+
 }
 
 

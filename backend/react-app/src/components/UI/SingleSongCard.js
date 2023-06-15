@@ -187,7 +187,8 @@ const SingleSongCard = ({
                                             buttonText="Update"
                                             modalComponent={
                                                 <UpdateSongForm
-                                                    songId={songId}
+                                                    // songId={songId}
+                                                    song={song}
                                                 />
                                             }
                                         />

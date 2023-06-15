@@ -5,59 +5,25 @@ import { updateSongThunk, getSongThunk } from '../../store/songs'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useModal } from '../../context/Modal'
 
-const UpdateSongForm = ({ songId }) => {
+const UpdateSongForm = ({ song }) => {
+    const songId = song.id
+
+
+
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
 
     // const song = useSelector(state => state.songs.singleSong)
-    const song = useSelector(state => state.songs.singleSong)
 
-    useEffect(() => {
-        const fetchSongDetails = async () => {
-            await dispatch(getSongThunk(songId));
-
-            // if (song) {
-            // setName(song.name)
-            // // setPublic(song.is_public)
-            // //         // setDescription(songData.description)
-            // //         // setText(song.text)
-            // setMp3FileName(song.mp3_file)
-            // setGenre(song.genre)
-            // setArtist_name(song.artist_name)
-            // //         // setId(song.id)
-            // //...
-            if (song && song !== undefined) {
-                setName(song.name)
-                // setMp3FileName(song.mp3_file)
-                setGenre(song.genre)
-                setArtist_name(song.artist_name)
-            }
-
-
-        }
-
-        fetchSongDetails();
-
-        // dispatch(getAllSongsThunk())
-    }, [dispatch, songId, song]);
-
-    // const [name, setName] = useState('')
-    // // const [description, setDescription] = useState('')
-    // // const [text, setText] = useState('')
-    // const [mp3_file, setMp3] = useState(null)
-    // const [mp3_file_name, setMp3FileName] = useState('')
-    // const [genre, setGenre] = useState('')
-    // const [artist_name, setArtist_name] = useState('')
-    // // const [id, setId] = useState('')
-    // // const [preview_img, setPreviewImg] = useState('')
-    // const [artist_id, setArtist_id] = useState('')
     const [err, setErr] = useState({})
-    const [name, setName] = useState(song.name || '');
-    const [artist_name, setArtist_name] = useState(song.artist_name || '');
-    const [genre, setGenre] = useState(song.genre || '');
-    const [mp3_file, setMp3] = useState(song.mp3_file || null);
+    const [name, setName] = useState(song.name);
+    const [artist_name, setArtist_name] = useState(song.artist_name);
+    const [genre, setGenre] = useState(song.genre );
+    const [mp3_file, setMp3] = useState(song.mp3_file);
     // const [mp3_file_name, setMp3FileName] = useState(song.mp3_file || '');
+
+
 
 
 
@@ -67,11 +33,8 @@ const UpdateSongForm = ({ songId }) => {
         const errors = {}
         if (!name) errors.name = "Name is required"
         if (!artist_name) errors.artist_name = "Artist name is required"
-        // if (!genre) errors.genre = "Genre is required"
-        // if (!preview_img) errors.preview_img = "Preview Image is required"
-
-        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
+
     }, [name, artist_name, genre])
 
     const handleSubmit = async (e) => {
@@ -79,35 +42,22 @@ const UpdateSongForm = ({ songId }) => {
 
 
 
-        // const formData = {
-        //     name,
-        //     artist_name,
-        //     artist_id,
-        //     preview_img,
-        //     mp3_file
-        // }
         const formData = new FormData();
+        formData.append('id', song.id)
+        console.log(song.id)
         formData.append('name', name);
         formData.append('artist_name', artist_name);
+        formData.append('genre', genre);
         // formData.append('artist_id', artist_id);
         // formData.append('preview_img', preview_img);
-        formData.append('mp3_file', mp3_file);
+        // formData.append('mp3_file', mp3_file);
 
-        // const formData = new FormData()
-        // formData.append('name', name)
-        // // formData.append('is_public', name)
-        // formData.append('artist_name', artist_name)
-        // formData.append('genre', genre)
-        // formData.append('mp3_file', mp3_file)
-        // // // formData.append('description', description)
+        // console.log(formData)
+        await dispatch(updateSongThunk(formData));
 
-        // formData.append('preview_img', preview_img)
-        //  ('FOOOORM', formData)
-        await dispatch(updateSongThunk(songId, formData));
-        //  ('UPPPDATED', updatedSong);
         closeModal();
         // if (updatedSong) {
-        history.push(`/songs/${songId}`);
+        // history.push(`/songs/${songId}`);
         // }
     }
 
@@ -209,11 +159,11 @@ const UpdateSongForm = ({ songId }) => {
                                     style={{ paddingBottom: '1rem' }}
                                 >
 
-                                    <input
+                                    {/* <input
                                         type="file"
                                         accept="audio/*"
                                         onChange={(e) => setMp3(e.target.files[0])}
-                                    />
+                                    /> */}
 
 
                                     <div className='upload-song-form-bottom'>

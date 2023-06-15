@@ -20,7 +20,7 @@ const ArtistDetails = ({ song }) => {
             <div className='song-details-page-artist-image'>
                 <img
                 alt=''
-                    src={song.artist.profile_pic}
+                    src={song.artist.profile_pic || 'https://img.freepik.com/free-photo/vivid-blurred-colorful-background_58702-2655.jpg'}
                 ></img>
             </div>
             <p

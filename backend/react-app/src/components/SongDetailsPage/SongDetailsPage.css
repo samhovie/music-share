@@ -1,3 +1,26 @@
+.global-outerwrapper-outer {
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #E5F9DB; */
+    /* background-color: black; */
+    background-color: darkslategray;
+    min-height: 75rem;
+    height: fit-content;
+}
+
+.global-outerwrapper-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    background-color: #A0D8B3;
+    border-radius: 5px;
+    padding-top: 2.5rem;
+    width: 80rem;
+    min-height: 75rem;
+    height: fit-content;
+}
+
 .song-details-page-outer {
     display: flex;
     flex-direction: column;
@@ -7,10 +30,16 @@
 }
 
 .song-details-page-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 1.5rem;
 }
 
 .song-details-page-bottom-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
     height: 60%;
 }

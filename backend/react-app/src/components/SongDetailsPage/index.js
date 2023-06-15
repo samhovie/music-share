@@ -42,6 +42,9 @@ const SongDetailsPage = () => {
         dispatch(createCommentThunk(formData, songId))
         // setUrl(`/songs/${songId}`)
         // history.push(`/discover`)
+        history.push('/songs')
+        dispatch(getAllCommentsThunk(songId))
+        dispatch(getAllSongsThunk())
         history.push(`/songs/${songId}`)
         // dispatch(createCommentThunk(formData, songId))
     }
@@ -79,7 +82,7 @@ const SongDetailsPage = () => {
         <>
         {url && <Redirect to={url}/>}
         <div className='global-outerwrapper-outer'>
-            <div className='global-outerwrapper-wrapper'>
+            <div className='global-outerwrapper-wrapper2'>
                 <div className='song-details-page-top'>
                     <SongDetailsCard song={song} />
                 </div>
@@ -87,7 +90,7 @@ const SongDetailsPage = () => {
                     <div className='song-details-page-bottom'>
                         <div className='song-details-page-post-comment'>
                             <div className='song-details-page-profile-pic'>
-                                <img alt ='' src={sessionUser.profile_pic}></img>
+                                <img alt ='' src={sessionUser.profile_pic || 'https://meshgradient.com/gallery/5.png'}></img>
                             </div>
                             <div className='song-details-page-comment-outer-wrapper'>
                                 <div className='song-details-page-comment-wrapper'
@@ -124,9 +127,9 @@ const SongDetailsPage = () => {
                                     />
                                 </div>
                                 <div className='song-details-page-interactive-buttons-add'>
-                                    <button>
+                                    {/* <button>
                                         Add To Playlist
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                             <div className='song-details-page-display-likes'>

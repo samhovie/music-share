@@ -9,6 +9,7 @@ const GetSong = ({songId}) => {
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
+
     }, [dispatch, songId])
 
     return (''

@@ -1,17 +1,17 @@
 import './UpdateSongForm.css'
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateSongThunk, getSongThunk } from '../../store/songs'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useDispatch } from 'react-redux'
+import { updateSongThunk } from '../../store/songs'
+// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useModal } from '../../context/Modal'
 
 const UpdateSongForm = ({ song }) => {
-    const songId = song.id
+    // const songId = song.id
 
 
 
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
     const { closeModal } = useModal()
 
     // const song = useSelector(state => state.songs.singleSong)
@@ -20,7 +20,7 @@ const UpdateSongForm = ({ song }) => {
     const [name, setName] = useState(song.name);
     const [artist_name, setArtist_name] = useState(song.artist_name);
     const [genre, setGenre] = useState(song.genre );
-    const [mp3_file, setMp3] = useState(song.mp3_file);
+    // const [mp3_file, setMp3] = useState(song.mp3_file);
     // const [mp3_file_name, setMp3FileName] = useState(song.mp3_file || '');
 
 

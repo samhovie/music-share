@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatePlaylistThunk } from '../../store/playlists';
-import { getPlaylistThunk } from '../../store/playlists';
+// import { getPlaylistThunk } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 // import Upload from '../UploadImg';
@@ -44,7 +44,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             setPublic(singlePlaylist.is_public)
             setPreviewImg(singlePlaylist.preview_imag)
         }
-    },[])
+    },[playlist, singlePlaylist.name, singlePlaylist.description, singlePlaylist.is_public, singlePlaylist.preview_imag ])
 
 
     console.log('playlist id', playlistId)

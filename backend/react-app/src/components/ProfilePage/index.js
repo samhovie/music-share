@@ -25,7 +25,7 @@ const ProfilePage = () => {
                             </div>
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img src={`${(user && user.profile_pic) || 'https://meshgradient.com/gallery/5.png' }`} className='profile-page-pic'></img>
+                            <img alt='' src={`${(user && user.profile_pic) || 'https://meshgradient.com/gallery/5.png' }`} className='profile-page-pic'></img>
                         </div>
                         <div className='profile-page-top-right'>
                             <div className='profile-page-user-info'>

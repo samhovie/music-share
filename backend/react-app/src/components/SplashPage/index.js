@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+// import { useSelector } from 'react-redux'
+// import { Redirect } from 'react-router-dom'
 import './SplashPage.css'
 import OpenModalButton from '../OpenModalButton'
 import SignupFormModal from '../SignupFormModal'
@@ -8,7 +8,7 @@ import LoginFormModal from '../LoginFormModal'
 
 
 const SplashPage = () => {
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
 
 
 

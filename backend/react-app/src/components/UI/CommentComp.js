@@ -1,16 +1,16 @@
 // import { useEffect } from 'react'
 import './CommentComp.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { getSongThunk } from '../../store/songs'
-import GetSong from './GetSong'
-import GetUser from './GetUser'
+import { useSelector } from 'react-redux'
+// import { getSongThunk } from '../../store/songs'
+// import GetSong from './GetSong'
+// import GetUser from './GetUser'
 import DeleteCommentModal from '../DeleteCommentModal'
 import OpenModalButton from '../OpenModalButton'
 
 const CommentComp = ({ comment }) => {
     // console.log("DOOM", comment)
-    const dispatch = useDispatch()
-    console.log('COMMENT', comment)
+    // const dispatch = useDispatch()
+    // console.log('COMMENT', comment)
     // const commentOwner = comment.user_id
     // console.log(comment)
     const sessionUser = useSelector(state => state.session.user)
@@ -29,7 +29,7 @@ const CommentComp = ({ comment }) => {
             <div className='comment-outer-wrapper'>
                 <div className='comment-inner-wrapper'>
                     <div className='comment-profile-pic'>
-                        <img alt='' src={`${comment && comment.user_profile_pic || 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}`}></img>
+                        <img alt='' src={`${(comment && comment.user_profile_pic) || 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}`}></img>
                     </div>
                     <div className='comment-info'>
                         <div className='comment-info-left'>

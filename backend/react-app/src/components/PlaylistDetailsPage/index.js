@@ -27,9 +27,9 @@ function PlaylistDetailsPage() {
       {length > 0 ?
         <>
           <div className="playlist-details-page-outer">
-            <div className="playlist-details-page-top">
+            <div className="global-outerwrapper-wrapper ">
               {/* SongDetailsCard component */}
-            </div>
+
             <div className="playlist-details-page-bottom-wrapper">
               <div className="playlist-details-page-bottom">
                 <div className="playlist-details-page-bottom-bar">
@@ -38,7 +38,6 @@ function PlaylistDetailsPage() {
                     {/* Add Song to Playlist (in modal) button */}
                   </div>
                 </div>
-                <div className="playlist-details-page-profile-songs">
                   <div className="playlist-details-page-user">
                     <div className="playlist-details-page-user-image">
                       <img
@@ -46,10 +45,11 @@ function PlaylistDetailsPage() {
                         alt="User"
                       />
                     </div>
-                    <p className="playlist-details-page-user-name">
-                      {owner_username}
+                    <p className="playlist-details-page-user-name" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>
+                      {owner_username}'s playlist
                     </p>
                   </div>
+                <div className="playlist-details-page-profile-songs">
                   <div className="playlist-details-page-song-list">
                     {playlist.song?.map((s) => (
                       <SingleSongCard key={s.id} song={s} />
@@ -58,15 +58,21 @@ function PlaylistDetailsPage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </>
         :
-        <div>
+        <div >
           <NavLink
-            className='you-no-likey-yet'
-            exact to='/feed'>
-
+              className='you-no-likey-yet'
+              exact to='/feed'
+              >
+            <h3
+              style={{marginTop: '5rem'}}
+            >
             Oh wow, you haven't added any songs yet! Go find a song to add now!
+            </h3>
+
 
           </NavLink>
         </div>

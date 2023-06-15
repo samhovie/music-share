@@ -38,7 +38,9 @@ const UserLikesPage = () => {
         <div
         className='user-likes-page-top'
         >
-        <h3>Check out all the awesome vibes you've liked!</h3>
+        <h3
+            style={{marginTop: '5rem'}}
+        >Check out all the awesome vibes you've liked!</h3>
         </div>
         <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>

@@ -9,8 +9,8 @@ import { useModal } from '../../context/Modal';
 import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
-    const singlePlaylist = useSelector((state) => state.playlists.singlePlaylist);
-    // ('single playlist', singlePlaylist)
+    const singlePlaylist = useSelector((state) => state.playlists.allPlaylists[playlistId]);
+    // console.log('single playlist', singlePlaylist)
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
@@ -18,26 +18,49 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     const playlist = useSelector(state => state.playlists.singlePlaylist)
 
 
-    useEffect(() => {
-        const fetchPlaylistDetails = async () => {
-            const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
-            if (singlePlaylist) {
-                setName(singlePlaylist.name)
-                setPublic(singlePlaylist.is_public)
-                setDescription(singlePlaylist.description)
-                setPreviewImg(playlist.preview_img || '')
-            }
-        }
-        fetchPlaylistDetails();
-    }, [dispatch, playlistId, playlist.preview_img]);
+    // useEffect(() => {
+    //     const fetchPlaylistDetails = async () => {
+    //         const singlePlaylist = dispatch(getPlaylistThunk(playlistId));
+    //         if (singlePlaylist) {
+    //             setName(singlePlaylist.name)
+    //             setPublic(singlePlaylist.is_public)
+    //             setDescription(singlePlaylist.description)
+    //             setPreviewImg(playlist.preview_img || '')
+    //         }
+    //     }
+    //     fetchPlaylistDetails();
+    // }, [dispatch, playlistId]);
 
-    const [name, setName] = useState(singlePlaylist.name)
-    const [description, setDescription] = useState(singlePlaylist.description)
-    const [is_public, setPublic] = useState(singlePlaylist.is_public)
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [is_public, setPublic] = useState(false)
     const [preview_img, setPreviewImg] = useState('')
+    const [errors, setErrors] = useState({})
+
+    useEffect(() => {
+        if (playlist) {
+            setName(singlePlaylist.name)
+            setDescription(singlePlaylist.description)
+            setPublic(singlePlaylist.is_public)
+            setPreviewImg(singlePlaylist.preview_imag)
+        }
+    },[])
 
 
+    console.log('playlist id', playlistId)
 
+    useEffect(() => {
+        const errors = {}
+        // console.log("TYPEOFFFFF", typeof(mp3_file))
+        // console.log("RIGHT UNDER", console.log(mp3_file))
+
+        if (!name) errors.name = "Name is required"
+        if (!is_public) errors.is_public = "Check is required"
+        if (!description) errors.description = "Description is required"
+        if (!preview_img) errors.preview_img = "Preview image is required"
+        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
+        setErrors(errors)
+    }, [name, is_public, description, preview_img])
 
 
     const handleSubmit = async (e) => {
@@ -75,11 +98,12 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 name='name'
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                required
+
                             />
+                            {errors.name && <p>{errors.name}</p>}
                         </div>
                         <div>
-                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
+                                {/* <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5> */}
                                 <label style={{ paddingBottom: '.5rem' }}>&nbsp;Is Public</label>
                             </div>
                         <input
@@ -100,8 +124,9 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 cols="40"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                required
+
                             />
+                            {errors.description && <p>{errors.description}</p>}
                             {/* <label>
                                 Preview Image:
                                 <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />

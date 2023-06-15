@@ -15,15 +15,6 @@ const ProfilePage = () => {
         <>
             <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper'>
-                    <div className='profile-page-top'>
-                        <div className='profile-page-top-left'>
-                            <img alt='' src={`${user.profile_pic}`} className='profile-page-pic'></img>
-                        </div>
-                        <div className='profile-page-top-right'>
-                            <div className='profile-page-user-info'>
-                                <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
-                                <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
-                            </div>
                             <div className='profile-page-buttons'>
                                 <OpenModalButton
                                     buttonText="Edit"
@@ -31,6 +22,15 @@ const ProfilePage = () => {
                                 <OpenModalButton
                                     buttonText="Delete User Profile"
                                     modalComponent={<DeleteUser />} />
+                            </div>
+                    <div className='profile-page-top'>
+                        <div className='profile-page-top-left'>
+                            <img src={`${(user && user.profile_pic) || 'https://meshgradient.com/gallery/5.png' }`} className='profile-page-pic'></img>
+                        </div>
+                        <div className='profile-page-top-right'>
+                            <div className='profile-page-user-info'>
+                                <div className='profile-page-top-display-name'>{`${user.display_name}`}</div>
+                                <div className='profile-page-top-full-name'>{`${user.first_name}`} {`${user.last_name}`}</div>
                             </div>
                         </div>
                     </div>

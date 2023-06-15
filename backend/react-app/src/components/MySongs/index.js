@@ -49,7 +49,7 @@ const CurrentUserSongs = () => {
                     /> */}
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>
-                            <img alt='' src={`${user.profile_pic}`}
+                            <img alt='' src={`${(user && user.profile_pic) || 'https://meshgradient.com/gallery/5.png'}`}
                                 className='profile-page-pic'
                             ></img>
                         </div>

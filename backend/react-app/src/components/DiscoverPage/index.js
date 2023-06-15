@@ -5,6 +5,9 @@ import PlaylistWrapper from '../UI/PlaylistWrapper';
 import './DiscoverPage.css'
 import OpenModalButton from '../OpenModalButton';
 import CreatePlaylistForm from '../CreateNewPlaylist';
+import CarouselComponent from '../UI/Carousel/Carousel';
+// import {CarouselComponent} from '../UI/Carousel/Carousel';
+
 
 const DiscoverPage = () => {
     const dispatch = useDispatch()
@@ -19,6 +22,7 @@ const DiscoverPage = () => {
         <>
             <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'>
+                    <CarouselComponent />
                     <OpenModalButton
                         className='buttonss'
                         modalComponent={<CreatePlaylistForm />}

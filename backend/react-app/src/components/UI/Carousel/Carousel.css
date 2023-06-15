@@ -1,0 +1,9 @@
+.carousel-section {
+   height: 15rem;
+}
+
+.carousel-section img {
+   height: 10rem;
+   width: 50%;
+   /* object-fit: cover; */
+}

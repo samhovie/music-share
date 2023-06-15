@@ -26,6 +26,7 @@ function Navigation({ isLoaded }) {
 				<div className='navbar-wrapper'>
 					<div className='navbar-wrapper-content'>
 						<div className='navbar-site-button'
+							style={{ borderRadius: '10px' }}
 						// style={{height: '40px'}}
 						>
 							<img
@@ -80,7 +81,18 @@ function Navigation({ isLoaded }) {
 									<input
 										className='navbar-search-bar-input'
 										placeholder='Search feature coming soon!'
-									></input>
+									>
+
+									</input>
+									<button
+										style={{ height: '2.53rem', border: 'none', padding: '.6rem', borderRadius: '5px' }}
+									>
+
+										<i className="fas fa-search"
+										>
+
+										</i>
+									</button>
 								</form>
 							</div>
 						</div>
@@ -104,7 +116,7 @@ function Navigation({ isLoaded }) {
 								<div className='navbar-profile-button'>
 									<ProfileButton user={sessionUser} />
 								</div>
-								<div className='navbar-three-icons'>
+								{/* <div className='navbar-three-icons'>
 									<div onClick={() => alertClickHandler()} className='navbar-bell navbar-three-icons-all-three'>
 										<i className="fa-sharp fa-solid fa-bell" style={{ color: '#f2f6fd' }}></i>
 									</div>
@@ -114,7 +126,7 @@ function Navigation({ isLoaded }) {
 									<div onClick={() => alertClickHandler()} className='navbar-ellipsis navbar-three-icons-all-three'>
 										<i className="fa-solid fa-ellipsis" style={{ color: '#f2f6fd' }}></i>
 									</div>
-								</div>
+								</div> */}
 							</>
 						)}
 					</div>

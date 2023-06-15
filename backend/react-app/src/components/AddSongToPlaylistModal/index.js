@@ -23,6 +23,10 @@ function AddSongToPlaylistModal({ songId }) {
         dispatch(getAllPlaylistsThunk());
     }, [dispatch]);
 
+    useEffect(() => {
+        console.log('SELECTED', selectedPlaylist)
+    }, [selectedPlaylist])
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const createdPlaylist = dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
@@ -41,6 +45,7 @@ function AddSongToPlaylistModal({ songId }) {
                         value={selectedPlaylist}
                         onChange={e => setSelectedPlaylist(e.target.value)}
                     >
+                        <option value="" disabled>Select a playlist</option>
                         {
                             Object.values(playlists)
                                 .filter(playlist => playlist.user.id === current_user)

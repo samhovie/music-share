@@ -140,6 +140,7 @@ def add_song_to_playlist(playlist_id, song_id):
         playlist_id=playlist_id, song_id=song_id)
     # ins = insert(playlist_songs).values(
     #     playlist_id=playlist_id, song_id=song_id)
+    # playlist.append(song)
     db.session.execute(ins)
     db.session.commit()
 

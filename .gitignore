@@ -1,4 +1,4 @@
-/instance/dev.db
+/backend/instance/dev.db
 Pipfile
 # From Mod6 Resources
 # testing
@@ -6,7 +6,7 @@ Pipfile
 
 /.vscode/
 
-/react-app/node_modules
+/backend/react-app/node_modules
 
 
 # production

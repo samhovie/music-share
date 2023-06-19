@@ -44,9 +44,13 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             setPublic(singlePlaylist.is_public)
             setPreviewImg(singlePlaylist.preview_img)
         }
-    },[playlist, singlePlaylist.name, singlePlaylist.description, singlePlaylist.is_public, singlePlaylist.preview_imag ])
+    },[singlePlaylist])
 
+    useEffect(() => {
 
+        console.log('STUUUFF', preview_img)
+        console.log(singlePlaylist.preview_img)
+    },[name, description, preview_img])
     // console.log('playlist id', playlistId)
 
     // useEffect(() => {
@@ -83,8 +87,13 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             updatedFormData.append('description', description)
             updatedFormData.append('preview_img', preview_img)
             await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
-            closeModal();
-            history.push(`/playlists/${playlistId}`);
+            // closeModal();
+            // history.push(`/playlists/${playlistId}`);
+
+            setTimeout(() => {
+                closeModal();
+                history.push(`/playlists/${playlistId}`);
+            }, 1000);
         }
 
     }

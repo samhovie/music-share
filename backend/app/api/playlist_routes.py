@@ -68,6 +68,9 @@ def update_playlist(id):
         elif playlist.user_id != current_user.id:
             return {"errors": "nacho playlist"}
 
+
+        print('FOOOORRMM', form.data)
+        print('pllaaaaylist', playlist.to_dict())
         # print('REQUEST', request.files.keys)
         # preview_img_file = request.files["preview_img"]
         # preview_img_file.filename = get_unique_filename(
@@ -83,16 +86,18 @@ def update_playlist(id):
         playlist.is_public = form.data['is_public']
         playlist.description = form.data['description']
         playlist.user_id = current_user.id
-        if 'preview_img' in form.data:
-            playlist.preview_img = form.data['preview_img']
-        else:
-            playlist.preview_img = None
+        # playlist.preview_img = form.data['preview_img']
+        # if 'preview_img' in form.data:
+        #     playlist.preview_img = form.data['preview_img']
+        # else:
+        #     playlist.preview_img = None
         # playlist.preview_img = form.data['preview_img']
         playlist.updated_at = date.today()
 
         db.session.add(playlist)
         db.session.commit()
 
+        print('PLAAAYLIST AFTER COMMIT', playlist.to_dict())
         return playlist.to_dict()
 
     return {"errors": form.errors}

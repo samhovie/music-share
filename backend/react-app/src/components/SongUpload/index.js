@@ -95,14 +95,6 @@ const SongUpload = () => {
                                 <div className='upload-song-form-wrapped'>
 
                                     <div className='upload-song-form-upload'>
-                                        {/* <img src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'></img> */}
-                                        {/* <ul>
-                                        {displayErr === true && err.name && (<li className="errors">· {err.name}</li>)}
-                                        {displayErr === true && err.artist_name && (<li className="errors">· {err.artist_name}</li>)}
-                                        {displayErr === true && err.genre && (<li className="errors">· {err.genre}</li>)}
-                                        {displayErr === true && err.description && (<li className="errors">· {err.description}</li>)}
-                                        {displayErr === true && err.mp3_file && (<li className="errors">· {err.mp3_file}</li>)}
-                                        </ul> */}
                                         <input
                                             alt = ''
                                             type='image'
@@ -119,7 +111,6 @@ const SongUpload = () => {
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Title
                                                 </label>
@@ -142,7 +133,6 @@ const SongUpload = () => {
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Artist Name
                                                 </label>
@@ -166,7 +156,6 @@ const SongUpload = () => {
                                         >
 
                                             <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Genre
                                                 </label>
@@ -188,7 +177,6 @@ const SongUpload = () => {
                                             style={{ paddingBottom: '1rem' }}
                                         >
                                             <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
                                                 <label style={{ paddingBottom: '.5rem' }}>
                                                     &nbsp;Description
                                                 </label>
@@ -233,37 +221,9 @@ const SongUpload = () => {
                                         </div>
                                         {displayErr === true && err.mp3_file && (<div className="errors">· {err.mp3_file}</div>)}
 
-                                        {/* <div
-                                            style={{ paddingBottom: '4rem' }}
-                                        >
-                                            <div>
-                                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                                <label style={{ paddingBottom: '.8rem' }}>
-                                                    &nbsp;Privacy:
-                                                </label>
-
-                                            </div>
-                                            <div style={{ paddingBottom: '1rem' }}>
-                                                <input type='radio' id='public' value='public'></input>
-                                                <label for='public'>Public</label>
-
-                                            </div>
-                                            <div>
-                                                <input type='radio' id='private' value='private'></input>
-                                                <label for='private'>Private</label>
-
-                                            </div>
-
-                                        </div> */}
-
-
-
-                                        {/* <button onClick={(e) => fileUploadClickHandler(e)}>Choose a file to upload</button> */}
                                         <div className='upload-song-form-bottom'>
                                             {/* <div className='upload-song-form-bottom-bar'> */}
                                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
-                                                <h5>&nbsp;Required fields</h5>
                                             </div>
                                             <div className='upload-song-form-bottom-bar-button-div'>
 

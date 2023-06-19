@@ -1,20 +1,16 @@
-"""
+"""empty message
 
-Revision ID: 45f1acb971e6
-Revises:
-Create Date: 2023-05-14 18:12:13.771002
+Revision ID: c50e62592981
+Revises: 
+Create Date: 2023-06-19 17:16:59.406503
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = '45f1acb971e6'
+revision = 'c50e62592981'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -54,10 +50,10 @@ def upgrade():
     op.create_table('songs',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('artist_name', sa.String(length=255), nullable=False),
-    sa.Column('artist_id', sa.Integer(), nullable=False),
-    sa.Column('mp3_file', sa.String(length=255), nullable=False),
-    sa.Column('genre', sa.String(length=255), nullable=False),
+    sa.Column('artist_name', sa.String(length=255), nullable=True),
+    sa.Column('artist_id', sa.Integer(), nullable=True),
+    sa.Column('mp3_file', sa.String(length=255), nullable=True),
+    sa.Column('genre', sa.String(length=255), nullable=True),
     sa.Column('preview_img', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.Column('updated_at', sa.Date(), nullable=False),
@@ -88,14 +84,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('user_id', 'song_id')
     )
     # ### end Alembic commands ###
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE song_likes SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
 def downgrade():

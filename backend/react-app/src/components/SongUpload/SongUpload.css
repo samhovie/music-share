@@ -50,6 +50,7 @@
 } */
 
 .upload-song-form-info {
+    padding-top: 35px;
     height: 100%;
     width: 100%;
 }
@@ -88,6 +89,7 @@
 .upload-song-form-bottom-bar-button-div {
     display: flex;
     align-items: center;
+    margin-right: 15px;
 }
 
 .upload-song-form-bottom-bar-button-div > button {

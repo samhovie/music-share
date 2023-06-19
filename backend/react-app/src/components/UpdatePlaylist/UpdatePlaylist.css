@@ -5,12 +5,12 @@
     width: 100%;
 }
 
-.upload-song-form-wrapped {
+/* .upload-song-form-wrapped {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
+} */
 
 .upload-song-form-upload img {
     width: 100%;

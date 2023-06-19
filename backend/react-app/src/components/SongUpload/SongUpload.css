@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.errors {
+    color: red;
+    font-weight: 500;
+}
+
 .upload-song-inner-wrapper {
     height: 55rem;
     width: 40rem;
@@ -24,6 +29,8 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    align-items: flex-start;
+
 }
 
 .upload-song-form-upload {

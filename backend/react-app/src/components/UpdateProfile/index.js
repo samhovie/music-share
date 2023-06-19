@@ -41,7 +41,7 @@ const UpdateProfile = () => {
     const submitHandler = (e) => {
         //  ('HEY')
         e.preventDefault();
-
+        
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
             //  (displayErr)

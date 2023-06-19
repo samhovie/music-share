@@ -42,37 +42,51 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             setName(singlePlaylist.name)
             setDescription(singlePlaylist.description)
             setPublic(singlePlaylist.is_public)
-            setPreviewImg(singlePlaylist.preview_imag)
+            setPreviewImg(singlePlaylist.preview_img)
         }
     },[playlist, singlePlaylist.name, singlePlaylist.description, singlePlaylist.is_public, singlePlaylist.preview_imag ])
 
 
-    console.log('playlist id', playlistId)
+    // console.log('playlist id', playlistId)
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     const errors = {}
+    //     // console.log("TYPEOFFFFF", typeof(mp3_file))
+    //     // console.log("RIGHT UNDER", console.log(mp3_file))
+
+    //     if (!name) errors.name = "Name is required"
+    //     if (!is_public) errors.is_public = "Check is required"
+    //     if (!description) errors.description = "Description is required"
+    //     if (!preview_img) errors.preview_img = "Preview image is required"
+    //     // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
+    //     setErrors(errors)
+    // }, [name, is_public, description, preview_img])
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         const errors = {}
         // console.log("TYPEOFFFFF", typeof(mp3_file))
         // console.log("RIGHT UNDER", console.log(mp3_file))
 
         if (!name) errors.name = "Name is required"
-        if (!is_public) errors.is_public = "Check is required"
+        // if (!is_public) errors.is_public = "Check is required"
         if (!description) errors.description = "Description is required"
-        if (!preview_img) errors.preview_img = "Preview image is required"
+        // if (!preview_img) errors.preview_img = "Preview image is required"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
-        setErrors(errors)
-    }, [name, is_public, description, preview_img])
+        if (Object.values(errors).length > 0) {
+            setErrors(errors)
+        } else {
+            const updatedFormData = new FormData();
+            updatedFormData.append('name', name)
+            updatedFormData.append('is_public', is_public)
+            updatedFormData.append('description', description)
+            updatedFormData.append('preview_img', preview_img)
+            await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
+            closeModal();
+            history.push(`/playlists/${playlistId}`);
+        }
 
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const updatedFormData = new FormData();
-        updatedFormData.append('name', name)
-        updatedFormData.append('is_public', is_public)
-        updatedFormData.append('description', description)
-        updatedFormData.append('preview_img', preview_img)
-        await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
-        closeModal();
-        history.push(`/playlists/${playlistId}`);
     }
 
     return (
@@ -87,11 +101,11 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             >
                 <div className='upload-song-form-wrapped'>
                     <div className='upload-song-form-info'>
-                        <div style={{ paddingBottom: '1rem' }}>
-                            <div>
-                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Title</label>
-                            </div>
+                        <div style={{ paddingBottom: '.5rem' }}>
+                            {/* <div>
+                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5> */}
+                                <label style={{ paddingBottom: '.5rem' }}>Title</label>
+                            {/* </div> */}
                             <input
                                 className='upload-song-form-all-input upload-song-form-title'
                                 type='text'
@@ -100,23 +114,13 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 onChange={(e) => setName(e.target.value)}
 
                             />
-                            {errors.name && <p>{errors.name}</p>}
+                            {errors.name && <p className='form-errors' style={{color: 'red'}}>{errors.name}</p>}
                         </div>
-                        <div>
+                        <div style={{ paddingBottom: '.5rem' }}>
+                            {/* <div> */}
                                 {/* <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5> */}
-                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Is Public</label>
-                            </div>
-                        <input
-                            type="checkbox"
-                            name='is_public'
-                            checked={is_public}
-                            onChange={(e) => setPublic(e.target.value)}
-                        />
-                        <div style={{ paddingBottom: '1rem' }}>
-                            <div>
-                                <h5 style={{ display: 'inline-block', fontSize: '12px', color: 'red' }} >*</h5>
-                                <label style={{ paddingBottom: '.5rem' }}>&nbsp;Description</label>
-                            </div>
+                                <label style={{ paddingBottom: '.5rem' }}>Description</label>
+                            {/* </div> */}
                             <textarea
                                 id="story"
                                 name="description"
@@ -126,11 +130,11 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 onChange={(e) => setDescription(e.target.value)}
 
                             />
-                            {errors.description && <p>{errors.description}</p>}
                             {/* <label>
                                 Preview Image:
                                 <Upload onChange={(e) => setPreviewImg(e.target.files[0])} />
                             </label> */}
+                            {errors.description && <p className='form-errors' style={{color: 'red'}}>{errors.description}</p>}
                         </div>
                         {/* <div
                                             style={{ paddingBottom: '1rem' }}
@@ -160,10 +164,10 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                         {/* </label> */}
 
                         <div className='upload-song-form-bottom'>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            {/* <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
-                                <h5>&nbsp;Required fields</h5>
-                            </div>
+                                <h5>Required fields</h5>
+                            </div> */}
                             <div className='upload-song-form-bottom-bar-button-div'>
                                 <button type='submit'>Save</button>
                             </div>

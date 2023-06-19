@@ -33,6 +33,7 @@ const UpdateSongForm = ({ song }) => {
         const errors = {}
         if (!name) errors.name = "Name is required"
         if (!artist_name) errors.artist_name = "Artist name is required"
+        if (!genre) errors.genre = "Genre is required"
         setErr(errors)
 
     }, [name, artist_name, genre])

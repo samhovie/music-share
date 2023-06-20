@@ -28,7 +28,7 @@ def get_song_comments(songId):
     # print(type(comments))
     # comments = json.dumps(comments)
     # comments = json.dumps(comments, default=lambda c : c.to_dict())
-    print("COMMMENT TOOO DICTT", comments)
+
 
     return json.dumps(res, default=lambda c : c.to_dict())
 

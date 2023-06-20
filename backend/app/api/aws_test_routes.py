@@ -47,7 +47,6 @@ def upload_image():
         return {"url": url}
 
     if form.errors:
-        print(form.errors)
         return {"errors": "too many errors"}
 
     return render_template("post_form.html", form=form, errors=None)

@@ -63,22 +63,18 @@ export const getSongThunk = (id) => async (dispatch) => {
 }
 
 export const createSongThunk = (song) => async (dispatch) => {
-
-	console.log('THUINK')
 	const response = await fetch('/api/songs/new', {
 		method: 'POST',
 		body: song
 	})
 
 	if (response.ok) {
-		console.log('RESPONSE OK')
 		const data = await response.json();
 		if (data.errors) {
 			return data.errors
 		}
 		dispatch(createSongAction(data))
 	}
-	console.log('RESPONSE NOt')
 }
 
 

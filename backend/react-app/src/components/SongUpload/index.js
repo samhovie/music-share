@@ -12,7 +12,7 @@ const SongUpload = () => {
     const [mp3_file, setMp3] = useState('')
     const [genre, setGenre] = useState('')
     const [artist_name, setArtist_name] = useState('')
-    const preview_img = ''
+    const preview_img = 'https://music-share-rhinos.s3.amazonaws.com/105e2f0d9c9e4dfcb42679bfa45600b4.jpeg'
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
     const [isFetching, setIsFetching] = useState(false)
@@ -92,7 +92,7 @@ const SongUpload = () => {
                                         <input
                                             alt = ''
                                             type='image'
-                                            src='https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+                                            src='https://music-share-rhinos.s3.amazonaws.com/105e2f0d9c9e4dfcb42679bfa45600b4.jpeg'
                                             onClick={alertClick}
                                         >
 

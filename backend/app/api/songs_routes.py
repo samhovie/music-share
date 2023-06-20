@@ -45,23 +45,9 @@ def post_songs():
         upload = upload_file_to_s3(image)
 
         if "url" not in upload:
-            # print("UPLOAD[ERRORS]", upload['errors'])
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-            # return render_template("post_form.html", form=form, errors=[upload])
             return upload, 400
         url = upload["url"]
 
-        # preview_img_file = request.files["preview_img"]
-        # preview_img_file.filename = get_unique_filename(
-        #     preview_img_file.filename)
-        # preview_img_upload = upload_file_to_s3(preview_img_file)
-
-        # if "url" not in preview_img_upload:
-        #     return preview_img_upload, 400
-
-        # preview_img_url = preview_img_upload["url"]
 
         new_song = Song(
             name=form.data['name'],
@@ -70,7 +56,7 @@ def post_songs():
             genre=form.data['genre'],
             artist_id=current_user.id,
             # preview_img=preview_img_url,
-            preview_img='',
+            preview_img='https://music-share-rhinos.s3.amazonaws.com/105e2f0d9c9e4dfcb42679bfa45600b4.jpeg',
             created_at=date.today(),
             updated_at=date.today()
         )

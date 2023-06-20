@@ -99,7 +99,6 @@ const UpdateSongForm = ({ song }) => {
                                         value={artist_name}
                                         onChange={(e) => setArtist_name(e.target.value)}
                                         placeholder='Enter an artist name here'
-                                    // required
                                     >
 
                                     </input>
@@ -142,7 +141,7 @@ const UpdateSongForm = ({ song }) => {
                                         </div>
                                         <div className='upload-song-form-bottom-bar-button-div'>
 
-                                            <button type='submit'>Save</button>
+                                            <button disabled={!name || !artist_name || !genre} type='submit'>Save</button>
                                         </div>
                                     </div>
                                 </div>

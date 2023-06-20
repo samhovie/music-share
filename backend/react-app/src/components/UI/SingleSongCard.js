@@ -20,6 +20,7 @@ const SingleSongCard = ({
     userSongs,
     isUserLikesPage,
     isProfileSongs,
+    playlist
 }) => {
     const dispatch = useDispatch();
     const allLikes = useSelector((state) => state.likes.allLikes.likes);
@@ -203,12 +204,16 @@ const SingleSongCard = ({
                                     </>
                                 )}
                         </div>
-                        <OpenModalButton
-                            modalComponent={
-                                <AddSongToPlaylistModal songId={song.id} />
-                            }
-                            buttonText="Add to playlist"
-                        />
+                        {
+                            !playlist &&
+
+                            <OpenModalButton
+                                modalComponent={
+                                    <AddSongToPlaylistModal songId={song.id} />
+                                }
+                                buttonText="Add to playlist"
+                            />
+                        }
                         <div className="single-song-card-info-bottom-right-column">
                             {/* <div className='single-song-card-info-bottom-right-column-plays'>Plays</div> */}
                             {/* <div className='single-song-card-info-bottom-right-column-comments'>Comments</div> */}

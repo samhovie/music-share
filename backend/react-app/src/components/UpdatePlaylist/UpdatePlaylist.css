@@ -58,3 +58,7 @@
 .upload-song-form-bottom-bar-button-div button:hover {
     background-color: #f70;
 }
+
+.form-errors {
+    color: red;
+}

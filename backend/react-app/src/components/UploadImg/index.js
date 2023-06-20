@@ -12,7 +12,7 @@ const Upload = ({ onChange }) => {
     return (
         <div>
             <input type="file" onChange={handleChange} />
-            <img src={file} alt="preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+            <img src={file ? file : 'https://www.asiaoceania.org/aogs2021/img/no_uploaded.png'} alt="preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
         </div>
     );
 };

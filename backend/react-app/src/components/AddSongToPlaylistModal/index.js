@@ -29,11 +29,11 @@ function AddSongToPlaylistModal({ songId }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const createdPlaylist = dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
+        dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
         closeModal();
-        if (createdPlaylist) {
-            history.push("/playlists/current");
-        }
+        // if (createdPlaylist) {
+        //     history.push("/playlists/current");
+        // }
     };
 
     return (

@@ -19,9 +19,9 @@ const ProfilePage = () => {
                                 <OpenModalButton
                                     buttonText="Edit"
                                     modalComponent={<UpdateProfile />} />
-                                <OpenModalButton
+                                {/* <OpenModalButton
                                     buttonText="Delete User Profile"
-                                    modalComponent={<DeleteUser />} />
+                                    modalComponent={<DeleteUser />} /> */}
                             </div>
                     <div className='profile-page-top'>
                         <div className='profile-page-top-left'>

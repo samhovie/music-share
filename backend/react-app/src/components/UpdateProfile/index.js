@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { getAllUsersThunk, getUserThunk, updateUserThunk } from '../../store/users'
 import { useModal } from '../../context/Modal'
 import { useHistory } from 'react-router-dom'
+import { authenticate } from '../../store/session'
 
 const UpdateProfile = () => {
     const dispatch = useDispatch()
@@ -18,7 +19,6 @@ const UpdateProfile = () => {
     const [bio, setBio] = useState(user.bio)
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
-    // const [changed, setChanged] = useState(false)
 
     useEffect(() => {
         const errors = {}
@@ -50,16 +50,13 @@ const UpdateProfile = () => {
         }
         else {
             const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
-            //  (newUser)
-            // setUrl(`/groups/${newGroup.id}`)
-            dispatch(updateUserThunk(newUser, user.id))
-            // setTimeout(() => {
-               await dispatch(getAllUsersThunk())
-               await dispatch(getUserThunk(user.id))
-                history.push('/')
-                history.push(`/profile`)
-            // }, 500)
+
+            await dispatch(updateUserThunk(newUser, user.id))
+
+            await dispatch(authenticate())
+            history.push(`/profile`)
         }
+
         closeModal()
     }
 

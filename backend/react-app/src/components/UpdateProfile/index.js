@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import './UpdateProfile.css'
 import { useState, useEffect } from 'react'
-import { updateUserThunk } from '../../store/users'
+import { getAllUsersThunk, getUserThunk, updateUserThunk } from '../../store/users'
 import { useModal } from '../../context/Modal'
 import { useHistory } from 'react-router-dom'
 
@@ -38,10 +38,10 @@ const UpdateProfile = () => {
 
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         //  ('HEY')
         e.preventDefault();
-        
+
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
             //  (displayErr)
@@ -51,9 +51,14 @@ const UpdateProfile = () => {
         else {
             const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
             //  (newUser)
-            dispatch(updateUserThunk(newUser, user.id))
             // setUrl(`/groups/${newGroup.id}`)
-            history.push(`/profile`)
+            dispatch(updateUserThunk(newUser, user.id))
+            // setTimeout(() => {
+               await dispatch(getAllUsersThunk())
+               await dispatch(getUserThunk(user.id))
+                history.push('/')
+                history.push(`/profile`)
+            // }, 500)
         }
         closeModal()
     }

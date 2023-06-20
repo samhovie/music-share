@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePlaylistThunk } from '../../store/playlists';
+import { getAllPlaylistsThunk, getPlaylistThunk, updatePlaylistThunk } from '../../store/playlists';
 // import { getPlaylistThunk } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
@@ -36,6 +36,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     const [is_public, setPublic] = useState(false)
     const [preview_img, setPreviewImg] = useState('')
     const [errors, setErrors] = useState({})
+    // const [,forceRender] = useState('')
 
     useEffect(() => {
         if (playlist) {
@@ -46,11 +47,6 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         }
     },[singlePlaylist])
 
-    useEffect(() => {
-
-        console.log('STUUUFF', preview_img)
-        console.log(singlePlaylist.preview_img)
-    },[name, description, preview_img])
     // console.log('playlist id', playlistId)
 
     // useEffect(() => {
@@ -90,9 +86,13 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             // closeModal();
             // history.push(`/playlists/${playlistId}`);
 
+
+            await dispatch(getPlaylistThunk(playlistId))
+            await dispatch(getAllPlaylistsThunk())
             setTimeout(() => {
                 closeModal();
-                history.push(`/playlists/${playlistId}`);
+                history.push(`/playlists/profile`);
+                history.push(`/playlists/current`);
             }, 1000);
         }
 

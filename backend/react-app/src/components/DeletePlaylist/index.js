@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { deletePlaylistThunk, getAllPlaylistsThunk } from "../../store/playlists"
+import { deletePlaylistThunk, getAllPlaylistsThunk, getPlaylistThunk } from "../../store/playlists"
 import { useModal } from "../../context/Modal"
 import './DeletePlaylist.css'
 import { useHistory } from "react-router-dom"
@@ -11,8 +11,13 @@ const DeletePlaylist = ({ playlistId }) => {
     const deleteClick = (e) => {
         dispatch(deletePlaylistThunk(playlistId))
         history.push('/discover')
+        dispatch(getPlaylistThunk(playlistId))
         dispatch(getAllPlaylistsThunk)
         history.push('/playlists/current')
+        setTimeout(() => {
+            history.push(`/playlists/profile`);
+            history.push(`/playlists/current`);
+        }, 500);
         closeModal()
     }
 

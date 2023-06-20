@@ -52,7 +52,7 @@ function PlaylistDetailsPage() {
                 <div className="playlist-details-page-profile-songs">
                   <div className="playlist-details-page-song-list">
                     {playlist.song?.map((s) => (
-                      <SingleSongCard key={s.id} song={s} />
+                      <SingleSongCard key={s.id} song={s} playlist={true} />
                     ))}
                   </div>
                 </div>

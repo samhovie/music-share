@@ -182,7 +182,6 @@ const SingleSongCard = ({
                             {sessionUser &&
                                 sessionUser.id === song.artist_id && (
                                     <>
-                                        {/* <div> */}
                                         <OpenModalButton
                                             buttonText="Update"
                                             modalComponent={
@@ -192,11 +191,7 @@ const SingleSongCard = ({
                                                 />
                                             }
                                         />
-                                        {/* </div> */}
-                                        {/* <div > */}
-                                        {/* <button>Delete</button>
-                                className='single-song-card-info-bottom-left-column-delete'
-                                */}
+
                                         <OpenModalButton
                                             buttonText="Delete"
                                             modalComponent={
@@ -205,8 +200,6 @@ const SingleSongCard = ({
                                                 />
                                             }
                                         />
-                                        {/* modalComponent={<ConfirmDelete />} /> */}
-                                        {/* </div> */}
                                     </>
                                 )}
                         </div>

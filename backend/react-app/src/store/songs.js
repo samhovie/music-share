@@ -144,16 +144,8 @@ export default function songsReducer(state = initialState, action) {
 			};
 			newState.allSongs[action.song.id] = action.song;
 			return newState;
-		// newState = { ...state, allSongs: { ...state.allSongs, [action.song.id]: {
-		// 		...state.allSongs[action.song.id],
-		// 		...action.song,
-		// 	  },
-		// 	},
-		//   };
-		//   newState = { ...state, single}
-		//   return newState
 		case DELETE_SONG:
-			newState = { ...state, allSongs: { ...state.allSongs } }
+			newState = { ...state }
 			delete newState.allSongs[action.songId]
 			return newState
 

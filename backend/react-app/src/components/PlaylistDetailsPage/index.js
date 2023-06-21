@@ -27,7 +27,7 @@ function PlaylistDetailsPage() {
 
   return (
     <>
-      {length > 0 &&
+      {length > 0 ?
         <>
           <div className="playlist-details-page-outer">
             <div className="global-outerwrapper-wrapper ">
@@ -64,25 +64,23 @@ function PlaylistDetailsPage() {
             </div>
           </div>
         </>
-      }
-
-      {
-        // length === 0 && playlist && playlist.user && playlist.user.id && sessionUser && playlist.user.id === sessionUser.id &&
+        :
         <div >
-          <NavLink
-              className='you-no-likey-yet'
-              exact to='/feed'
-              >
-            <h3
-              style={{marginTop: '5rem'}}
+        <NavLink
+            className='you-no-likey-yet'
+            exact to='/feed'
             >
-            Oh wow, there aren't any songs here yet! Go find a song!
-            </h3>
+          <h3
+            style={{marginTop: '5rem'}}
+          >
+          Oh wow, there aren't any songs here yet! Go find a song!
+          </h3>
 
 
-          </NavLink>
-        </div>
+        </NavLink>
+      </div>
       }
+
 
       {
         // length === 0 && playlist && playlist.user && playlist.user.id && sessionUser && playlist.user.id !== sessionUser.id &&

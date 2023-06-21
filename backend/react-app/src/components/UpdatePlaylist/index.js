@@ -177,8 +177,11 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 <h5 style={{ fontSize: '12px', color: 'red' }} >*</h5>
                                 <h5>Required fields</h5>
                             </div> */}
-                            <div className='upload-song-form-bottom-bar-button-div'>
-                                <button type='submit'>Save</button>
+                            <div className='upload-song-form-bottom-bar-button-div'
+                                type='submit' 
+                            >
+                                <button
+                                >Save</button>
                             </div>
                         </div>
                     </div>

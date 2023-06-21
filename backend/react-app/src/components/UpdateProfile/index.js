@@ -191,13 +191,17 @@ const UpdateProfile = () => {
                         <div className='update-profile-bottom-bar-button-div'>
                             <button
                                 className='update-profile-bottom-bar-cancel'
-                                onClick={cancelHandler}>
+                                onClick={cancelHandler}
+                                style={{cursor: 'pointer'}}
+                                >
                                 Cancel
                             </button>
                             <button
                                 className='update-profile-bottom-bar-save'
                                 onClick={submitHandler}
-                                type='submit'>
+                                type='submit'
+                                style={{cursor: 'pointer'}}
+                                >
                                 Save
                             </button>
                         </div>

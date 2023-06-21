@@ -180,3 +180,7 @@
 .profile-songs-link:hover {
     color: #555;
 }
+
+.activated-profile {
+    border-bottom: 3px solid black;
+}

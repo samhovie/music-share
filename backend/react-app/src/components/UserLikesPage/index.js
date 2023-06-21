@@ -62,15 +62,22 @@ const UserLikesPage = () => {
             </div>
         </>
         :
-        <div>
+
+
+        <div
+        className='user-likes-page-top'
+        style={{paddingTop: '10rem'}}
+        >
             <NavLink
             className='you-no-likey-yet'
-            exact to='/feed'>
+            exact to='/feed'
+            >
 
-                Oh wow, you haven't liked anything yet! Go like something now!
+                Oh wow, you haven't liked anything yet! Go and like something now!
 
             </NavLink>
         </div>
+
         }
 
         </>

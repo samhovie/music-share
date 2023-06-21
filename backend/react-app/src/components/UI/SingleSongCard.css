@@ -1,6 +1,6 @@
 .single-song-card-wrapper {
     display: flex;
-    width: 40rem;
+    width: 50rem;
     height: 12rem;
     background-color: antiquewhite;
     padding: 2rem;
@@ -77,6 +77,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    width: 40rem;
     /* border: 1px solid black; */
 }
 
@@ -110,7 +111,10 @@
     border-style: none;
     border-radius: 5px;
     border: 1px solid darkgreen;
-    background-color: rgb(36, 105, 82);
+    /* background-color: rgb(36, 105, 82); */
+    background-color: aquamarine;
+    color: black;
+    font-weight: bold;
     font-size: 1rem;
     padding: 5px 1rem;
     font-family: 'Courier New', Courier, monospace;

@@ -10,12 +10,15 @@ import './PlaylistDetailsPage.css';
 function PlaylistDetailsPage() {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
+  const sessionUser = useSelector(state => state.session.user)
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
+
   // const sessionUser = useSelector((state) => state.session.user);
   // const owner = playlist.user && playlist.user.id;
   // const current_user = sessionUser.id;
   const owner_username = playlist.user && playlist.user.username;
   const playlistSong = useSelector((state) => state.playlists.singlePlaylist.song)
+
   const length = playlistSong?.length
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function PlaylistDetailsPage() {
 
   return (
     <>
-      {length > 0 ?
+      {length > 0 &&
         <>
           <div className="playlist-details-page-outer">
             <div className="global-outerwrapper-wrapper ">
@@ -61,7 +64,10 @@ function PlaylistDetailsPage() {
             </div>
           </div>
         </>
-        :
+      }
+
+      {
+        // length === 0 && playlist && playlist.user && playlist.user.id && sessionUser && playlist.user.id === sessionUser.id &&
         <div >
           <NavLink
               className='you-no-likey-yet'
@@ -70,13 +76,29 @@ function PlaylistDetailsPage() {
             <h3
               style={{marginTop: '5rem'}}
             >
-            Oh wow, you haven't added any songs yet! Go find a song to add now!
+            Oh wow, there aren't any songs here yet! Go find a song!
             </h3>
 
 
           </NavLink>
         </div>
       }
+
+      {
+        // length === 0 && playlist && playlist.user && playlist.user.id && sessionUser && playlist.user.id !== sessionUser.id &&
+        // <NavLink
+        // >
+        //   style={{marginTop: '5rem', color: 'black'}}
+
+        // <h3 className='you-no-likey-yet'
+
+
+        // >
+        //   This owner's playlist is empty. Check out other playlists!
+        // </h3>
+        // </NavLink>
+      }
+
 
     </>
   )

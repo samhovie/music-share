@@ -81,14 +81,14 @@ const GetLikes = ({songId, song, allLikes, sessionUser, likesHandler2, unlikeHan
                 <div onClick={likesHandler2}
                     className='likes-unlikes-handler'
                 >
-                  <i className="fa-solid fa-heart" style={{ color: 'maroon' }}></i>
+                  <i className="fa-solid fa-heart" style={{ color: 'black' }}></i>
                   {`${song.likes}`} Like
                 </div>
               ) : (
                 <div onClick={unlikeHandler2}
                 className='likes-unlikes-handler'
                 >
-                  <i className="fa-solid fa-heart" style={{ color: 'yellow' }}></i>
+                  <i className="fa-solid fa-heart" style={{ color: 'darkgreen' }}></i>
                   {`${song.likes}`} Unlike
                 </div>
               )}

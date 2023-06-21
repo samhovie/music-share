@@ -39,6 +39,8 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                 {/* this is hardcoded, change later */}
                 {`${playlist.name}`}
             </div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
             {current_user === owner && (
                 < div>
                     <OpenModalButton
@@ -54,6 +56,7 @@ const PlaylistCard = ({ playlist, playlistSong }) => {
                         modalComponent={<UpdatePlaylistForm playlistId={playlist.id} />} />
                 </div>
             )}
+            </div>
         </div >
     )
 }

@@ -69,8 +69,6 @@ def update_playlist(id):
             return {"errors": "nacho playlist"}
 
 
-        print('FOOOORRMM', form.data)
-        print('pllaaaaylist', playlist.to_dict())
         # print('REQUEST', request.files.keys)
         # preview_img_file = request.files["preview_img"]
         # preview_img_file.filename = get_unique_filename(
@@ -97,7 +95,7 @@ def update_playlist(id):
         db.session.add(playlist)
         db.session.commit()
 
-        print('PLAAAYLIST AFTER COMMIT', playlist.to_dict())
+       
         return playlist.to_dict()
 
     return {"errors": form.errors}

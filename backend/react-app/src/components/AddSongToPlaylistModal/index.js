@@ -24,7 +24,6 @@ function AddSongToPlaylistModal({ songId }) {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log('SELECTED', selectedPlaylist)
     }, [selectedPlaylist])
 
     const handleSubmit = (event) => {

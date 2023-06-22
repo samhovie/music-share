@@ -30,7 +30,6 @@ const UpdateSongForm = ({ song }) => {
 
         const formData = new FormData();
         formData.append('id', song.id)
-        console.log(song.id)
         formData.append('name', name);
         formData.append('artist_name', artist_name);
         formData.append('genre', genre);

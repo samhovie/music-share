@@ -52,9 +52,9 @@ const SongUpload = () => {
             setIsFetching(true);
            await dispatch(createSongThunk(formData))
 
-            setTimeout(function () {
+            // setTimeout(function () {
                 setIsFetching(false);
-            }, 5000);
+            // }, 5000);
             history.push('/songs/current')
         }
     }

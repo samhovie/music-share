@@ -33,6 +33,8 @@
   /* background-color: darkslategray; */
   background-color: black;
   height: 4rem;
+  position: fixed;
+  width: 100%;
   font-family: 'Courier New', Courier, monospace;
   /* position: fixed; */
   /* Added this */

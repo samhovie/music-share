@@ -5,6 +5,7 @@ import { getAllUsersThunk, getUserThunk, updateUserThunk } from '../../store/use
 import { useModal } from '../../context/Modal'
 import { useHistory } from 'react-router-dom'
 import { authenticate } from '../../store/session'
+import Upload from '../UploadImg'
 
 const UpdateProfile = () => {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const UpdateProfile = () => {
     const [city, setCity] = useState(user.city)
     const [country, setCountry] = useState(user.country)
     const [bio, setBio] = useState(user.bio)
+    const [newProfile, setNewProfile] = useState('')
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
 
@@ -104,7 +106,7 @@ const UpdateProfile = () => {
 
                                     <label
                                         className='update-profile-form-label'
-                                        
+
                                     >
                                         First Name
                                         <input
@@ -137,6 +139,10 @@ const UpdateProfile = () => {
 
                                     {displayErr && err.lastName && <p style={{ color: 'red' }}>{err.lastName}</p>}
                                 </div>
+                                <label>
+                                    <span>Playlist Image:</span>
+                                    <Upload onChange={e => setNewProfile({ ...newProfile, profile_img_url: e.target.files[0] })} />
+                                </label>
                             </div>
                             {/* <div className='update-profile-form-double-div update-profile-form-location-div'>
                                 <label
@@ -202,6 +208,7 @@ const UpdateProfile = () => {
                             >
                                 Cancel
                             </button>
+
                             <button
                                 className='update-profile-bottom-bar-save'
                                 onClick={submitHandler}

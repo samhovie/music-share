@@ -1,12 +1,12 @@
-.global-outerwrapper-outer {
+.global-outerwrapper-outer2 {
     display: flex;
     font-family: 'Courier New', Courier, monospace;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     /* background-color: #E5F9DB; */
     /* background-color: black; */
     background-color: darkslategray;
-    min-height: 75rem;
+    min-height: 65rem;
     height: fit-content;
 }
 
@@ -17,8 +17,9 @@
     border-radius: 5px;
     padding-top: 2.5rem;
     width: 80rem;
-    min-height: 75rem;
+    min-height: 35rem;
     height: fit-content;
+    margin-top: 3rem;
 }
 
 .song-details-page-outer {

@@ -81,7 +81,7 @@ const SongDetailsPage = () => {
     return (
         <>
         {url && <Redirect to={url}/>}
-        <div className='global-outerwrapper-outer'>
+        <div className='global-outerwrapper-outer2'>
             <div className='global-outerwrapper-wrapper2'>
                 <div className='song-details-page-top'>
                     <SongDetailsCard song={song} />
@@ -89,7 +89,7 @@ const SongDetailsPage = () => {
                 <div className='song-details-page-bottom-wrapper'>
                     <div className='song-details-page-bottom'>
                         <div className='song-details-page-post-comment'>
-                            <div className='song-details-page-profile-pic'>
+                            {/* <div className='song-details-page-profile-pic'>
                                 <img alt ='' src={sessionUser.profile_pic || 'https://meshgradient.com/gallery/5.png'}></img>
                             </div>
                             <div className='song-details-page-comment-outer-wrapper'>
@@ -113,7 +113,7 @@ const SongDetailsPage = () => {
                                     </form>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                         <div className='song-details-page-bottom-bar'>
                             <div className='song-details-page-interactive-buttons'>
@@ -126,29 +126,28 @@ const SongDetailsPage = () => {
                                         unlikeHandler2={unlikeHandler2}
                                     />
                                 </div>
-                                <div className='song-details-page-interactive-buttons-add'>
-                                    {/* <button>
+                                {/* <div className='song-details-page-interactive-buttons-add'>
+                                    <button>
                                         Add To Playlist
-                                    </button> */}
-                                </div>
+                                    </button>
+                                </div> */}
                             </div>
-                            <div className='song-details-page-display-likes'>
-                                {/* <GetLikes songId = {songId}/> */}
-                            </div>
+                            {/* <div className='song-details-page-display-likes'>
+                                <GetLikes songId = {songId}/>
+                            </div> */}
                         </div>
-                        <div className='song-details-page-profile-comments'>
+                        {/* <div className='song-details-page-profile-comments'>
                             <ArtistDetails song={song}/>
                             <div className='song-details-page-display-comments-each'>
                                 <CommentComp />
                                 {comments.map(comment => {
-                                    // <CommentComp />
+
                                     return <CommentComp comment={comment}
                                                         commentId={comment.id}
                                     />
-                                    // <Comment {...comment}/>
                                 })}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

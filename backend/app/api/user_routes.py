@@ -48,9 +48,9 @@ def update_user(userId):
         user.display_name = form.data['display_name']
         user.first_name = form.data['first_name']
         user.last_name = form.data['last_name']
-        user.city = form.data['city']
-        user.country = form.data['country']
-        user.bio = form.data['bio']
+        user.city = 'AwesomeCity'
+        user.country = 'AwesomeCountry'
+        user.bio = 'AwesomeBio'
 
         db.session.commit()
 

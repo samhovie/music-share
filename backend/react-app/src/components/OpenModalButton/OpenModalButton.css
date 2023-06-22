@@ -6,6 +6,7 @@
     font-size: 1rem;
     padding: 5px 1rem;
     font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
 }
 .open-modal-button:hover {
     background-color: rgb(92, 199, 163);

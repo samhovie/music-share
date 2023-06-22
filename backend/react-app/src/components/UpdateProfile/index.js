@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
 import './UpdateProfile.css'
 import { useState, useEffect } from 'react'
-import { updateUserThunk } from '../../store/users'
+import { getAllUsersThunk, getUserThunk, updateUserThunk } from '../../store/users'
 import { useModal } from '../../context/Modal'
 import { useHistory } from 'react-router-dom'
+import { authenticate } from '../../store/session'
 
 const UpdateProfile = () => {
     const dispatch = useDispatch()
@@ -18,17 +19,16 @@ const UpdateProfile = () => {
     const [bio, setBio] = useState(user.bio)
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
-    // const [changed, setChanged] = useState(false)
 
     useEffect(() => {
         const errors = {}
         if (!displayName) errors.displayName = "Display name is required"
         if (!firstName) errors.firstName = "First name is required"
         if (!lastName) errors.lastName = "Last name is required"
-        if (!city) errors.city = "City is required"
-        if (!country) errors.country = "Country is required"
-        if (!bio) errors.bio = "Bio is required"
-        if (bio && bio.length > 200) errors.bio = "Bio is too long!"
+        // if (!city) errors.city = "City is required"
+        // if (!country) errors.country = "Country is required"
+        // if (!bio) errors.bio = "Bio is required"
+        // if (bio && bio.length > 200) errors.bio = "Bio is too long!"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [displayName, firstName, lastName, city, country, bio])
@@ -38,7 +38,7 @@ const UpdateProfile = () => {
 
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         //  ('HEY')
         e.preventDefault();
 
@@ -50,11 +50,13 @@ const UpdateProfile = () => {
         }
         else {
             const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
-            //  (newUser)
-            dispatch(updateUserThunk(newUser, user.id))
-            // setUrl(`/groups/${newGroup.id}`)
+
+            await dispatch(updateUserThunk(newUser, user.id))
+
+            await dispatch(authenticate())
             history.push(`/profile`)
         }
+
         closeModal()
     }
 
@@ -66,17 +68,13 @@ const UpdateProfile = () => {
                 <div className='update-profile-inner-wrapper'>
                     <div className='update-profile-title' >Edit your Profile</div>
                     <div className='update-profile-image-form'>
-                        <div className='update-profile-image'>
-                            <img alt='' src={`${user.profile_pic}`}></img>
-                            <ul>
-                            {displayErr && err.displayName && <li>{err.displayName}</li>}
-                            {displayErr && err.firstName && <li>{err.firstName}</li>}
-                            {displayErr && err.lastName && <li>{err.lastName}</li>}
-                            {displayErr && err.city && <li>{err.city}</li>}
-                            {displayErr && err.country && <li>{err.country}</li>}
-                            {displayErr && err.bio && <li>{err.bio}</li>}
+                        <div className='update-profile-image' >
+                            <img alt='' src={`${user.profile_pic || 'https://meshgradient.com/gallery/5.png'}`}></img>
 
-                            </ul>
+
+
+
+
 
 
                         </div>
@@ -100,37 +98,47 @@ const UpdateProfile = () => {
                                     onChange={(e) => setDisplayName(e.target.value)}
                                 />
                             </label>
+                            {displayErr && err.displayName && <p style={{ color: 'red' }}>{err.displayName} </p>}
                             <div className='update-profile-form-double-div update-profile-form-names-div' >
-                                <label
-                                    className='update-profile-form-label'
-                                >
-                                    First Name
-                                    <input
-                                        type="text"
-                                        name="firstName"
-                                        value={firstName}
-                                        placeholder="Enter your first name here"
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        className='update-profile-form-first-name update-profile-form-names-input'
-                                    />
+                                <div>
 
-                                </label>
-                                <label
-                                    className='update-profile-form-label'
-                                >
-                                    Last Name
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        value={lastName}
-                                        placeholder="Enter your last name here"
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        className='update-profile-form-first-name update-profile-form-names-input'
-                                    />
+                                    <label
+                                        className='update-profile-form-label'
+                                        
+                                    >
+                                        First Name
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            value={firstName}
+                                            placeholder="Enter your first name here"
+                                            onChange={(e) => setFirstName(e.target.value)}
+                                            className='update-profile-form-first-name update-profile-form-names-input'
+                                        />
 
-                                </label>
+                                    </label>
+                                    {displayErr && err.firstName && <p style={{ color: 'red' }}>{err.firstName}</p>}
+                                </div>
+                                <div>
+                                    <label
+                                        className='update-profile-form-label'
+                                    >
+                                        Last Name
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            value={lastName}
+                                            placeholder="Enter your last name here"
+                                            onChange={(e) => setLastName(e.target.value)}
+                                            className='update-profile-form-first-name update-profile-form-names-input'
+                                        />
+
+                                    </label>
+
+                                    {displayErr && err.lastName && <p style={{ color: 'red' }}>{err.lastName}</p>}
+                                </div>
                             </div>
-                            <div className='update-profile-form-double-div update-profile-form-location-div'>
+                            {/* <div className='update-profile-form-double-div update-profile-form-location-div'>
                                 <label
                                     className='update-profile-form-label'
                                 >
@@ -173,7 +181,7 @@ const UpdateProfile = () => {
                                 >
 
                                 </textarea>
-                            </label>
+                            </label> */}
 
 
                         </form>
@@ -189,13 +197,17 @@ const UpdateProfile = () => {
                         <div className='update-profile-bottom-bar-button-div'>
                             <button
                                 className='update-profile-bottom-bar-cancel'
-                                onClick={cancelHandler}>
+                                onClick={cancelHandler}
+                                style={{ cursor: 'pointer' }}
+                            >
                                 Cancel
                             </button>
                             <button
                                 className='update-profile-bottom-bar-save'
                                 onClick={submitHandler}
-                                type='submit'>
+                                type='submit'
+                                style={{ cursor: 'pointer' }}
+                            >
                                 Save
                             </button>
                         </div>

@@ -1,5 +1,5 @@
 .update-profile-outer-wrapper {
-    height: 35rem;
+    /* height: 35rem; */
     width: 55rem;
     padding: 2rem;
 }
@@ -26,8 +26,8 @@
 }
 
 .update-profile-image > img {
-    height: 18rem;
-    width: 18rem;
+    height: 10rem;
+    width: 10rem;
     border-radius: 150px;
 }
 
@@ -76,13 +76,17 @@
 }
 
 .update-profile-bottom-bar-save {
-    background-color: lightgreen;
+    background-color: aquamarine;
     border-radius: 4px;
-    color: white;
+    color: black;
     font-size: 15px;
     padding: 3px 10px;
     /* display: flex; */
     /* justify-content: center; */
+}
+
+.update-profile-bottom-bar-save:hover {
+    background-color: aqua;
 }
 
 .profile-page-buttons {

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { deleteSongThunk } from "../../store/songs"
+import { deleteSongThunk, getAllSongsThunk } from "../../store/songs"
 import { useModal } from "../../context/Modal"
 import { useHistory } from "react-router-dom"
 import './ConfirmDelete.css'
@@ -9,9 +9,11 @@ const ConfirmDelete = ({ songId }) => {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
 
-    const deleteClick = (e) => {
-        dispatch(deleteSongThunk(songId))
-        history.push('/profile')
+    const deleteClick = async (e) => {
+        e.preventDefault()
+        await dispatch(deleteSongThunk(songId))
+        // history.push('/profile')
+        await dispatch(getAllSongsThunk())
         closeModal()
     }
 

@@ -49,8 +49,8 @@ function Navigation({ isLoaded }) {
 							<div className='navbar-home-feed-library-home navbar-all-three'>
 
 								<NavLink exact to='/discover'
+								className='navlink'
 
-									style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
 								>
 									Home
 								</NavLink>
@@ -59,7 +59,7 @@ function Navigation({ isLoaded }) {
 							>
 								{sessionUser ?
 									<NavLink exact to='/feed'
-										style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
+									className='navlink'
 									>Feed</NavLink> :
 									<OpenModalButton
 										buttonText="Feed"
@@ -70,7 +70,7 @@ function Navigation({ isLoaded }) {
 								}
 							</div>
 							<div onClick={() => alertClickHandler()} className='navbar-home-feed-library-library navbar-all-three'>
-								<div style={{ display: 'flex', alignItems: 'center' }}>
+								<div style={{ display: 'flex', alignItems: 'center', color: 'white' }}>
 									Library
 
 								</div>
@@ -102,7 +102,7 @@ function Navigation({ isLoaded }) {
 									{sessionUser ?
 										<NavLink
 											to='/upload'
-											style={{ textDecoration: 'none', color: 'white' }}>
+											className='navlink'>
 											Upload
 										</NavLink> :
 										<OpenModalButton

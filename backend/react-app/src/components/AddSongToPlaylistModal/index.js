@@ -24,16 +24,15 @@ function AddSongToPlaylistModal({ songId }) {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log('SELECTED', selectedPlaylist)
     }, [selectedPlaylist])
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const createdPlaylist = dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
+        dispatch(addSongToPlaylistThunk(selectedPlaylist, songId));
         closeModal();
-        if (createdPlaylist) {
-            history.push("/playlists/current");
-        }
+        // if (createdPlaylist) {
+        //     history.push("/playlists/current");
+        // }
     };
 
     return (

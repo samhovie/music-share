@@ -63,7 +63,6 @@ export const getSongThunk = (id) => async (dispatch) => {
 }
 
 export const createSongThunk = (song) => async (dispatch) => {
-
 	const response = await fetch('/api/songs/new', {
 		method: 'POST',
 		body: song
@@ -133,7 +132,8 @@ export default function songsReducer(state = initialState, action) {
 		case CREATE_SONG:
 			//  ("STATEEEE", state)
 			//  ("ACTIONNN", action)
-			newState = { ...state, singleSong: { ...action.singleSong } }
+			newState = { ...state }
+			newState.allSongs[action.song.id] = { ...action.song };
 			return newState
 		case UPDATE_SONG:
 			newState = {
@@ -144,16 +144,8 @@ export default function songsReducer(state = initialState, action) {
 			};
 			newState.allSongs[action.song.id] = action.song;
 			return newState;
-		// newState = { ...state, allSongs: { ...state.allSongs, [action.song.id]: {
-		// 		...state.allSongs[action.song.id],
-		// 		...action.song,
-		// 	  },
-		// 	},
-		//   };
-		//   newState = { ...state, single}
-		//   return newState
 		case DELETE_SONG:
-			newState = { ...state, allSongs: { ...state.allSongs } }
+			newState = { ...state }
 			delete newState.allSongs[action.songId]
 			return newState
 

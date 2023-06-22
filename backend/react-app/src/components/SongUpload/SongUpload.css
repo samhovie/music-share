@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.errors {
+    color: red;
+    font-weight: 500;
+}
+
 .upload-song-inner-wrapper {
     height: 55rem;
     width: 40rem;
@@ -24,6 +29,8 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    align-items: flex-start;
+
 }
 
 .upload-song-form-upload {
@@ -43,6 +50,7 @@
 } */
 
 .upload-song-form-info {
+    padding-top: 35px;
     height: 100%;
     width: 100%;
 }
@@ -75,12 +83,11 @@
     justify-content: space-between;
 }
 
-.upload-song-form-bottom-bar > div > h5 {
-}
 
 .upload-song-form-bottom-bar-button-div {
     display: flex;
     align-items: center;
+    margin-right: 15px;
 }
 
 .upload-song-form-bottom-bar-button-div > button {

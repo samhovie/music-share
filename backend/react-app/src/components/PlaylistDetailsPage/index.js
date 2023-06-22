@@ -10,12 +10,15 @@ import './PlaylistDetailsPage.css';
 function PlaylistDetailsPage() {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
+  const sessionUser = useSelector(state => state.session.user)
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
+
   // const sessionUser = useSelector((state) => state.session.user);
   // const owner = playlist.user && playlist.user.id;
   // const current_user = sessionUser.id;
   const owner_username = playlist.user && playlist.user.username;
   const playlistSong = useSelector((state) => state.playlists.singlePlaylist.song)
+
   const length = playlistSong?.length
 
   useEffect(() => {
@@ -52,7 +55,7 @@ function PlaylistDetailsPage() {
                 <div className="playlist-details-page-profile-songs">
                   <div className="playlist-details-page-song-list">
                     {playlist.song?.map((s) => (
-                      <SingleSongCard key={s.id} song={s} />
+                      <SingleSongCard key={s.id} song={s} playlist={true} />
                     ))}
                   </div>
                 </div>
@@ -63,20 +66,37 @@ function PlaylistDetailsPage() {
         </>
         :
         <div >
-          <NavLink
-              className='you-no-likey-yet'
-              exact to='/feed'
-              >
-            <h3
-              style={{marginTop: '5rem'}}
+        <NavLink
+            className='you-no-likey-yet'
+            exact to='/feed'
             >
-            Oh wow, you haven't added any songs yet! Go find a song to add now!
-            </h3>
+          <h3
+            style={{marginTop: '5rem'}}
+          >
+          Oh wow, there aren't any songs here yet! Go find a song!
+          </h3>
 
 
-          </NavLink>
-        </div>
+        </NavLink>
+      </div>
       }
+
+
+      {
+        // length === 0 && playlist && playlist.user && playlist.user.id && sessionUser && playlist.user.id !== sessionUser.id &&
+        // <NavLink
+        // >
+        //   style={{marginTop: '5rem', color: 'black'}}
+
+        // <h3 className='you-no-likey-yet'
+
+
+        // >
+        //   This owner's playlist is empty. Check out other playlists!
+        // </h3>
+        // </NavLink>
+      }
+
 
     </>
   )

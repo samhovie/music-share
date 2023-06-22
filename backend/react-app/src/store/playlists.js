@@ -134,7 +134,6 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
 
 export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispatch) => {
 
-
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',
         body: updatedPlaylist,
@@ -206,13 +205,24 @@ export default function playlistsReducer(state = initialState, action) {
         case UPDATE_PLAYLIST: {
             newState = {
                 ...state,
-                singlePlaylist: {
-                    ...state.singlePlaylist,
-                },
+                singlePlaylist: action.playlist,  // update the singlePlaylist
+                allPlaylists: {
+                    ...state.allPlaylists,
+                    [action.playlist.id]: action.playlist  // update the relevant playlist in allPlaylists
+                }
             };
-            newState[action.playlist.id] = action.playlist;
             return newState;
         }
+        // case UPDATE_PLAYLIST: {
+        //     newState = {
+        //         ...state,
+        //         singlePlaylist: {
+        //             ...state.singlePlaylist,
+        //         },
+        //     };
+        //     newState[action.playlist.id] = action.playlist;
+        //     return newState;
+        // }
         //  ("STATEEEE", state)
         //  ("ACTIONNN", action)
         // newState = { ...state, singlePlaylist: { ...action.singlePlaylist } }

@@ -133,10 +133,14 @@ const initialState = { allUsers: {}, singleUser: {} }
 export default function usersReducer(state = initialState, action) {
 	let newState;
 	switch (action.type) {
+		// case GET_ALLUSERS:
+		// 	newState = { ...state, allUsers: { ...action.allUsers } }
+		// 	action.users.users.forEach(user => newState.allUsers[user.id] = user)
+		// 	return newState
 		case GET_ALLUSERS:
-			newState = { ...state, allUsers: { ...action.allUsers } }
+			newState = { ...state };
 			action.users.users.forEach(user => newState.allUsers[user.id] = user)
-			return newState
+			return newState;
 		case GET_USER:
 			//  ("ACTIONN ", action)
 			newState = { ...state, singleUser: { ...action.user } }
@@ -147,13 +151,18 @@ export default function usersReducer(state = initialState, action) {
 		// 	//  ("ACTIONNN", action)
 		// 	newState = { ...state, singleUser: {...action.singleUser}}
 		// 	return newState
+		// case UPDATE_USER:
+		//  (action)
+		// newState = {...state, singleUser: {...state.singleUser}}
+		// newState.singleUser[action.user.id] = action.user
+		// return newState
+		// newState = { ...state, singleUser: action.user }
 		case UPDATE_USER:
-			//  (action)
-			// newState = {...state, singleUser: {...state.singleUser}}
-			// newState.singleUser[action.user.id] = action.user
+			newState = { ...state, allUsers: { ...state.allUsers } }
+			newState.singleUser = action.user;
+			newState.allUsers[action.user.id] = action.user;
+			return newState;
 			// return newState
-			newState = { ...state, singleUser: action.user }
-			return newState
 		case DELETE_USER:
 			newState = { ...state, allUsers: { ...state.allUsers } }
 			delete newState.allUsers[action.userId]

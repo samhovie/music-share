@@ -137,16 +137,10 @@ const SingleSongCard = ({
                         {/* </div> */}
                     </div>
                     <div className="single-song-card-info-soundwave">
-                        {/* <p>
-                            -------------------------------------------------------------
-                        </p> */}
-                        {/* <img
-                            alt=""
-                            style={{ width: "52rem" }}
-                            src="https://media.istockphoto.com/id/1176100626/vector/sound-waves-motion-sound-wave-abstract-background.jpg?s=612x612&w=0&k=20&c=EypnQvOtttmj_5JCKkcWy_ul0mS1g3j6md9zamNpmRA="
-                        ></img> */}
-                    </div>
-                    <div className="single-song-card-info-comment">
+
+                        <img className="soundwave" src={(isPlaying && url === song.mp3_file) ? 'https://livebnbbucket.s3.amazonaws.com/soundslow.gif' : 'https://livebnbbucket.s3.amazonaws.com/soundframe.jpg'}></img>
+                         </div>
+                    {/* <div className="single-song-card-info-comment"> */}
                         {/* <form
                             action={`/api/comments/:songId`}
                             method="POST"
@@ -166,7 +160,7 @@ const SingleSongCard = ({
                             // style={{display: 'none'}}
                             />
                         </form> */}
-                    </div>
+                    {/* </div> */}
                     <div className="single-song-card-info-bottom">
                         <div className="single-song-card-info-bottom-left-column">
                             {!isUserLikesPage && (

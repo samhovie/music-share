@@ -2,7 +2,7 @@
     display: flex;
     width: 50rem;
     height: 12rem;
-    background-color: antiquewhite;
+    background-color: #faebd7;
     padding: 2rem;
     padding-bottom: 0;
     border-radius: 5px;
@@ -10,6 +10,22 @@
     margin-bottom: 1rem;
     border: 4px solid aquamarine
 }
+
+.single-song-card-info-soundwave > img {
+    display: flex;
+    /* padding-top: 25px; */
+    width: 40%;
+    max-height: 5.5rem;
+    border-radius: 20px;
+    /* content: url('https://livebnbbucket.s3.amazonaws.com/soundframe.jpg') */
+}
+
+/* .single-song-card-info-soundwave > img.selected {
+    content: url('https://livebnbbucket.s3.amazonaws.com/soundslow.gif')
+} */
+
+
+
 
 /*
 .single-song-card-image > img {

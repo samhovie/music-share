@@ -7,13 +7,6 @@
     padding: 2rem;
 }
 
-.single-song-card-info-soundwave > img {
-    display: flex;
-    padding-top: 25px;
-    width: 60rem;
-    max-height: 2.5rem;
-    border-radius: 20px;
-}
 
 .you-no-likey-yet {
     display: flex;

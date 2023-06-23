@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { createPlaylistThunk } from '../../store/playlists';
+import { createPlaylistThunk, getAllPlaylistsThunk } from '../../store/playlists';
 import Upload from '../UploadImg';
 import './CreateNewPlaylist.css';
 import { useModal } from '../../context/Modal';
@@ -61,6 +61,7 @@ function CreatePlaylistForm() {
             // const playlistData =
 
             await dispatch(createPlaylistThunk(formData));
+            await dispatch(getAllPlaylistsThunk());
             // if (playlistData && playlistData.id) {
                 closeModal();
                 // history.push(`/playlists/current`)

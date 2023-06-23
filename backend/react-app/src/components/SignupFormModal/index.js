@@ -39,7 +39,7 @@ function SignupFormModal() {
 		}
 		else {
 			// const newUser = await dispatch(signUp(username, email, password))
-			history.push('/profile')
+			history.push('/discover')
 			// setUrl(`/groups/${newGroup.id}`)
 			closeModal()
 		}

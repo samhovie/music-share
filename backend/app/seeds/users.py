@@ -53,9 +53,9 @@ def seed_playlist_songs_users_likes():
     song12 = Song(
         name="Never Stopping at All", artist_name="Sweet Dove", artist_id=5, mp3_file="https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3", genre="Instrumental", preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today())
 
-    song1 = Song(
-        name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Alternative",  preview_img='https://music-share-rhinos.s3.amazonaws.com/105e2f0d9c9e4dfcb42679bfa45600b4.jpeg', created_at=date.today(), updated_at=date.today()
-    )
+    # song1 = Song(
+    #     name="Karma Police", artist_name="Quentin", artist_id=1, mp3_file="https://music-share-rhinos.s3.amazonaws.com/5dddb1fd62e04d778c3b9535bbf99d4e.mp3", genre="Alternative",  preview_img='https://music-share-rhinos.s3.amazonaws.com/105e2f0d9c9e4dfcb42679bfa45600b4.jpeg', created_at=date.today(), updated_at=date.today()
+    # )
     song2 = Song(
         name="Karma", artist_name="Efren", artist_id=2, mp3_file="https://music-share-rhinos.s3.amazonaws.com/2fb643da89734ec7a9d810e261a2dc59.mp3", genre="Rock",  preview_img='https://e1.pxfuel.com/desktop-wallpaper/933/528/desktop-wallpaper-89-about-spotify-playlists-covers-aesthetic-playlist-covers.jpg', created_at=date.today(), updated_at=date.today()
     )
@@ -79,7 +79,7 @@ def seed_playlist_songs_users_likes():
         name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", preview_img="https://e1.pxfuel.com/desktop-wallpaper/59/542/desktop-wallpaper-aesthetic-music-playlist-covers-spotify-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
 
 
-    db.session.add(song1)
+    # db.session.add(song1)
     db.session.add(song2)
     db.session.add(song3)
     db.session.add(song4)

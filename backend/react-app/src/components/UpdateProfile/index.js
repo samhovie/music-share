@@ -37,6 +37,7 @@ const UpdateProfile = () => {
         if (!newProfile.displayName) errors.displayName = "Display name is required"
         if (!newProfile.firstName) errors.firstName = "First name is required"
         if (!newProfile.lastName) errors.lastName = "Last name is required"
+        if (!newProfile.profile_pic) errors.profile_pic = "Pic is required"
         // if (!city) errors.city = "City is required"
         // if (!country) errors.country = "Country is required"
         // if (!bio) errors.bio = "Bio is required"
@@ -157,11 +158,12 @@ const UpdateProfile = () => {
 
                                     {displayErr && err.lastName && <p style={{ color: 'red' }}>{err.lastName}</p>}
                                 </div>
+                            </div>
                                 <label>
                                     <span>Profile Image:</span>
                                     <Upload onChange={e => setNewProfile({...newProfile, profile_pic: e.target.files[0]})} />
                                 </label>
-                            </div>
+                                {displayErr && err.profile_pic && <p style={{ color: 'red' }}>{err.profile_pic}</p>}
                             {/* <div className='update-profile-form-double-div update-profile-form-location-div'>
                                 <label
                                     className='update-profile-form-label'

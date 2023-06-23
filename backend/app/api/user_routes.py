@@ -49,19 +49,23 @@ def update_user(userId):
 
         # print('ROOOFILE', profile_img_url)
         if "url" not in profile_img_upload:
-            return profile_img_upload, 400
-
+            # return profile_img_upload, 400
+            user.display_name = form.data['display_name']
+            user.first_name = form.data['first_name']
+            user.last_name = form.data['last_name']
+        else:
+            profile_img_url = profile_img_upload["url"]
+            user.display_name = form.data['display_name']
+            user.first_name = form.data['first_name']
+            user.last_name = form.data['last_name']
+            user.profile_pic = profile_img_url
         # if not user:
         #     return {"errors": "user doesn't exist"}
 
         # elif user.id != current_user.id:
         #     return {"errors": "not your account"}
 
-        profile_img_url = profile_img_upload["url"]
-        user.display_name = form.data['display_name']
-        user.first_name = form.data['first_name']
-        user.last_name = form.data['last_name']
-        user.profile_pic = profile_img_url
+
         # user.city = 'AwesomeCity'
         # user.country = 'AwesomeCountry'
         # user.bio = 'AwesomeBio'

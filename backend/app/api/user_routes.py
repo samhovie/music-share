@@ -47,23 +47,24 @@ def update_user(userId):
         )
         profile_img_upload = upload_file_to_s3(profile_file)
 
+        # print('ROOOFILE', profile_img_url)
         if "url" not in profile_img_upload:
             return profile_img_upload, 400
 
-        if not user:
-            return {"errors": "user doesn't exist"}
+        # if not user:
+        #     return {"errors": "user doesn't exist"}
 
-        elif user.id != current_user.id:
-            return {"errors": "not your account"}
+        # elif user.id != current_user.id:
+        #     return {"errors": "not your account"}
 
         profile_img_url = profile_img_upload["url"]
         user.display_name = form.data['display_name']
         user.first_name = form.data['first_name']
         user.last_name = form.data['last_name']
         user.profile_pic = profile_img_url
-        user.city = 'AwesomeCity'
-        user.country = 'AwesomeCountry'
-        user.bio = 'AwesomeBio'
+        # user.city = 'AwesomeCity'
+        # user.country = 'AwesomeCountry'
+        # user.bio = 'AwesomeBio'
 
         db.session.commit()
 

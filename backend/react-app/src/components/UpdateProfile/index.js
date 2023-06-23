@@ -18,22 +18,32 @@ const UpdateProfile = () => {
     const [city, setCity] = useState(user.city)
     const [country, setCountry] = useState(user.country)
     const [bio, setBio] = useState(user.bio)
-    const [newProfile, setNewProfile] = useState('')
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
+    const [newProfile, setNewProfile] = useState({
+        displayName: user.display_name,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        profile_pic: ''
+    })
+
+    useEffect(() => {
+        console.log('NEEEWW', newProfile)
+    },[newProfile])
+
 
     useEffect(() => {
         const errors = {}
-        if (!displayName) errors.displayName = "Display name is required"
-        if (!firstName) errors.firstName = "First name is required"
-        if (!lastName) errors.lastName = "Last name is required"
+        if (!newProfile.displayName) errors.displayName = "Display name is required"
+        if (!newProfile.firstName) errors.firstName = "First name is required"
+        if (!newProfile.lastName) errors.lastName = "Last name is required"
         // if (!city) errors.city = "City is required"
         // if (!country) errors.country = "Country is required"
         // if (!bio) errors.bio = "Bio is required"
         // if (bio && bio.length > 200) errors.bio = "Bio is too long!"
         // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
-    }, [displayName, firstName, lastName, city, country, bio])
+    }, [newProfile])
 
     const cancelHandler = () => {
         closeModal()
@@ -51,9 +61,17 @@ const UpdateProfile = () => {
             return
         }
         else {
-            const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio }
-
-            await dispatch(updateUserThunk(newUser, user.id))
+            // const newUser = { display_name: displayName, first_name: firstName, last_name: lastName, city: city, country: country, bio: bio,  }
+            const formData = new FormData()
+            formData.append('display_name', newProfile.displayName)
+            formData.append('first_name', newProfile.firstName)
+            formData.append('last_name', newProfile.lastName)
+            formData.append('profile_pic', newProfile.profile_pic)
+            console.log('FOOOOORMDATA', formData)
+            for (let [key, value] of formData.entries()) {
+                console.log('KKKKVVVV',key, value);
+            }
+            await dispatch(updateUserThunk(formData, user.id))
 
             await dispatch(authenticate())
             history.push(`/profile`)
@@ -83,7 +101,7 @@ const UpdateProfile = () => {
 
                         <form
                             className='update-profile-form'
-                            action={`/ api / users / ${user.id}`}
+                            // action={`/ api / users / ${user.id}`}
                             method="PUT"
                             encType="multipart/form-data"
                             onSubmit={submitHandler}
@@ -95,9 +113,9 @@ const UpdateProfile = () => {
                                 <input
                                     type="text"
                                     name="displayName"
-                                    value={displayName}
+                                    value={newProfile.displayName}
                                     placeholder="Enter a display name here"
-                                    onChange={(e) => setDisplayName(e.target.value)}
+                                    onChange={(e) => setNewProfile({...newProfile, displayName: e.target.value})}
                                 />
                             </label>
                             {displayErr && err.displayName && <p style={{ color: 'red' }}>{err.displayName} </p>}
@@ -112,9 +130,9 @@ const UpdateProfile = () => {
                                         <input
                                             type="text"
                                             name="firstName"
-                                            value={firstName}
+                                            value={newProfile.firstName}
                                             placeholder="Enter your first name here"
-                                            onChange={(e) => setFirstName(e.target.value)}
+                                            onChange={(e) => setNewProfile({...newProfile, firstName: e.target.value})}
                                             className='update-profile-form-first-name update-profile-form-names-input'
                                         />
 
@@ -129,9 +147,9 @@ const UpdateProfile = () => {
                                         <input
                                             type="text"
                                             name="lastName"
-                                            value={lastName}
+                                            value={newProfile.lastName}
                                             placeholder="Enter your last name here"
-                                            onChange={(e) => setLastName(e.target.value)}
+                                            onChange={(e) => setNewProfile({...newProfile, lastName: e.target.value})}
                                             className='update-profile-form-first-name update-profile-form-names-input'
                                         />
 
@@ -140,8 +158,8 @@ const UpdateProfile = () => {
                                     {displayErr && err.lastName && <p style={{ color: 'red' }}>{err.lastName}</p>}
                                 </div>
                                 <label>
-                                    <span>Playlist Image:</span>
-                                    <Upload onChange={e => setNewProfile({ ...newProfile, profile_img_url: e.target.files[0] })} />
+                                    <span>Profile Image:</span>
+                                    <Upload onChange={e => setNewProfile({...newProfile, profile_pic: e.target.files[0]})} />
                                 </label>
                             </div>
                             {/* <div className='update-profile-form-double-div update-profile-form-location-div'>

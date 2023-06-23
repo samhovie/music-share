@@ -41,7 +41,7 @@ def create_playlist():
         preview_img_url = preview_img_upload["url"]
         new_playlist = Playlist(
             name=form.data['name'],
-            # public=True,
+            public=True,
             description=form.data['description'],
             user_id=current_user.id,
             preview_img=preview_img_url,

@@ -14,7 +14,7 @@ function CreatePlaylistForm() {
 
     const [newPlaylist, setNewPlaylist] = useState({
         name: "",
-        is_public: true,
+        // is_public: true,
         description: "",
         preview_img: ""
     });
@@ -54,22 +54,27 @@ function CreatePlaylistForm() {
         } else {
             const formData = new FormData();
             formData.append('name', newPlaylist.name);
-            formData.append('is_public', newPlaylist.is_public);
+            // formData.append('is_public', newPlaylist.is_public);
             formData.append('description', newPlaylist.description);
             formData.append('preview_img', newPlaylist.preview_img);
 
-            const playlistData = await dispatch(createPlaylistThunk(formData));
-            if (playlistData && playlistData.id) {
+            // const playlistData =
+
+            await dispatch(createPlaylistThunk(formData));
+            // if (playlistData && playlistData.id) {
                 closeModal();
-                history.push(`/playlists/current`)
-            }
+                // history.push(`/playlists/current`)
+            // }
 
         }
 
     }
 
     return (
-        <form className="create-playlist-form" onSubmit={handleCreatePlaylist}>
+        <form className="create-playlist-form"
+        method="POST"
+        encType="multipart/form-data"
+        onSubmit={handleCreatePlaylist}>
                     {/* {errors.is_public && <p>{errors.is_public}</p>} */}
 
 

@@ -133,7 +133,7 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
 
 
 export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispatch) => {
-    console.log(updatedPlaylist)
+    // console.log(updatedPlaylist)
 
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',

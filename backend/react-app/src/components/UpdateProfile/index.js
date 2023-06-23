@@ -67,10 +67,10 @@ const UpdateProfile = () => {
             formData.append('first_name', newProfile.firstName)
             formData.append('last_name', newProfile.lastName)
             formData.append('profile_pic', newProfile.profile_pic)
-            console.log('FOOOOORMDATA', formData)
-            for (let [key, value] of formData.entries()) {
-                console.log('KKKKVVVV',key, value);
-            }
+            // console.log('FOOOOORMDATA', formData)
+            // for (let [key, value] of formData.entries()) {
+            //     console.log('KKKKVVVV',key, value);
+            // }
             await dispatch(updateUserThunk(formData, user.id))
 
             await dispatch(authenticate())

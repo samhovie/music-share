@@ -75,9 +75,9 @@ function App() {
             <Route exact path='/profile'>
               <ProfilePage />
             </Route>
-            <Route exact path="/playlists/current">
+            {/* <Route exact path="/playlists/current">
               <CurrentUserPlaylist />
-            </Route>
+            </Route> */}
             {/* <Route exact path="/all/current">
               <CurrentUserPlaylist />
               <CurrentUserSongs />
@@ -85,9 +85,9 @@ function App() {
             <Route exact path="/playlists/new">
               <CreatePlaylistForm />
             </Route>
-            <Route exact path="/songs/current">
+            {/* <Route exact path="/songs/current">
               <CurrentUserSongs />
-            </Route>
+            </Route> */}
             <Route exact path='/playlists/:playlistId'>
               <PlaylistDetailsPage />
             </Route>

@@ -28,7 +28,7 @@ def create_playlist():
     form = PlaylistForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
+    # print(form.data)
     if form.validate_on_submit():
         preview_img_file = request.files["preview_img"]
         preview_img_file.filename = get_unique_filename(
@@ -41,7 +41,7 @@ def create_playlist():
         preview_img_url = preview_img_upload["url"]
         new_playlist = Playlist(
             name=form.data['name'],
-            public=form.data['is_public'],
+            public=True,
             description=form.data['description'],
             user_id=current_user.id,
             preview_img=preview_img_url,
@@ -95,7 +95,7 @@ def update_playlist(id):
         db.session.add(playlist)
         db.session.commit()
 
-       
+
         return playlist.to_dict()
 
     return {"errors": form.errors}

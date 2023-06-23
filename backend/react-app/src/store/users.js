@@ -85,7 +85,7 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 	// formData.append('bio', user.bio)
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'PUT',
-		'Content-Type': 'multipart/form-data',
+		// 'Content-Type': 'multipart/form-data',
 		body: user
 	})
 	// console.log('USSER', response)

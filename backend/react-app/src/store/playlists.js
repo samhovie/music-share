@@ -118,6 +118,9 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
 export const createPlaylistThunk = (playlist) => async (dispatch) => {
     const response = await fetch('/api/playlists/new', { // Change to your appropriate endpoint
         method: 'POST',
+        headers: {
+            "Content-type": "multipart/form-data"
+        },
         body: playlist,
     });
 

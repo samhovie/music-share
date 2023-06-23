@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-// import { signUp } from "../../store/session";
+import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 
 function SignupFormModal() {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const history = useHistory()
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");

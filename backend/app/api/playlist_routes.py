@@ -36,7 +36,7 @@ def create_playlist():
         preview_img_upload = upload_file_to_s3(preview_img_file)
 
         if "url" not in preview_img_upload:
-            return preview_img_upload, 400
+            return preview_img_upload.errors, 400
 
         preview_img_url = preview_img_upload["url"]
         new_playlist = Playlist(

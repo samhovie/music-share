@@ -15,33 +15,39 @@ function SignupFormModal() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errs, setErrs] = useState([]);
-	const [displayErr, setDisplayErr] = useState(false)
+	const [hasSubmitted, setHasSubmitted] = useState(false);
 	const { closeModal } = useModal();
 
 	useEffect(() => {
-		const errors = {}
-		if (!username) errors.username = "Username is required"
-		if (username.length < 4) errors.usernameLengthSmall = "Username is under 4 characters"
-		if (username.length > 20) errors.usernameLengthLarge = "Username is over 20 characters"
-		if (!email.includes('@')) errors.email = "Invalid Email"
-		if (!password) errors.password = "Password is required"
-		if (confirmPassword !== password) errors.confirmPassword = 'Passwords must match'
+		const errors = []
+		if (!username) errors.push("Username is required")
+		if (username.length < 4) errors.push("Username is under 4 characters")
+		if (username.length > 20) errors.push("Username is over 20 characters")
+		if (!email.includes('@')) errors.push("Invalid Email")
+		if (!password) errors.push("Password is required")
+		if (confirmPassword !== password) errors.push('Passwords must match')
 		setErrs(errors)
 	}, [username, email, password, confirmPassword])
 
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		if (Object.keys(errs).length > 0) {
-			setDisplayErr(true)
 
+		if (errs.length > 0) {
+			setHasSubmitted(true)
 			return
 		}
 		else {
-			const newUser = await dispatch(signUp(username, email, password))
-			history.push('/discover')
-			// setUrl(`/groups/${newGroup.id}`)
-			closeModal()
+			const data = await dispatch(signUp(username, email, password))
+
+			if(data) {
+				setHasSubmitted(true)
+				setErrs(data.map(err => err.split(': ')[1]))
+			}
+			else {
+				history.push('/discover')
+				closeModal()
+			}
 		}
 	}
 
@@ -49,12 +55,12 @@ function SignupFormModal() {
 		<>
 			<div className="signup-modal-wrapper">
 				<h1 className="signup-modal-h1" >Sign Up</h1>
-				{displayErr === true && errs.email && (<div className="errors">· {errs.email}</div>)}
-				{displayErr === true && errs.username && (<div className="errors">· {errs.username}</div>)}
-				{displayErr === true && errs.usernameLengthSmall && (<div className="errors">· {errs.usernameLengthSmall}</div>)}
-				{displayErr === true && errs.usernameLengthLarge && (<div className="errors">· {errs.usernameLengthLarge}</div>)}
-				{displayErr === true && errs.password && (<div className="errors">· {errs.password}</div>)}
-				{displayErr === true && errs.confirmPassword && (<div className="errors">· {errs.confirmPassword}</div>)}
+
+				{hasSubmitted && errs.length > 0 && errs.map((err, i) =>
+					<div key={i} className="errors">· {err}</div>
+				)}
+
+
 				<div className="signup-modal-content">
 					<form
 						onSubmit={handleSubmit}

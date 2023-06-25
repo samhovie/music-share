@@ -26,8 +26,6 @@ function CreatePlaylistForm() {
     // }
     // useEffect(() => {
     //     const errors = {}
-    //     // console.log("TYPEOFFFFF", typeof(mp3_file))
-    //     // console.log("RIGHT UNDER", console.log(mp3_file))
 
     //     if (!newPlaylist.name) errors.name = "Name is required"
     //     if (!newPlaylist.is_public) errors.is_public = "Check is required"
@@ -41,8 +39,6 @@ function CreatePlaylistForm() {
         e.preventDefault();
 
         const errors = {}
-        // console.log("TYPEOFFFFF", typeof(mp3_file))
-        // console.log("RIGHT UNDER", console.log(mp3_file))
 
         if (!newPlaylist.name) errors.name = "Name is required"
         // if (!newPlaylist.is_public) errors.is_public = "Check is required"

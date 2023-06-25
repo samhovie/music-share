@@ -15,7 +15,6 @@ likes_routes = Blueprint('likes', __name__, url_prefix="/api/likes")
 @likes_routes.route('/')
 def get_all_song_likes():
     all_song_likes = db.session.query(song_like).all()
-    print(all_song_likes)
     return all_song_likes
 
 
@@ -39,19 +38,14 @@ def get_all_user_liked_songs():
     # songQuery = Song.query.get(id)
     # song = songQuery.to_dict()
     all_user_likes = db.session.query(song_like).filter(song_like.c.user_id == current_user_id).all()
-    print("all_user_likessssssssssssssss", all_user_likes)
     songIds = [a[1] for a in all_user_likes]
-    print("songIdssssssssssssssssssssss", songIds)
     # songs = [get_song(a) for a in songIds]
     songs = [Song.query.get(a).to_dict() for a in songIds]
-    # print("songsssssssssssssssssssssssssss", songs)
-    # return json.dumps(songs)
     return { 'userSongs': songs }
 
 # add a like to a song
 @likes_routes.route('/<int:songId>', methods = ['POST'])
 def add_like_to_song(songId):
-    print("CURRENT USER", current_user.id)
     # # currentUser's id -> user instance
     current_user_id = current_user.id
     user = User.query.get(current_user_id)

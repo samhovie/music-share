@@ -10,7 +10,6 @@ import './UpdatePlaylist.css'
 
 const UpdatePlaylistForm = ({ playlistId }) => {
     const singlePlaylist = useSelector((state) => state.playlists.allPlaylists[playlistId]);
-    // console.log('single playlist', singlePlaylist)
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
@@ -47,13 +46,8 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         }
     },[singlePlaylist])
 
-    // console.log('playlist id', playlistId)
-
     // useEffect(() => {
     //     const errors = {}
-    //     // console.log("TYPEOFFFFF", typeof(mp3_file))
-    //     // console.log("RIGHT UNDER", console.log(mp3_file))
-
     //     if (!name) errors.name = "Name is required"
     //     if (!is_public) errors.is_public = "Check is required"
     //     if (!description) errors.description = "Description is required"
@@ -66,8 +60,6 @@ const UpdatePlaylistForm = ({ playlistId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const errors = {}
-        // console.log("TYPEOFFFFF", typeof(mp3_file))
-        // console.log("RIGHT UNDER", console.log(mp3_file))
 
         if (!name) errors.name = "Name is required"
         // if (!is_public) errors.is_public = "Check is required"
@@ -178,7 +170,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
                                 <h5>Required fields</h5>
                             </div> */}
                             <div className='upload-song-form-bottom-bar-button-div'
-                                type='submit' 
+                                type='submit'
                             >
                                 <button
                                 >Save</button>

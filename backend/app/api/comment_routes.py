@@ -13,19 +13,15 @@ comment_routes = Blueprint('comments', __name__, url_prefix="/api/comments")
 
 @comment_routes.route('/<int:songId>')
 def get_song_comments(songId):
-    # print('REQUEST', request)
     comments = Comment.query.filter_by(song_id = songId).all()
     res = []
     for comment in comments:
         commenter = User.query.get(comment.user_id)
         comment = comment.to_dict()
         commenter = commenter.to_dict()
-        # print(commenter)
         comment['user_profile_pic'] = commenter['profile_pic']
         comment['username'] = commenter['username']
         res.append(comment)
-        # print("COMMMENT TOOO DICTT", comment)
-    # print(type(comments))
     # comments = json.dumps(comments)
     # comments = json.dumps(comments, default=lambda c : c.to_dict())
 
@@ -57,7 +53,6 @@ def post_comment(songId):
             song_id=songId,
             text=form.data['text']
         )
-        print(new_comment)
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict()

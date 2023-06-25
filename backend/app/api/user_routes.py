@@ -34,9 +34,7 @@ def user(id):
 
 @user_routes.route('/<int:userId>', methods=['PUT'])
 def update_user(userId):
-    # print("REQUEST.GETDATA", request.get_data)
     form = UserDetailsForm()
-    # print("REQUESTTT", request.headers)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -47,7 +45,6 @@ def update_user(userId):
         )
         profile_img_upload = upload_file_to_s3(profile_file)
 
-        # print('ROOOFILE', profile_img_url)
         if "url" not in profile_img_upload:
             # return profile_img_upload, 400
             user.display_name = form.data['display_name']

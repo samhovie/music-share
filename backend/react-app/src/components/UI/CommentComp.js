@@ -8,19 +8,7 @@ import DeleteCommentModal from '../DeleteCommentModal'
 import OpenModalButton from '../OpenModalButton'
 
 const CommentComp = ({ comment }) => {
-    // console.log("DOOM", comment)
-    // const dispatch = useDispatch()
-    // console.log('COMMENT', comment)
-    // const commentOwner = comment.user_id
-    // console.log(comment)
     const sessionUser = useSelector(state => state.session.user)
-    // const theComments = useSelector((state) => state.comments.allComments)
-    // const comments = Object.values(theComments)
-    // dispatch(getAllCommentsThunk(songId))
-
-    // useEffect(() => {
-    //     dispatch(getSongThunk())
-    // }, [dispatch])
 
     if (!comment) return null
     // if (!commentOwner) return null

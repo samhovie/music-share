@@ -18,7 +18,6 @@ playlist_routes = Blueprint('playlists', __name__, url_prefix="/api/playlists")
 
 @playlist_routes.route('/')
 def get_all_playlists():
-    print('YOOOOOOOOOOOOO', request)
     playlists = Playlist.query.all()
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
 
@@ -28,7 +27,6 @@ def create_playlist():
     form = PlaylistForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print(form.data)
     if form.validate_on_submit():
         preview_img_file = request.files["preview_img"]
         preview_img_file.filename = get_unique_filename(
@@ -69,7 +67,6 @@ def update_playlist(id):
             return {"errors": "nacho playlist"}
 
 
-        # print('REQUEST', request.files.keys)
         # preview_img_file = request.files["preview_img"]
         # preview_img_file.filename = get_unique_filename(
         #     preview_img_file.filename)
@@ -104,7 +101,6 @@ def update_playlist(id):
 @playlist_routes.route('/<int:id>', methods=['DELETE'])
 def delete_playlist(id):
     playlist = Playlist.query.get(id)
-    print(playlist)
     if playlist.user_id != current_user.id:
         return {"errors": 'nacho playlist'}
     else:
@@ -156,5 +152,4 @@ def add_song_to_playlist(playlist_id, song_id):
 @login_required
 def get_current_user_playlists():
     playlists = Playlist.query.filter_by(user_id=current_user.id).all()
-    print('user', playlists)
     return {"playlists": [playlist.to_dict() for playlist in playlists]}

@@ -26,9 +26,7 @@ def get_all_songs():
         song = song.to_dict()
         song['likes'] = get_all_specific_song_likes(song['id'])['likes']
         song['user_id'] = get_all_specific_song_likes(song['id'])['user_id']
-        # print('SSOOOONG', song)
         res.append(song)
-    # print("INSIDE GET ALL SONGS PY", songs)
 
     return {"songs": [song for song in res]}
 
@@ -128,7 +126,6 @@ def update_song(id):
 @songs_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
     song = Song.query.get(id)
-    print(song)
     if song.artist_id != current_user.id:
         return {"errors": 'nacho song'}
 
@@ -147,6 +144,5 @@ def get_song(id):
     song = song.to_dict()
     artist = artist.to_dict()
     song['artist'] = artist
-    # print('song in songs routes', song)
 
     return song

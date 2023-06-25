@@ -88,7 +88,6 @@ export const updateUserThunk = (user, userId) => async (dispatch) => {
 		// 'Content-Type': 'multipart/form-data',
 		body: user
 	})
-	// console.log('USSER', response)
 
 	if (response.ok) {
 

@@ -32,9 +32,7 @@ function LoginFormModal() {
 
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data)
-
-      // setErrors(data.map(err => err.split(': ')[1]));
+      setErrors(data.map(err => err.split(': ')[1]));
     } else {
       closeModal()
     }

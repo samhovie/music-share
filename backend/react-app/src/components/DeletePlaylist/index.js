@@ -4,20 +4,20 @@ import { useModal } from "../../context/Modal"
 import './DeletePlaylist.css'
 import { useHistory } from "react-router-dom"
 
-const DeletePlaylist = ({ playlistId }) => {
+const DeletePlaylist =  ({ playlistId }) => {
     const { closeModal } = useModal()
     const history = useHistory()
     const dispatch = useDispatch()
-    const deleteClick = (e) => {
-        dispatch(deletePlaylistThunk(playlistId))
-        history.push('/discover')
-        dispatch(getPlaylistThunk(playlistId))
-        dispatch(getAllPlaylistsThunk)
-        history.push('/playlists/current')
-        setTimeout(() => {
-            history.push(`/playlists/profile`);
-            history.push(`/playlists/current`);
-        }, 500);
+    const deleteClick = async (e) => {
+        await dispatch(deletePlaylistThunk(playlistId))
+        // history.push('/discover')
+        await dispatch(getPlaylistThunk(playlistId))
+        await dispatch(getAllPlaylistsThunk())
+        // history.push('/playlists/current')
+        // setTimeout(() => {
+            // history.push(`/playlists/profile`);
+            // history.push(`/playlists/current`);
+        // }, 500);
         closeModal()
     }
 

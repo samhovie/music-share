@@ -55,7 +55,7 @@ const SongUpload = () => {
             // setTimeout(function () {
                 setIsFetching(false);
             // }, 5000);
-            // history.push('/songs/current')
+            history.push('/profile')
         }
     }
 

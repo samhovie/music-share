@@ -99,7 +99,7 @@ function LoginFormModal() {
                 style={{cursor: 'pointer'}}
                 className="login-modal-submit-button"
                 type="submit"
-                disabled={!email || !password}
+                // disabled={!email || !password}
               >Log In</button>
 
             </div>

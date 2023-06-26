@@ -46,6 +46,9 @@
 
 .splash-page-middle > h2 {
     font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-top: 10px;
+    /* padding-bottom: 5px; */
 }
 
 .splash-page-middle > h3 {
@@ -79,8 +82,11 @@
 }
 
 .splash-page-middle > h2 {
-    margin-bottom: -2px;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 35px;
+    margin-top: 15px;
+    margin-bottom: -5px;
+
 }
 
 .splash-page-footer {

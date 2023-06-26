@@ -36,7 +36,7 @@ function LoginFormPage() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            // required
           />
         </label>
         <label>
@@ -45,7 +45,7 @@ function LoginFormPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
           />
         </label>
         <button type="submit">Log In</button>

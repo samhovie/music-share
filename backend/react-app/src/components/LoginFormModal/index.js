@@ -14,14 +14,27 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [emptyErrors, setEmptyErrors] = useState({})
   const { closeModal } = useModal();
+
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = {}
+
+    if (email.length === 0) errors.email = "Email field cannot be empty"
+    if (password.length === 0) errors.password = "Password field cannot be empty"
+    if (Object.values(emptyErrors).length > 0) {
+        setEmptyErrors(errors)
+        return
+    }
+
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors(data)
+
+      // setErrors(data.map(err => err.split(': ')[1]));
     } else {
       closeModal()
     }
@@ -41,12 +54,16 @@ function LoginFormModal() {
         <form onSubmit={handleSubmit}
           className="login-modal-form"
         >
+
           <ul
           >
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li key={idx} style={{color: 'red'}}>{error}</li>
             ))}
           </ul>
+
+          {emptyErrors && !errors && <div></div>}
+          {emptyErrors && !errors && <div></div>}
 
           <div className="login-modal-email-div login-modal-sep-div">
             <label
@@ -57,7 +74,7 @@ function LoginFormModal() {
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                // required
               />
             </label>
           </div>
@@ -71,7 +88,7 @@ function LoginFormModal() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                // required
               />
             </label>
           </div>
@@ -79,6 +96,7 @@ function LoginFormModal() {
           <div className="login-modal-bottom">
             <div>
               <button
+                style={{cursor: 'pointer'}}
                 className="login-modal-submit-button"
                 type="submit"
                 disabled={!email || !password}
@@ -91,6 +109,7 @@ function LoginFormModal() {
 
           </div>
 
+        </form>
           <div className="login-form-signup">
           <OpenModalButton
 									buttonText="Don't have an account? Sign up!"
@@ -99,7 +118,6 @@ function LoginFormModal() {
 									loginModalClass='login'
 								/>
           </div>
-        </form>
       </div>
     </>
   );

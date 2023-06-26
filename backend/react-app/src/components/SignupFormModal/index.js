@@ -15,7 +15,7 @@ function SignupFormModal() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errs, setErrs] = useState([]);
-	const [hasSubmitted, setHasSubmitted] = useState(false);
+	// const [hasSubmitted, setHasSubmitted] = useState(false);
 	const { closeModal } = useModal();
 
 	useEffect(() => {
@@ -34,14 +34,14 @@ function SignupFormModal() {
 		e.preventDefault()
 
 		if (errs.length > 0) {
-			setHasSubmitted(true)
+			// setHasSubmitted(true)
 			return
 		}
 		else {
 			const data = await dispatch(signUp(username, email, password))
 
 			if(data) {
-				setHasSubmitted(true)
+				// setHasSubmitted(true)
 				setErrs(data.map(err => err.split(': ')[1]))
 			}
 			else {
@@ -56,7 +56,9 @@ function SignupFormModal() {
 			<div className="signup-modal-wrapper">
 				<h1 className="signup-modal-h1" >Sign Up</h1>
 
-				{hasSubmitted && errs.length > 0 && errs.map((err, i) =>
+				{
+				// hasSubmitted &&
+				errs.length > 0 && errs.map((err, i) =>
 					<div key={i} className="errors">· {err}</div>
 				)}
 
@@ -118,6 +120,7 @@ function SignupFormModal() {
 								<button
 								className="signup-modal-submit-signup"
 									type="submit"
+									style={{cursor: 'pointer'}}
 									disabled={!email || !username || !password || !confirmPassword}
 								>Sign Up</button>
 

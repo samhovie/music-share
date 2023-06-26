@@ -25,9 +25,7 @@
     display: flex;
     justify-content: center;
     color: white;
-    /* font-family: 'Courier New', Courier, monospace;
-     */
-     font-family: 'Audiowide', cursive;
+    font-family: 'Audiowide', cursive;
     margin-bottom: 5rem;
 }
 

@@ -20,6 +20,7 @@ import UserLikesPage from "./components/UserLikesPage";
 import SplashPage from "./components/SplashPage";
 import DeleteUser from "./components/DeleteUser";
 import { useSelector } from "react-redux";
+import ScrollToTop from "./components/UI/ScrollToTop";
 
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
@@ -58,6 +59,7 @@ function App() {
         <Player />
 
         {isLoaded && (
+          <ScrollToTop>
           <Switch>
             <Route exact path='/'>
               {!sessionUser ? <SplashPage /> : <DiscoverPage />}
@@ -99,6 +101,7 @@ function App() {
               <AddSongToPlaylistModal />
             </Route>
           </Switch>
+          </ScrollToTop>
         )}
     </>
   );

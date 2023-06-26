@@ -54,7 +54,6 @@ function App() {
 
   return (
     <>
-        {/* <Navigation isLoaded={isLoaded} /> */}
         {sessionUser && <Navigation isLoaded={isLoaded} />}
         <Player />
 
@@ -75,19 +74,9 @@ function App() {
             <Route exact path='/profile'>
               <ProfilePage />
             </Route>
-            {/* <Route exact path="/playlists/current">
-              <CurrentUserPlaylist />
-            </Route> */}
-            {/* <Route exact path="/all/current">
-              <CurrentUserPlaylist />
-              <CurrentUserSongs />
-            </Route> */}
             <Route exact path="/playlists/new">
               <CreatePlaylistForm />
             </Route>
-            {/* <Route exact path="/songs/current">
-              <CurrentUserSongs />
-            </Route> */}
             <Route exact path='/playlists/:playlistId'>
               <PlaylistDetailsPage />
             </Route>
@@ -106,7 +95,6 @@ function App() {
             <Route exact path="/signup">
               <SignupFormPage />
             </Route>
-            {/* added?? */}
             <Route exact path="/playlists/:playlistId/songs/:songId">
               <AddSongToPlaylistModal />
             </Route>

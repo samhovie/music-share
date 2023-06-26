@@ -78,7 +78,7 @@ def update_playlist(id):
         # preview_img_url = preview_img_upload["url"]
 
         playlist.name = form.data['name']
-        playlist.is_public = form.data['is_public']
+        # playlist.is_public = form.data['is_public']
         playlist.description = form.data['description']
         playlist.user_id = current_user.id
         # playlist.preview_img = form.data['preview_img']

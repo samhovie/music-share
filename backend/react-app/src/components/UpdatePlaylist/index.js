@@ -44,7 +44,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             setPublic(singlePlaylist.is_public)
             setPreviewImg(singlePlaylist.preview_img)
         }
-    },[singlePlaylist])
+    },[])
 
     // useEffect(() => {
     //     const errors = {}
@@ -71,7 +71,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
         } else {
             const updatedFormData = new FormData();
             updatedFormData.append('name', name)
-            updatedFormData.append('is_public', is_public)
+            // updatedFormData.append('is_public', is_public)
             updatedFormData.append('description', description)
             updatedFormData.append('preview_img', preview_img)
             await dispatch(updatePlaylistThunk(playlistId, updatedFormData));
@@ -83,8 +83,7 @@ const UpdatePlaylistForm = ({ playlistId }) => {
             await dispatch(getAllPlaylistsThunk())
             setTimeout(() => {
                 closeModal();
-                history.push(`/playlists/profile`);
-                history.push(`/playlists/current`);
+                history.push(`/profile`);
             }, 1000);
         }
 

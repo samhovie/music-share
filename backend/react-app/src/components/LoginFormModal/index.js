@@ -14,20 +14,28 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [emptyErrors, setEmptyErrors] = useState({})
+  // const [emptyErrors, setEmptyErrors] = useState({})
+  const [hasSubmited, setHasSubmitted] = useState(false)
   const { closeModal } = useModal();
 
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = {}
+    const errors = []
 
-    if (email.length === 0) errors.email = "Email field cannot be empty"
-    if (password.length === 0) errors.password = "Password field cannot be empty"
-    if (Object.values(emptyErrors).length > 0) {
-        setEmptyErrors(errors)
-        return
+    if (email.length === 0) errors.push("Email field cannot be empty")
+    if (!email.includes("@") || !email.includes(".")) errors.push("Please submit valid email")
+    if (password.length === 0) errors.push("Password field cannot be empty")
+    // if (Object.values(emptyErrors).length > 0) {
+    //     setEmptyErrors(errors)
+    //     return
+    // }
+
+    if (errors.length > 0) {
+      setErrors(errors)
+      setHasSubmitted(true)
+      return
     }
 
     const data = await dispatch(login(email, password));
@@ -55,13 +63,13 @@ function LoginFormModal() {
 
           <ul
           >
-            {errors.map((error, idx) => (
+            {hasSubmited && errors.length> 0 && errors.map((error, idx) => (
               <li key={idx} style={{color: 'red'}}>{error}</li>
             ))}
           </ul>
-
+{/*
           {emptyErrors && !errors && <div></div>}
-          {emptyErrors && !errors && <div></div>}
+          {emptyErrors && !errors && <div></div>} */}
 
           <div className="login-modal-email-div login-modal-sep-div">
             <label

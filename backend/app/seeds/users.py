@@ -19,6 +19,13 @@ def seed_playlist_songs_users_likes():
     kohya = User(
         username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='')
 
+    db.session.add(demo)
+    db.session.add(marnie)
+    db.session.add(bobbie)
+    db.session.add(hirosawa)
+    db.session.add(kohya)
+    db.session.commit()
+
 
     urls = [
         "https://music-share-rhinos.s3.amazonaws.com/1186332cba1747a7a21a2960d08a591d.mp3",
@@ -185,29 +192,14 @@ def seed_playlist_songs_users_likes():
         "https://music-share-rhinos.s3.amazonaws.com/0b1c0922e44f4d66a9f28d38a50e78a6.mp3"
     ]
 
-
     genres = ['Pop', 'Hip-Hop/Rap', 'Rock', 'R&B/Soul' ]
-
-    # song for every url we have w random genre
-    for url in urls:
-        song = Song(name=f"{fake.word().capitalize()} {fake.word()}",
-                    artist_name=fake.name(),
-                    artist_id=random.randint(1, 5),
-                    mp3_file=url,
-                    genre=genres[random.randint(0, 3)],
-                    preview_img=fake.image_url(width=200, height=200),
-                    created_at=date.today(),
-                    updated_at=date.today())
-        db.session.add(song)
-
-
 
     names = ['Hits', 'Bangers', 'Jams', 'Beats', 'Classics', 'Vibes', 'Favorites', 'Picks', 'Throwbacks', 'Summer']
 
     # 5 playlists for each genre
     for genre in genres:
         for _ in range(5):
-            playlist1 = Playlist(
+            playlist = Playlist(
                 name=f"{genre} {names[random.randint(0,9)]}",
                 public=True,
                 user_id=random.randint(1,5),
@@ -215,65 +207,111 @@ def seed_playlist_songs_users_likes():
                 preview_img=fake.image_url(width=250, height=250),
                 created_at=date.today(),
                 updated_at=date.today())
+            db.session.add(playlist)
 
-
-
-
-
-
-
-
-    playlist1 = Playlist(
-        name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", preview_img="https://e1.pxfuel.com/desktop-wallpaper/924/396/desktop-wallpaper-spotify-playlist-covers-simpson-300x300-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
-    playlist2 = Playlist(
-        name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/53/672/desktop-wallpaper-150-spotify-playlist-covers-ideas-aesthetic-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
-    playlist3 = Playlist(
-        name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/213/149/desktop-wallpaper-sunset-spotify-playlist-cover-spotify-covers.jpg", created_at=date.today(), updated_at=date.today())
-    playlist4 = Playlist(
-        name="Hiroyuki Sawano 86", public=False, user_id=4, description="Lena is looking at Shin", preview_img="https://e1.pxfuel.com/desktop-wallpaper/676/329/desktop-wallpaper-gabby-on-playlist-covers-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
-    playlist5 = Playlist(
-        name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", preview_img="https://e1.pxfuel.com/desktop-wallpaper/59/542/desktop-wallpaper-aesthetic-music-playlist-covers-spotify-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
-
-
-    db.session.add(playlist1)
-    db.session.add(playlist2)
-    db.session.add(playlist3)
-    db.session.add(playlist4)
-    db.session.add(playlist5)
-
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(hirosawa)
-    db.session.add(kohya)
     db.session.commit()
 
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=1, song_id=1))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=1, song_id=2))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=3))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=4))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=5))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=6))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=7))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=4, song_id=8))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=5, song_id=9))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=5, song_id=10))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=5, song_id=11))
-    db.session.execute(insert(playlist_songs).values(
-        playlist_id=5, song_id=12))
+
+
+    # song for every url
+    for i, url in enumerate(urls):
+        # cycles through genres to assign to songs evenly
+        genre = genres[i % len(genres)]
+        song = Song(name=f"{fake.word().capitalize()} {fake.word()}",
+                    artist_name=fake.name(),
+                    artist_id=random.randint(1, 5),
+                    mp3_file=url,
+                    genre=genre,
+                    preview_img=fake.image_url(width=200, height=200),
+                    created_at=date.today(),
+                    updated_at=date.today())
+        db.session.add(song)
     db.session.commit()
+
+    # Playlist indexes
+    # pop: 1 - 5
+    # rap: 6 - 10
+    # rock: 11 - 15
+    # rnb: 16 - 20
+
+
+    # number of songs we added
+    for i in range(len(urls)):
+        x = i % len(genres)
+
+        song = i + 1
+
+        if(x == 0):
+            # add song to random pop playlist
+            playlists = random.sample(range(1, 5), 2)
+        elif(x == 1):
+            # add song to random rap playlist
+            playlists = random.sample(range(6,10), 2)
+        elif(x == 2):
+            # add song to random rock playlist
+            playlists = random.sample(range(11,15), 2)
+        else:
+            # add song to random rnb playlist
+            playlists = random.sample(range(16,20), 2)
+
+        db.session.execute(insert(playlist_songs).values(
+            playlist_id=playlists[0],
+            song_id=song))
+        db.session.execute(insert(playlist_songs).values(
+            playlist_id=playlists[1],
+            song_id=song))
+
+
+
+
+
+
+
+    # playlist1 = Playlist(
+    #     name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", preview_img="https://e1.pxfuel.com/desktop-wallpaper/924/396/desktop-wallpaper-spotify-playlist-covers-simpson-300x300-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
+    # playlist2 = Playlist(
+    #     name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/53/672/desktop-wallpaper-150-spotify-playlist-covers-ideas-aesthetic-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
+    # playlist3 = Playlist(
+    #     name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/213/149/desktop-wallpaper-sunset-spotify-playlist-cover-spotify-covers.jpg", created_at=date.today(), updated_at=date.today())
+    # playlist4 = Playlist(
+    #     name="Hiroyuki Sawano 86", public=False, user_id=4, description="Lena is looking at Shin", preview_img="https://e1.pxfuel.com/desktop-wallpaper/676/329/desktop-wallpaper-gabby-on-playlist-covers-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
+    # playlist5 = Playlist(
+    #     name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", preview_img="https://e1.pxfuel.com/desktop-wallpaper/59/542/desktop-wallpaper-aesthetic-music-playlist-covers-spotify-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
+
+
+    # db.session.add(playlist1)
+    # db.session.add(playlist2)
+    # db.session.add(playlist3)
+    # db.session.add(playlist4)
+    # db.session.add(playlist5)
+
+
+
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=1, song_id=1))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=1, song_id=2))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=3))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=4))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=5))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=6))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=7))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=4, song_id=8))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=5, song_id=9))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=5, song_id=10))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=5, song_id=11))
+    # db.session.execute(insert(playlist_songs).values(
+    #     playlist_id=5, song_id=12))
+    # db.session.commit()
 
 
 

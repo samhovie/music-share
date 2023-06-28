@@ -6,11 +6,22 @@ import CreatePlaylistForm from "../CreateNewPlaylist";
 import PlaylistCard from "../UI/PlaylistCard";
 import "./DiscoverPage.css";
 
-
 const DiscoverPage = () => {
     const dispatch = useDispatch();
     const allPlaylists = useSelector((state) => state.playlists.allPlaylists);
     const playlists = Object.values(allPlaylists);
+
+    const genres = ["Pop", "Hip-Hop/Rap", "Rock", "R&B/Soul"];
+    // const indexes
+
+    // latest has latest, then genres
+
+    const subs = [];
+    for (let genre of genres) {
+        subs.push(
+            playlists.filter((playlist) => playlist.name.includes(genre))
+        );
+    }
 
     useEffect(() => {
         dispatch(getAllPlaylistsThunk());
@@ -25,41 +36,19 @@ const DiscoverPage = () => {
                     buttonText="Create Playlist"
                 />
 
-                <div className="playlist-wrapper-wrapper">
-                    <h2 className="playlist-wrapper-title">Latest</h2>
-                    <div className="playlist-wrapper-inner-wrapper">
-                        {playlists.map((playlist) => (
-                            <PlaylistCard
-                                playlist={playlist}
-                                key={playlist.id}
-                            />
-                        ))}
+                {subs.map((sub, i) => (
+                    <div key={i} className="playlist-wrapper-wrapper">
+                        <h2 className="playlist-wrapper-title">{genres[i]}</h2>
+                        <div className="playlist-wrapper-inner-wrapper">
+                            {sub.map((playlist) => (
+                                <PlaylistCard
+                                    playlist={playlist}
+                                    key={playlist.id}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-
-                <div className="playlist-wrapper-wrapper">
-                    <h2 className="playlist-wrapper-title">Hip-hop</h2>
-                    <div className="playlist-wrapper-inner-wrapper">
-                        {playlists.map((playlist) => (
-                            <PlaylistCard
-                                playlist={playlist}
-                                key={playlist.id}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="playlist-wrapper-wrapper">
-                    <h2 className="playlist-wrapper-title">Rock</h2>
-                    <div className="playlist-wrapper-inner-wrapper">
-                        {playlists.map((playlist) => (
-                            <PlaylistCard
-                                playlist={playlist}
-                                key={playlist.id}
-                            />
-                        ))}
-                    </div>
-                </div>
+                ))}
             </div>
         </>
     );

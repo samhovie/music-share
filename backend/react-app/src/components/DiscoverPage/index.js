@@ -12,13 +12,15 @@ const DiscoverPage = () => {
     const playlists = Object.values(allPlaylists);
 
     const genres = ["Pop", "Hip-Hop/Rap", "Rock", "R&B/Soul"];
-    // const indexes
 
-    // latest has latest, then genres
+    // how to do latest?
+    // => do actual created/updated at values
+    //  => seed playlists with random created at values
+    //   => order playlists by created at value from the backend
 
-    const subs = [];
+    const genrePlaylists = [];
     for (let genre of genres) {
-        subs.push(
+        genrePlaylists.push(
             playlists.filter((playlist) => playlist.name.includes(genre))
         );
     }
@@ -36,11 +38,11 @@ const DiscoverPage = () => {
                     buttonText="Create Playlist"
                 />
 
-                {subs.map((sub, i) => (
+                {genrePlaylists.map((genrePlaylist, i) => (
                     <div key={i} className="playlist-wrapper-wrapper">
                         <h2 className="playlist-wrapper-title">{genres[i]}</h2>
                         <div className="playlist-wrapper-inner-wrapper">
-                            {sub.map((playlist) => (
+                            {genrePlaylist.map((playlist) => (
                                 <PlaylistCard
                                     playlist={playlist}
                                     key={playlist.id}

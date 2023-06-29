@@ -59,7 +59,7 @@ const FeedPage = () => {
                         <p>Refresh List</p>
                     </div>
                     {
-                        users && users.map(user => <FeedPageArtistCard user={user} />).slice(1, 4)
+                        users && users.map(user => <FeedPageArtistCard user={user} />)
                     }
                     <div className='feed-page-artist-card-header'
                     style={{marginTop: '1rem'}}

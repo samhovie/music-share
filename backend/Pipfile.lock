@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2944cb5d68d314c848e25fad4ba8d74a661d74f43f21896d64e18750ca506954"
+            "sha256": "2d815835dda11c8faa878b069fea2ca283459444edd0cf08bdb54ef907d53458"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,11 +34,11 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:86fe4641fd32dc6a5be4a289e00dc180448fc7bc37abac21bd624656985eef62",
-                "sha256:da1c61757d466b82cc89f379a50662064bcb0beb67cc6efa1fbfc9a341bd08b0"
+                "sha256:a50edd715eb510343e27849f36483804aae4b871590db4d4996aa53368dcac40",
+                "sha256:b906999dd53dda2ef0ef6f7f55fcc81a4b06b9f1c8a9f65c546e0b981f959f5f"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==1.29.159"
+            "version": "==1.29.161"
         },
         "click": {
             "hashes": [
@@ -55,6 +55,14 @@
             ],
             "index": "pypi",
             "version": "==18.9.0"
+        },
+        "faker-music": {
+            "hashes": [
+                "sha256:119293298f29c77994675e3f5dfeb7d065ef24aeb84810eb0bd2846b38fb59e7",
+                "sha256:7ad13d9a085cccc87d2b1f0510ff8a95c2176b41122ae289d38c321dbc29d8f2"
+            ],
+            "index": "pypi",
+            "version": "==0.4"
         },
         "flask": {
             "hashes": [

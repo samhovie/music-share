@@ -5,5 +5,7 @@ from .playlist import Playlist
 from .comment import Comment
 from .join_tables import song_like, playlist_songs
 # from .db import environment, SCHEMA, boop
-# from faker import Faker;
-# fake = Faker()
+from faker import Faker;
+from faker_music import MusicProvider
+fake = Faker()
+fake.add_provider(MusicProvider)

@@ -27,6 +27,7 @@ werkzeug = "==2.2.2"
 wtforms = "==3.0.1"
 boto3 = "==1.26.132"
 faker = "==18.9.0"
+faker-music = "==0.4"
 
 [dev-packages]
 

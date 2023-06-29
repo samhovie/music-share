@@ -1,0 +1,22 @@
+.feed-page-artist-card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.feed-page-artist-card-header-left {
+    display: flex;
+    gap: 10px;
+}
+
+.feed-page-user {
+    display: flex;
+    gap: 10px;
+}
+
+.feed-page-user img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}

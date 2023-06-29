@@ -100,6 +100,7 @@ function App() {
             <Route exact path="/playlists/:playlistId/songs/:songId">
               <AddSongToPlaylistModal />
             </Route>
+            
           </Switch>
           </ScrollToTop>
         )}

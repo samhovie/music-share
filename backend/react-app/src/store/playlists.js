@@ -1,4 +1,7 @@
 // constants
+const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
+
+const DELETE_ANSWER = "answers/DELETE_ANSWER";
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
 const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
@@ -71,6 +74,7 @@ export const getAllPlaylistsThunk = () => async (dispatch) => {
             return data.errors;
         }
 
+        console.log("HELL0", data.playlists)
         dispatch(getAllPlaylistsAction(data));
     }
 };
@@ -88,32 +92,6 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
         dispatch(getPlaylistAction(data))
     }
 }
-
-// export const createPlaylistThunk = (playlist) => async (dispatch) => {
-//     const formData = new FormData();
-//     formData.append('id', playlist.id);
-//     formData.append('user_id', playlist.user_id)
-//     formData.append('name', playlist.name);
-//     formData.append('is_public', playlist.is_public);
-//     formData.append('description', playlist.description);
-//     // formData.append('preview_img', playlist.preview_img);
-//     formData.append('file', playlist.preview_img);
-//     const response = await fetch('/api/playlists/new', {
-//         method: 'POST',
-//         body: formData
-//     })
-//      (response);
-
-//     if (response.ok) {
-//         const data = await response.json();
-//          (data)
-//         if (data.errors) {
-//             return data.errors
-//         }
-//         dispatch(createPlaylistAction(data.id, data))
-//         return data
-//     }
-// }
 
 export const createPlaylistThunk = (playlist) => async (dispatch) => {
     const response = await fetch('/api/playlists/new', { // Change to your appropriate endpoint
@@ -191,8 +169,11 @@ export default function playlistsReducer(state = initialState, action) {
     //  ("NEW STATEEEE ", newState)
     switch (action.type) {
         case GET_ALLPLAYLISTS:
-            newState = { ...state, allPlaylists: { ...action.allPlaylists } }
-            action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
+            newState = { allPlaylists: { ...action.allPlaylists } }
+            // action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
+            for (let playlist of action.playlists.playlists) {
+                newState.allPlaylists[playlist.id] = playlist
+            }
             //  ("NEW STATEEEE ", newState)
             //  ("newState", newState)
             return newState

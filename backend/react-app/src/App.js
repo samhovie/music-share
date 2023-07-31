@@ -21,6 +21,7 @@ import SplashPage from "./components/SplashPage";
 import DeleteUser from "./components/DeleteUser";
 import { useSelector } from "react-redux";
 import ScrollToTop from "./components/UI/ScrollToTop";
+import UserSongsPage from "./components/UserSongsPage";
 
 // import CreatePlaylistModal from "./components/CreatePlaylistForm";
 
@@ -94,13 +95,16 @@ function App() {
             <Route exact path="/login" >
               <LoginFormPage />
             </Route>
+            <Route exact path='/artist/:artistId'>
+              <UserSongsPage />
+            </Route>
             <Route exact path="/signup">
               <SignupFormPage />
             </Route>
             <Route exact path="/playlists/:playlistId/songs/:songId">
               <AddSongToPlaylistModal />
             </Route>
-            
+
           </Switch>
           </ScrollToTop>
         )}

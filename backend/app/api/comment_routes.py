@@ -32,6 +32,7 @@ def get_song_comments(songId):
 
 @comment_routes.route('/<int:commentId>', methods=['DELETE'])
 def delete_comment(commentId):
+    print(f"Deleting comment with ID: {commentId}")
     comment = Comment.query.get(commentId)
     if comment.user_id != current_user.id:
         return {"errors": 'nacho comment'}

@@ -5,29 +5,33 @@ import { getPlaylistThunk } from '../../store/playlists';
 // import PlaylistCard from '../UI/PlaylistCard';
 import { NavLink } from 'react-router-dom';
 import SingleSongCard from '../UI/SingleSongCard';
-import './PlaylistDetailsPage.css';
+import './UserSongsPage.css'
+import { getAllSongsThunk } from '../../store/songs';
 
-function PlaylistDetailsPage() {
+const UserSongsPage = () => {
   const dispatch = useDispatch();
-  const { playlistId } = useParams();
+  const { artistId } = useParams()
   const sessionUser = useSelector(state => state.session.user)
-  const playlist = useSelector((state) => state.playlists.singlePlaylist);
+  const allSongs = useSelector((state) => Object.values(state.songs.allSongs));
+//   console.log('AAALL', allSongs)
 
-  // const sessionUser = useSelector((state) => state.session.user);
-  // const owner = playlist.user && playlist.user.id;
-  // const current_user = sessionUser.id;
-  const owner_username = playlist.user && playlist.user.username;
-  const playlistSong = useSelector((state) => state.playlists.singlePlaylist.song)
+//   const length = playlistSong?.length
+ const userSongs = allSongs.filter(song => {
+    if (allSongs && song && song.artist_id) {
+        return song.artist_id === Number(artistId)
+    }
+ })
 
-  const length = playlistSong?.length
+//  userSongs[0]?.artist_id
+ console.log('USERSONGS', userSongs)
 
   useEffect(() => {
-    dispatch(getPlaylistThunk(playlistId));
-  }, [dispatch, playlistId]);
+    dispatch(getAllSongsThunk());
+  }, [dispatch]);
 
   return (
     <>
-      {length > 0 ?
+      {allSongs?.length > 0 ?
         <>
           {/* <div className="playlist-details-page-outer">
             <div className="global-outerwrapper-wrapper "> */}
@@ -49,13 +53,13 @@ function PlaylistDetailsPage() {
                       />
                     </div>
                     <p className="playlist-details-page-user-name" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>
-                      {owner_username}'s playlist
+                      {/* {userSongs[0]?.art}'s songs */}
                     </p>
                   </div>
                 <div className="playlist-details-page-profile-songs">
                   <div className="playlist-details-page-song-list">
-                    {playlist.song?.map((s) => (
-                      <SingleSongCard key={s.id} song={s} playlist={true} />
+                    {userSongs?.map((s) => (
+                      <SingleSongCard key={s.id} song={s} playlist={false} />
                     ))}
                   </div>
                 </div>
@@ -102,4 +106,4 @@ function PlaylistDetailsPage() {
   )
 }
 
-export default PlaylistDetailsPage;
+export default UserSongsPage

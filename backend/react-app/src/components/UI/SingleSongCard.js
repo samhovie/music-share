@@ -105,7 +105,7 @@ const SingleSongCard = ({
                                     <i
                                         className="fa-solid fa-pause "
                                         style={{
-                                            color: "#932db9",
+                                            color: "turquoise",
                                             fontSize: "40px",
                                             cursor: "pointer",
                                         }}
@@ -114,7 +114,7 @@ const SingleSongCard = ({
                                     <i
                                         className="fa-solid fa-circle-play"
                                         style={{
-                                            color: "#932db9",
+                                            color: "turquoise",
                                             fontSize: "40px",
                                             cursor: "pointer",
                                         }}

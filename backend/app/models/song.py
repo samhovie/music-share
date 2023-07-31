@@ -30,7 +30,7 @@ class Song(db.Model):
     liked_song = db.relationship(
         'User', secondary=song_like, back_populates='user_like')
     comments = db.relationship(
-        'Comment', back_populates='song', cascade='all, delete-orphan')
+        'Comment', back_populates='song')
     playlists = db.relationship(
         'Playlist', secondary=playlist_songs, back_populates='song')
 

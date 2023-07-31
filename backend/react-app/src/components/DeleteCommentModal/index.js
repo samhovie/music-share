@@ -12,6 +12,7 @@ const DeleteCommentModal = ({commentId}) => {
         await dispatch(deleteCommentThunk(commentId))
         await dispatch(getAllCommentsThunk(commentId))
         history.push(`/songs/${commentId}`)
+        closeModal()
     }
 
     return (

@@ -98,7 +98,6 @@ export const updateCommentThunk = (song, songId) => async (dispatch) => {
 export const deleteCommentThunk = (songId) => async (dispatch) => {
 	const response = await fetch(`/api/comments/${songId}`, {
 		method: 'DELETE',
-		body: songId
 	})
 	if (response.ok) {
 		const data = await response.json()

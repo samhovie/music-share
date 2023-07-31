@@ -89,7 +89,7 @@ const SongDetailsPage = () => {
                 <div className='song-details-page-bottom-wrapper'>
                     <div className='song-details-page-bottom'>
                         <div className='song-details-page-post-comment'>
-                            {/* <div className='song-details-page-profile-pic'>
+                            <div className='song-details-page-profile-pic'>
                                 <img alt ='' src={sessionUser.profile_pic || 'https://meshgradient.com/gallery/5.png'}></img>
                             </div>
                             <div className='song-details-page-comment-outer-wrapper'>
@@ -113,7 +113,7 @@ const SongDetailsPage = () => {
                                     </form>
                                 </div>
 
-                            </div> */}
+                            </div>
                         </div>
                         <div className='song-details-page-bottom-bar'>
                             <div className='song-details-page-interactive-buttons'>
@@ -136,7 +136,7 @@ const SongDetailsPage = () => {
                                 <GetLikes songId = {songId}/>
                             </div> */}
                         </div>
-                        {/* <div className='song-details-page-profile-comments'>
+                        <div className='song-details-page-profile-comments'>
                             <ArtistDetails song={song}/>
                             <div className='song-details-page-display-comments-each'>
                                 <CommentComp />
@@ -147,7 +147,7 @@ const SongDetailsPage = () => {
                                     />
                                 })}
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

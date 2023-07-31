@@ -10,7 +10,7 @@ import OpenModalButton from '../OpenModalButton'
 const CommentComp = ({ comment }) => {
     const sessionUser = useSelector(state => state.session.user)
 
-    if (!comment) return null
+    // if (!comment) return null
     // if (!commentOwner) return null
     return (
         <>
@@ -37,7 +37,7 @@ const CommentComp = ({ comment }) => {
                             buttonText="Delete"
                             modalComponent={
                                 <DeleteCommentModal
-                                commentId={comment.id}
+                                commentId={comment?.id}
                             />}
                         />
                     }

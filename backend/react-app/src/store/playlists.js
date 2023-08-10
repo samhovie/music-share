@@ -1,5 +1,7 @@
 // constants
-const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
+// const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
+
+import { normalize } from "../utils";
 
 const DELETE_ANSWER = "answers/DELETE_ANSWER";
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
@@ -14,7 +16,7 @@ const UPDATE_PLAYLIST = 'playlists/UPDATE_PLAYLIST'
 
 const getAllPlaylistsAction = (playlists) => ({
     type: GET_ALLPLAYLISTS,
-    playlists
+    payload: playlists
 });
 
 const getPlaylistAction = (playlist) => ({
@@ -74,8 +76,8 @@ export const getAllPlaylistsThunk = () => async (dispatch) => {
             return data.errors;
         }
 
-        console.log("HELL0", data.playlists)
-        dispatch(getAllPlaylistsAction(data));
+        // console.log("HELL0", data.playlists)
+        dispatch(getAllPlaylistsAction(normalize(data.playlists)));
     }
 };
 
@@ -169,11 +171,11 @@ export default function playlistsReducer(state = initialState, action) {
     //  ("NEW STATEEEE ", newState)
     switch (action.type) {
         case GET_ALLPLAYLISTS:
-            newState = { allPlaylists: { ...action.allPlaylists } }
+            return { ...state, allPlaylists: { ...action.payload } }
             // action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
-            for (let playlist of action.playlists.playlists) {
-                newState.allPlaylists[playlist.id] = playlist
-            }
+            // for (let playlist of action.playlists.playlists) {
+            //     newState.allPlaylists[playlist.id] = playlist
+            // }
             //  ("NEW STATEEEE ", newState)
             //  ("newState", newState)
             return newState

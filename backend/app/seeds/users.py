@@ -204,7 +204,7 @@ def seed_playlist_songs_users_likes():
                 public=True,
                 user_id=random.randint(1,5),
                 description=fake.sentence(),
-                preview_img=fake.image_url(width=250, height=250),
+                preview_img="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg",
                 created_at=datetime.strptime(fake.date(), '%Y-%m-%d'),
                 updated_at=date.today())
             db.session.add(playlist)

@@ -46,6 +46,7 @@ const SongDetailsPage = () => {
         dispatch(getAllCommentsThunk(songId))
         dispatch(getAllSongsThunk())
         history.push(`/songs/${songId}`)
+        setComment('')
         // dispatch(createCommentThunk(formData, songId))
     }
 
@@ -108,8 +109,9 @@ const SongDetailsPage = () => {
                                             value={comment}
                                             onChange={(e) => {
                                                 setComment(e.target.value)
+
                                             }}
-                                            placeholder='(FEATURE INCOMPLETE) Press Enter and let the artist know what you think!'></input>
+                                            placeholder='Press Enter and let the artist know what you think!'></input>
                                     </form>
                                 </div>
 
@@ -139,7 +141,6 @@ const SongDetailsPage = () => {
                         <div className='song-details-page-profile-comments'>
                             <ArtistDetails song={song}/>
                             <div className='song-details-page-display-comments-each'>
-                                <CommentComp />
                                 {comments.map(comment => {
 
                                     return <CommentComp comment={comment}

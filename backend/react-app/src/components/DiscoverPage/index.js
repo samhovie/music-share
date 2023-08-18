@@ -24,6 +24,7 @@ const DiscoverPage = () => {
             playlists.filter((playlist) => playlist.name.includes(genre))
         );
     }
+    const latestPlaylists = playlists.slice(0, 7)
 
     useEffect(() => {
         dispatch(getAllPlaylistsThunk());
@@ -37,6 +38,18 @@ const DiscoverPage = () => {
                     modalComponent={<CreatePlaylistForm />}
                     buttonText="Create Playlist"
                 />
+
+<div className="playlist-wrapper-wrapper">
+                        <h2 className="playlist-wrapper-title">Latest</h2>
+                        <div className="playlist-wrapper-inner-wrapper">
+                            {latestPlaylists.map((playlist, i) => (
+                                <PlaylistCard
+                                    playlist={playlist}
+                                    key={i}
+                                />
+                            ))}
+                        </div>
+                    </div>
 
                 {genrePlaylists.map((genrePlaylist, i) => (
                     <div key={i} className="playlist-wrapper-wrapper">

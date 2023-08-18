@@ -7,7 +7,7 @@ from datetime import date
 from app.models import db
 import os
 from flask import redirect, request
-from sqlalchemy import insert
+from sqlalchemy import insert, desc, asc
 from app.models import Song, playlist_songs
 from app.aws import (
     upload_file_to_s3, get_unique_filename
@@ -18,7 +18,11 @@ playlist_routes = Blueprint('playlists', __name__, url_prefix="/api/playlists")
 
 @playlist_routes.route('/')
 def get_all_playlists():
-    playlists = Playlist.query.all()
+    # Playlist.query.order_by(desc(Playlist.created_at)).limit(3).all()
+    # playlists = Playlist.query.order_by(asc(Playlist.id)).limit(20).all()
+    # playlists = db.session.query(Playlist).order_by(desc(Playlist.id))
+    playlists = Playlist.query.order_by(desc(Playlist.created_at)).all()
+    # print( {"playlists": [playlist.to_dict() for playlist in playlists]})
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
 
 

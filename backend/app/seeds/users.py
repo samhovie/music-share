@@ -1,6 +1,6 @@
 from app.models import db, User, Song, Playlist, Comment, playlist_songs, environment, SCHEMA, fake
 from sqlalchemy.sql import text
-from datetime import date
+from datetime import date, datetime
 from sqlalchemy import insert
 import random
 
@@ -204,8 +204,8 @@ def seed_playlist_songs_users_likes():
                 public=True,
                 user_id=random.randint(1,5),
                 description=fake.sentence(),
-                preview_img=fake.image_url(width=250, height=250),
-                created_at=date.today(),
+                preview_img="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg",
+                created_at=datetime.strptime(fake.date(), '%Y-%m-%d'),
                 updated_at=date.today())
             db.session.add(playlist)
 
@@ -223,7 +223,7 @@ def seed_playlist_songs_users_likes():
                     mp3_file=url,
                     genre=genre,
                     preview_img=fake.image_url(width=200, height=200),
-                    created_at=date.today(),
+                    created_at=datetime.strptime(fake.date(), '%Y-%m-%d'),
                     updated_at=date.today())
         db.session.add(song)
     db.session.commit()
@@ -260,58 +260,6 @@ def seed_playlist_songs_users_likes():
         db.session.execute(insert(playlist_songs).values(
             playlist_id=playlists[1],
             song_id=song))
-
-
-
-
-
-
-
-    # playlist1 = Playlist(
-    #     name="Alternative Stuff", public=True, user_id=1, description="HOLY MOLY SO COOL", preview_img="https://e1.pxfuel.com/desktop-wallpaper/924/396/desktop-wallpaper-spotify-playlist-covers-simpson-300x300-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
-    # playlist2 = Playlist(
-    #     name="Rocky Stuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/53/672/desktop-wallpaper-150-spotify-playlist-covers-ideas-aesthetic-playlist-covers.jpg", created_at=date.today(), updated_at=date.today())
-    # playlist3 = Playlist(
-    #     name="Rocky Tuff", public=False, user_id=2, description="HOLY MOLY SO COOLER", preview_img="https://e1.pxfuel.com/desktop-wallpaper/213/149/desktop-wallpaper-sunset-spotify-playlist-cover-spotify-covers.jpg", created_at=date.today(), updated_at=date.today())
-    # playlist4 = Playlist(
-    #     name="Hiroyuki Sawano 86", public=False, user_id=4, description="Lena is looking at Shin", preview_img="https://e1.pxfuel.com/desktop-wallpaper/676/329/desktop-wallpaper-gabby-on-playlist-covers-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
-    # playlist5 = Playlist(
-    #     name="Kohta Yamamoto 86", public=False, user_id=5, description="Will you remember us?", preview_img="https://e1.pxfuel.com/desktop-wallpaper/59/542/desktop-wallpaper-aesthetic-music-playlist-covers-spotify-playlist-cover.jpg", created_at=date.today(), updated_at=date.today())
-
-
-    # db.session.add(playlist1)
-    # db.session.add(playlist2)
-    # db.session.add(playlist3)
-    # db.session.add(playlist4)
-    # db.session.add(playlist5)
-
-
-
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=1, song_id=1))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=1, song_id=2))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=3))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=4))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=5))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=6))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=7))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=4, song_id=8))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=5, song_id=9))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=5, song_id=10))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=5, song_id=11))
-    # db.session.execute(insert(playlist_songs).values(
-    #     playlist_id=5, song_id=12))
-    # db.session.commit()
 
 
 

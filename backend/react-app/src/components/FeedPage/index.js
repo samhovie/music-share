@@ -33,11 +33,13 @@ const FeedPage = () => {
         <>
             {/* <div className='global-outerwrapper-outer'>
                 <div className='global-outerwrapper-wrapper discover-page-wrapper'> */}
-            <h3 style={{ paddingTop: '6rem', paddingBottom: '1rem', marginLeft: '10rem' }}>
-                Hear the latest songs
-            </h3>
+
             <div className='feed-page-wrapper'>
                 <div className='feed-page-left'>
+                <h3 className='feed-title'>
+                Hear the latest songs
+            </h3>
+
                     {songs.map((song) => (
                         <SingleSongCard
                             song={song}

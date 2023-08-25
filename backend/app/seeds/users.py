@@ -9,15 +9,15 @@ import random
 def seed_playlist_songs_users_likes():
 
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', display_name='Demo user', first_name='Demo', last_name='Demo', city='Demo', country='Demo', bio='Demo User', profile_pic='')
+        username='Demo', email='demo@aa.io', password='password', display_name='Demo user', first_name='Demo', last_name='Demo', city='Demo', country='Demo', bio='Demo User', profile_pic="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg")
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', display_name='Marnieeee', first_name='Marnie', last_name='bloob', city='Saigon', country='Vietnam', bio='Love this app', profile_pic='')
+        username='marnie', email='marnie@aa.io', password='password', display_name='Marnieeee', first_name='Marnie', last_name='bloob', city='Saigon', country='Vietnam', bio='Love this app', profile_pic="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg")
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', display_name='Bobbbbie', first_name='Bob', last_name='Bie', city='San Francisco', country='US', bio='It works over here too', profile_pic='')
+        username='bobbie', email='bobbie@aa.io', password='password', display_name='Bobbbbie', first_name='Bob', last_name='Bie', city='San Francisco', country='US', bio='It works over here too', profile_pic="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg")
     hirosawa = User(
-        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic='')
+        username='hiroSawa', email='hirosawa@aa.io', password='password', display_name='Hiroyuki Sawano', first_name='Hiroyuki', last_name='Sawano', city='Tokyo', country='Japan', bio='Renowned composer', profile_pic="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg")
     kohya = User(
-        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic='')
+        username='kohYa', email='kohya@aa.io', password='password', display_name='Kohta Yamamoto', first_name='Kohta', last_name='Yamamoto', city='Tokyo', country='Japan', bio='Industry legend', profile_pic="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg")
 
     db.session.add(demo)
     db.session.add(marnie)

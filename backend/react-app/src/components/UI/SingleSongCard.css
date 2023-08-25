@@ -105,7 +105,7 @@
     justify-content: center;
     align-items: center;
     color: white;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     font-size: 11px;
     font-weight: bold;
     background-color: rgb(18, 208, 221);

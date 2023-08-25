@@ -138,7 +138,7 @@ const SingleSongCard = ({
                     </div>
                     <div className="single-song-card-info-soundwave">
 
-                        <img className="soundwave" src={(isPlaying && url === song.mp3_file) ? 'https://livebnbbucket.s3.amazonaws.com/soundslow.gif' : 'https://livebnbbucket.s3.amazonaws.com/soundframe.jpg'}></img>
+                        <img className="soundwave" src={(isPlaying && url === song.mp3_file) ? 'https://livebnbbucket.s3.amazonaws.com/soundslow.gif' : 'https://livebnbbucket.s3.amazonaws.com/soundframe-new.png'}></img>
                          </div>
                     {/* <div className="single-song-card-info-comment"> */}
                         {/* <form

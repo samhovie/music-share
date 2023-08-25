@@ -222,7 +222,7 @@ def seed_playlist_songs_users_likes():
                     artist_id=random.randint(1, 5),
                     mp3_file=url,
                     genre=genre,
-                    preview_img=fake.image_url(width=200, height=200),
+                    preview_img="https://livebnbbucket.s3.amazonaws.com/image_" + str(random.randint(1,50)) +".jpg",
                     created_at=datetime.strptime(fake.date(), '%Y-%m-%d'),
                     updated_at=date.today())
         db.session.add(song)

@@ -33,11 +33,11 @@ const DiscoverPage = () => {
     return (
         <>
             <div className="discover-page-wrapper">
-                <OpenModalButton
+                {/* <OpenModalButton
                     className="buttonss"
                     modalComponent={<CreatePlaylistForm />}
                     buttonText="Create Playlist"
-                />
+                /> */}
 
 <div className="playlist-wrapper-wrapper">
                         <h2 className="playlist-wrapper-title">Latest</h2>

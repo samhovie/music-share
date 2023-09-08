@@ -177,7 +177,7 @@ const SongUpload = () => {
 
                                             </div>
                                             <textarea id="story" name="story"
-                                                rows="5" cols="40"
+                                                rows="5" cols="42"
                                                 type="text"
                                                 value={description}
                                                 placeholder='Enter a description here'

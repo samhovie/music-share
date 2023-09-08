@@ -117,8 +117,9 @@ function LoginFormModal() {
 
         </form>
           <div className="login-form-signup">
+            <p>Don't have an account? </p>
           <OpenModalButton
-									buttonText="Don't have an account? Sign up!"
+									buttonText="Sign up!"
 									// onItemClick={closeMenu}
 									modalComponent={<SignupFormModal />}
 									loginModalClass='login'

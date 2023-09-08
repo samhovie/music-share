@@ -80,7 +80,7 @@ function Navigation({ isLoaded }) {
 								<form>
 									<input
 										className='navbar-search-bar-input'
-										placeholder='Search feature coming soon!'
+										placeholder='Search coming soon!'
 									>
 
 									</input>

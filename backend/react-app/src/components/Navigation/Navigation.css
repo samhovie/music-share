@@ -76,8 +76,8 @@
 }
 
 .navbar-search-bar-input {
-  /* border-radius: 5px; */
-  width: 20rem;
+  border-radius: 5px;
+  width: 10rem;
   height: 2.2rem;
   margin-left: 2.5rem;
   padding: 2px;

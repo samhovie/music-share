@@ -1,7 +1,7 @@
 .open-modal-button {
     border-style: none;
     border-radius: 5px;
-    border: 1px solid darkgreen;
+    /* border: 1px solid darkgreen; */
     background-color: aquamarine;
     font-size: 1rem;
     padding: 5px 1rem;

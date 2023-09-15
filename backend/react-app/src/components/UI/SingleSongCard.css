@@ -109,7 +109,6 @@
     justify-content: center;
     align-items: center;
     color: white;
-    /* border: 1px solid black; */
     font-size: 11px;
     font-weight: bold;
     background-color: rgb(18, 208, 221);
@@ -129,9 +128,9 @@
     cursor: pointer;
     border-style: none;
     border-radius: 5px;
-    border: 1px solid darkgreen;
+    /* border: 1px solid darkgreen; */
     /* background-color: rgb(36, 105, 82); */
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     color: black;
     font-weight: bold;
     font-size: 1rem;

@@ -10,6 +10,10 @@
     border: 4px solid gainsboro
 }
 
+.fa-heart {
+    padding-right: 10px;
+}
+
 .single-song-card-info-soundwave > img {
     display: flex;
     /* padding-top: 25px; */

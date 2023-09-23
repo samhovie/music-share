@@ -16,25 +16,10 @@
 
 .single-song-card-info-soundwave > img {
     display: flex;
-    /* padding-top: 25px; */
     width: 40%;
     max-height: 5.5rem;
     border-radius: 20px;
-    /* content: url('https://livebnbbucket.s3.amazonaws.com/soundframe.jpg') */
 }
-
-/* .single-song-card-info-soundwave > img.selected {
-    content: url('https://livebnbbucket.s3.amazonaws.com/soundslow.gif')
-} */
-
-
-
-
-/*
-.single-song-card-image > img {
-    max-width: 150px;
-    height: 12rem;
-} */
 
 .single-song-card-image-nav>img {
     height: 9rem;
@@ -51,7 +36,6 @@
 .single-song-card-info-top {
     display: flex;
     justify-content: space-between;
-    /* border: 1px solid black; */
 }
 
 .single-song-details-card-play-button {
@@ -84,7 +68,6 @@
 }
 
 .single-song-card-info-soundwave {
-    /* border: 1px solid black; */
     width: 100%;
 }
 
@@ -97,7 +80,6 @@
     justify-content: space-between;
     margin-top: 1rem;
     width: 40rem;
-    /* border: 1px solid black; */
 }
 
 .single-song-card-info-bottom-left-column {
@@ -110,10 +92,8 @@
     align-items: center;
     color: white;
     font-size: 11px;
-    /* font-weight: bold; */
     background-color:aquamarine;
     border-radius: 10px;
-    /* cursor: pointer; */
 }
 
 .single-song-card-info-bottom-left-column-heart>button {
@@ -128,11 +108,7 @@
     cursor: pointer;
     border-style: none;
     border-radius: 5px;
-    /* border: 1px solid darkgreen; */
-    /* background-color: rgb(36, 105, 82); */
-    /* background-color: aquamarine; */
     color: black;
-    /* font-weight: bold; */
     font-size: 1rem;
     padding: 5px 1rem;
     font-family: 'Courier New', Courier, monospace;
@@ -140,8 +116,6 @@
 
 .single-song-card-info-bottom-left-column-delete {
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
     height: 1rem;
     width: 5rem;
 }
@@ -158,7 +132,3 @@
 .single-song-card-info-bottom-right-column {
     display: flex;
 }
-
-/* .single-song-card-info-soundwave > img {
-    width: 40rem;
-} */
